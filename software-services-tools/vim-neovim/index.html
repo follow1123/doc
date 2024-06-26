@@ -91,9 +91,7 @@
             <div class="sidebar-scrollbox">
                 <ol class="chapter"><li class="chapter-item expanded "><a href="../../linux/index.html"><strong aria-hidden="true">1.</strong> Linux</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../linux/basics.html"><strong aria-hidden="true">1.1.</strong> 基础</a></li><li class="chapter-item expanded "><a href="../../linux/commands.html"><strong aria-hidden="true">1.2.</strong> 常用命令</a></li><li class="chapter-item expanded "><a href="../../linux/desktop-environment.html"><strong aria-hidden="true">1.3.</strong> 桌面环境</a></li><li class="chapter-item expanded "><a href="../../linux/systemd.html"><strong aria-hidden="true">1.4.</strong> Systemd</a></li><li class="chapter-item expanded "><a href="../../linux/troubleshooting.html"><strong aria-hidden="true">1.5.</strong> 常见问题</a></li></ol></li><li class="chapter-item expanded "><a href="../../windows/index.html"><strong aria-hidden="true">2.</strong> Windows</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../windows/command-prompt.html"><strong aria-hidden="true">2.1.</strong> Command Prompt</a></li><li class="chapter-item expanded "><a href="../../windows/wsl2.html"><strong aria-hidden="true">2.2.</strong> wsl2</a></li></ol></li><li class="chapter-item expanded "><a href="../../software-services-tools/index.html"><strong aria-hidden="true">3.</strong> 软件/服务/工具</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../software-services-tools/git/index.html"><strong aria-hidden="true">3.1.</strong> Git</a></li><li class="chapter-item expanded "><a href="../../software-services-tools/vim-neovim/index.html" class="active"><strong aria-hidden="true">3.2.</strong> Vim/Neovim</a></li><li class="chapter-item expanded "><a href="../../software-services-tools/nginx/index.html"><strong aria-hidden="true">3.3.</strong> Nginx</a></li><li class="chapter-item expanded "><a href="../../software-services-tools/vsftp/index.html"><strong aria-hidden="true">3.4.</strong> Vsftp</a></li><li class="chapter-item expanded "><a href="../../software-services-tools/docker/index.html"><strong aria-hidden="true">3.5.</strong> Docker</a></li><li class="chapter-item expanded "><a href="../../software-services-tools/mysql/index.html"><strong aria-hidden="true">3.6.</strong> Mysql</a></li><li class="chapter-item expanded "><a href="../../software-services-tools/redis/index.html"><strong aria-hidden="true">3.7.</strong> Redis</a></li></ol></li><li class="chapter-item expanded "><a href="../../programming-language/index.html"><strong aria-hidden="true">4.</strong> 编程语言</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../programming-language/java/index.html"><strong aria-hidden="true">4.1.</strong> Java</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../programming-language/java/basics.html"><strong aria-hidden="true">4.1.1.</strong> 基础</a></li><li class="chapter-item expanded "><a href="../../programming-language/java/multithreading.html"><strong aria-hidden="true">4.1.2.</strong> 多线程</a></li><li class="chapter-item expanded "><a href="../../programming-language/java/build-tools/index.html"><strong aria-hidden="true">4.1.3.</strong> 构建工具</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../programming-language/java/build-tools/maven/index.html"><strong aria-hidden="true">4.1.3.1.</strong> Maven</a></li><li class="chapter-item expanded "><a href="../../programming-language/java/build-tools/gradle/index.html"><strong aria-hidden="true">4.1.3.2.</strong> Gradle</a></li></ol></li><li class="chapter-item expanded "><a href="../../programming-language/java/framework/index.html"><strong aria-hidden="true">4.1.4.</strong> 框架</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../programming-language/java/framework/spring/index.html"><strong aria-hidden="true">4.1.4.1.</strong> Spring</a></li><li class="chapter-item expanded "><a href="../../programming-language/java/framework/spring-mvc/index.html"><strong aria-hidden="true">4.1.4.2.</strong> Spring MVC</a></li><li class="chapter-item expanded "><a href="../../programming-language/java/framework/mybatis/index.html"><strong aria-hidden="true">4.1.4.3.</strong> Mybatis</a></li><li class="chapter-item expanded "><a href="../../programming-language/java/framework/spring-security/index.html"><strong aria-hidden="true">4.1.4.4.</strong> Spring Security</a></li><li class="chapter-item expanded "><a href="../../programming-language/java/framework/shiro/index.html"><strong aria-hidden="true">4.1.4.5.</strong> Shiro</a></li><li class="chapter-item expanded "><a href="../../programming-language/java/framework/netty/index.html"><strong aria-hidden="true">4.1.4.6.</strong> Netty</a></li></ol></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../frontend/index.html"><strong aria-hidden="true">5.</strong> 前端</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../frontend/html.html"><strong aria-hidden="true">5.1.</strong> HTML</a></li><li class="chapter-item expanded "><a href="../../frontend/css.html"><strong aria-hidden="true">5.2.</strong> CSS</a></li><li class="chapter-item expanded "><a href="../../frontend/javascript.html"><strong aria-hidden="true">5.3.</strong> JavaScript</a></li><li class="chapter-item expanded "><a href="../../frontend/vue/index.html"><strong aria-hidden="true">5.4.</strong> Vue</a></li></ol></li><li class="chapter-item expanded "><a href="../../design-pattern/index.html"><strong aria-hidden="true">6.</strong> 设计模式</a></li></ol>
             </div>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
-                <div class="sidebar-resize-indicator"></div>
-            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
         <!-- Track and set sidebar scroll position -->
@@ -174,111 +172,566 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="neovim"><a class="header" href="#neovim">Neovim</a></h1>
-<h1 id="键位"><a class="header" href="#键位">键位</a></h1>
-<ul>
-<li>
-<p><code>sp</code> 垂直分割窗口，<code>vsp</code> 水平分割窗口</p>
-</li>
-<li>
-<p><code>new</code>垂直新建一个窗口，<code>vnew</code>水平新建一个窗口</p>
-</li>
-<li>
-<p><code>ctrl+w+[h|j|k|l]</code>上下左右切换窗口</p>
-</li>
-<li>
-<p><code>:noh</code>或<code>:nohlsearch</code>取消搜索后的高亮</p>
-</li>
-<li>
-<p><code>ctrl+a/ctrl+x</code>让数值加1/减1</p>
-</li>
-<li>
-<p><code>@:</code> 执行上一条命令</p>
-</li>
-<li>
-<p><code>R</code> 进入Replace模式</p>
-</li>
-<li>
-<p><code>vim 文件名</code>：创建或打开一个文件</p>
-<ul>
-<li>三种模式：
-<ul>
-<li>正常模式：
-<ul>
-<li>使用vim打开一个文档就直接进入一般模式</li>
-<li><code>yy</code>：复制（<code>5yy</code>：可以复制5行）、<code>p</code>：粘贴</li>
-<li><code>dd</code>：删除（<code>5dd</code>：可以删除5行）</li>
-<li><code>u</code>：撤销</li>
-<li><code>G</code>：定位到最后一行</li>
-<li><code>gg</code>：定位到第一行（<code>5gg</code>：定位到第5行）</li>
-</ul>
-</li>
-<li>编辑模式：
-<ul>
-<li>按下i、I、o、O、a、A、R等任意一个字母后进入编辑模式，编辑模式安Esc进入命令行模式</li>
-</ul>
-</li>
-<li>命令行模式：
-<ul>
-<li>在这个模式当中，可以提供你相关指令，完成读取、存盘、替换、离开vim、显示行号等的动作则是在此模式中达成的</li>
-<li><code>:set nu</code>：打开行号</li>
-<li><code>:set nonu</code>：关闭行号</li>
-<li><code>:wq</code>：保存并退出</li>
-<li><code>:q</code>：退出</li>
-<li><code>:q!</code>：强制退出</li>
-<li><code>:数字</code>：定位到多少行</li>
-<li><code>\关键字</code>：查找某个字符，按<code>n</code>查找下一个</li>
-<li>关机或重启会自动使用<code>sync</code>同步数据，</li>
-<li><code>:help key-notation</code>查看按键映射描述</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p>字体</p>
-<ul>
-<li>
-<p>gui下vim字体设置</p>
-<ul>
-<li>弹框选择字体 <code>set guifont=*</code></li>
-</ul>
-</li>
-<li>
-<p>底部状态栏显示或隐藏</p>
-</li>
-<li>
-<p>显示<code>set laststatus=2</code></p>
-</li>
-<li>
-<p>隐藏<code>set laststatus=0</code></p>
-</li>
-</ul>
-</li>
-<li>
-<p>文件</p>
-<ul>
-<li>浏览当前文件 <code>:E</code></li>
-</ul>
-</li>
-</ul>
-<h2 id="lua-api"><a class="header" href="#lua-api">lua api</a></h2>
-<h3 id="vim-options"><a class="header" href="#vim-options">vim options</a></h3>
+                        <h1 id="vimneovim"><a class="header" href="#vimneovim">Vim/Neovim</a></h1>
+<h2 id="目录"><a class="header" href="#目录">目录</a></h2>
 <blockquote>
-<p>这些配置后面加_local就是临时设置,例如<code>opt_local</code></p>
+<p>以下文档不是全部，只是个人常用的一部分</br>
+使用<code>:help</code>查询详细的帮助文档</p>
 </blockquote>
-<h4 id="opto-vim基础配置"><a class="header" href="#opto-vim基础配置">opt/o vim基础配置</a></h4>
-<h4 id="bo-buffer相关配置"><a class="header" href="#bo-buffer相关配置">bo buffer相关配置</a></h4>
-<h4 id="wo-窗口相关配置"><a class="header" href="#wo-窗口相关配置">wo 窗口相关配置</a></h4>
-<h1 id="特殊操作"><a class="header" href="#特殊操作">特殊操作</a></h1>
+<ol>
+<li><a href="#motions">移动</a></li>
+<li><a href="#modes">模式</a></li>
+<li><a href="#textobject">文本对象</a></li>
+<li><a href="#search">搜索</a></li>
+<li><a href="#substitute">替换</a></li>
+<li><a href="#buffer">缓冲区</a></li>
+<li><a href="#window">窗口</a></li>
+<li><a href="#change-list-jump-list">变更列表和跳转列表</a></li>
+<li><a href="#quickfix-list">快速修复列表</a></li>
+<li><a href="#marks">标记</a></li>
+<li><a href="#indent">缩进</a></li>
+<li><a href="#folding">折叠</a></li>
+<li><a href="#vimgrep">全局搜索</a></li>
+<li><a href="#registers">寄存器</a></li>
+<li><a href="#macros">宏</a></li>
+<li><a href="#builtin-plugin">内置插件</a></li>
+<li><a href="#others">其他</a></li>
+<li><a href="#neovim-dev">Neovim开发</a></li>
+</ol>
+<p><a id="motions"></a></p>
+<h2 id="移动motions"><a class="header" href="#移动motions">移动（motions）</a></h2>
+<h3 id="键位"><a class="header" href="#键位">键位</a></h3>
+<ul>
+<li>方向键：<kbd>h</kbd> <kbd>j</kbd> <kbd>k</kbd> <kbd>l</kbd></li>
+</ul>
+<div class="table-wrapper"><table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody>
+<tr><td><code>Normal</code></td><td><kbd>w</kbd>/<kbd>W</kbd></td><td>光标右移动一个词/包含词周围的符号</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>b</kbd>/<kbd>B</kbd></td><td>光标左移动一个词/包含词周围的符号</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>0</kbd></td><td>光标移动到行首，包含空白字符</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>^</kbd></td><td>光标移动到行首, 不包含空白字符</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>$</kbd></td><td>光标移动到行尾</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>f</kbd>/<kbd>F</kbd>+<kbd>{char}</kbd></td><td>向左或向右搜索字符，光标移动该字符上</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>t</kbd>/<kbd>T</kbd>+<kbd>{char}</kbd></td><td>向左或向右搜索字符，光标移动该字符周围</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>;</kbd></td><td>重复<kbd>f</kbd>/<kbd>F</kbd>/<kbd>t</kbd>/<kbd>T</kbd>按键搜索字符</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>,</kbd></td><td>反方向重复<kbd>f</kbd>/<kbd>F</kbd>/<kbd>t</kbd>/<kbd>T</kbd>按键搜索字符</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>Ctrl</kbd>+<kbd>u</kbd></td><td>向上移动半页</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>Ctrl</kbd>+<kbd>d</kbd></td><td>向下移动半页</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>Ctrl</kbd>+<kbd>f</kbd></td><td>向上移动一页</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>Ctrl</kbd>+<kbd>b</kbd></td><td>向下移动一页</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>H</kbd></td><td>光标移动到当页的头部</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>M</kbd></td><td>光标移动到当页的中间</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>L</kbd></td><td>光标移动到当页的尾部</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>z</kbd>+<kbd>z</kbd></td><td>光标不动，光标下的内容移动到窗口的中间</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>{</kbd></td><td>向上移动一段</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>}</kbd></td><td>向下移动一段</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>%</kbd></td><td>光标移动到另一半大、中、小括号上</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>g</kbd>+<kbd>g</kbd></td><td>光标移动到文件的第一行</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>G</kbd></td><td>光标移动到文件的最后一行</td></tr>
+</tbody></table>
+</div>
+<hr />
+<p><a id="modes"></a></p>
+<h2 id="模式modes"><a class="header" href="#模式modes">模式（modes）</a></h2>
+<ul>
+<li>常用模式有4种：<a href="#mode-normal"><code>Normal</code></a> <a href="#mode-insert"><code>Insert</code></a> <a href="#mode-visual"><code>Visual</code></a> <a href="#mode-command"><code>Command</code></a></li>
+</ul>
+<p><a id="mode-normal"></a></p>
+<h3 id="normal"><a class="header" href="#normal">Normal</a></h3>
 <ul>
 <li>
-<p>由于vim/neovim内使用<code>/</code>搜索后无法查看搜索结果的个数，所以使用其他方式实现</p>
+<p>进入vim后默认在<code>Normal</code>模式下</p>
+</li>
+<li>
+<p><code>Normal</code>模式下光标默认是块状样式</p>
+</li>
+</ul>
+<div class="table-wrapper"><table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody>
+<tr><td><code>Normal</code></td><td><kbd>i</kbd></td><td>进入<code>Insert</code>模式，光标在字符的左边</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>a</kbd></td><td>进入<code>Insert</code>模式，光标在字符的右边</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>o</kbd></td><td>进入<code>Insert</code>模式，向下新开一行</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>O</kbd></td><td>进入<code>Insert</code>模式，向上新开一行</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>I</kbd></td><td>进入<code>Insert</code>模式，光标在行首，不包含空白字符</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>g</kbd>+<kbd>I</kbd></td><td>进入<code>Insert</code>模式，光标在行首，包含空白字符</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>A</kbd></td><td>进入<code>Insert</code>模式，光标在行尾</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>c</kbd>+<kbd>{operate}</kbd></td><td>完成文本对象操作并进入<code>Insert</code>模式</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>C</kbd></td><td>从当前光标删除到行尾并进入<code>Insert</code>模式</td></tr>
+</tbody></table>
+</div>
+<p><a id="mode-insert"></a></p>
+<h3 id="insert"><a class="header" href="#insert">Insert</a></h3>
 <ul>
-<li>统计整个buffer内某个文本出现的次数: <code>:%s/文本//gn</code></li>
+<li><code>Insert</code>模式下光标默认是<code>|</code>样式</li>
+</ul>
+<div class="table-wrapper"><table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody>
+<tr><td><code>Insert</code></td><td><kbd>Esc</kbd></td><td>进入<code>Normal</code>模式</td></tr>
+<tr><td><code>Insert</code></td><td><kbd>Ctrl</kbd>+<kbd>[</kbd></td><td>进入<code>Normal</code>模式，和<kbd>Esc</kbd>键发送一样的键码</td></tr>
+<tr><td><code>Insert</code></td><td><kbd>Ctrl</kbd>+<kbd>c</kbd></td><td>进入<code>Normal</code>模式，中断操作，不会触发<code>Insert</code>相关事件</td></tr>
+</tbody></table>
+</div>
+<p><a id="mode-visual"></a></p>
+<h3 id="visual"><a class="header" href="#visual">Visual</a></h3>
+<ul>
+<li>
+<p><code>Visual</code>分为三种<code>Visual-char</code>、<code>Visual-line</code>、<code>Visual-block</code></p>
+</li>
+<li>
+<p>第一种<code>Visual</code>模式由于是按字符选择，所以写成<code>Visual-char</code>以下好区分</p>
+</li>
+<li>
+<p><code>Visual-line</code>按行选择</p>
+</li>
+<li>
+<p><code>Visual-block</code>按块选择</p>
+</li>
+<li>
+<p><code>Visual</code>模式下也可以使用<a href="#mode-normal"><code>Normal</code></a>模式下的部分键位对文本进行操作</p>
+</li>
+</ul>
+<div class="table-wrapper"><table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody>
+<tr><td><code>Normal</code></td><td><kbd>v</kbd></td><td>进入<code>Visual-char</code>模式</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>V</kbd></td><td>进入<code>Visual-line</code>模式</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>Ctrl</kbd>+<kbd>v</kbd></td><td>进入<code>Visual-block</code>模式</td></tr>
+<tr><td><code>Visual</code></td><td><kbd>o</kbd></td><td>在<code>Visual</code>模式下，光标移动到另一个方向</td></tr>
+<tr><td><code>Visual-block</code></td><td><kbd>O</kbd></td><td>在<code>Visual-block</code>模式下，光标移动行内的另一头</td></tr>
+</tbody></table>
+</div>
+<p><a id="mode-command"></a></p>
+<h3 id="command"><a class="header" href="#command">Command</a></h3>
+<ul>
+<li><code>Command</code>模式下一般输入命令执行特殊操作</li>
+</ul>
+<div class="table-wrapper"><table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody>
+<tr><td><code>Normal</code></td><td><kbd>:</kbd></td><td>进入<code>Command</code>模式</td></tr>
+<tr><td><code>Command</code></td><td><kbd>Tab</kbd></td><td>补全命令</td></tr>
+</tbody></table>
+</div>
+<p><a id="mode-replace"></a></p>
+<h3 id="replace"><a class="header" href="#replace">Replace</a></h3>
+<ul>
+<li>在 <a href="#mode-normal">Normal</a> 模式下使用 <kbd>R</kbd> 进入Replace模式，输入的字符会替换后面的字符</li>
+</ul>
+<hr />
+<p><a id="textobject"></a></p>
+<h2 id="文本对象textobject"><a class="header" href="#文本对象textobject">文本对象（textobject）</a></h2>
+<ul>
+<li>操作：<kbd>c</kbd> <kbd>d</kbd> <kbd>y</kbd> <kbd>v</kbd></li>
+<li>范围：<kbd>i</kbd> <kbd>a</kbd></li>
+<li>对象：<kbd>w</kbd> <kbd>s</kbd> <kbd>p</kbd> <kbd>(</kbd> <kbd>)</kbd> <kbd>[</kbd> <kbd>]</kbd> <kbd>{</kbd> <kbd>}</kbd>
+<kbd>&lt;</kbd> <kbd>&gt;</kbd> <kbd>'</kbd> <kbd>&quot;</kbd> <kbd>`</kbd> <kbd>t</kbd></li>
+</ul>
+<div class="table-wrapper"><table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody>
+<tr><td><code>Normal</code></td><td><kbd>c</kbd> <kbd>i</kbd> <kbd>w</kbd></td><td>删除当前光标下的单词并进入<code>Insert</code>模式</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>d</kbd> <kbd>a</kbd> <kbd>p</kbd></td><td>删除当前光标所在段落</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>y</kbd> <kbd>i</kbd> <kbd>(</kbd></td><td>复制当前光标所在行右边<kbd>()</kbd>内的内容</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>v</kbd> <kbd>a</kbd> <kbd>t</kbd></td><td>选中当前光标所在的整个标签，<code>html</code>、<code>xml</code>等标签语法的标签</td></tr>
+</tbody></table>
+</div>
+<p><a id="search"></a></p>
+<h2 id="搜索search"><a class="header" href="#搜索search">搜索（search）</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody>
+<tr><td><code>Normal</code></td><td><kbd>/</kbd> <kbd>{pattern}</kbd></td><td>向后搜索输入的pattern</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>?</kbd> <kbd>{pattern}</kbd></td><td>向前搜索输入的pattern</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>n</kbd>/<kbd>N</kbd></td><td>根据搜索的方式向前或向后搜索输入的pattern</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>*</kbd></td><td>快速向后搜索当前光标下的单词</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>#</kbd></td><td>快速向前搜索当前光标下的单词</td></tr>
+</tbody></table>
+</div>
+<hr />
+<p><a id="substitute"></a></p>
+<h2 id="替换substitute"><a class="header" href="#替换substitute">替换（substitute）</a></h2>
+<blockquote>
+<p>以下选项只是部分，详情参考：<code>:h substitute</code></p>
+</blockquote>
+<ul>
+<li><code>:<a href="#substitute-range">[range]</a>s[ubstitute]/<a href="#substitute-pattern">{pattern}</a>/<a href="#substitute-string">{string}</a>/<a href="#substitute-flags">[flags]</a> <a href="#substitute-count">[count]</a></code></li>
+</ul>
+<p><a id="substitute-range"></a></p>
+<ul>
+<li>range
+<ul>
+<li><code>number</code> 指定行号</li>
+<li><code>%</code> 当前文件</li>
 </ul>
 </li>
+</ul>
+<p><a id="substitute-pattern"></a></p>
+<ul>
+<li>pattern
+<ul>
+<li>支持正则表达式</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-txt">&lt;a id=&quot;mark-a&quot;&gt;&lt;/a&gt;
+&lt;a id=&quot;mark-b&quot;&gt;&lt;/a&gt;
+&lt;a id=&quot;mark-c&quot;&gt;&lt;/a&gt;
+
+选中并执行'&lt;,'&gt;s/id=&quot;\(\w\+-\(\w\)\)&quot;&gt;/href=&quot;#\1&quot;&gt;\2/g替换成mark的引用处
+
+&lt;a href=&quot;#mark-a&quot;&gt;a&lt;/a&gt;
+&lt;a href=&quot;#mark-b&quot;&gt;b&lt;/a&gt;
+&lt;a href=&quot;#mark-c&quot;&gt;c&lt;/a&gt;
+</code></pre>
+<p><a id="substitute-string"></a></p>
+<ul>
+<li>string
+<ul>
+<li>参考：<code>h sub-replace-special</code></li>
+<li>特殊操作和正则表达式的捕获组、大小写转换类似</li>
+</ul>
+</li>
+</ul>
+<p><a id="substitute-flags"></a></p>
+<ul>
+<li>flags
+<ul>
+<li><code>c</code> 替换时确认</li>
+<li><code>e</code> 忽略替换时的错误</li>
+<li><code>g</code> 替换所有的匹配项</li>
+<li><code>i</code> 忽略大小写</li>
+<li><code>I</code> 不忽略大小写</li>
+<li><code>n</code> 不替换，只显示匹配项的个数
+<ul>
+<li>由于<a href="#search">搜索</a>最多只能显示99个搜索结果，使用这个方式统计搜索内容的个数</li>
+<li><code>%s/text//gn</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><a id="substitute-count"></a></p>
+<ul>
+<li>
+<p>count</p>
+<ul>
+<li>单行替换时将包括当前行内下的count行都执行这个替换操作</li>
+<li><code>:s/x/X/g 5</code> 将当前行所在内以下5行内的<code>x</code>字符替换成<code>X</code>字符</li>
+</ul>
+</li>
+<li>
+<p>分隔符说明</p>
+<ul>
+<li>命令分隔符不只可以使用<code>/</code>，还可以使用<code>#</code>、<code>.</code>、<code>+</code>等，和linux下的<code>sed</code>类似</li>
+</ul>
+</li>
+</ul>
+<div class="table-wrapper"><table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody>
+<tr><td><code>Normal</code></td><td><kbd>&amp;</kbd></td><td>执行上一次的单行替换操作</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>g</kbd> <kbd>&amp;</kbd></td><td>执行上一次的整个buffer替换操作</td></tr>
+</tbody></table>
+</div>
+<hr />
+<p><a id="buffer"></a></p>
+<h2 id="缓冲区buffer"><a class="header" href="#缓冲区buffer">缓冲区（buffer）</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody>
+<tr><td><code>Normal</code></td><td><kbd>Ctrl</kbd>+<kbd>6</kbd></td><td>切换到上次打开的buffer</td></tr>
+<tr><td><code>Command</code></td><td><code>:ls</code></td><td>显示当前所有打开的buffer</td></tr>
+<tr><td><code>Command</code></td><td><code>:b#</code></td><td>和 <kbd>Ctrl</kbd>+<kbd>6</kbd> 相同</td></tr>
+</tbody></table>
+</div>
+<hr />
+<p><a id="window"></a></p>
+<h2 id="窗口window"><a class="header" href="#窗口window">窗口（window）</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody>
+<tr><td><code>Normal</code></td><td><kbd>Ctrl</kbd>+<kbd>w</kbd> <kbd>s</kbd></td><td>水平分屏</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>Ctrl</kbd>+<kbd>w</kbd> <kbd>v</kbd></td><td>垂直分屏</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>Ctrl</kbd>+<kbd>w</kbd> <kbd>+</kbd></td><td>增加分屏高度</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>Ctrl</kbd>+<kbd>w</kbd> <kbd>-</kbd></td><td>减少分屏高度</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>Ctrl</kbd>+<kbd>w</kbd> <kbd>&gt;</kbd></td><td>减少分屏宽度</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>ctrl</kbd>+<kbd>w</kbd> <kbd>&lt;</kbd></td><td>增加分屏宽度</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>ctrl</kbd>+<kbd>w</kbd> <kbd>=</kbd></td><td>将所有分屏设置为相同的宽度和高度</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>ctrl</kbd>+<kbd>w</kbd> <kbd>c</kbd></td><td>关闭当前分屏</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>ctrl</kbd>+<kbd>w</kbd> <kbd>r</kbd></td><td>旋转所有分屏</td></tr>
+<tr><td><code>Command</code></td><td><code>:sp</code></td><td>和 <kbd>Ctrl</kbd>+<kbd>w</kbd> <kbd>s</kbd> 相同</td></tr>
+<tr><td><code>Command</code></td><td><code>:vs</code></td><td>和 <kbd>Ctrl</kbd>+<kbd>w</kbd> <kbd>v</kbd> 相同</td></tr>
+</tbody></table>
+</div>
+<hr />
+<p><a id="change-list-jump-list"></a></p>
+<h2 id="变更列表和跳转列表change-list-and-jump-list"><a class="header" href="#变更列表和跳转列表change-list-and-jump-list">变更列表和跳转列表（change list and jump list）</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody>
+<tr><td><code>Command</code></td><td><code>:changes</code></td><td>打开变更列表</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>g</kbd>+<kbd>;</kbd></td><td>跳转到较旧修改的位置</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>g</kbd>+<kbd>,</kbd></td><td>跳转到较新修改的位置</td></tr>
+<tr><td><code>Command</code></td><td><code>:jumps</code></td><td>打开跳转列表</td></tr>
+<tr><td><code>Command</code></td><td><code>:clearjumps</code></td><td>清空跳转列表</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>Ctrl</kbd>+<kbd>i</kbd></td><td>跳转到较旧的位置</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>Ctrl</kbd>+<kbd>o</kbd></td><td>跳转到较新的位置</td></tr>
+</tbody></table>
+</div>
+<hr />
+<p><a id="quickfix-list"></a></p>
+<h2 id="快速修复列表quickfix-list"><a class="header" href="#快速修复列表quickfix-list">快速修复列表（Quickfix list）</a></h2>
+<ul>
+<li>使用 <a href="#vimgrep">Vimgrep</a> 搜索的信息会保存在quickfix-list内</li>
+</ul>
+<div class="table-wrapper"><table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody>
+<tr><td><code>Command</code></td><td><code>:copen</code></td><td>打开Quickfix列表</td></tr>
+<tr><td><code>Command</code></td><td><code>:cclose</code></td><td>关闭Quickfix列表</td></tr>
+<tr><td><code>Command</code></td><td><code>:cnext</code></td><td>Quickfix列表下一条</td></tr>
+<tr><td><code>Command</code></td><td><code>:cprevious</code></td><td>Quickfix列表上一条</td></tr>
+<tr><td><code>Command</code></td><td><code>:cfirst</code></td><td>Quickfix列表第一条</td></tr>
+<tr><td><code>Command</code></td><td><code>:clast</code></td><td>Quickfix列表最后一条</td></tr>
+<tr><td><code>Command</code></td><td><code>:chistory</code></td><td>显示Quickfix列表历史记录</td></tr>
+<tr><td><code>Command</code></td><td><code>:colder</code></td><td>使用上一次Quickfix列表操作记录</td></tr>
+<tr><td><code>Command</code></td><td><code>:cnewer</code></td><td>使用下一次Quickfix列表操作记录</td></tr>
+<tr><td><code>Command</code></td><td><code>:cdo</code></td><td>对quickfix list内的内容执行操作，例如<kbd>cdo</kbd>后接<a href="#substitute">substitute</a>相关操作，实现工作区内替换功能</td></tr>
+</tbody></table>
+</div>
+<hr />
+<p><a id="marks"></a></p>
+<h2 id="标记marks"><a class="header" href="#标记marks">标记（Marks）</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody>
+<tr><td><code>Command</code></td><td><code>:marks</code></td><td>打开mark列表</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>m</kbd>+<kbd>{mark}</kbd></td><td>插眼</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>'</kbd>+<kbd>{mark}</kbd>/<kbd>`</kbd>+<kbd>{mark}</kbd></td><td>传送</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>'</kbd>+<kbd>'</kbd>/<kbd>`</kbd>+<kbd>`</kbd></td><td>跳转到上一次的标记</td></tr>
+<tr><td><code>Command</code></td><td><code>:delmarks mark</code></td><td>排眼</td></tr>
+<tr><td><code>Command</code></td><td><code>:delmarks!</code></td><td>删除所有的标记</td></tr>
+</tbody></table>
+</div>
+<h3 id="mark-说明"><a class="header" href="#mark-说明">mark 说明</a></h3>
+<ul>
+<li><code>a-z</code> 当前buffer的标记</li>
+<li><code>A-Z</code> 跨文件的标记</li>
+<li><code>0-9</code> 跨项目的标记</li>
+<li><code>&lt;</code> <code>&gt;</code> <a href="#mode-visual">Visual</a> 模式下选中文本的区域的标记</li>
+</ul>
+<hr />
+<p><a id="indent"></a></p>
+<h2 id="缩进indent"><a class="header" href="#缩进indent">缩进（Indent）</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody>
+<tr><td><code>Normal</code></td><td><kbd>&gt;</kbd>+<kbd>&gt;</kbd></td><td>向右缩进</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>&lt;</kbd>+<kbd>&lt;</kbd></td><td>向左缩进</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>=</kbd></td><td>自动对齐缩进</td></tr>
+<tr><td><code>Visual</code></td><td><kbd>&gt;</kbd></td><td>选中的行向右缩进</td></tr>
+<tr><td><code>Visual</code></td><td><kbd>&lt;</kbd></td><td>选中的行向左缩进</td></tr>
+<tr><td><code>Insert</code></td><td><kbd>Tab</kbd></td><td>缩进字符</td></tr>
+</tbody></table>
+</div>
+<h3 id="缩进相关配置"><a class="header" href="#缩进相关配置">缩进相关配置</a></h3>
+<div class="table-wrapper"><table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody>
+<tr><td><code>Command</code></td><td><code>:set list</code>/<code>:set nolist</code></td><td>开启/关闭空白字符显示</td></tr>
+<tr><td><code>Command</code></td><td><code>:set shiftwitdh={num}</code></td><td>使用<kbd>&lt;</kbd>/<kbd>&gt;</kbd>相关按键缩进的宽度</td></tr>
+<tr><td><code>Command</code></td><td><code>:set tabstop={num}</code></td><td>使用<kbd>Tab</kbd>按键缩进的宽度</td></tr>
+</tbody></table>
+</div>
+<hr />
+<p><a id="folding"></a></p>
+<h2 id="折叠folding"><a class="header" href="#折叠folding">折叠（Folding）</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody>
+<tr><td><code>Normal</code></td><td><kbd>z</kbd>+<kbd>f</kbd></td><td>创建一个折叠块，配合<code>foldmethod</code>配置才能使用</td></tr>
+<tr><td><code>Visual</code></td><td><kbd>z</kbd>+<kbd>f</kbd></td><td>创建一个折叠块，配合<code>foldmethod</code>配置才能使用</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>z</kbd>+<kbd>o</kbd></td><td>开启折叠块</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>z</kbd>+<kbd>c</kbd></td><td>关闭折叠块</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>z</kbd>+<kbd>a</kbd></td><td>关闭或关闭折叠块</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>z</kbd>+<kbd>A</kbd></td><td>关闭或关闭折叠块，递归</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>z</kbd>+<kbd>d</kbd></td><td>删除折叠块</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>z</kbd>+<kbd>j</kbd></td><td>下一个折叠块</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>z</kbd>+<kbd>k</kbd></td><td>上一个折叠块</td></tr>
+</tbody></table>
+</div>
+<h3 id="折叠块相关配置"><a class="header" href="#折叠块相关配置">折叠块相关配置</a></h3>
+<div class="table-wrapper"><table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody>
+<tr><td><code>Command</code></td><td><code>:set foldenable</code>/ <code>set nofoldenable</code></td><td>开启或关闭打开文件自动折叠相关代码</td></tr>
+<tr><td><code>Command</code></td><td><code>:set foldlevel={num}</code></td><td>最大折叠块深度</td></tr>
+<tr><td><code>Command</code></td><td><code>:set foldmethod={string}</code></td><td>折叠代码方式，<code>:h foldmethod</code>查看详细信息</td></tr>
+</tbody></table>
+</div>
+<hr />
+<p><a id="vimgrep"></a></p>
+<h2 id="全局搜索vimgrep"><a class="header" href="#全局搜索vimgrep">全局搜索（Vimgrep）</a></h2>
+<ul>
+<li><code>vimgrep /<a href="#vimgrep-pattern">pattern</a>/<a href="#vimgrep-flags">flags</a> <a herf="#vimgrep-file">file...</a></code></li>
+</ul>
+<p><a id="vimgrep-pattern"></a></p>
+<ul>
+<li><code>pattern</code> 正则表达式或字符串</li>
+</ul>
+<p><a id="vimgrep-flags"></a></p>
+<ul>
+<li><code>flags</code>
+<ul>
+<li><code>g</code> 单行匹配多次</li>
+<li><code>j</code> 不跳转到匹配的buffer内</li>
+<li><code>f</code> 模糊匹配，<a href="#vimgrep-pattern">pattern</a>输入字符串</li>
+</ul>
+</li>
+</ul>
+<p><a id="vimgrep-file"></a></p>
+<ul>
+<li><code>file</code> 多个文件
+<ul>
+<li><code>a/*</code> a文件夹下的所有文件</li>
+<li><code>**/*.c</code> 所有文件夹下的c文件</li>
+</ul>
+</li>
+</ul>
+<hr />
+<p><a id="registers"></a></p>
+<h2 id="寄存器registers"><a class="header" href="#寄存器registers">寄存器（Registers）</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody>
+<tr><td><code>Normal</code></td><td><kbd>&quot;</kbd> <kbd>{register}</kbd> <kbd>y</kbd></td><td>将文本复制到对应的寄存器内</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>&quot;</kbd> <kbd>{register}</kbd> <kbd>p</kbd></td><td>粘贴对应的寄存器的内容</td></tr>
+<tr><td><code>Insert</code></td><td><kbd>Ctrl</kbd>+<kbd>r</kbd> <kbd>{register}</kbd></td><td>输入对应的寄存器的内容</td></tr>
+<tr><td><code>Command</code></td><td><kbd>Ctrl</kbd>+<kbd>r</kbd> <kbd>{register}</kbd></td><td>输入对应的寄存器的内容</td></tr>
+<tr><td><code>Command</code></td><td><code>:registers {register}</code></td><td>显示对应寄存器的内容，无参数则显示全部寄存器</td></tr>
+</tbody></table>
+</div>
+<h3 id="未命名寄存器"><a class="header" href="#未命名寄存器">未命名寄存器</a></h3>
+<ul>
+<li><code>&quot;</code> 修改、删除、复制等操作后的文本都会存入这个寄存器内</li>
+</ul>
+<h3 id="数字寄存器"><a class="header" href="#数字寄存器">数字寄存器</a></h3>
+<ul>
+<li><code>0</code> 复制的文本都会存入这个寄存器内</li>
+<li><code>1-9</code> 修改或删除后的文本会依次存入这些寄存器内</li>
+</ul>
+<h3 id="删除寄存器"><a class="header" href="#删除寄存器">删除寄存器</a></h3>
+<ul>
+<li><code>-</code> 删除的内容少于一行时存入这个寄存器</li>
+</ul>
+<h3 id="字母寄存器"><a class="header" href="#字母寄存器">字母寄存器</a></h3>
+<ul>
+<li><code>a-z</code>/<code>A-Z</code> 用户自定义操作的寄存器</li>
+</ul>
+<h3 id="只读寄存器"><a class="header" href="#只读寄存器">只读寄存器</a></h3>
+<ul>
+<li><code>.</code> 上次新增的内容</li>
+<li><code>%</code> 当前buffer文件路径</li>
+<li><code>:</code> 上次执行的命令</li>
+</ul>
+<h3 id="备用buffer寄存器"><a class="header" href="#备用buffer寄存器">备用buffer寄存器</a></h3>
+<ul>
+<li><code>#</code> 上次打开的buffer的文件路径</li>
+</ul>
+<h3 id="表达式寄存器"><a class="header" href="#表达式寄存器">表达式寄存器</a></h3>
+<ul>
+<li><code>=</code> <a href="#mode-insert">Insert</a>模式下<kbd>Ctrl</kbd>+<kbd>r</kbd> <kbd>=</kbd>输入在<a href="#mode-command">Command</a>模式下执行命令的结果</li>
+</ul>
+<h3 id="选择寄存器"><a class="header" href="#选择寄存器">选择寄存器</a></h3>
+<ul>
+<li><code>*</code>/<code>+</code> 系统剪切板</li>
+</ul>
+<h3 id="黑洞寄存器"><a class="header" href="#黑洞寄存器">黑洞寄存器</a></h3>
+<ul>
+<li><code>_</code> 和Linux下<code>/dev/null</code>类似</li>
+</ul>
+<h3 id="上次修改寄存器"><a class="header" href="#上次修改寄存器">上次修改寄存器</a></h3>
+<ul>
+<li><code>/</code> 4. <a href="#search">搜索</a>后的内容会保存在这个寄存器内</li>
+</ul>
+<hr />
+<p><a id="macros"></a></p>
+<h2 id="宏macros"><a class="header" href="#宏macros">宏（Macros）</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody>
+<tr><td><code>Normal</code></td><td><kbd>q</kbd> <kbd>{register}</kbd></td><td>录制宏</td></tr>
+<tr><td><code>normal</code></td><td><kbd>@</kbd> <kbd>{register}</kbd></td><td>播放宏</td></tr>
+<tr><td><code>normal</code></td><td><kbd>@</kbd> <kbd>:</kbd></td><td>执行上一次的命令</td></tr>
+<tr><td><code>normal</code></td><td><kbd>@</kbd> <kbd>@</kbd></td><td>执行上一次的宏</td></tr>
+</tbody></table>
+</div>
+<hr />
+<p><a id="builtin-plugin"></a></p>
+<h2 id="内置插件builtin-plugin"><a class="header" href="#内置插件builtin-plugin">内置插件（builtin-plugin）</a></h2>
+<h3 id="netrw"><a class="header" href="#netrw">Netrw</a></h3>
+<div class="table-wrapper"><table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody>
+<tr><td><code>Command</code></td><td><code>:E</code></td><td>打开文件管理器buffer</td></tr>
+<tr><td><code>Command</code></td><td><code>:Rexplore</code></td><td>返回上次打开的文件管理器</td></tr>
+<tr><td><code>Command</code></td><td><code>:Lexplore</code></td><td>开启或关闭左测的文件管理器</td></tr>
+</tbody></table>
+</div>
+<hr />
+<p><a id="others"></a></p>
+<h2 id="其他others"><a class="header" href="#其他others">其他（others）</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody>
+<tr><td><code>Normal</code></td><td><kbd>x</kbd></td><td>删除当前光标下的字符</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>r</kbd></td><td>将当前光标下的字符替换为输入的字符</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>y</kbd>+<kbd>{operate}</kbd></td><td>复制</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>p</kbd>/<kbd>P</kbd></td><td>粘贴，根据粘贴的内容是否为一行<br />粘贴的位置在当前行的下面或上面<br />当前字符的右边或左边</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>Ctrl</kbd>+<kbd>a</kbd></td><td>增加数字</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>Ctrl</kbd>+<kbd>x</kbd></td><td>减少数字</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>g</kbd> <kbd>Ctrl</kbd>+<kbd>a</kbd></td><td>依次增加选中列的数字</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>g</kbd> <kbd>Ctrl</kbd>+<kbd>x</kbd></td><td>依次减少选中列的数字</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>u</kbd></td><td>撤销</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>Ctrl</kbd>+<kbd>r</kbd></td><td>重做</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>~</kbd></td><td>大小写转换</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>Ctrl</kbd>+<kbd>g</kbd></td><td>底部显示当前buffer的信息</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>1</kbd> <kbd>Ctrl</kbd>+<kbd>g</kbd></td><td>底部显示当前buffer的信息，绝对路径</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>2</kbd> <kbd>Ctrl</kbd>+<kbd>g</kbd></td><td>底部显示当前buffer的信息，buffer number</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>g</kbd> <kbd>Ctrl</kbd>+<kbd>g</kbd></td><td>显示当前文件的line、word、char、byte信息</td></tr>
+<tr><td><code>Visual</code></td><td><kbd>g</kbd> <kbd>Ctrl</kbd>+<kbd>g</kbd></td><td>显示当前选中区域的line、word、char、byte信息</td></tr>
+<tr><td><code>Command</code></td><td><code>:set laststatus=0</code></td><td>隐藏底部输入命令的行高度</td></tr>
+<tr><td><code>Command</code></td><td><code>:set laststatus=2</code></td><td>设置底部输入命令的行高度</td></tr>
+<tr><td><code>Command</code></td><td><code>:set guifont=*</code></td><td>gui模式下设置字体</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>q</kbd> <kbd>:</kbd></td><td>分屏显示历史命令窗口</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>q</kbd> <kbd>/</kbd></td><td>分屏显示历史搜索记录窗口</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>q</kbd> <kbd>?</kbd></td><td>分屏显示历史搜索记录窗口</td></tr>
+<tr><td><code>Normal</code></td><td><kbd>:</kbd> <kbd>{number}</kbd></td><td>跳转到对应的行号</td></tr>
+</tbody></table>
+</div>
+<hr />
+<p><a id="neovim-dev"></a></p>
+<h2 id="neovim开发neovim-dev"><a class="header" href="#neovim开发neovim-dev">neovim开发（neovim-dev）</a></h2>
+<blockquote>
+<p>以下和lua相关的代码仅支持neovim</p>
+</blockquote>
+<h3 id="lua语言简介"><a class="header" href="#lua语言简介">lua语言简介</a></h3>
+<h3 id="neovim-api"><a class="header" href="#neovim-api">neovim api</a></h3>
+<h4 id="vimovimoptvimopt_local"><a class="header" href="#vimovimoptvimopt_local"><code>vim.o</code>/<code>vim.opt</code>/<code>vim.opt_local</code></a></h4>
+<ul>
+<li>类似vimscript的set操作，o对应原始数据，opt对应使用lua封装的数据，opt_local对应setlocal</li>
+</ul>
+<div class="table-wrapper"><table><thead><tr><th>lua</th><th>vimscript</th></tr></thead><tbody>
+<tr><td><code>vim.o.number</code></td><td><code>set number</code></td></tr>
+<tr><td><code>vim.o.relativenumber</code></td><td><code>set relativenumber</code></td></tr>
+<tr><td><code>vim.o.clipboard</code></td><td><code>set clipboard</code></td></tr>
+</tbody></table>
+</div>
+<h4 id="vimkeymap"><a class="header" href="#vimkeymap"><code>vim.keymap</code></a></h4>
+<ul>
+<li>配置按键映射的方法，对应vimscript的<code>nmap</code>，<code>vmap</code>等</li>
+</ul>
+<pre><code class="language-lua">-- 实现nnoremap &lt;M-w&gt; viw
+vim.keymap.set(&quot;n&quot;, &quot;&lt;M-w&gt;&quot;, &quot;viw&quot;, {
+ noremap = true
+})
+</code></pre>
+<h4 id="vimapi"><a class="header" href="#vimapi"><code>vim.api</code></a></h4>
+<ul>
+<li>对应使用lua实现的vimapi，参考：<code>h vim.api</code> </li>
+</ul>
+<h4 id="vimfn"><a class="header" href="#vimfn"><code>vim.fn</code></a></h4>
+<ul>
+<li>调用vimscript的函数，参考：<code>h builtin-function-list</code></li>
+</ul>
+<div class="table-wrapper"><table><thead><tr><th>lua</th><th>vimscript</th></tr></thead><tbody>
+<tr><td><code>vim.fn.getcwd()</code></td><td><code>getcwd()</code></td></tr>
+<tr><td><code>vim.fn.line()</code></td><td><code>line()</code></td></tr>
+<tr><td><code>vim.fn.buflisted()</code></td><td><code>buflisted()</code></td></tr>
+</tbody></table>
+</div>
+<h4 id="vimcmd"><a class="header" href="#vimcmd"><code>vim.cmd</code></a></h4>
+<ul>
+<li>调用vimscript的命令</li>
+</ul>
+<div class="table-wrapper"><table><thead><tr><th>lua</th><th>vimscript</th></tr></thead><tbody>
+<tr><td><code>vim.cmd.e()</code></td><td><code>:e</code></td></tr>
+<tr><td><code>vim.cmd.wincmd()</code></td><td><code>:wincmd</code></td></tr>
+<tr><td><code>vim.cmd.pwd()</code></td><td><code>:pwd</code></td></tr>
+</tbody></table>
+</div>
+<h4 id="vimlsp"><a class="header" href="#vimlsp"><code>vim.lsp</code></a></h4>
+<ul>
+<li>vim内置<a href="https://microsoft.github.io/language-server-protocol/">lsp</a>相关函数，参考：<code>h vim.lsp</code></li>
+</ul>
+<h4 id="vimuvvimloop"><a class="header" href="#vimuvvimloop"><code>vim.uv</code>/<code>vim.loop</code></a></h4>
+<ul>
+<li>vim内置<a href="https://github.com/luvit/luv">luv</a>网络编程库，参考：<code>h luv</code></li>
+</ul>
+<h4 id="vimschedulevimschedule_wrap"><a class="header" href="#vimschedulevimschedule_wrap"><code>vim.schedule</code>/<code>vim.schedule_wrap</code></a></h4>
+<ul>
+<li>等待event-loop内的事件执行完成后再执行里面的操作</li>
 </ul>
 
                     </main>
@@ -310,22 +763,6 @@
 
         </div>
 
-        <!-- Livereload script (if served using the cli tool) -->
-        <script>
-            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
-            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
-            const socket = new WebSocket(wsAddress);
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
 
 
 

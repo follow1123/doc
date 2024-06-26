@@ -91,9 +91,7 @@
             <div class="sidebar-scrollbox">
                 <ol class="chapter"><li class="chapter-item expanded "><a href="../linux/index.html"><strong aria-hidden="true">1.</strong> Linux</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../linux/basics.html"><strong aria-hidden="true">1.1.</strong> 基础</a></li><li class="chapter-item expanded "><a href="../linux/commands.html"><strong aria-hidden="true">1.2.</strong> 常用命令</a></li><li class="chapter-item expanded "><a href="../linux/desktop-environment.html" class="active"><strong aria-hidden="true">1.3.</strong> 桌面环境</a></li><li class="chapter-item expanded "><a href="../linux/systemd.html"><strong aria-hidden="true">1.4.</strong> Systemd</a></li><li class="chapter-item expanded "><a href="../linux/troubleshooting.html"><strong aria-hidden="true">1.5.</strong> 常见问题</a></li></ol></li><li class="chapter-item expanded "><a href="../windows/index.html"><strong aria-hidden="true">2.</strong> Windows</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../windows/command-prompt.html"><strong aria-hidden="true">2.1.</strong> Command Prompt</a></li><li class="chapter-item expanded "><a href="../windows/wsl2.html"><strong aria-hidden="true">2.2.</strong> wsl2</a></li></ol></li><li class="chapter-item expanded "><a href="../software-services-tools/index.html"><strong aria-hidden="true">3.</strong> 软件/服务/工具</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../software-services-tools/git/index.html"><strong aria-hidden="true">3.1.</strong> Git</a></li><li class="chapter-item expanded "><a href="../software-services-tools/vim-neovim/index.html"><strong aria-hidden="true">3.2.</strong> Vim/Neovim</a></li><li class="chapter-item expanded "><a href="../software-services-tools/nginx/index.html"><strong aria-hidden="true">3.3.</strong> Nginx</a></li><li class="chapter-item expanded "><a href="../software-services-tools/vsftp/index.html"><strong aria-hidden="true">3.4.</strong> Vsftp</a></li><li class="chapter-item expanded "><a href="../software-services-tools/docker/index.html"><strong aria-hidden="true">3.5.</strong> Docker</a></li><li class="chapter-item expanded "><a href="../software-services-tools/mysql/index.html"><strong aria-hidden="true">3.6.</strong> Mysql</a></li><li class="chapter-item expanded "><a href="../software-services-tools/redis/index.html"><strong aria-hidden="true">3.7.</strong> Redis</a></li></ol></li><li class="chapter-item expanded "><a href="../programming-language/index.html"><strong aria-hidden="true">4.</strong> 编程语言</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../programming-language/java/index.html"><strong aria-hidden="true">4.1.</strong> Java</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../programming-language/java/basics.html"><strong aria-hidden="true">4.1.1.</strong> 基础</a></li><li class="chapter-item expanded "><a href="../programming-language/java/multithreading.html"><strong aria-hidden="true">4.1.2.</strong> 多线程</a></li><li class="chapter-item expanded "><a href="../programming-language/java/build-tools/index.html"><strong aria-hidden="true">4.1.3.</strong> 构建工具</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../programming-language/java/build-tools/maven/index.html"><strong aria-hidden="true">4.1.3.1.</strong> Maven</a></li><li class="chapter-item expanded "><a href="../programming-language/java/build-tools/gradle/index.html"><strong aria-hidden="true">4.1.3.2.</strong> Gradle</a></li></ol></li><li class="chapter-item expanded "><a href="../programming-language/java/framework/index.html"><strong aria-hidden="true">4.1.4.</strong> 框架</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../programming-language/java/framework/spring/index.html"><strong aria-hidden="true">4.1.4.1.</strong> Spring</a></li><li class="chapter-item expanded "><a href="../programming-language/java/framework/spring-mvc/index.html"><strong aria-hidden="true">4.1.4.2.</strong> Spring MVC</a></li><li class="chapter-item expanded "><a href="../programming-language/java/framework/mybatis/index.html"><strong aria-hidden="true">4.1.4.3.</strong> Mybatis</a></li><li class="chapter-item expanded "><a href="../programming-language/java/framework/spring-security/index.html"><strong aria-hidden="true">4.1.4.4.</strong> Spring Security</a></li><li class="chapter-item expanded "><a href="../programming-language/java/framework/shiro/index.html"><strong aria-hidden="true">4.1.4.5.</strong> Shiro</a></li><li class="chapter-item expanded "><a href="../programming-language/java/framework/netty/index.html"><strong aria-hidden="true">4.1.4.6.</strong> Netty</a></li></ol></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../frontend/index.html"><strong aria-hidden="true">5.</strong> 前端</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../frontend/html.html"><strong aria-hidden="true">5.1.</strong> HTML</a></li><li class="chapter-item expanded "><a href="../frontend/css.html"><strong aria-hidden="true">5.2.</strong> CSS</a></li><li class="chapter-item expanded "><a href="../frontend/javascript.html"><strong aria-hidden="true">5.3.</strong> JavaScript</a></li><li class="chapter-item expanded "><a href="../frontend/vue/index.html"><strong aria-hidden="true">5.4.</strong> Vue</a></li></ol></li><li class="chapter-item expanded "><a href="../design-pattern/index.html"><strong aria-hidden="true">6.</strong> 设计模式</a></li></ol>
             </div>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
-                <div class="sidebar-resize-indicator"></div>
-            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
         <!-- Track and set sidebar scroll position -->
@@ -243,7 +241,7 @@
 <li>查看当前使用的内核和需要切换的内核<code>grep menuentry /boot/grub/grub.cfg</code></li>
 <li>复制menuentry后面需要切换的内核的字符串信息</li>
 <li>开始引导配置 <code>nvim /etc/default/grub</code></li>
-<li>修改<code>GRUB_DEFAULT=0</code>为GRUB_DEFAULT="Advanced options for Debian GNU/Linux&gt;上一步复制的字符串"后保存退出</li>
+<li>修改<code>GRUB_DEFAULT=0</code>为GRUB_DEFAULT=&quot;Advanced options for Debian GNU/Linux&gt;上一步复制的字符串&quot;后保存退出</li>
 <li>执行更新引导配置命令<code>update-grub</code></li>
 <li>重启后使用<code>uname -a</code>查看是否修改成功</li>
 </ul>
@@ -272,7 +270,7 @@
 <li><code>cp /etc/skel/.b* 用户家目录</code>、 <code>cp /etc/skel/.p* 用户家目录</code> 复制所需的命令行配置文件到用户的家目录下</li>
 <li><code>chown -R 用户名:用户名 用户家目录</code> 设置用户家目录所以文件的拥有者</li>
 <li><code>chmod 770 用户家目录</code> 设置用户家目录的权限</li>
-<li><code>usermod -s /bin/bash 用户名</code> 配置相关操作</li>
+<li><code>usermod -s /bin/bash 用户名</code> 配置相关操作 </li>
 </ul>
 <h2 id="sudo"><a class="header" href="#sudo">sudo</a></h2>
 <ul>
@@ -339,8 +337,8 @@ deb https://mirrors.ustc.edu.cn/debian-security/ bullseye-security main contrib 
 <li>ppa源
 <ul>
 <li>软件安装<code>apt install software-properties-common</code></li>
-<li>添加ppa源<code>add-apt-repository "url"</code></li>
-<li>删除ppa源<code>add-apt-repository -r "url"</code></li>
+<li>添加ppa源<code>add-apt-repository &quot;url&quot;</code></li>
+<li>删除ppa源<code>add-apt-repository -r &quot;url&quot;</code></li>
 </ul>
 </li>
 </ul>
@@ -450,8 +448,8 @@ E: Sub-process /usr/bin/dpkg returned an error code (1)</p>
 <li>现将info文件夹更名：<code>sudo mv /var/lib/dpkg/info /var/lib/dpkg/info_old</code></li>
 <li>再新建一个新的info文件夹：<code>sudo mkdir /var/lib/dpkg/info</code></li>
 <li><code>sudo apt-get update</code></li>
-<li><code>apt-get -f install</code></li>
-<li>执行完上一步操作后会在新的info文件夹下生成一些文件，现将这些文件全部移到info_old文件夹下：<code>sudo mv /var/lib/dpkg/info/* /var/lib/dpkg/info_old</code></li>
+<li><code>apt-get -f install</code> </li>
+<li>执行完上一步操作后会在新的info文件夹下生成一些文件，现将这些文件全部移到info_old文件夹下：<code>sudo mv /var/lib/dpkg/info/* /var/lib/dpkg/info_old</code> </li>
 <li>把自己新建的info文件夹删掉：<code>sudo rm -rf /var/lib/dpkg/info</code></li>
 <li>把以前的info文件夹重新改回名字：<code>sudo mv /var/lib/dpkg/info_old /var/lib/dpkg/info</code></li>
 </ul>
@@ -491,7 +489,7 @@ the '--kernel-source-path' command line option
 <h2 id="禁用watchdog程序导致系统关机或重启时卡死"><a class="header" href="#禁用watchdog程序导致系统关机或重启时卡死">禁用watchdog程序，导致系统关机或重启时卡死</a></h2>
 <ul>
 <li>打开grub文件 <code>sudo nvim /etc/default/grub</code></li>
-<li>添加或修改<code>GRUB_CMDLINE_LINUX="nmi_watchdog=0"</code></li>
+<li>添加或修改<code>GRUB_CMDLINE_LINUX=&quot;nmi_watchdog=0&quot;</code></li>
 <li>更新grub配置 <code>sudo update-grub</code></li>
 </ul>
 <h2 id="ubuntu相关操作"><a class="header" href="#ubuntu相关操作">Ubuntu相关操作</a></h2>
@@ -591,22 +589,6 @@ the '--kernel-source-path' command line option
 
         </div>
 
-        <!-- Livereload script (if served using the cli tool) -->
-        <script>
-            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
-            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
-            const socket = new WebSocket(wsAddress);
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
 
 
 

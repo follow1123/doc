@@ -91,9 +91,7 @@
             <div class="sidebar-scrollbox">
                 <ol class="chapter"><li class="chapter-item expanded "><a href="../linux/index.html"><strong aria-hidden="true">1.</strong> Linux</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../linux/basics.html"><strong aria-hidden="true">1.1.</strong> 基础</a></li><li class="chapter-item expanded "><a href="../linux/commands.html"><strong aria-hidden="true">1.2.</strong> 常用命令</a></li><li class="chapter-item expanded "><a href="../linux/desktop-environment.html"><strong aria-hidden="true">1.3.</strong> 桌面环境</a></li><li class="chapter-item expanded "><a href="../linux/systemd.html"><strong aria-hidden="true">1.4.</strong> Systemd</a></li><li class="chapter-item expanded "><a href="../linux/troubleshooting.html"><strong aria-hidden="true">1.5.</strong> 常见问题</a></li></ol></li><li class="chapter-item expanded "><a href="../windows/index.html"><strong aria-hidden="true">2.</strong> Windows</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../windows/command-prompt.html"><strong aria-hidden="true">2.1.</strong> Command Prompt</a></li><li class="chapter-item expanded "><a href="../windows/wsl2.html"><strong aria-hidden="true">2.2.</strong> wsl2</a></li></ol></li><li class="chapter-item expanded "><a href="../software-services-tools/index.html"><strong aria-hidden="true">3.</strong> 软件/服务/工具</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../software-services-tools/git/index.html"><strong aria-hidden="true">3.1.</strong> Git</a></li><li class="chapter-item expanded "><a href="../software-services-tools/vim-neovim/index.html"><strong aria-hidden="true">3.2.</strong> Vim/Neovim</a></li><li class="chapter-item expanded "><a href="../software-services-tools/nginx/index.html"><strong aria-hidden="true">3.3.</strong> Nginx</a></li><li class="chapter-item expanded "><a href="../software-services-tools/vsftp/index.html"><strong aria-hidden="true">3.4.</strong> Vsftp</a></li><li class="chapter-item expanded "><a href="../software-services-tools/docker/index.html"><strong aria-hidden="true">3.5.</strong> Docker</a></li><li class="chapter-item expanded "><a href="../software-services-tools/mysql/index.html"><strong aria-hidden="true">3.6.</strong> Mysql</a></li><li class="chapter-item expanded "><a href="../software-services-tools/redis/index.html"><strong aria-hidden="true">3.7.</strong> Redis</a></li></ol></li><li class="chapter-item expanded "><a href="../programming-language/index.html"><strong aria-hidden="true">4.</strong> 编程语言</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../programming-language/java/index.html"><strong aria-hidden="true">4.1.</strong> Java</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../programming-language/java/basics.html"><strong aria-hidden="true">4.1.1.</strong> 基础</a></li><li class="chapter-item expanded "><a href="../programming-language/java/multithreading.html"><strong aria-hidden="true">4.1.2.</strong> 多线程</a></li><li class="chapter-item expanded "><a href="../programming-language/java/build-tools/index.html"><strong aria-hidden="true">4.1.3.</strong> 构建工具</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../programming-language/java/build-tools/maven/index.html"><strong aria-hidden="true">4.1.3.1.</strong> Maven</a></li><li class="chapter-item expanded "><a href="../programming-language/java/build-tools/gradle/index.html"><strong aria-hidden="true">4.1.3.2.</strong> Gradle</a></li></ol></li><li class="chapter-item expanded "><a href="../programming-language/java/framework/index.html"><strong aria-hidden="true">4.1.4.</strong> 框架</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../programming-language/java/framework/spring/index.html"><strong aria-hidden="true">4.1.4.1.</strong> Spring</a></li><li class="chapter-item expanded "><a href="../programming-language/java/framework/spring-mvc/index.html"><strong aria-hidden="true">4.1.4.2.</strong> Spring MVC</a></li><li class="chapter-item expanded "><a href="../programming-language/java/framework/mybatis/index.html"><strong aria-hidden="true">4.1.4.3.</strong> Mybatis</a></li><li class="chapter-item expanded "><a href="../programming-language/java/framework/spring-security/index.html"><strong aria-hidden="true">4.1.4.4.</strong> Spring Security</a></li><li class="chapter-item expanded "><a href="../programming-language/java/framework/shiro/index.html"><strong aria-hidden="true">4.1.4.5.</strong> Shiro</a></li><li class="chapter-item expanded "><a href="../programming-language/java/framework/netty/index.html"><strong aria-hidden="true">4.1.4.6.</strong> Netty</a></li></ol></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../frontend/index.html"><strong aria-hidden="true">5.</strong> 前端</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../frontend/html.html"><strong aria-hidden="true">5.1.</strong> HTML</a></li><li class="chapter-item expanded "><a href="../frontend/css.html"><strong aria-hidden="true">5.2.</strong> CSS</a></li><li class="chapter-item expanded "><a href="../frontend/javascript.html"><strong aria-hidden="true">5.3.</strong> JavaScript</a></li><li class="chapter-item expanded "><a href="../frontend/vue/index.html"><strong aria-hidden="true">5.4.</strong> Vue</a></li></ol></li><li class="chapter-item expanded "><a href="../design-pattern/index.html" class="active"><strong aria-hidden="true">6.</strong> 设计模式</a></li></ol>
             </div>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
-                <div class="sidebar-resize-indicator"></div>
-            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
         <!-- Track and set sidebar scroll position -->
@@ -214,7 +212,7 @@
         // 判断当前实例是否为空
         // 避免使用反射破解
         if (hungryMan != null){
-            throw new RuntimeException("could not creat this class in constructor");
+            throw new RuntimeException(&quot;could not creat this class in constructor&quot;);
         }
     }
 	//获取当前实例的方法
@@ -332,21 +330,21 @@ public interface Car {
 public class CarA implements Car {
     @Override
     public String toString() {
-        return "this is car a";
+        return &quot;this is car a&quot;;
     }
 }
 public class CarB implements Car {
     @Override
     public String toString() {
-        return "this is car b";
+        return &quot;this is car b&quot;;
     }
 }
 public class CarFactory {
     public static Car getCar(String carName){
         switch (carName){
-            case "a":
+            case &quot;a&quot;:
                 return new CarA();
-            case "b":
+            case &quot;b&quot;:
                 return new CarB();
             default:
                 return null;
@@ -388,13 +386,13 @@ public interface Car {
 public class CarA implements Car {
     @Override
     public String toString() {
-        return "this is car a";
+        return &quot;this is car a&quot;;
     }
 }
 public class CarB implements Car {
     @Override
     public String toString() {
-        return "this is car b";
+        return &quot;this is car b&quot;;
     }
 }
 public class AFactory implements Factory {
@@ -455,36 +453,36 @@ public interface Wristband {
 public class XMPhone implements Phone {
     @Override
     public void start() {
-        System.out.println("小米手机开机！");
+        System.out.println(&quot;小米手机开机！&quot;);
     }
     @Override
     public void shutdown() {
-        System.out.println("小米手机关机！");
+        System.out.println(&quot;小米手机关机！&quot;);
     }
 }
 //Phone产品族的具体产品
 public class HWPhone implements Phone {
     @Override
     public void start() {
-        System.out.println("华为手机开机！");
+        System.out.println(&quot;华为手机开机！&quot;);
     }
     @Override
     public void shutdown() {
-        System.out.println("华为手机关机！");
+        System.out.println(&quot;华为手机关机！&quot;);
     }
 }
 //Wristband产品族的具体产品
 public class XMWristband implements Wristband {
     @Override
     public void displayTime() {
-        System.out.println("小爱同学："+ System.currentTimeMillis());
+        System.out.println(&quot;小爱同学：&quot;+ System.currentTimeMillis());
     }
 }
 //Wristband产品族的具体产品
 public class HWWristband implements Wristband {
     @Override
     public void displayTime() {
-        System.out.println("小艺："+ System.currentTimeMillis());
+        System.out.println(&quot;小艺：&quot;+ System.currentTimeMillis());
     }
 }
 //XM具体工厂
@@ -563,10 +561,10 @@ public class Car {
     }
     @Override
     public String toString() {
-        return "Car{" +
-            "engine='" + engine + '\'' +
-            ", tires='" + tires + '\'' +
-            ", glass='" + glass + '\'' +
+        return &quot;Car{&quot; +
+            &quot;engine='&quot; + engine + '\'' +
+            &quot;, tires='&quot; + tires + '\'' +
+            &quot;, glass='&quot; + glass + '\'' +
             '}';
     }
 }
@@ -589,17 +587,17 @@ public class CarBuilder implements Builder&lt;Car&gt; {
     }
     @Override
     public Builder buildEngine() {
-        car.setEngine("A牌引擎");
+        car.setEngine(&quot;A牌引擎&quot;);
         return this;
     }
     @Override
     public Builder buildTires() {
-        car.setTires("B牌轮胎");
+        car.setTires(&quot;B牌轮胎&quot;);
         return this;
     }
     @Override
     public Builder buildGlass() {
-        car.setGlass("C牌玻璃");
+        car.setGlass(&quot;C牌玻璃&quot;);
         return this;
     }
     public Car get(){
@@ -656,7 +654,7 @@ public class CarDirector implements Director&lt;Car&gt; {
 <p>原型模式的实现：</p>
 <ul>
 <li>Cloneable接口和clone方法</li>
-<li>Prototyoe模式中实现起来最困难的地方就是内存的复制操作，所幸在java中提供了clone（）方法替我们做了绝大部分的事情</li>
+<li>Prototyoe模式中实现起来最困难的地方就是内存的复制操作，所幸在java中提供了clone（）方法替我们做了绝大部分的事情 </li>
 </ul>
 </li>
 <li>
@@ -680,7 +678,7 @@ public class Student implements Cloneable{
 public class Client {
     @Test
     public void test01() throws CloneNotSupportedException {
-        Student s1  = new Student(1, "张三");
+        Student s1  = new Student(1, &quot;张三&quot;);
         System.out.println(s1);
         Student s2 = (Student) s1.clone();
         System.out.println(s2);
@@ -760,7 +758,7 @@ public class Phone {
     //播放音乐需要type-c接口的耳机
     public void playMusic(HeadsetByTypeC headsetByType_c){
         headsetByType_c.connection();
-        System.out.println("播放音乐");
+        System.out.println(&quot;播放音乐&quot;);
     }
 }
 //type-c接口的耳机（相当于目标接口target）
@@ -783,7 +781,7 @@ public class HeadsetAdapter implements HeadsetByTypeC {
 //3.5毫米类型的耳机（相当与被适配的类adaptee）
 public class HeadsetBy3_5mm {
     public void connection(){
-        System.out.println("连接成功！");
+        System.out.println(&quot;连接成功！&quot;);
     }
 }
 </code></pre>
@@ -833,7 +831,7 @@ public class StarA implements Singer {
 
     @Override
     public void sing() {
-        System.out.println("歌手"+name +"在唱歌！");
+        System.out.println(&quot;歌手&quot;+name +&quot;在唱歌！&quot;);
     }
 }
 //代理角色
@@ -841,10 +839,10 @@ public class Middleman implements Singer{
     private String name;
     private Singer singer;
     public void pay(){
-        System.out.println("中介"+name +"收钱");
+        System.out.println(&quot;中介&quot;+name +&quot;收钱&quot;);
     }
     public void end(){
-        System.out.println("中介"+name +"收尾");
+        System.out.println(&quot;中介&quot;+name +&quot;收尾&quot;);
     }
     @Override
     public void sing() {
@@ -895,7 +893,7 @@ public class StarA implements Singer {
 
     @Override
     public void sing() {
-        System.out.println("歌手"+name +"在唱歌！");
+        System.out.println(&quot;歌手&quot;+name +&quot;在唱歌！&quot;);
     }
 }
 //获取代理角色的对象
@@ -966,7 +964,7 @@ public class Desktop extends Computer {
     @Override
     public void sale() {
         super.sale();
-        System.out.println("台式机");
+        System.out.println(&quot;台式机&quot;);
     }
 }
 //笔记本电脑
@@ -977,21 +975,21 @@ public class Laptop extends Computer {
     @Override
     public void sale() {
         super.sale();
-        System.out.println("笔记本");
+        System.out.println(&quot;笔记本&quot;);
     }
 }
 //联想品牌
 public class Lenovo implements Brand {
     @Override
     public void sale() {
-        System.out.print("销售联想");
+        System.out.print(&quot;销售联想&quot;);
     }
 }
 //戴尔品牌
 public class Dell implements Brand {
     @Override
     public void sale() {
-        System.out.print("销售戴尔");
+        System.out.print(&quot;销售戴尔&quot;);
     }
 }
 </code></pre>
@@ -1007,7 +1005,7 @@ public class Dell implements Brand {
 <ul>
 <li>抽象构件（Component）角色：定义了叶子和容器构件的共同点</li>
 <li>叶子（Leaf）构建角色：无子节点</li>
-<li>容器（Composite）构建角色：有容器特征，可以包含子节点</li>
+<li>容器（Composite）构建角色：有容器特征，可以包含子节点 </li>
 </ul>
 </li>
 </ul>
@@ -1036,22 +1034,6 @@ public class Dell implements Brand {
 
         </div>
 
-        <!-- Livereload script (if served using the cli tool) -->
-        <script>
-            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
-            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
-            const socket = new WebSocket(wsAddress);
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
 
 
 

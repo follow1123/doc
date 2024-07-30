@@ -174,14 +174,61 @@
                     <main>
                         <h1 id="maven"><a class="header" href="#maven">Maven</a></h1>
 <ul>
-<li>
-<p><a href="https://maven.apache.org/">官网</a></p>
-</li>
-<li>
-<p><a href="https://archive.apache.org/dist/maven/">历史版本下载地址</a></p>
-</li>
+<li><a href="https://maven.apache.org/">官网</a></li>
+<li><a href="https://archive.apache.org/dist/maven/">历史版本下载地址</a></li>
 </ul>
-<h1 id="settingsxml"><a class="header" href="#settingsxml"><a href="./assets/settings.xml">settings.xml</a></a></h1>
+<h2 id="安装"><a class="header" href="#安装">安装</a></h2>
+<ul>
+<li>windows: <code>scoop install maven</code></li>
+<li>debian: <code>sudo apt install maven</code></li>
+<li>或使用压缩包解压安装</li>
+</ul>
+<h2 id="配置"><a class="header" href="#配置">配置</a></h2>
+<blockquote>
+<p>settings.xml文件位于<code>maven安装目录/conf/settings.xml</code></p>
+</blockquote>
+<ul>
+<li>本地仓库配置</li>
+</ul>
+<pre><code class="language-xml">&lt;!-- 本地仓库配置位置：settings.localRepository --&gt;
+&lt;localRepository&gt;/path/to/local/repo&lt;/localRepository&gt;
+</code></pre>
+<ul>
+<li>镜像配置</li>
+</ul>
+<pre><code class="language-xml">&lt;!-- 镜像配置位置：settings.mirrors --&gt;
+
+&lt;!-- 阿里云镜像--&gt;
+&lt;mirror&gt;
+  &lt;id&gt;alimaven&lt;/id&gt;
+  &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;
+  &lt;name&gt;aliyun maven&lt;/name&gt;
+  &lt;url&gt;http://maven.aliyun.com/nexus/content/repositories/central/&lt;/url&gt;
+&lt;/mirror&gt;
+
+&lt;mirror&gt;
+  &lt;id&gt;aliyunmaven&lt;/id&gt;
+  &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;
+  &lt;name&gt;aliyun maven&lt;/name&gt;
+  &lt;url&gt;http://maven.aliyun.com/repository/public&lt;/url&gt;
+&lt;/mirror&gt;
+
+&lt;!-- 中央仓库1 --&gt;
+&lt;mirror&gt;
+  &lt;id&gt;repo1&lt;/id&gt;
+  &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;
+  &lt;name&gt;Human Readable Name for this Mirror.&lt;/name&gt;
+  &lt;url&gt;http://repo1.maven.org/maven2/&lt;/url&gt;
+&lt;/mirror&gt;
+
+&lt;!-- 中央仓库2 --&gt;
+&lt;mirror&gt;
+  &lt;id&gt;repo2&lt;/id&gt;
+  &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;
+  &lt;name&gt;Human Readable Name for this Mirror.&lt;/name&gt;
+  &lt;url&gt;http://repo2.maven.org/maven2/&lt;/url&gt;
+&lt;/mirror&gt;
+</code></pre>
 <h2 id="maven坐标"><a class="header" href="#maven坐标">Maven坐标</a></h2>
 <blockquote>
 <p>定位jar包，简称<code>gav</code></p>
@@ -191,83 +238,105 @@
 <li><code>artifactId</code> 模块</li>
 <li><code>version</code> 版本</li>
 </ul>
-<h2 id="常用命令"><a class="header" href="#常用命令">常用命令</a></h2>
-<blockquote>
-<p>构建相关命令要在pom.xml路径下执行</p>
-</blockquote>
-<ul>
-<li>
-<p><code>mvn -v</code> 插件maven的版本信息</p>
-</li>
-<li>
-<p><code>mvn clean</code> 清理target目录</p>
-</li>
-<li>
-<p><code>mvn compile</code> 编译项目</p>
-<ul>
-<li>编译后的文件在target目录下</li>
-</ul>
-</li>
-<li>
-<p><code>mvn test-compile</code> 编译测试目录</p>
-<ul>
-<li>编译后的文件在target目录下</li>
-</ul>
-</li>
-<li>
-<p><code>mvn test</code> 执行测试代码</p>
-</li>
-<li>
-<p><code>mvn package</code> 项目打包，jar或war包</p>
-<ul>
-<li>打包后的文件在target目录下</li>
-</ul>
-</li>
-<li>
-<p><code>mvn install</code> 安装当前项目到本地仓库</p>
-<ul>
-<li><code>mvn install -Dmaven.test.skip=true</code> 跳过测试</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>根据gav(Maven坐标可)以找到本地对应的位置</p>
-</blockquote>
-<ul>
-<li>
-<p><code>mvn dependency:list</code> 列出当前项目的jar包依赖</p>
-</li>
-<li>
-<p><code>mvn dependency:tree</code> 以树型方式列出当前项目的jar包依赖</p>
-</li>
-</ul>
-<h2 id="依赖"><a class="header" href="#依赖">依赖</a></h2>
-<h3 id="依赖范围-scope标签"><a class="header" href="#依赖范围-scope标签">依赖范围, scope标签</a></h3>
-<blockquote>
-<p>在dependencies/dependency/scope标签内</p>
-</blockquote>
 <pre><code class="language-xml">&lt;dependency&gt;
-    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-    &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
-    &lt;scope&gt;test&lt;/scope&gt;
+&lt;!--     a公司的b项目 --&gt;
+    &lt;groupId&gt;cn.a.b&lt;/groupId&gt; 
+&lt;!--     module1模块 --&gt;
+    &lt;artifactId&gt;module1&lt;/artifactId&gt;
+&lt;!--     1.0版本 --&gt;
+    &lt;version&gt;1.0&lt;/version&gt;
 &lt;/dependency&gt;
 </code></pre>
+<h2 id="常用命令"><a class="header" href="#常用命令">常用命令</a></h2>
 <blockquote>
-<p>scope标签可选值：compile,test,provided,system,runtime,import</p>
+<p>构建命令需要在pom.xml路径下执行</p>
 </blockquote>
+<div class="table-wrapper"><table><thead><tr><th>命令</th><th>描述</th></tr></thead><tbody>
+<tr><td><code>archetype:generate</code></td><td>创建maven工程</td></tr>
+<tr><td><code>wrapper:wrapper</code></td><td>为当前maven工程配置单独的maven</td></tr>
+<tr><td><code>help:effective-pom</code></td><td>显示项目有效的pom</td></tr>
+<tr><td><code>help:effective-settings</code></td><td>显示项目有效的settings</td></tr>
+<tr><td><code>help:system</code></td><td>显示当前系统的环境变量</td></tr>
+<tr><td><code>help:evaluate</code></td><td>交互式显示pom配置</td></tr>
+<tr><td><code>clean</code></td><td>清理target目录</td></tr>
+<tr><td><code>compile</code></td><td>编译项目</td></tr>
+<tr><td><code>test-compile</code></td><td>编译测试目录</td></tr>
+<tr><td><code>test</code></td><td>执行测试代码</td></tr>
+<tr><td><code>package</code></td><td>打包</td></tr>
+<tr><td><code>install</code></td><td>安装当前项目到本地仓库</td></tr>
+<tr><td><code>dependency:list</code></td><td>列出当前项目的依赖</td></tr>
+<tr><td><code>dependency:tree</code></td><td>以树型结构列出当前项目依赖</td></tr>
+</tbody></table>
+</div><!--     * `mvn install -Dmaven.test.skip=true` 跳过测试 -->
+<!-- > 根据gav(Maven坐标可)以找到本地对应的位置 -->
+<h2 id="依赖"><a class="header" href="#依赖">依赖</a></h2>
+<h3 id="依赖范围"><a class="header" href="#依赖范围">依赖范围</a></h3>
+<blockquote>
+<p>dependencies/dependency/scope标签</p>
+</blockquote>
+<div class="table-wrapper"><table><thead><tr><th>名称</th><th>main目录是否可用</th><th>test目录是否可用</th><th>是否参与打包</th></tr></thead><tbody>
+<tr><td>compile(默认)</td><td>√</td><td>√</td><td>√</td></tr>
+<tr><td>test</td><td>×</td><td>√</td><td>×</td></tr>
+<tr><td>provided</td><td>√</td><td>√</td><td>×</td></tr>
+</tbody></table>
+</div>
 <ul>
-<li>
-<p><code>compile</code> 默认值，在所有情况下都有用</p>
-</li>
-<li>
-<p><code>test</code> 只在test目录下可以使用</p>
-</li>
-<li>
-<p><code>provided</code> 除了不会被打包，其他情况都可以使用</p>
-</li>
+<li><strong>system</strong></li>
 </ul>
+<blockquote>
+<p>引入系统本地某个目录的包</p>
+</blockquote>
+<pre><code class="language-xml">&lt;dependency&gt;
+    &lt;groupId&gt;cn.a.b&lt;/groupId&gt;
+    &lt;artifactId&gt;module1&lt;/artifactId&gt;
+    &lt;version&gt;1.0&lt;/version&gt;
+    &lt;systemPath&gt;/a/b/c/module1.jar&lt;/systemPath&gt;
+    &lt;scope&gt;system&lt;/scope&gt;
+&lt;/dependency&gt;
+</code></pre>
+<ul>
+<li><strong>runtime</strong></li>
+</ul>
+<blockquote>
+<p>引入开发时不需要但运行时需要的包</p>
+</blockquote>
+<pre><code class="language-xml">&lt;dependency&gt;
+    &lt;groupId&gt;cn.a.b&lt;/groupId&gt;
+    &lt;artifactId&gt;module1&lt;/artifactId&gt;
+    &lt;version&gt;1.0&lt;/version&gt;
+    &lt;scope&gt;runtime&lt;/scope&gt;
+&lt;/dependency&gt;
+</code></pre>
+<ul>
+<li><strong>import</strong></li>
+</ul>
+<blockquote>
+<p>主要进行依赖管理 </br>
+打包类型必须是pom </br>
+只能在dependencyManagement标签下使用</p>
+</blockquote>
+<pre><code class="language-xml">&lt;dependency&gt;
+    &lt;groupId&gt;cn.a.b&lt;/groupId&gt;
+    &lt;artifactId&gt;module1&lt;/artifactId&gt;
+    &lt;version&gt;1.0&lt;/version&gt;
+    &lt;type&gt;pom&lt;/type&gt;
+    &lt;scope&gt;import&lt;/scope&gt;
+&lt;/dependency&gt;
+</code></pre>
 <h3 id="依赖传递"><a class="header" href="#依赖传递">依赖传递</a></h3>
-<p>依赖的scope为compile才能传递</p>
+<ul>
+<li>当B依赖C的scope为compile, A才能使用C，scope为test/provided是不能使用</li>
+</ul>
+<pre class="mermaid">graph LR
+A--&gt;B
+B--scope:compile--&gt;C
+A-.可以使用.-&gt;C
+</pre>
+<pre class="mermaid">graph LR
+A--&gt;B
+B--scope:test/provided--&gt;C
+A-.不可以使用.-&gt;C
+</pre>
 <h3 id="依赖排除"><a class="header" href="#依赖排除">依赖排除</a></h3>
 <ul>
 <li>在需要排除依赖的标签内添加以下标签</li>
@@ -285,48 +354,179 @@
     &lt;/exclusions&gt;
 &lt;/dependency&gt;
 </code></pre>
+<h3 id="可选依赖"><a class="header" href="#可选依赖">可选依赖</a></h3>
+<ul>
+<li>用到的时候才会导入</li>
+</ul>
+<pre><code class="language-xml">&lt;dependency&gt;
+    &lt;groupId&gt;cn.a.b&lt;/groupId&gt;
+    &lt;artifactId&gt;module1&lt;/artifactId&gt;
+    &lt;version&gt;1.0&lt;/version&gt;
+    &lt;optional&gt;true&lt;/optional&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h3 id="版本仲裁"><a class="header" href="#版本仲裁">版本仲裁</a></h3>
+<ul>
+<li>最短路径优先</li>
+</ul>
+<pre class="mermaid">graph LR
+A--&gt;B
+B--&gt;C
+C--&gt;D1(D:1.0)
+A--&gt;E
+E--&gt;D2(D:1.5)
+</pre>
+<ul>
+<li>路径相同时先声明的优先</li>
+</ul>
+<pre class="mermaid">graph LR
+A--&gt;B
+B--&gt;D1(D:1.0)
+A--&gt;E
+E--&gt;D2(D:1.5)
+</pre>
 <h2 id="继承"><a class="header" href="#继承">继承</a></h2>
+<pre class="mermaid">graph TD
+A[父工程A] --&gt; B[子模块B]
+A --&gt; C[子模块C]
+</pre>
+<ul>
+<li>父工程A内pom</li>
+</ul>
 <blockquote>
-<p>当前工程的打包方式为pom的工程才能是工程</p>
+<p>父工程打包方式必须为pom</p>
 </blockquote>
-<h2 id="依赖管理"><a class="header" href="#依赖管理">依赖管理</a></h2>
-<ul>
-<li>在父工程内添加dependencyManagement标签添加依赖管理</li>
-</ul>
-<pre><code class="language-xml">&lt;dependencyManagement&gt;
-    &lt;dependencies&gt;
-  &lt;dependency&gt;
-    &lt;groupId&gt;javax.servlet&lt;/groupId&gt;
-    &lt;artifactId&gt;javax.servlet-api&lt;/artifactId&gt;
-    &lt;version&gt;3.1.0&lt;/version&gt;
-  &lt;/dependency&gt;
-    &lt;/dependencies&gt;
-&lt;/dependencyManagement&gt;
-</code></pre>
-<ul>
-<li>
-<p>然后在子工程内添加对应的依赖信息就可以使用，可以不添加version标签</p>
-</li>
-<li>
-<p>在properties标签内可以添加某个jar包内具体的版本号信息，在dependency标签内可以使用表达式使用</p>
-</li>
-</ul>
-<pre><code class="language-xml">&lt;properties&gt;
-    &lt;java.version&gt;11&lt;/java.version&gt;
-    &lt;!-- 在这里定义 --&gt; 
-    &lt;javax.servlet-api.version&gt;3.1.0&lt;/javax.servlet-api.version&gt;
-&lt;/properties&gt;
+<pre><code class="language-xml">&lt;project&gt;
+    &lt;groupId&gt;cn.maven&lt;/groupId&gt;
+    &lt;artifactId&gt;A&lt;/artifactId&gt;
+    &lt;version&gt;1.0&lt;/version&gt;
 
-&lt;dependencies&gt;
-    &lt;dependency&gt;
-        &lt;groupId&gt;javax.servlet&lt;/groupId&gt;
-        &lt;artifactId&gt;javax.servlet-api&lt;/artifactId&gt;
-        &lt;!-- 在这里使用 --&gt; 
-        &lt;version&gt;${javax.servlet-api.version}&lt;/version&gt;
-        &lt;scope&gt;provided&lt;/scope&gt;
-    &lt;/dependency&gt;
-&lt;/dependencies&gt;
+    &lt;packaging&gt;pom&lt;/packaging&gt;
+
+&lt;!--     这段标签使用ide创建模块会自动生成 --&gt;
+    &lt;modules&gt;
+        &lt;module&gt;B&lt;/module&gt;
+        &lt;module&gt;C&lt;/module&gt;
+    &lt;/modules&gt;
+
+&lt;!--     属性 --&gt;
+    &lt;properties&gt;
+        &lt;D.version&gt;1.0&lt;/D.version&gt;
+        &lt;E.version&gt;2.0&lt;/E.version&gt;
+    &lt;/properties&gt;
+
+&lt;!--     依赖管理 --&gt;
+    &lt;dependencyManagement&gt;
+        &lt;dependencies&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;cn.maven&lt;/groupId&gt;
+                &lt;artifactId&gt;D&lt;/artifactId&gt;
+                &lt;version&gt;${D.version}&lt;/version&gt;
+            &lt;/dependency&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;cn.maven&lt;/groupId&gt;
+                &lt;artifactId&gt;E&lt;/artifactId&gt;
+                &lt;version&gt;${E.version}&lt;/version&gt;
+            &lt;/dependency&gt;
+        &lt;/dependencies&gt;
+    &lt;/dependencyManagement&gt;
+&lt;/project&gt;
 </code></pre>
+<ul>
+<li>子模块B内pom</li>
+</ul>
+<pre><code class="language-xml">&lt;project&gt;
+&lt;!--     配置父工程 --&gt;
+    &lt;parent&gt;
+        &lt;groupId&gt;cn.maven&lt;/groupId&gt;
+        &lt;artifactId&gt;A&lt;/artifactId&gt;
+        &lt;version&gt;1.0&lt;/version&gt;
+    &lt;/parent&gt;
+
+&lt;!--     子模块内groupId和version如果和父工程一样则可用省略 --&gt;
+    &lt;artifactId&gt;B&lt;/artifactId&gt;
+
+    &lt;dependencies&gt;
+&lt;!--      引入父工程管理的D依赖
+         使用父工程内管理的依赖无需指定版本
+         如果指定版本则会使用当前指定的版本
+         --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;cn.maven&lt;/groupId&gt;
+            &lt;artifactId&gt;D&lt;/artifactId&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+&lt;/project&gt;
+</code></pre>
+<ul>
+<li>子模块C内pom</li>
+</ul>
+<pre><code class="language-xml">&lt;project&gt;
+&lt;!--     配置父工程 --&gt;
+    &lt;parent&gt;
+        &lt;groupId&gt;cn.maven&lt;/groupId&gt;
+        &lt;artifactId&gt;A&lt;/artifactId&gt;
+        &lt;version&gt;1.0&lt;/version&gt;
+    &lt;/parent&gt;
+
+&lt;!--     子模块内groupId和version如果和父工程一样则可用省略 --&gt;
+    &lt;artifactId&gt;C&lt;/artifactId&gt;
+    &lt;dependencies&gt;
+&lt;!--      引入父工程管理的D依赖
+         使用父工程内管理的依赖无需指定版本
+         如果指定版本则会使用当前指定的版本
+         --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;cn.maven&lt;/groupId&gt;
+            &lt;artifactId&gt;E&lt;/artifactId&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+&lt;/project&gt;
+</code></pre>
+<h2 id="生命周期"><a class="header" href="#生命周期">生命周期</a></h2>
+<blockquote>
+<p><a href="https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html">参考</a></p>
+</blockquote>
+<h3 id="clean"><a class="header" href="#clean">clean</a></h3>
+<ul>
+<li>用于清理target目录</li>
+</ul>
+<h3 id="default"><a class="header" href="#default">default</a></h3>
+<ul>
+<li>用于构建项目，包含compile、test、package、install等目标</li>
+<li>执行一个目标时会把这个目标前面的目标依次执行</li>
+</ul>
+<h3 id="site不常用"><a class="header" href="#site不常用">site(不常用)</a></h3>
+<ul>
+<li>用于生成项目站点</li>
+</ul>
+<h2 id="build标签"><a class="header" href="#build标签">build标签</a></h2>
+<blockquote>
+<p><a href="https://maven.apache.org/pom.html#Build_Settings">参考</a></p>
+</blockquote>
+<ul>
+<li>约定的目录结构</li>
+</ul>
+<pre><code class="language-xml">&lt;build&gt;
+    &lt;sourceDirectory&gt;${project.basedir}/src/main/java&lt;/sourceDirectory&gt;
+    &lt;scriptSourceDirectory&gt;${project.basedir}/src/main/scripts&lt;/scriptSourceDirectory&gt;
+    &lt;testSourceDirectory&gt;${project.basedir}/src/test/java&lt;/testSourceDirectory&gt;
+    &lt;outputDirectory&gt;${project.basedir}/target/classes&lt;/outputDirectory&gt;
+    &lt;testOutputDirectory&gt;${project.basedir}/target/test-classes&lt;/testOutputDirectory&gt;
+&lt;/build&gt;
+</code></pre>
+<ul>
+<li>
+<p>插件管理</p>
+</li>
+<li>
+<p>插件配置</p>
+</li>
+</ul>
+<h2 id="profile"><a class="header" href="#profile">profile</a></h2>
+<blockquote>
+<p><a href="https://maven.apache.org/guides/introduction/introduction-to-profiles.html">参考</a></p>
+</blockquote>
 
                     </main>
 
@@ -374,6 +574,8 @@
         <script src="../../../../book.js"></script>
 
         <!-- Custom JS scripts -->
+        <script src="../../../../mermaid.min.js"></script>
+        <script src="../../../../mermaid-init.js"></script>
 
 
     </div>

@@ -202,14 +202,14 @@
 <h3 id="线程安全分析"><a class="header" href="#线程安全分析">线程安全分析</a></h3>
 <h3 id="monitor"><a class="header" href="#monitor">Monitor</a></h3>
 <p>使用synchronized(obj) 锁定一个对象时将这个对象和操作系统提供的monitor对象关联，</p>
-<pre><code class="language-mermaid">graph TD
+<pre class="mermaid">graph TD
 
 subgraph Monitor
 	a(WaitSet)
 	b(EntitySet)
 	c(Owner)
 end
-</code></pre>
+</pre>
 <p>一个monitor对象包含这几个属性，</p>
 <ul>
 <li>entitySet
@@ -278,7 +278,7 @@ end
 </li>
 </ul>
 <h2 id="两阶段终止模式"><a class="header" href="#两阶段终止模式">两阶段终止模式</a></h2>
-<pre><code class="language-mermaid">graph TD
+<pre class="mermaid">graph TD
 w(&quot;while(true)&quot;) --&gt; a
 a(&quot;是否被打断？&quot;) --&gt; b(&quot;料理后事&quot;)
 b --&gt; c((结束循环))
@@ -287,7 +287,7 @@ d --&gt; 无异常 --&gt; e(执行监控记录)
 d --&gt; 有异常 --&gt; i(设置打断标记)
 i --&gt; w
 e --&gt; w
-</code></pre>
+</pre>
 <h3 id=""><a class="header" href="#"></a></h3>
 
                     </main>
@@ -336,6 +336,8 @@ e --&gt; w
         <script src="../../book.js"></script>
 
         <!-- Custom JS scripts -->
+        <script src="../../mermaid.min.js"></script>
+        <script src="../../mermaid-init.js"></script>
 
 
     </div>

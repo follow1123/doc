@@ -200,12 +200,12 @@
 <p>开放反射权限，标记<code>open</code>关键字</p>
 </li>
 </ul>
-<pre><code class="language-java">// 开放整个模块
+<pre><code class="language-java">// 开放整个模块的反射权限
 open module com.demo{
   requires java.se;
 }
 
-// 开放部分包
+// 开放部分包的反射权限
 open module com.demo{
     opens 包名;
 }
@@ -366,16 +366,273 @@ System.out.println(str);
 </code></pre>
 <ul>
 <li>
-<p>空指针报错优化</p>
+<p>空指针报错优化，异常信息更准确</p>
 </li>
 <li>
-<p>Record类，替换Lombok</p>
+<p>Record类，替换Lombok(jave16)</p>
 </li>
 </ul>
 <h3 id="java17"><a class="header" href="#java17">java17</a></h3>
+<h4 id="密封类型"><a class="header" href="#密封类型">密封类型</a></h4>
 <ul>
-<li>密封类型</li>
+<li>使用final关键字表示A类无法被其他类继承</li>
 </ul>
+<pre><code class="language-java">public final class A {
+
+}
+</code></pre>
+<ul>
+<li>
+<p>使用sealed关键字修饰并使用permits指定某些类，表示只允许指定的某些类继承</p>
+</li>
+<li>
+<p>想要继承使用sealed修饰的类当前类必须使用<code>final</code> <code>sealed</code> <code>no-sealed</code>修饰</p>
+<ul>
+<li><code>final</code> 无法被其他类继承</li>
+<li><code>sealed</code> 当前类也变成密封类</li>
+<li><code>no-sealed</code> 当前类恢复为默认类，可以被其他任何类继承</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-java">public sealed class A permits B {
+
+}
+
+public [final/sealed/no-sealed] class B extends A {
+
+}
+</code></pre>
+<h3 id="java18"><a class="header" href="#java18">java18</a></h3>
+<ul>
+<li>
+<p>默认使用UTF-8编码</p>
+</li>
+<li>
+<p><code>jwebserver</code>命令简单web服务器</p>
+</li>
+<li>
+<p><code>@snippet</code> 文档内的代码预览，使用<code>javadoc</code>命令生成文档</p>
+</li>
+</ul>
+<pre><code class="language-java">public class Text {
+    /**
+     * {@snippet
+     * int c = a + b;
+     * }
+     */
+    public int add(int a, int b) {
+        int c = a + b;
+        return c;
+    }
+}
+</code></pre>
+<h3 id="java19"><a class="header" href="#java19">java19</a></h3>
+<h4 id="虚拟线程"><a class="header" href="#虚拟线程">虚拟线程</a></h4>
+<ul>
+<li>使用线程池方式</li>
+</ul>
+<pre><code class="language-java">public void ThreadTest() {
+    ExecutorService executor = Executors.newCachedThreadPool();
+    try(executor){
+        IntStream.range(1, 10000).forEach(i -&gt; executor.submit(() -&gt; {
+            try {
+                Thread.sleep(1000);
+                System.out.println(&quot;execute: &quot; + i );
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+
+        }));
+    }catch (Exception e){
+        e.printStackTrace();
+    }
+}
+</code></pre>
+<ul>
+<li>
+<p>使用虚拟线程方式，只需要将<code>newCachedThreadPool</code>修改为<code>newVirtualThreadPerTaskExecutor</code>，速度就会明显提升</p>
+</li>
+<li>
+<p>需要同步代码块时尽量使用<code>ReentrantLock</code>替代<code>synchronized</code></p>
+</li>
+<li>
+<p>虚拟线程时守护线程，无法修改为未守护线程</p>
+</li>
+<li>
+<p>虚拟线程默认优先级是5，无法修改</p>
+</li>
+<li>
+<p>虚拟线程不支持<code>stop()</code>, <code>suspend()</code>, <code>resume()</code>方法</p>
+</li>
+</ul>
+<h4 id="创建虚拟线程的方式"><a class="header" href="#创建虚拟线程的方式">创建虚拟线程的方式</a></h4>
+<ul>
+<li>方式1</li>
+</ul>
+<pre><code class="language-java">Runnable task = () -&gt; {
+    System.out.println(&quot;run task&quot;);
+};
+Thread.startVirtualThread(task);
+try {
+    Thread.sleep(100);
+} catch (InterruptedException e) {
+    throw new RuntimeException(e);
+}
+</code></pre>
+<ul>
+<li>方式2</li>
+</ul>
+<pre><code class="language-java">Runnable task = () -&gt; {
+    System.out.println(&quot;run task&quot;);
+};
+// Thread virtualThread = Thread.ofVirtual().name(&quot;virtualThreadName&quot;).start(task);
+Thread virtualThread = Thread.ofVirtual().name(&quot;virtualThreadName&quot;).unstarted(task);
+virtualThread.start();
+try {
+    Thread.sleep(100);
+} catch (InterruptedException e) {
+    throw new RuntimeException(e);
+}
+</code></pre>
+<ul>
+<li>
+<p>方式3 就是使用创建线程池</p>
+</li>
+<li>
+<p>使用<code>Thread</code>对象内的<code>isVirtual()</code>方法判断是否为虚拟线程</p>
+</li>
+</ul>
+<h3 id="java21"><a class="header" href="#java21">java21</a></h3>
+<ul>
+<li>
+<p>虚拟线程成为正式版</p>
+</li>
+<li>
+<p>字符串模板（预览）</p>
+</li>
+</ul>
+<pre><code class="language-java">String zs = &quot;zs&quot;;
+String str = STR.&quot;my name is \{zs}&quot;;
+System.out.println(str);
+</code></pre>
+<h4 id="scoped-values-隐藏的方法参数预览"><a class="header" href="#scoped-values-隐藏的方法参数预览">scoped values 隐藏的方法参数（预览）</a></h4>
+<pre><code>* 一般用于代替ThreadLocal
+</code></pre>
+<pre><code class="language-java">public class ScopedValuesTest {
+
+    public static void main(String[] args) {
+         new ScopedValuesTest().set();
+    }
+    
+    private ScopedValue&lt;String&gt; value = ScopedValue.newInstance();
+
+    public void set(){
+        ScopedValue.where(value, &quot;111&quot;).run(() -&gt; get());
+    }
+
+    public void get(){
+        System.out.println(value.get());
+    }
+}
+</code></pre>
+<ul>
+<li>多线程方式</li>
+</ul>
+<pre><code class="language-java">public class ScopedValuesMultithreadTest {
+
+    public static void main(String[] args) {
+        ExecutorService pool = Executors.newCachedThreadPool();
+        ScopedValuesMultithreadTest test = new ScopedValuesMultithreadTest();
+        for (int i = 0; i &lt; 10; i++) {
+            pool.submit(() -&gt; test.set());
+        }
+        pool.shutdown();
+
+    }
+
+    private ScopedValue&lt;String&gt; value = ScopedValue.newInstance();
+
+    public void set(){
+        ScopedValue.where(value, Thread.currentThread().getName()).run(() -&gt; get());
+    }
+
+    public void get(){
+        System.out.println(value.get());
+    }
+}
+</code></pre>
+<h4 id="record-pattern预览"><a class="header" href="#record-pattern预览">Record Pattern（预览）</a></h4>
+<pre><code class="language-java">public class RecordPatternTest {
+    public static void main(String[] args) {
+        Object o = new Person(&quot;zs&quot;, 18);
+        printObj(o);
+    }
+
+    public static void printObj(Object o){
+        if (o instanceof Person(String name, int age)){
+            System.out.println(&quot;name = &quot; + name);
+            System.out.println(&quot;age = &quot; + age);
+        }
+    }
+
+}
+
+record Person(String name, int age){}
+</code></pre>
+<h4 id="switch表达式"><a class="header" href="#switch表达式">switch表达式</a></h4>
+<ul>
+<li>临时变量</li>
+</ul>
+<pre><code class="language-java">public class SwitchTest1 {
+
+    public static void main(String[] args) {
+        int i = 100;
+        System.out.println(getValue(i));
+    }
+
+    public static String getValue(Object o){
+       return switch (o){
+           case null -&gt; &quot;null object&quot;;
+           case Integer i -&gt; &quot;integer: &quot; + i;
+           case String str -&gt; &quot;string: &quot; + str;
+           default -&gt; o.toString();
+       };
+    }
+}
+</code></pre>
+<ul>
+<li><code>when</code>关键字</li>
+</ul>
+<pre><code class="language-java">public class SwitchTest2 {
+
+    public static void main(String[] args) {
+        int score = 10;
+        test(score);
+    }
+
+    public static void test(Object o){
+       switch (o){
+           case Integer i when i &lt;= 60 -&gt; {
+               System.out.println(&quot;not great&quot;);
+           }
+           case Integer i when i &lt;= 100 -&gt; {
+               System.out.println(&quot;great&quot;);
+           }
+           default -&gt; {
+               System.out.println(&quot;error&quot;);
+           }
+       };
+
+    }
+}
+</code></pre>
+<h4 id="简化版main方法预览"><a class="header" href="#简化版main方法预览">简化版main方法（预览）</a></h4>
+<pre><code class="language-java">void main(){
+    System.out.println(&quot;Hello world!&quot;);
+}
+</code></pre>
+<h4 id="结构化并发structuredtaskscope类的使用"><a class="header" href="#结构化并发structuredtaskscope类的使用">结构化并发，<code>StructuredTaskScope</code>类的使用</a></h4>
+<h2 id="常见问题"><a class="header" href="#常见问题">常见问题</a></h2>
 <h3 id="后端解决跨域的三种方式"><a class="header" href="#后端解决跨域的三种方式">后端解决跨域的三种方式</a></h3>
 <ul>
 <li>

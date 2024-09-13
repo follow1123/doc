@@ -172,17 +172,104 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="docker"><a class="header" href="#docker">docker</a></h1>
-<h2 id="docker安装"><a class="header" href="#docker安装">docker安装</a></h2>
+                        <h1 id="docker"><a class="header" href="#docker">Docker</a></h1>
 <ul>
-<li>
-<p><a href="https://docs.docker.com/engine/install/debian/#installation-methods">安装文档</a></p>
-</li>
-<li>
-<p>在文档内选择安装方式安装，我使用的apt安装方式</p>
+<li><strong>系统平滑移植</strong>，<strong>容器虚拟化技术</strong></li>
+<li>docker可以通过镜像（image）将操作系统核心除外，运行程序所需要的系统环境，由下而上打包，达到跨平台无缝接轨运行，代替程序即应用的观念</li>
+</ul>
+<h2 id="传统虚拟机与容器的对比"><a class="header" href="#传统虚拟机与容器的对比">传统虚拟机与容器的对比</a></h2>
+<h3 id="虚拟机"><a class="header" href="#虚拟机">虚拟机</a></h3>
+<ul>
+<li>虚拟机架构</li>
+</ul>
+<p><img src="./assets/Snipaste_2024-09-08_17-05-27.png" alt="虚拟机架构" /></p>
+<ul>
+<li>缺点
+<ul>
+<li>资源占用多</li>
+<li>冗余步骤多</li>
+<li>启动慢</li>
+</ul>
 </li>
 </ul>
-<h3 id="添加镜像"><a class="header" href="#添加镜像">添加镜像</a></h3>
+<h3 id="容器"><a class="header" href="#容器">容器</a></h3>
+<ul>
+<li>
+<p>Linux容器（Linux Containers或LXC）</p>
+</li>
+<li>
+<p>LInux软驱是云系统其他部分隔离开的一系列进程，从另一个镜像运行，并由该镜像提供支持进程所需的全部文件。
+容器提供的镜像包含了应用的所有依赖项，因此在从开发到测试再到生产的整个过程中，它都具有可移植性和一致性。</p>
+</li>
+<li>
+<p>Linux容器不是模拟一个完整的操作系统而是堆进程进行隔离。有了容器，
+就可以将软件运行所需的所有资源打包到一个隔离的容器中。容器与虚拟机不同，不需要捆绑一整套操作系统,
+只需要软件工作所需的库资源和设置。系统因此变得高效轻量并保证部署任何环境中的软件都能始终如一地运行</p>
+</li>
+<li>
+<p>容器化架构</p>
+</li>
+</ul>
+<p><img src="./assets/Snipaste_2024-09-08_17-22-25.png" alt="容器化架构" /></p>
+<ul>
+<li>Docker是在操作系统层面上实现虚拟化，直接复用本地主机操作系统，而传统虚拟机则是在硬件层面实现虚拟化。
+与穿透虚拟机相比，Docker优势体现为启动速度快，占用体积小</li>
+</ul>
+<h3 id="对比"><a class="header" href="#对比">对比</a></h3>
+<div class="table-wrapper"><table><thead><tr><th></th><th>Docker容器</th><th>虚拟机（VM）</th></tr></thead><tbody>
+<tr><td>操作系统</td><td>与宿主机共享OS</td><td>宿主机上的OS运行虚拟机</td></tr>
+<tr><td>存储大小</td><td>镜像小，便于存储与传输</td><td>镜像庞大（vmdk、vdi等）</td></tr>
+<tr><td>运行性能</td><td>几乎无性能损失（根据不同程序，不同运行状态损失不一样）</td><td>操作系统额外的CPU、内存损耗</td></tr>
+<tr><td>移植性</td><td>轻便、灵活，适应于Linux</td><td>笨重，与虚拟化技术耦合高</td></tr>
+<tr><td>部署速度</td><td>快速，秒级</td><td>较慢，10s以上</td></tr>
+</tbody></table>
+</div>
+<h2 id="docker安装"><a class="header" href="#docker安装">docker安装</a></h2>
+<blockquote>
+<p><a href="https://www.docker.com">官网</a></br>
+<a href="https://hub.docker.com/">官方镜像仓库</a></br>
+<a href="https://docs.docker.com/manuals/">Docker手册</a></p>
+</blockquote>
+<ul>
+<li>在Docker手册上查找安装的方式</li>
+</ul>
+<h2 id="docker组成"><a class="header" href="#docker组成">docker组成</a></h2>
+<ul>
+<li>镜像（image）</li>
+<li>容器（container）</li>
+<li>仓库（repository）</li>
+</ul>
+<h3 id="镜像"><a class="header" href="#镜像">镜像</a></h3>
+<ul>
+<li>docker镜像就是一个只读模板，镜像可以用来创建docker容器，一个镜像可以创建多个容器</li>
+<li>docker的镜像文件类似java的类模板，而docker容器实例类似java中new出来的实例对象</li>
+</ul>
+<h3 id="容器-1"><a class="header" href="#容器-1">容器</a></h3>
+<ul>
+<li>可以把容器看作是一个简易版的Linux环境（包括root用户权限、进程空间、用户空间和网络空间等）和运行在其中的应用程序</li>
+</ul>
+<h3 id="仓库"><a class="header" href="#仓库">仓库</a></h3>
+<ul>
+<li>集中存放镜像文件的位置，类似Maven存放jar包</li>
+</ul>
+<h2 id="docker工作原理"><a class="header" href="#docker工作原理">docker工作原理</a></h2>
+<ul>
+<li>docker是一个client-server结构的系统，docker守护进程运行在主机上，
+通过socket连接客户端访问，守护进程从客户端接受命令并管理运行在主机上的容器</li>
+</ul>
+<h3 id="docker-run-流程"><a class="header" href="#docker-run-流程">docker run 流程</a></h3>
+<pre class="mermaid">flowchart  TD
+a(开始) --&gt; b[docker在本机中寻找该镜像]
+b --&gt; c{本机是否有该镜像}
+c --没有--&gt; d[在docker hub上找该镜像]
+c --有--&gt; e[以该镜像为模板生成容器实例运行]
+d --&gt; f{docker hub上能否找到}
+f --能--&gt; g[下载该镜像到本地]
+g --&gt; h[以该镜像为模板生成容器实例运行]
+f --不能--&gt; i[返回失败错误,查不到该镜像]
+
+</pre>
+<h2 id="添加镜像"><a class="header" href="#添加镜像">添加镜像</a></h2>
 <ul>
 <li>新建文件<code>/etc/docker/daemon.json</code></li>
 </ul>
@@ -196,91 +283,407 @@
     ]
 }
 </code></pre>
-<h2 id="容器镜像"><a class="header" href="#容器镜像">容器&amp;镜像</a></h2>
-<blockquote>
-<p>在<a href="https://hub.docker.com/">docker hub</a>上搜索镜像</p>
-</blockquote>
-<h3 id="镜像"><a class="header" href="#镜像">镜像</a></h3>
 <ul>
-<li><code>docker search image_name</code> 搜索镜像</li>
-<li><code>docker pull [image_repo]image_name[:image_tag]</code> 下载镜像</li>
-<li><code>docker images</code> 查看已有的镜像</li>
-<li><code>docker rmi</code> 删除镜像</li>
+<li>Docker Desktop可以在设置里的Docker Engine选项内添加</li>
 </ul>
-<h3 id="容器"><a class="header" href="#容器">容器</a></h3>
+<h2 id="常用命令"><a class="header" href="#常用命令">常用命令</a></h2>
+<h3 id="帮助启动类"><a class="header" href="#帮助启动类">帮助启动类</a></h3>
+<div class="table-wrapper"><table><thead><tr><th>命令</th><th>描述</th></tr></thead><tbody>
+<tr><td><strong>systemctl start docker</strong></td><td>启动docker</td></tr>
+<tr><td><strong>systemctl stop docker</strong></td><td>停止docker</td></tr>
+<tr><td><strong>systemctl restart docker</strong></td><td>重启docker</td></tr>
+<tr><td><strong>systemctl status docker</strong></td><td>查看docker状态</td></tr>
+<tr><td><strong>systemctl enable docker</strong></td><td>开机启动docker</td></tr>
+<tr><td><strong>docker info</strong></td><td>查看docker该药信息</td></tr>
+<tr><td><strong>docker --help</strong></td><td>docker帮助文档</td></tr>
+<tr><td><strong>docker 具体命令 --help</strong></td><td>docker命令帮助文档</td></tr>
+</tbody></table>
+</div>
+<h3 id="镜像相关"><a class="header" href="#镜像相关">镜像相关</a></h3>
+<div class="table-wrapper"><table><thead><tr><th>命令</th><th>描述</th></tr></thead><tbody>
+<tr><td><a href="#commands-images">docker images</a></td><td>列出docker内的镜像</td></tr>
+<tr><td><a href="#commands-search">docker search</a></td><td>搜索镜像</td></tr>
+<tr><td><a href="#commands-pull">docker pull</a></td><td>从仓库拉取镜像</td></tr>
+<tr><td><strong>docker system df</strong></td><td>查看镜像/容器/数据卷所占用空间</td></tr>
+<tr><td><a href="#commands-rmi">docker rmi</a></td><td>删除镜像</td></tr>
+</tbody></table>
+</div>
+<p><a id="command-volume"></a></p>
+<h3 id="容器相关"><a class="header" href="#容器相关">容器相关</a></h3>
+<div class="table-wrapper"><table><thead><tr><th>命令</th><th>描述</th></tr></thead><tbody>
+<tr><td><a href="#commands-run">docker run</a></td><td>新建+启动容器</td></tr>
+<tr><td><a href="#commands-ps">docker ps</a></td><td>列出当前所有正在运行的容器</td></tr>
+<tr><td><strong>docker start</strong></td><td>启动容器</td></tr>
+<tr><td><strong>docker restart</strong></td><td>重启容器</td></tr>
+<tr><td><strong>docker stop</strong></td><td>停止容器</td></tr>
+<tr><td><strong>docker kill</strong></td><td>强制停止容器</td></tr>
+<tr><td><a href="#commands-rm">docker rm</a></td><td>删除已经停止的容器</td></tr>
+<tr><td><a href="#commands-logs">docker logs</a></td><td>查看容器日志信息</td></tr>
+<tr><td><strong>docker top</strong></td><td>查看容器内部运行的进程</td></tr>
+<tr><td><strong>docker inspect</strong></td><td>查看容器内部细节</td></tr>
+<tr><td><a href="#commands-exec">docker exec</a></td><td>进入正在运行的容器以命令行交互</td></tr>
+<tr><td><strong>docker attach</strong></td><td>进入正在运行的容器以命令行交互，退出时会之间停止容器</td></tr>
+<tr><td><a href="#commands-cp">docker cp</a></td><td>将容器内文件复制到主机下</td></tr>
+<tr><td><a href="#commands-export">docker export</a></td><td>导出容器</td></tr>
+<tr><td><a href="#commands-import">docker import</a></td><td>导入镜像</td></tr>
+<tr><td><a href="#commands-commit">docker commit</a></td><td>将容器打包为镜像并提交到本地</td></tr>
+</tbody></table>
+</div>
+<h3 id="数据卷相关"><a class="header" href="#数据卷相关">数据卷相关</a></h3>
+<div class="table-wrapper"><table><thead><tr><th>命令</th><th>描述</th></tr></thead><tbody>
+<tr><td><strong>docker volume ls</strong></td><td>列出数据卷</td></tr>
+<tr><td><strong>docker volume create</strong></td><td>新建数据卷</td></tr>
+<tr><td><strong>docker volume inspect</strong></td><td>显示数据卷详细信息</td></tr>
+<tr><td><strong>docker volume rm</strong></td><td>删除数据卷</td></tr>
+</tbody></table>
+</div>
+<p><a id="command-network"></a></p>
+<h3 id="网络相关"><a class="header" href="#网络相关">网络相关</a></h3>
+<div class="table-wrapper"><table><thead><tr><th>命令</th><th>描述</th></tr></thead><tbody>
+<tr><td><strong>docker network ls</strong></td><td>列出网络</td></tr>
+<tr><td><strong>docker network create</strong></td><td>新建网络</td></tr>
+<tr><td><strong>docker network inspect</strong></td><td>显示网络详细信息</td></tr>
+<tr><td><strong>docker network rm</strong></td><td>删除网络</td></tr>
+<tr><td><strong>docker network connect</strong></td><td>将一个容器连接到某个网络上</td></tr>
+<tr><td><strong>docker network disconnect</strong></td><td>将一个容器从某个网络上断开</td></tr>
+<tr><td><strong>docker network prune</strong></td><td>删除未使用的网络</td></tr>
+</tbody></table>
+</div>
+<h3 id="命令详情"><a class="header" href="#命令详情">命令详情</a></h3>
+<p><a id="commands-images"></a></p>
+<h4 id="docker-images"><a class="header" href="#docker-images">docker images</a></h4>
 <ul>
-<li>
-<p><code>docker ps -a</code> 查看所有容器</p>
+<li>列出docker内所有镜像</li>
+<li>列说明
+<ul>
+<li><code>REPOSITORY</code>：镜像的仓库源</li>
+<li><code>TAG</code>：镜像标签版本号</li>
+<li><code>IMAGE ID</code>：镜像id</li>
+<li><code>CREATED</code>：镜像创建时间</li>
+<li><code>SIZE</code>：镜像大小</li>
+</ul>
 </li>
-<li>
-<p><code>docker rm</code> 删除容器</p>
-<ul>
-<li>删除某个镜像对应的所有容器</li>
+<li>同一个仓库源可以有多个TAG版本，代表这个仓库源的不同版本</li>
+<li>如果不指定镜像的版本标签，默认使用<code>镜像名:latest</code>镜像</li>
 </ul>
-<pre><code class="language-powershell">docker rm $(docker ps -af ancestor=image_name -q)
+<pre><code class="language-bash">docker images
+# 列出本地所有的镜像
+docker images -a
+# 只显示镜像的id
+docker images -q
 </code></pre>
+<p><a id="commands-search"></a></p>
+<h4 id="docker-search"><a class="header" href="#docker-search">docker search</a></h4>
+<ul>
+<li>从<a href="https://hub.docker.com/">官方镜像仓库</a>搜索镜像</li>
+<li>列说明
+<ul>
+<li><code>NAME</code>：镜像名称</li>
+<li><code>DESCRIPTION</code>：镜像说明</li>
+<li><code>STARS</code>：点赞数</li>
+<li><code>OFFICIAL</code>：是否官方</li>
+<li><code>AUTOMATED</code>：是否自动构建</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-bash"># 只显示前5条搜索信息
+docker search --limit 5 redis
+</code></pre>
+<p><a id="commands-pull"></a></p>
+<h4 id="docker-pull"><a class="header" href="#docker-pull">docker pull</a></h4>
+<ul>
+<li>下载镜像</li>
+<li>格式：<code>docker pull 镜像名:[TAG]</code></li>
+</ul>
+<pre><code class="language-bash"># 下载最新版
+docker pull redis
+# 下载指定版本
+docker pull redis:6.2
+</code></pre>
+<p><a id="commands-rmi"></a></p>
+<h4 id="docker-rmi"><a class="header" href="#docker-rmi">docker rmi</a></h4>
+<ul>
+<li>删除镜像</li>
+<li>格式：<code>docker rmi 镜像id</code></li>
+</ul>
+<pre><code class="language-bash"># 根据镜像id删除镜像id使用docker images查看
+docker rmi f7d0a5ed08a2
+
+# 强制删除
+docker rmi -f f7d0a5ed08a2
+
+# 删除多个
+docker rmi -f redis7.4.0 redis:6.2
+
+# 删除所有镜像
+docker rmi -f $(docker images -qa)
+</code></pre>
+<hr />
+<p><a id="commands-run"></a></p>
+<h4 id="docker-run"><a class="header" href="#docker-run">docker run</a></h4>
+<ul>
+<li>格式：<code>docker run [OPTIONS] IMAGE [COMMAND] [ARG...]</code></li>
+<li>选项说明
+<ul>
+<li><code>--name='容器名称'</code>：为容器指定一个名称</li>
+<li><code>-d</code>：后台运行容器并返回一个容器id，也叫启动守护式容器（后台运行）</li>
+<li><code>-P</code>：随机端口映射，大写P</li>
+<li><code>-p</code>：指定端口映射，小写p</li>
+<li><code>-i</code>：以交互模式运行容器，通常与<code>-t</code>同时使用</li>
+<li><code>-t</code>：为容器重新分配一个伪终端，通常与<code>-i</code>同时使用</li>
+<li><code>-v</code>：指定目录映射</li>
+<li><code>--volumes-from</code>：继承某个容器的目录映射关系</li>
+<li><code>--network</code>：指定容器的网络模式</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-bash"># 后台启动容器并指定一个名称（启动守护式容器）
+docker run -d --name='debian1' debian
+
+# 后台启动容器并将容器的/usr/share/nginx目录映射到主机的/usr/local/web目录
+docker run -d -v /usr/local/web:/usr/share/nginx --name='nginx' nginx
+
+# 后台启动名称为n2的nginx容器，目录关系继承至nginx容器
+docker run -d -volumes-from nginx --name n2 nginx
+
+# 启动容器并运行容器内的shell与容器进行交互
+docker run -it debian /bin/bash
+</code></pre>
+<p><a id="commands-ps"></a></p>
+<h4 id="docker-ps"><a class="header" href="#docker-ps">docker ps</a></h4>
+<ul>
+<li>选项说明
+<ul>
+<li><code>-a</code>：列出当前所有正在运行的容器+之前运行过的容器</li>
+<li><code>-l</code>：显示最近创建的容器</li>
+<li><code>-n</code>：显示最近n个创建的容器</li>
+<li><code>-q</code>：只显示容器的编号</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-bash"># 查看所有容器
+docker ps -a
+
+# 显示前3个创建的容器
+docker ps -n 3
+
+# 显示所有容器的编号
+docker ps -q
+
+# 查看所以从debian镜像启动的容器 
+docker ps -af ancestor=debian -q
+</code></pre>
+<p><a id="commands-rm"></a></p>
+<h4 id="docker-rm"><a class="header" href="#docker-rm">docker rm</a></h4>
+<pre><code class="language-bash"># 删除指定容器，如果容器正在运行则无法删除
+docker rm f7d0a5ed08a2
+
+# 删除指定容器
+docker rm -f f7d0a5ed08a2
+
+# 强制删除所有容器
+docker rm -f $(docker ps -a -q)
+</code></pre>
+<p><a id="commands-logs"></a></p>
+<h4 id="docker-logs"><a class="header" href="#docker-logs">docker logs</a></h4>
+<pre><code class="language-bash"># 查看指定id容器的日志
+docker logs f7d0a5ed08a2
+
+# 查看容器日志最后5行
+docker logs -n 5 f7d0a5ed08a2 
+
+# 类似linux的tail -f命令
+docker logs -f f7d0a5ed08a2
+</code></pre>
+<p><a id="commands-exec"></a></p>
+<h4 id="docker-exec"><a class="header" href="#docker-exec">docker exec</a></h4>
+<ul>
+<li>和<code>docker attach</code>的区别是：<code>docker exec</code>进入容器后退出不会关闭容器，而<code>docker attach</code>会</li>
+</ul>
+<pre><code class="language-bash"># 以交互式命令行进入容器内部
+docker exec -it debian1 /bin/bash
+</code></pre>
+<p><a id="commands-cp"></a></p>
+<h4 id="docker-cp"><a class="header" href="#docker-cp">docker cp</a></h4>
+<pre><code class="language-bash"># 将debian容器内/tmp目录下的a.txt文件复制到当前目录下
+docker cp debian1:/tmp/a.txt ./a.txt
+</code></pre>
+<p><a id="commands-export"></a></p>
+<h4 id="docker-export"><a class="header" href="#docker-export">docker export</a></h4>
+<ul>
+<li>将运行中的容器导出为文件</li>
+<li>可以保存容器内程序生产的内容</li>
+</ul>
+<pre><code class="language-bash"># 将这个容器导出为debian1.tar文件
+docker export debian1 &gt; debian1.tar
+</code></pre>
+<p><a id="commands-import"></a></p>
+<h4 id="docker-import"><a class="header" href="#docker-import">docker import</a></h4>
+<ul>
+<li>配合<code>docker export</code>使用</li>
+<li>导入后会生成一个新的镜像</li>
+</ul>
+<pre><code class="language-bash"># 导入镜像，导入的镜像名称custom/debian2版本为1.0
+docker import debian1.tar custom/debian2:1.0
+</code></pre>
+<p><a id="commands-commit"></a></p>
+<h4 id="docker-commit"><a class="header" href="#docker-commit">docker commit</a></h4>
+<pre><code class="language-bash"># 将之间的镜像新加一个软件后提交到本地 
+docker commit -m &quot;add new software&quot; -a &quot;y&quot; debian1 y/deb:1.1
+</code></pre>
+<h2 id="docker镜像"><a class="header" href="#docker镜像">docker镜像</a></h2>
+<ul>
+<li>
+<p>镜像是一种轻量级、可执行的独立软件包，包含运行某个软件所需的所有内容，
+我们把应用程序和配置依赖打包好形成一个可交付的运行环境（包括代码、运行时需要的库、
+环境变量和配置文件等），这个打包好的运行环境就是image镜像文件</p>
 </li>
 <li>
-<p><code>docker run image_name</code> 运行容器</p>
+<p>docker镜像是由层级文件系统（UnionFS）组成</p>
+</li>
+<li>
+<p>docker最底层是由bootfs+rootfs组成，rootfs就是不同的Linux发行版，这些发行版都是最精简的</p>
+</li>
+<li>
+<p>每一个应用程序镜像都是多个镜像组成，例如nginx是由<strong>底层操作系统</strong>+<strong>nginx软件</strong>组成</p>
+</li>
+<li>
+<p>docker镜像层都是只读的，容器层是可写的</p>
 <ul>
-<li><code>-d</code> 后台运行</li>
-<li><code>-it</code> 交互式运行容器命令最后接需要执行的交互式命令，通常是bash</li>
+<li>启动容器后，由于容器是基于镜像启动的，所有在镜像之上叫容器层</li>
 </ul>
 </li>
 <li>
-<p><code>docker exec</code> 在容器内执行命令</p>
-<ul>
-<li><code>-it</code> 交互式</li>
-</ul>
-</li>
-<li>
-<p><code>docker logs container_id</code> 查看容器的命令</p>
-<ul>
-<li><code>-f</code> 监听日志</li>
-</ul>
-</li>
-<li>
-<p><code>docker cp container_id:path path</code> 复制容器内的文件到本地，反过来一样</p>
-</li>
-<li>
-<p><code>docker stop container_id</code> 停止容器</p>
-</li>
-<li>
-<p><code>docker start container_id</code> 启动容器</p>
+<p>新建自己的镜像可以从底层开始构建也可以使用<a href="#commands-commit">docker commit</a>命令基于某个镜像构建</p>
 </li>
 </ul>
-<h2 id="数据卷"><a class="header" href="#数据卷">数据卷</a></h2>
+<h2 id="本地镜像发布到云端流程"><a class="header" href="#本地镜像发布到云端流程">本地镜像发布到云端流程</a></h2>
 <ul>
-<li><code>docker volume</code></li>
+<li>和git类似先commit到本地再push到远程</li>
 </ul>
-<h2 id="网络"><a class="header" href="#网络">网络</a></h2>
+<h3 id="docker私有库"><a class="header" href="#docker私有库">docker私有库</a></h3>
 <ul>
-<li><code>docker network</code></li>
+<li>下载私有库服务<code>docker pull registry</code>后进行配置</li>
 </ul>
-<p><code>docker build -t 镜像名称:镜像标签 Dockerfile目录</code> 制作镜像</p>
-<h2 id="其他"><a class="header" href="#其他">其他</a></h2>
-<h3 id=""><a class="header" href="#"></a></h3>
-<h3 id="docker-gitlab备份"><a class="header" href="#docker-gitlab备份">docker gitlab备份</a></h3>
+<h2 id="docker容器数据卷"><a class="header" href="#docker容器数据卷">Docker容器数据卷</a></h2>
 <ul>
-<li>
-<p><code>docker ps</code>获取 container id</p>
-</li>
-<li>
-<p><code>docker exec -i -t （这里填container id） /bin/bash</code></p>
-</li>
-<li>
-<p><code>gitlab-rake gitlab:backup:create</code></p>
-</li>
-<li>
-<p>输出<code>Creating backup archive xxx_xxx.tar</code>备份成功</p>
-</li>
-<li>
-<p>文件在创建容器的命令映射的gitlab数据路径下<code>data/backups</code>下</p>
-</li>
+<li>将docker容器内的数据保存进宿主机的磁盘中</li>
+<li>运行一个带有容器数据卷功能的容器实例，参考<a href="#commands-run">docker run</a></li>
+<li>使用<code>-v</code>参数创建的目录映射关系默认是匿名的，使用<a href="#command-volume">数据卷</a>相关命令管理数据卷</li>
 </ul>
-<h2 id="参考"><a class="header" href="#参考">参考</a></h2>
+<h2 id="dockerfile"><a class="header" href="#dockerfile">Dockerfile</a></h2>
 <ul>
-<li>参考https://blog.csdn.net/weixin_43961117/article/details/126125976教程</li>
+<li>Dockerfile是用来构建docker镜像的文本文件，是由一条条构建镜像所需的指令和参数构成的脚本。</li>
+</ul>
+<h3 id="dockerfile指令"><a class="header" href="#dockerfile指令">Dockerfile指令</a></h3>
+<ul>
+<li>每个指令必须为大写</li>
+<li>指令从上到下顺序执行</li>
+<li><code>#</code>表示注释</li>
+</ul>
+<div class="table-wrapper"><table><thead><tr><th>指令</th><th>说明</th></tr></thead><tbody>
+<tr><td><strong>FROM</strong></td><td>基础镜像，当前新镜像是基于哪个镜像构建的，指定一个已存在的镜像作为模板，第一条必须是FROM</td></tr>
+<tr><td><strong>MAINTAINER</strong></td><td>镜像维护者的姓名和邮箱</td></tr>
+<tr><td><strong>RUN</strong></td><td>容器构建时需要运行的命令</td></tr>
+<tr><td><strong>EXPOSE</strong></td><td>当前容器对外暴露的端口</td></tr>
+<tr><td><strong>WORKDIR</strong></td><td>指定容器创建后，终端默认登录进来的目录</td></tr>
+<tr><td><strong>USER</strong></td><td>指定镜像以什么用户执行，默认root</td></tr>
+<tr><td><strong>ENV</strong></td><td>用来在构建镜像过程中设置环境变量</td></tr>
+<tr><td><strong>ADD</strong></td><td>将宿主机下的文件拷贝进镜像内，如果是tar文件则会自动解压，支持URL地址下载文件</td></tr>
+<tr><td><strong>COPY</strong></td><td>拷贝文件或目录到镜像内</td></tr>
+<tr><td><strong>VOLUME</strong></td><td>容器数据卷</td></tr>
+<tr><td><a href="#dockerfile-instruction-cmd">CMD</a></td><td>指定容器启动后执行的命令</td></tr>
+<tr><td><a href="#dockerfile-instruction-entrypoint">ENTRYPOINT</a></td><td>也是用来指定容器启动后执行的命令</td></tr>
+</tbody></table>
+</div>
+<h4 id="指令详情"><a class="header" href="#指令详情">指令详情</a></h4>
+<p><a id="dockerfile-instruction-cmd"></a></p>
+<h5 id="cmd"><a class="header" href="#cmd">CMD</a></h5>
+<ul>
+<li>有两种格式：
+<ul>
+<li>shell格式：<code>CMD 命令 参数1 参数2</code></li>
+<li>exec格式：<code>CMD [&quot;可执行文件&quot; &quot;参数1&quot; &quot;参数2&quot;]</code></li>
+</ul>
+</li>
+<li>配合<a href="#dockerfile-instruction-entrypoint">ENTRYPOINT</a>则CMD后接参数：<code>CMD [&quot;参数1&quot; &quot;参数2&quot;]</code></li>
+<li>Dockerfile中只能有一条CMD指令。如果编写了多个CMD指令，则只有最后一个生效。</li>
+<li>CMD会被<code>docker run</code>命令最后一个命令参数覆盖</li>
+<li>CMD在<code>docker run</code>的时候执行，RUN是在<code>docker build</code>时执行</li>
+</ul>
+<p><a id="dockerfile-instruction-entrypoint"></a></p>
+<h5 id="entrypoint"><a class="header" href="#entrypoint">ENTRYPOINT</a></h5>
+<ul>
+<li>类似CMD指令，但是不会被<code>docker run</code>后面的命令覆盖，<code>docker run</code>后面的命令会被当作ENTRYPOINT执行可执行程序的参数</li>
+<li>ENTRYPOINT与CMD命令配合则ENTRYPOINT为指定<strong>可执行命令</strong>，而CMD指定<strong>命令的参数</strong></li>
+</ul>
+<h4 id="构建测试"><a class="header" href="#构建测试">构建测试</a></h4>
+<ul>
+<li>基于ubuntu:24.0.4构建一个带jdk17的镜像</li>
+<li>将jdk压缩包和Dockerfile放在同一个目录下</li>
+</ul>
+<pre><code class="language-Dockerfile">FROM ubuntu:24.04
+
+WORKDIR /usr/local/jdk
+
+ADD ./jdk-17.0.11_linux-x64_bin.tar.gz /usr/local/jdk
+
+ENV JAVA_HOME /usr/local/jdk/jdk-17.0.11
+ENV PATH $PATH:$JAVA_HOME/bin
+
+RUN java -version
+
+CMD /bin/bash
+</code></pre>
+<h4 id="虚悬镜像"><a class="header" href="#虚悬镜像">虚悬镜像</a></h4>
+<ul>
+<li>测试构建一个虚悬镜像</li>
+<li>Dockerfile</li>
+</ul>
+<pre><code class="language-Dockerfile">FROM ubuntu:24.04
+CMD echo 123
+</code></pre>
+<ul>
+<li>执行<code>docker build .</code>命令就会生成一个虚悬镜像</li>
+<li>使用<code>docker images -f dangling=true</code>命令查询所以的虚悬镜像</li>
+<li>使用<code>docker rmi $(docker images -qf dangling=true)</code>命令删除所有的虚悬镜像</li>
+</ul>
+<h2 id="docker网络network"><a class="header" href="#docker网络network">Docker网络（network）</a></h2>
+<blockquote>
+<p><a href="#command-network">docker网络命令参考</a></p>
+</blockquote>
+<ul>
+<li>进行容器之间的互联和通信以及端口映射</li>
+<li>容器ip变动时可以通过服务名连接，通信不受影响 </li>
+</ul>
+<h3 id="docker网络模式"><a class="header" href="#docker网络模式">Docker网络模式</a></h3>
+<ul>
+<li>docker会在宿主机虚拟一个网桥（docker0），启动一个容器时docker会根据这个虚拟网桥的网段分配给容器一个ip。
+可以将虚拟网桥（docker0）理解为一个交换机，宿主机通过这个交换机连接到每一个容器</li>
+</ul>
+<div class="table-wrapper"><table><thead><tr><th>网络模式</th><th>简介</th></tr></thead><tbody>
+<tr><td>bridge</td><td>为每一个容器都分配一个虚拟网络、设置ip等，并将容器连接到一个docker0。虚拟网桥，默认就是这个模式</td></tr>
+<tr><td>host</td><td>使用宿主机的ip和端口</td></tr>
+<tr><td>none</td><td>不进行任何网络设置</td></tr>
+<tr><td>container</td><td>创建的容器和指定的容器共享ip、端口等</td></tr>
+</tbody></table>
+</div>
+<h3 id="bridge"><a class="header" href="#bridge">bridge</a></h3>
+<ul>
+<li>将容器的网络连接到虚拟网桥（docker0）上，根据虚拟网桥的的网段分配一个ip给容器</li>
+</ul>
+<h3 id="host"><a class="header" href="#host">host</a></h3>
+<ul>
+<li>直接使用宿主机的ip与外界通信</li>
+</ul>
+<h2 id="常见问题"><a class="header" href="#常见问题">常见问题</a></h2>
+<h3 id="docker虚悬镜像是什么"><a class="header" href="#docker虚悬镜像是什么">docker虚悬镜像是什么</a></h3>
+<ul>
+<li>仓库名和标签都是<code>&lt;none&gt;</code></li>
+</ul>
+<h3 id="docker挂载主机目录访问如果出现cannot-open-directory--permission-denied"><a class="header" href="#docker挂载主机目录访问如果出现cannot-open-directory--permission-denied">docker挂载主机目录访问如果出现cannot open directory .: Permission denied</a></h3>
+<ul>
+<li>在挂在目录后加<code>--privileged=true</code>参数即可</li>
 </ul>
 
                     </main>

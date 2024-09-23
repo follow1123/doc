@@ -1,0 +1,948 @@
+<!DOCTYPE HTML>
+<html lang="zh" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Spring Cloud - 文档</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../../favicon.svg">
+        <link rel="shortcut icon" href="../../../favicon.png">
+        <link rel="stylesheet" href="../../../css/variables.css">
+        <link rel="stylesheet" href="../../../css/general.css">
+        <link rel="stylesheet" href="../../../css/chrome.css">
+        <link rel="stylesheet" href="../../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../../highlight.css">
+        <link rel="stylesheet" href="../../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../../../custom.css">
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../../linux/index.html"><strong aria-hidden="true">1.</strong> Linux</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../linux/basics.html"><strong aria-hidden="true">1.1.</strong> 基础</a></li><li class="chapter-item expanded "><a href="../../../linux/commands.html"><strong aria-hidden="true">1.2.</strong> 常用命令</a></li><li class="chapter-item expanded "><a href="../../../linux/desktop-environment.html"><strong aria-hidden="true">1.3.</strong> 桌面环境</a></li><li class="chapter-item expanded "><a href="../../../linux/systemd.html"><strong aria-hidden="true">1.4.</strong> Systemd</a></li><li class="chapter-item expanded "><a href="../../../linux/troubleshooting.html"><strong aria-hidden="true">1.5.</strong> 常见问题</a></li></ol></li><li class="chapter-item expanded "><a href="../../../windows/index.html"><strong aria-hidden="true">2.</strong> Windows</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../windows/command-prompt.html"><strong aria-hidden="true">2.1.</strong> Command Prompt</a></li><li class="chapter-item expanded "><a href="../../../windows/wsl2.html"><strong aria-hidden="true">2.2.</strong> wsl2</a></li></ol></li><li class="chapter-item expanded "><a href="../../../software-services-tools/index.html"><strong aria-hidden="true">3.</strong> 软件/服务/工具</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../software-services-tools/git/index.html"><strong aria-hidden="true">3.1.</strong> Git</a></li><li class="chapter-item expanded "><a href="../../../software-services-tools/vim-neovim/index.html"><strong aria-hidden="true">3.2.</strong> Vim/Neovim</a></li><li class="chapter-item expanded "><a href="../../../software-services-tools/nginx/index.html"><strong aria-hidden="true">3.3.</strong> Nginx</a></li><li class="chapter-item expanded "><a href="../../../software-services-tools/vsftp/index.html"><strong aria-hidden="true">3.4.</strong> Vsftp</a></li><li class="chapter-item expanded "><a href="../../../software-services-tools/docker/index.html"><strong aria-hidden="true">3.5.</strong> Docker</a></li><li class="chapter-item expanded "><a href="../../../software-services-tools/mysql/index.html"><strong aria-hidden="true">3.6.</strong> Mysql</a></li><li class="chapter-item expanded "><a href="../../../software-services-tools/redis/index.html"><strong aria-hidden="true">3.7.</strong> Redis</a></li></ol></li><li class="chapter-item expanded "><a href="../../../java/index.html"><strong aria-hidden="true">4.</strong> Java</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../java/basics.html"><strong aria-hidden="true">4.1.</strong> 基础</a></li><li class="chapter-item expanded "><a href="../../../java/multithreading.html"><strong aria-hidden="true">4.2.</strong> 多线程</a></li><li class="chapter-item expanded "><a href="../../../java/collection.html"><strong aria-hidden="true">4.3.</strong> 集合框架</a></li><li class="chapter-item expanded "><a href="../../../java/version-features.html"><strong aria-hidden="true">4.4.</strong> 各版本特性</a></li><li class="chapter-item expanded "><a href="../../../java/JVM.html"><strong aria-hidden="true">4.5.</strong> JVM</a></li><li class="chapter-item expanded "><a href="../../../java/build-tools/index.html"><strong aria-hidden="true">4.6.</strong> 构建工具</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../java/build-tools/maven/index.html"><strong aria-hidden="true">4.6.1.</strong> Maven</a></li><li class="chapter-item expanded "><a href="../../../java/build-tools/gradle/index.html"><strong aria-hidden="true">4.6.2.</strong> Gradle</a></li></ol></li><li class="chapter-item expanded "><a href="../../../java/framework/index.html"><strong aria-hidden="true">4.7.</strong> 框架</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../java/framework/spring/index.html"><strong aria-hidden="true">4.7.1.</strong> Spring</a></li><li class="chapter-item expanded "><a href="../../../java/framework/spring-mvc/index.html"><strong aria-hidden="true">4.7.2.</strong> Spring MVC</a></li><li class="chapter-item expanded "><a href="../../../java/framework/mybatis/index.html"><strong aria-hidden="true">4.7.3.</strong> Mybatis</a></li><li class="chapter-item expanded "><a href="../../../java/framework/spring-security/index.html"><strong aria-hidden="true">4.7.4.</strong> Spring Security</a></li><li class="chapter-item expanded "><a href="../../../java/framework/spring-cloud/index.html" class="active"><strong aria-hidden="true">4.7.5.</strong> Spring Cloud</a></li><li class="chapter-item expanded "><a href="../../../java/framework/shiro/index.html"><strong aria-hidden="true">4.7.6.</strong> Shiro</a></li><li class="chapter-item expanded "><a href="../../../java/framework/rabbitmq/index.html"><strong aria-hidden="true">4.7.7.</strong> RabbitMQ</a></li><li class="chapter-item expanded "><a href="../../../java/framework/netty/index.html"><strong aria-hidden="true">4.7.8.</strong> Netty</a></li></ol></li><li class="chapter-item expanded "><a href="../../../java/troubleshooting.html"><strong aria-hidden="true">4.8.</strong> 常见问题</a></li></ol></li><li class="chapter-item expanded "><a href="../../../frontend/index.html"><strong aria-hidden="true">5.</strong> 前端</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../frontend/html.html"><strong aria-hidden="true">5.1.</strong> HTML</a></li><li class="chapter-item expanded "><a href="../../../frontend/css.html"><strong aria-hidden="true">5.2.</strong> CSS</a></li><li class="chapter-item expanded "><a href="../../../frontend/javascript.html"><strong aria-hidden="true">5.3.</strong> JavaScript</a></li><li class="chapter-item expanded "><a href="../../../frontend/vue/index.html"><strong aria-hidden="true">5.4.</strong> Vue</a></li></ol></li><li class="chapter-item expanded "><a href="../../../design-pattern/index.html"><strong aria-hidden="true">6.</strong> 设计模式</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">文档</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="spring-cloud"><a class="header" href="#spring-cloud">Spring Cloud</a></h1>
+<pre class="mermaid">flowchart TD
+a(微服务组件) --&gt; b(服务注册与发现)
+a --&gt; c(服务调用和负载均衡)
+a --&gt; d(分布式事务)
+a --&gt; e(服务熔断和降级)
+a --&gt; f(服务链路追踪)
+a --&gt; g(服务网关)
+a --&gt; h(分布式配置管理)
+b --&gt; b1(1.Eureka\n2.Consul\n3.Nacos\n4.ETcd)
+c --&gt; c1(1.Ribbon\n2.OpenFeign\n3.LoadBalancer)
+d --&gt; d1(1.Seata\n2.LCN\n3.Hmily)
+e --&gt; e1(Hystrix)
+e --&gt; e2(Circuit Breaker:规范)
+e --&gt; e3(Sentinel)
+e2 --&gt; e22(Resilience4J)
+f --&gt; f1(1.Sleuth+Zipkin\n2.Micrometer Tracing)
+g --&gt; g1(1.Zuul\n2.Gateway)
+h --&gt; h1(1.Config+Bus\n2.Consul\n3.Nacos)
+</pre>
+<h2 id="项目搭建"><a class="header" href="#项目搭建">项目搭建</a></h2>
+<h3 id="sql语句"><a class="header" href="#sql语句">SQL语句</a></h3>
+<pre><code class="language-sql">use clouddb;
+
+drop table if exists `t_pay`;
+
+CREATE TABLE `t_pay` (
+    `id` INT(10) UNSIGNED NOT NULL auto_increment,
+    `pay_no` VARCHAR(50) not null comment '支付流水号',
+    `order_no` VARCHAR(50) not null comment '订单流水号',
+    `user_id` INT(10) DEFAULT '1' COMMENT '用户账号ID',
+    `amount` DECIMAL(8, 2) not null default '9.9' comment '交易金额',
+    `deleted` TINYINT(4) unsigned not null default '0' comment '删除标志，默认0不删除，1删除',
+    `create_time` timestamp not null default current_timestamp comment '创建时间',
+    `update_time` timestamp not null default current_timestamp on update current_timestamp comment '更新时间',
+    primary key (`id`)
+) engine=innodb auto_increment=1 default charset=utf8mb4 comment='支付交易表';
+
+insert into t_pay(pay_no, order_no) values('pay1209381920', '0982134jdag123');
+
+select * from t_pay;
+</code></pre>
+<h3 id="项目结构"><a class="header" href="#项目结构">项目结构</a></h3>
+<pre>
+    <code>
+<a href="#parent">spring-cloud-demo</a>
+│
+├─<a href="#submodule-code-generator">code-generator</a> # 代码生成器子模块
+│  ├─src/main/java/cn.y.demo
+│  │  └─<a href="#submodule-code-generator-main-java">Main.java</a>
+│  ├─src/main/resources
+│  │  └─<a href="#submodule-code-generator-resources-config-properties">config.properties</a>
+│  └─<a href="#submodule-code-generator-pom-xml">pom.xml</a>
+│
+├─<a href="#submodule-cloud-api-commons">cloud-api-commons</a> # 通用API子模块
+│  ├─src/main/java/cn.y.demo
+│  │  ├─exceptions
+│  │  │  └─<a href="#submodule-cloud-api-commons-global-exception-handler">GlobalExceptionHandler.java</a>
+│  │  └─exceptions
+│  │     ├─<a href="#submodule-cloud-api-commons-result-data">ResultData.java</a>
+│  │     └─<a href="#submodule-cloud-api-commons-return-code-enum">ReturnCodeEnum.java</a>
+│  └─<a href="#submodule-cloud-api-commons-pom-xml">pom.xml</a>
+│
+├─<a href="#submodule-cloud-provider-payment">cloud-provider-payment</a> # 微服务子模块
+│  ├─src/main/java/cn.y.demo
+│  │  ├─<a href="#submodule-cloud-provider-payment-provider-payment">ProviderPayment.java</a>
+│  ├─src/main/resources
+│  │  └─<a href="#submodule-cloud-provider-payment-resources-application-yaml">application.yaml</a>
+│  └─<a href="#submodule-cloud-provider-payment-pom-xml">pom.xml</a>
+│
+├─<a href="#parent-gitignore">.gitignore</a>
+└─<a href="#parent-pom-xml">pom.xml</a>
+    </code>
+</pre>
+<p><a id="parent"></a></p>
+<h3 id="创建父工程"><a class="header" href="#创建父工程">创建父工程</a></h3>
+<blockquote>
+<p>使用idea操作</p>
+</blockquote>
+<ol>
+<li>File &gt; New &gt; Project</li>
+<li>New Project弹框
+<ul>
+<li>左侧选New Project</li>
+<li>右侧
+<a id="new-project-panel"></a>
+<ul>
+<li><strong>Name</strong>: spring-cloud-demo</li>
+<li><strong>Location</strong>: 项目存放地址</li>
+<li><strong>Language</strong>: Java</li>
+<li><strong>Build system</strong>: Maven</li>
+<li><strong>JDK</strong>: 17</li>
+<li><strong>Advanced Settings</strong>
+<ul>
+<li><strong>GroupId</strong>: cn.y.demo</li>
+<li><strong>ArtifactId</strong>: 根据项目名自动生成</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>因为是父工程可以直接删除<code>src</code>文件夹</li>
+<li>修改<code>.gitignore</code>文件
+<a id="parent-gitignore"></a></li>
+</ol>
+<pre><code class="language-gitignore">HELP.md
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+code-generator/src/main/resources/config.properties
+</code></pre>
+<p><a id="parent-pom-xml"></a>
+5. 修改<code>pom.xml</code>文件</p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;
+         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+         xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+    &lt;groupId&gt;cn.y.demo&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-cloud-demo&lt;/artifactId&gt;
+    &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+    &lt;packaging&gt;pom&lt;/packaging&gt;
+
+    &lt;!-- 子模块相关配置 --&gt;
+&lt;!--     &lt;modules&gt;
+        &lt;module&gt;code-generator&lt;/module&gt;
+        &lt;module&gt;cloud-provider-payment01&lt;/module&gt;
+        &lt;module&gt;cloud-consumer-order01&lt;/module&gt;
+        &lt;module&gt;cloud-api-commons&lt;/module&gt;
+    &lt;/modules&gt; --&gt;
+
+    &lt;properties&gt;
+        &lt;maven.compiler.source&gt;17&lt;/maven.compiler.source&gt;
+        &lt;maven.compiler.target&gt;17&lt;/maven.compiler.target&gt;
+        &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+        &lt;hutool.version&gt;5.8.22&lt;/hutool.version&gt;
+        &lt;lombok.version&gt;1.18.26&lt;/lombok.version&gt;
+        &lt;druid.version&gt;1.1.20&lt;/druid.version&gt;
+        &lt;mybatis.springboot.version&gt;3.0.2&lt;/mybatis.springboot.version&gt;
+        &lt;mysql.version&gt;8.0.11&lt;/mysql.version&gt;
+        &lt;swagger3.version&gt;2.2.0&lt;/swagger3.version&gt;
+        &lt;mybatis-plus.version&gt;3.5.7&lt;/mybatis-plus.version&gt;
+        &lt;fastjson2.version&gt;2.0.40&lt;/fastjson2.version&gt;
+        &lt;persistence-api.version&gt;1.0.2&lt;/persistence-api.version&gt;
+        &lt;spring.boot.test.version&gt;3.1.5&lt;/spring.boot.test.version&gt;
+        &lt;spring.boot.version&gt;3.2.0&lt;/spring.boot.version&gt;
+        &lt;spring.cloud.version&gt;2023.0.0&lt;/spring.cloud.version&gt;
+        &lt;spring.cloud.alibaba.version&gt;2022.0.0.0&lt;/spring.cloud.alibaba.version&gt;
+    &lt;/properties&gt;
+
+    &lt;dependencyManagement&gt;
+        &lt;dependencies&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+                &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
+                &lt;version&gt;${spring.boot.version}&lt;/version&gt;
+                &lt;type&gt;pom&lt;/type&gt;
+                &lt;scope&gt;import&lt;/scope&gt;
+            &lt;/dependency&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+                &lt;artifactId&gt;spring-cloud-dependencies&lt;/artifactId&gt;
+                &lt;version&gt;${spring.cloud.version}&lt;/version&gt;
+                &lt;type&gt;pom&lt;/type&gt;
+                &lt;scope&gt;import&lt;/scope&gt;
+            &lt;/dependency&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;com.alibaba.cloud&lt;/groupId&gt;
+                &lt;artifactId&gt;spring-cloud-alibaba-dependencies&lt;/artifactId&gt;
+                &lt;version&gt;${spring.cloud.alibaba.version}&lt;/version&gt;
+                &lt;type&gt;pom&lt;/type&gt;
+                &lt;scope&gt;import&lt;/scope&gt;
+            &lt;/dependency&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;com.baomidou&lt;/groupId&gt;
+                &lt;artifactId&gt;mybatis-plus-spring-boot3-starter&lt;/artifactId&gt;
+                &lt;version&gt;${mybatis-plus.version}&lt;/version&gt;
+            &lt;/dependency&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;mysql&lt;/groupId&gt;
+                &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+                &lt;version&gt;${mysql.version}&lt;/version&gt;
+            &lt;/dependency&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
+                &lt;artifactId&gt;druid-spring-boot-starter&lt;/artifactId&gt;
+                &lt;version&gt;${druid.version}&lt;/version&gt;
+            &lt;/dependency&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;com.alibaba.fastjson2&lt;/groupId&gt;
+                &lt;artifactId&gt;fastjson2&lt;/artifactId&gt;
+                &lt;version&gt;${fastjson2.version}&lt;/version&gt;
+            &lt;/dependency&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;org.springdoc&lt;/groupId&gt;
+                &lt;artifactId&gt;springdoc-openapi-starter-webmvc-ui&lt;/artifactId&gt;
+                &lt;version&gt;${swagger3.version}&lt;/version&gt;
+            &lt;/dependency&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;cn.hutool&lt;/groupId&gt;
+                &lt;artifactId&gt;hutool-all&lt;/artifactId&gt;
+                &lt;version&gt;${hutool.version}&lt;/version&gt;
+            &lt;/dependency&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;
+                &lt;artifactId&gt;lombok&lt;/artifactId&gt;
+                &lt;version&gt;${lombok.version}&lt;/version&gt;
+                &lt;optional&gt;true&lt;/optional&gt;
+            &lt;/dependency&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+                &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
+                &lt;version&gt;${spring.boot.test.version}&lt;/version&gt;
+                &lt;scope&gt;test&lt;/scope&gt;
+            &lt;/dependency&gt;
+        &lt;/dependencies&gt;
+    &lt;/dependencyManagement&gt;
+
+&lt;/project&gt;
+</code></pre>
+<p><a id="submodule-code-generator"></a></p>
+<h3 id="创建代码生成器子模块"><a class="header" href="#创建代码生成器子模块">创建代码生成器子模块</a></h3>
+<ol>
+<li>右键父模块文件夹 &gt; New &gt; Module</li>
+<li>New Module弹框和<a href="#new-project-panel">New Project</a>弹框类似，修改名称即可
+<ul>
+<li>在idea内新建模块会自动在父项目的<code>pom.xml</code>内生成子模块配置，如果没用则添加<code>modules</code>标签即可
+<a id="submodule-code-generator-pom-xml"></a></li>
+</ul>
+</li>
+<li>修改<code>pom.xml</code>文件</li>
+</ol>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;
+         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+         xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+    &lt;parent&gt;
+        &lt;groupId&gt;cn.y.demo&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-cloud-demo&lt;/artifactId&gt;
+        &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+    &lt;/parent&gt;
+
+    &lt;artifactId&gt;code-generator&lt;/artifactId&gt;
+
+    &lt;properties&gt;
+        &lt;maven.compiler.source&gt;17&lt;/maven.compiler.source&gt;
+        &lt;maven.compiler.target&gt;17&lt;/maven.compiler.target&gt;
+        &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+    &lt;/properties&gt;
+
+    &lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.baomidou&lt;/groupId&gt;
+            &lt;artifactId&gt;mybatis-plus-spring-boot3-starter&lt;/artifactId&gt;
+            &lt;version&gt;${mybatis-plus.version}&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.baomidou&lt;/groupId&gt;
+            &lt;artifactId&gt;mybatis-plus-generator&lt;/artifactId&gt;
+            &lt;version&gt;${mybatis-plus.version}&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;!-- 代码生成器模板引擎 --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.apache.velocity&lt;/groupId&gt;
+            &lt;artifactId&gt;velocity-engine-core&lt;/artifactId&gt;
+            &lt;version&gt;2.3&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;mysql&lt;/groupId&gt;
+            &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;cn.hutool&lt;/groupId&gt;
+            &lt;artifactId&gt;hutool-all&lt;/artifactId&gt;
+            &lt;version&gt;${hutool.version}&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;
+            &lt;artifactId&gt;lombok&lt;/artifactId&gt;
+            &lt;version&gt;${lombok.version}&lt;/version&gt;
+            &lt;optional&gt;true&lt;/optional&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+&lt;/project&gt;
+</code></pre>
+<p><a id="submodule-code-generator-resources-config-properties"></a>
+4. 在<strong>src/main/resources</strong>目录下添加<code>config.properties</code>文件</p>
+<pre><code class="language-properties">package.name=cn.y.demo
+jdbc.url=jdbc:mysql://localhost:3306/clouddb?useUnicode=true&amp;characterEncoding=UTF-8&amp;nullCatalogMeansCurrent=true&amp;useSSL=false&amp;serverTimezone=GMT%2B8
+jdbc.username=用户名
+jdbc.password=密码
+</code></pre>
+<p><a id="submodule-code-generator-main-java"></a>
+5. 在<strong>src/main/java</strong>目录下新建包名<strong>cn.y.demo</strong>并添加<code>Main.java</code>文件</p>
+<pre><code class="language-java">package cn.y.demo;
+
+import cn.hutool.setting.dialect.Props;
+import cn.hutool.setting.dialect.PropsUtil;
+import cn.hutool.system.SystemUtil;
+import com.baomidou.mybatisplus.generator.FastAutoGenerator;
+import com.baomidou.mybatisplus.generator.config.OutputFile;
+
+import java.io.File;
+import java.util.Collections;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Props props = PropsUtil.get(&quot;config.properties&quot;);
+        String url = props.getStr(&quot;jdbc.url&quot;);
+        String username = props.getStr(&quot;jdbc.username&quot;);
+        String password = props.getStr(&quot;jdbc.password&quot;);
+        String packageName = props.getStr(&quot;package.name&quot;);
+
+        String projectPath = SystemUtil.get(SystemUtil.USER_DIR) + File.separator + &quot;code-generator&quot;;
+        String codeOutPath = projectPath + &quot;/src/main/java/&quot;;
+        String mapperOutPath = projectPath + &quot;/src/main/resources/mapper&quot;;
+
+        String[] tableNames = new String[]{&quot;t_pay&quot;};
+
+
+
+        FastAutoGenerator.create(url, username, password)
+                .globalConfig(builder -&gt; {
+                    builder.author(&quot;yf&quot;) // 设置作者
+                            .disableOpenDir() // 禁止生成代码后打开文件夹
+                            // .enableSwagger()
+                            .enableSpringdoc()
+                            .outputDir(codeOutPath); // 指定输出目录
+                })
+                .packageConfig(builder -&gt; {
+                    builder.parent(packageName) // 设置父包名
+                            .pathInfo(Collections.singletonMap(OutputFile.xml, mapperOutPath)); // 设置mapperXml生成路径
+                })
+                .strategyConfig(builder -&gt; {
+                    builder.addInclude(tableNames) // 设置需要生成的表名
+                            .addTablePrefix(&quot;t_&quot;, &quot;r_&quot;) // 设置过滤表前缀
+                            // 设置生成实体类时的属性
+                            .entityBuilder()
+                            .disableSerialVersionUID()
+                            .enableChainModel()
+                            // .superClass(BasEntity.class)
+                            // .addSuperEntityColumns(&quot;id&quot;, &quot;creator_id&quot;, &quot;create_time&quot;, &quot;updator_id&quot;, &quot;update_time&quot;, &quot;del&quot;)
+                            // .addIgnoreColumns(&quot;id&quot;, &quot;creator_id&quot;, &quot;create_time&quot;, &quot;updator_id&quot;, &quot;update_time&quot;, &quot;del&quot;)
+                            .enableLombok()
+                            // 添加RestController注解
+                            .controllerBuilder()
+                            .enableRestStyle();
+                })
+                .execute();
+    }
+}
+</code></pre>
+<p><a id="submodule-cloud-api-commons"></a></p>
+<h3 id="创建通用api子模块"><a class="header" href="#创建通用api子模块">创建通用API子模块</a></h3>
+<ol>
+<li>右键父模块文件夹 &gt; New &gt; Module</li>
+<li>New Module弹框和<a href="#new-project-panel">New Project</a>弹框类似，修改名称即可
+<a id="submodule-cloud-api-commons-pom-xml"></a></li>
+<li>修改<code>pom.xml</code>文件</li>
+</ol>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;
+         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+         xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+    &lt;parent&gt;
+        &lt;groupId&gt;cn.y.demo&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-cloud-demo&lt;/artifactId&gt;
+        &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+    &lt;/parent&gt;
+
+    &lt;artifactId&gt;cloud-api-commons&lt;/artifactId&gt;
+
+    &lt;properties&gt;
+        &lt;maven.compiler.source&gt;17&lt;/maven.compiler.source&gt;
+        &lt;maven.compiler.target&gt;17&lt;/maven.compiler.target&gt;
+        &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+    &lt;/properties&gt;
+
+    &lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-actuator&lt;/artifactId&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;cn.hutool&lt;/groupId&gt;
+            &lt;artifactId&gt;hutool-all&lt;/artifactId&gt;
+            &lt;version&gt;${hutool.version}&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;
+            &lt;artifactId&gt;lombok&lt;/artifactId&gt;
+            &lt;version&gt;${lombok.version}&lt;/version&gt;
+            &lt;optional&gt;true&lt;/optional&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+
+&lt;/project&gt;
+</code></pre>
+<ol start="4">
+<li>在<strong>src/main/java</strong>目录下新建包名<strong>cn.y.demo</strong></li>
+<li>在<strong>cn.y.demo</strong>目录下新建<strong>resp</strong>文件夹并添加<code>ResultData.java</code>文件和<code>ReturnCodeEnum.java</code>文件</li>
+</ol>
+<p><a id="submodule-cloud-api-commons-result-data"></a>
+<strong>ResultData.java</strong></p>
+<pre><code class="language-java">package cn.y.demo.resp;
+
+import lombok.Data;
+import lombok.experimental.Accessors;
+
+@Data
+@Accessors(chain = true)
+public class ResultData&lt;T&gt; {
+
+    private String code;
+
+    private String message;
+
+    private T data;
+
+    private long timestamp;
+
+    public ResultData() {
+        this.timestamp = System.currentTimeMillis();
+    }
+
+    public static &lt;T&gt; ResultData&lt;T&gt; success(T data) {
+        return new ResultData&lt;T&gt;()
+                .setCode(ReturnCodeEnum.RC200.getCode())
+                .setMessage(ReturnCodeEnum.RC200.getMessage())
+                .setData(data);
+    }
+
+    public static &lt;T&gt; ResultData&lt;T&gt; fail(String code, String message) {
+        return new ResultData&lt;T&gt;()
+                .setCode(code)
+                .setMessage(message)
+                .setData(null);
+    }
+
+}
+</code></pre>
+<p><a id="submodule-cloud-api-commons-return-code-enum"></a>
+<strong>ReturnCodeEnum.java</strong></p>
+<pre><code class="language-java">package cn.y.demo.resp;
+
+import lombok.Getter;
+
+import java.util.stream.Stream;
+
+@Getter
+public enum ReturnCodeEnum {
+
+    RC999(&quot;999&quot;, &quot;操作失败&quot;),
+    RC200(&quot;200&quot;, &quot;操作成功&quot;),
+    RC400(&quot;400&quot;, &quot;请求错误&quot;),
+    RC500(&quot;500&quot;, &quot;服务员异常&quot;);
+
+
+    private String code;
+
+    private String message;
+
+    ReturnCodeEnum(String code, String message) {
+        this.code = code;
+        this.message = message;
+    }
+
+    public static ReturnCodeEnum getReturnCodeEnum(String code){
+        return Stream.of(values()).filter(v -&gt; v.getCode().equals(code)).findFirst().orElse(null);
+    }
+}
+</code></pre>
+<p><a id="submodule-cloud-api-commons-global-exception-handler"></a>
+6. 在<strong>cn.y.demo</strong>目录下新建<strong>exceptions</strong>文件夹并添加<code>GlobalExceptionHandler.java</code>文件</p>
+<pre><code class="language-java">package cn.y.demo.exceptions;
+
+import cn.y.demo.resp.ResultData;
+import cn.y.demo.resp.ReturnCodeEnum;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+@Slf4j
+@RestControllerAdvice
+public class GlobalExceptionHandler {
+
+    @ExceptionHandler(RuntimeException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ResultData&lt;String&gt; exception(Exception e){
+        log.error(&quot;全局异常信息{}&quot;, e.getMessage(), e);
+        return ResultData.fail(ReturnCodeEnum.RC500.getCode(), e.getMessage());
+    }
+}
+</code></pre>
+<p><a id="submodule-cloud-provider-payment"></a></p>
+<h3 id="创建微服务子模块"><a class="header" href="#创建微服务子模块">创建微服务子模块</a></h3>
+<ol>
+<li>右键父模块文件夹 &gt; New &gt; Module</li>
+<li>New Module弹框和<a href="#new-project-panel">New Project</a>弹框类似，修改名称即可
+<a id="submodule-cloud-provider-payment-pom-xml"></a></li>
+<li>修改<code>pom.xml</code>文件</li>
+</ol>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;
+         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+         xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+    &lt;parent&gt;
+        &lt;groupId&gt;cn.y.demo&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-cloud-demo&lt;/artifactId&gt;
+        &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+    &lt;/parent&gt;
+
+    &lt;artifactId&gt;cloud-provider-payment01&lt;/artifactId&gt;
+
+    &lt;properties&gt;
+        &lt;maven.compiler.source&gt;21&lt;/maven.compiler.source&gt;
+        &lt;maven.compiler.target&gt;21&lt;/maven.compiler.target&gt;
+        &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+    &lt;/properties&gt;
+
+    &lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-actuator&lt;/artifactId&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
+            &lt;artifactId&gt;druid-spring-boot-starter&lt;/artifactId&gt;
+            &lt;version&gt;${druid.version}&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springdoc&lt;/groupId&gt;
+            &lt;artifactId&gt;springdoc-openapi-starter-webmvc-ui&lt;/artifactId&gt;
+            &lt;version&gt;${swagger3.version}&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.baomidou&lt;/groupId&gt;
+            &lt;artifactId&gt;mybatis-plus-spring-boot3-starter&lt;/artifactId&gt;
+            &lt;version&gt;${mybatis-plus.version}&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;mysql&lt;/groupId&gt;
+            &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+            &lt;version&gt;${mysql.version}&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.alibaba.fastjson2&lt;/groupId&gt;
+            &lt;artifactId&gt;fastjson2&lt;/artifactId&gt;
+            &lt;version&gt;${fastjson2.version}&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;cn.hutool&lt;/groupId&gt;
+            &lt;artifactId&gt;hutool-all&lt;/artifactId&gt;
+            &lt;version&gt;${hutool.version}&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;
+            &lt;artifactId&gt;lombok&lt;/artifactId&gt;
+            &lt;version&gt;${lombok.version}&lt;/version&gt;
+            &lt;optional&gt;true&lt;/optional&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
+            &lt;version&gt;${spring.boot.test.version}&lt;/version&gt;
+            &lt;scope&gt;test&lt;/scope&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;cn.y.demo&lt;/groupId&gt;
+            &lt;artifactId&gt;cloud-api-commons&lt;/artifactId&gt;
+            &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+
+
+    &lt;build&gt;
+        &lt;plugins&gt;
+            &lt;plugin&gt;
+                &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+                &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;
+            &lt;/plugin&gt;
+        &lt;/plugins&gt;
+    &lt;/build&gt;
+
+&lt;/project&gt;
+</code></pre>
+<p><a id="submodule-cloud-provider-payment-resources-application-yaml"></a>
+4. 添加<code>application.yaml</code>文件</p>
+<pre><code class="language-yaml">server:
+  port: 8001
+spring:
+  application:
+    name: cloud-payment-service
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/clouddb?useUnicode=true&amp;characterEncoding=UTF-8&amp;nullCatalogMeansCurrent=true&amp;useSSL=false&amp;serverTimezone=GMT%2B8
+    username: 用户名
+    password: 密码
+
+mybatis-plus:
+  type-aliases-package: cn.y.demo.entity
+  configuration:
+    map-underscore-to-camel-case: true
+</code></pre>
+<p><a id="submodule-cloud-provider-payment-provider-payment"></a>
+5. 在<strong>src/main/java</strong>目录下新建包名<strong>cn.y.demo</strong>并添加<code>ProviderPayment.java</code>文件</p>
+<pre><code class="language-java">package cn.y.demo;
+
+import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+@MapperScan(&quot;cn.y.demo.mapper&quot;)
+public class ProviderPayment {
+    public static void main(String[] args) {
+        SpringApplication.run(ProviderPayment.class, args);
+    }
+}
+</code></pre>
+<ol start="6">
+<li>最后使用<a href="#submodule-code-generator">code-generator</a>生成表结构代码放进项目内即可</li>
+</ol>
+<h2 id="consul服务注册与发现"><a class="header" href="#consul服务注册与发现">Consul(服务注册与发现)</a></h2>
+<ul>
+<li>服务发现，分布式配置管理</li>
+</ul>
+<h3 id="安装"><a class="header" href="#安装">安装</a></h3>
+<blockquote>
+<p>以windows下安装为例</p>
+</blockquote>
+<ul>
+<li><a href="https://developer.hashicorp.com/consul/install#windows">官网下载</a> </li>
+<li>使用<code>scoop</code>包管理器直接安装：<code>scoop install consul</code></li>
+</ul>
+<h3 id="使用"><a class="header" href="#使用">使用</a></h3>
+<ul>
+<li>运行<code>consul agent -dev</code></li>
+<li>打开Consul首页：<strong>http://localhost:8500</strong></li>
+</ul>
+<h4 id="配置微服务模块加入consul"><a class="header" href="#配置微服务模块加入consul">配置微服务模块加入Consul</a></h4>
+<ol>
+<li>添加<code>pom.xml</code>内依赖</li>
+</ol>
+<pre><code class="language-xml">&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-cloud-starter-consul-discovery&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre>
+<ol start="2">
+<li>添加<code>application.yaml</code>配置</li>
+</ol>
+<pre><code class="language-yaml">spring:
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery: # 开启端口
+        heartbeat:
+          enabled: true
+</code></pre>
+<ol start="3">
+<li>主启动内添加<code>@EnableDiscoveryClient</code></li>
+</ol>
+<pre><code class="language-java">@EnableDiscoveryClient
+@SpringBootApplication
+@MapperScan(&quot;cn.y.demo.mapper&quot;)
+public class ProviderPayment01 {
+    public static void main(String[] args) {
+        SpringApplication.run(ProviderPayment01.class, args);
+    }
+}
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../../java/framework/spring-security/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../../java/framework/shiro/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../../java/framework/spring-security/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../../java/framework/shiro/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../../elasticlunr.min.js"></script>
+        <script src="../../../mark.min.js"></script>
+        <script src="../../../searcher.js"></script>
+
+        <script src="../../../clipboard.min.js"></script>
+        <script src="../../../highlight.js"></script>
+        <script src="../../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../../../mermaid.min.js"></script>
+        <script src="../../../mermaid-init.js"></script>
+
+
+    </div>
+    </body>
+</html>

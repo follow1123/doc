@@ -1,0 +1,1144 @@
+<!DOCTYPE HTML>
+<html lang="zh" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>常用类 - 文档</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../custom.css">
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../linux/index.html"><strong aria-hidden="true">1.</strong> Linux</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../linux/basics.html"><strong aria-hidden="true">1.1.</strong> 基础</a></li><li class="chapter-item expanded "><a href="../linux/commands.html"><strong aria-hidden="true">1.2.</strong> 常用命令</a></li><li class="chapter-item expanded "><a href="../linux/desktop-environment.html"><strong aria-hidden="true">1.3.</strong> 桌面环境</a></li><li class="chapter-item expanded "><a href="../linux/systemd.html"><strong aria-hidden="true">1.4.</strong> Systemd</a></li><li class="chapter-item expanded "><a href="../linux/troubleshooting.html"><strong aria-hidden="true">1.5.</strong> 常见问题</a></li></ol></li><li class="chapter-item expanded "><a href="../windows/index.html"><strong aria-hidden="true">2.</strong> Windows</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../windows/command-prompt.html"><strong aria-hidden="true">2.1.</strong> Command Prompt</a></li><li class="chapter-item expanded "><a href="../windows/wsl2.html"><strong aria-hidden="true">2.2.</strong> wsl2</a></li></ol></li><li class="chapter-item expanded "><a href="../software-services-tools/index.html"><strong aria-hidden="true">3.</strong> 软件/服务/工具</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../software-services-tools/git/index.html"><strong aria-hidden="true">3.1.</strong> Git</a></li><li class="chapter-item expanded "><a href="../software-services-tools/vim-neovim/index.html"><strong aria-hidden="true">3.2.</strong> Vim/Neovim</a></li><li class="chapter-item expanded "><a href="../software-services-tools/nginx/index.html"><strong aria-hidden="true">3.3.</strong> Nginx</a></li><li class="chapter-item expanded "><a href="../software-services-tools/vsftp/index.html"><strong aria-hidden="true">3.4.</strong> Vsftp</a></li><li class="chapter-item expanded "><a href="../software-services-tools/docker/index.html"><strong aria-hidden="true">3.5.</strong> Docker</a></li><li class="chapter-item expanded "><a href="../software-services-tools/mysql/index.html"><strong aria-hidden="true">3.6.</strong> Mysql</a></li><li class="chapter-item expanded "><a href="../software-services-tools/redis/index.html"><strong aria-hidden="true">3.7.</strong> Redis</a></li></ol></li><li class="chapter-item expanded "><a href="../java/index.html"><strong aria-hidden="true">4.</strong> Java</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../java/basics.html"><strong aria-hidden="true">4.1.</strong> 基础</a></li><li class="chapter-item expanded "><a href="../java/multithreading.html"><strong aria-hidden="true">4.2.</strong> 多线程</a></li><li class="chapter-item expanded "><a href="../java/apis.html" class="active"><strong aria-hidden="true">4.3.</strong> 常用类</a></li><li class="chapter-item expanded "><a href="../java/collection.html"><strong aria-hidden="true">4.4.</strong> 集合框架</a></li><li class="chapter-item expanded "><a href="../java/version-features.html"><strong aria-hidden="true">4.5.</strong> 各版本特性</a></li><li class="chapter-item expanded "><a href="../java/JVM.html"><strong aria-hidden="true">4.6.</strong> JVM</a></li><li class="chapter-item expanded "><a href="../java/build-tools/index.html"><strong aria-hidden="true">4.7.</strong> 构建工具</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../java/build-tools/maven/index.html"><strong aria-hidden="true">4.7.1.</strong> Maven</a></li><li class="chapter-item expanded "><a href="../java/build-tools/gradle/index.html"><strong aria-hidden="true">4.7.2.</strong> Gradle</a></li></ol></li><li class="chapter-item expanded "><a href="../java/framework/index.html"><strong aria-hidden="true">4.8.</strong> 框架</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../java/framework/spring/index.html"><strong aria-hidden="true">4.8.1.</strong> Spring</a></li><li class="chapter-item expanded "><a href="../java/framework/spring-mvc/index.html"><strong aria-hidden="true">4.8.2.</strong> Spring MVC</a></li><li class="chapter-item expanded "><a href="../java/framework/mybatis/index.html"><strong aria-hidden="true">4.8.3.</strong> Mybatis</a></li><li class="chapter-item expanded "><a href="../java/framework/spring-security/index.html"><strong aria-hidden="true">4.8.4.</strong> Spring Security</a></li><li class="chapter-item expanded "><a href="../java/framework/spring-cloud/index.html"><strong aria-hidden="true">4.8.5.</strong> Spring Cloud</a></li><li class="chapter-item expanded "><a href="../java/framework/shiro/index.html"><strong aria-hidden="true">4.8.6.</strong> Shiro</a></li><li class="chapter-item expanded "><a href="../java/framework/rabbitmq/index.html"><strong aria-hidden="true">4.8.7.</strong> RabbitMQ</a></li><li class="chapter-item expanded "><a href="../java/framework/netty/index.html"><strong aria-hidden="true">4.8.8.</strong> Netty</a></li></ol></li><li class="chapter-item expanded "><a href="../java/troubleshooting.html"><strong aria-hidden="true">4.9.</strong> 常见问题</a></li></ol></li><li class="chapter-item expanded "><a href="../frontend/index.html"><strong aria-hidden="true">5.</strong> 前端</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../frontend/html.html"><strong aria-hidden="true">5.1.</strong> HTML</a></li><li class="chapter-item expanded "><a href="../frontend/css.html"><strong aria-hidden="true">5.2.</strong> CSS</a></li><li class="chapter-item expanded "><a href="../frontend/javascript.html"><strong aria-hidden="true">5.3.</strong> JavaScript</a></li><li class="chapter-item expanded "><a href="../frontend/vue/index.html"><strong aria-hidden="true">5.4.</strong> Vue</a></li></ol></li><li class="chapter-item expanded "><a href="../design-pattern/index.html"><strong aria-hidden="true">6.</strong> 设计模式</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">文档</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="常用类"><a class="header" href="#常用类">常用类</a></h1>
+<h2 id="目录"><a class="header" href="#目录">目录</a></h2>
+<ol>
+<li><a href="#string">String</a>
+<ol>
+<li><a href="#string-table">字符串常量存储的位置</a></li>
+<li><a href="#string-immutability">String的不可变性</a></li>
+<li><a href="#string-instance">String实例化的方式</a></li>
+<li><a href="#string-concat">String的连接方式</a></li>
+<li><a href="#string-constructor-methods">String的构造器和常用方法</a>
+<ol>
+<li><a href="#string-constructor">构造器</a></li>
+<li><a href="#string-methods">方法</a></li>
+</ol>
+</li>
+<li><a href="#string-builder-buffer">StringBuilder和StringBuffer</a></li>
+</ol>
+</li>
+<li><a href="#date-time">日期时间</a>
+<ol>
+<li><a href="#date-time-before-jdk8">JDK8之前的日期时间相关类</a>
+<ol>
+<li><a href="#date-time-before-jdk8-system">System.currentTimeMillis()</a></li>
+<li><a href="#date-time-before-jdk8-util-sql-date">java.util.Date/java.sql.Date</a></li>
+<li><a href="#date-time-before-jdk8-simple-date-format">SimpleDateFormat</a></li>
+<li><a href="#date-time-before-jdk8-calendar">Calendar</a></li>
+</ol>
+</li>
+<li><a href="#date-time-jdk8">JDK8的日期时间相关类</a>
+<ol>
+<li><a href="#date-time-jdk8-local-date-time">LocalDate/LocalTime/LocalDateTime</a></li>
+<li><a href="#date-time-jdk8-instant">Instant</a></li>
+<li><a href="#date-time-jdk8-duration-period">Duration/Period</a></li>
+<li><a href="#date-time-jdk8-date-time-formatter">DateTimeFormatter</a></li>
+<li><a href="#date-time-jdk8-old-new-api">和旧日期时间api之间的相互转换</a></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><a href="#compare">比较器</a>
+<ol>
+<li><a href="#compare-comparable">Comparable接口</a></li>
+<li><a href="#compare-comparator">Comparator</a></li>
+</ol>
+</li>
+<li><a href="#others">其他常用类</a>
+<ol>
+<li><a href="#others-system">System</a></li>
+<li><a href="#others-runtime">Runtime</a></li>
+<li><a href="#others-math">Math</a></li>
+<li><a href="#others-math-package">java.math包</a>
+<ol>
+<li><a href="#others-math-package-biginteger">BigInteger</a></li>
+<li><a href="#others-math-package-bigdecimal">BigDecimal</a></li>
+</ol>
+</li>
+<li><a href="#others-ramdom">Random</a></li>
+</ol>
+</li>
+</ol>
+<p><a id="string"></a></p>
+<h2 id="string"><a class="header" href="#string">String</a></h2>
+<ul>
+<li>使用<code>final</code>修饰，不可被继承</li>
+<li>实现<code>Serializable</code>可序列化接口，表示可以通过网络或本地进行数据传输</li>
+<li>实现<code>Comparable</code>接口，表示可以和其他对象比较大小</li>
+<li>jdk8使用<code>char</code>类型数组表示数据</li>
+<li>jdk9开始使用<code>byte</code>类型数组表示数据</li>
+</ul>
+<p><a id="string-table"></a></p>
+<h3 id="字符串常量存储的位置"><a class="header" href="#字符串常量存储的位置">字符串常量存储的位置</a></h3>
+<ul>
+<li>字符串常量都存储在字符串常量池（StringTable）中</li>
+<li>字符串常量池不允许存放两个相同的字符串常量</li>
+<li>在不同的jdk版本中，字符串常量池存放的位置不同
+<ul>
+<li>jdk7之前：存放在方法区</li>
+<li>jdk7及之后：存放在堆空间，由于方法区内GC不频繁，所以放在堆空间</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-java">String s1 = &quot;hello&quot;; // 使用字面量声明
+String s2 = &quot;hello&quot;;
+
+System.out.println(s1 == s2); // true
+</code></pre>
+<p><a id="string-immutability"></a></p>
+<h3 id="string的不可变性"><a class="header" href="#string的不可变性">String的不可变性</a></h3>
+<ul>
+<li>当对字符串变量重新赋值时，需要重新指定一个字符串常量的位置进行赋值，不能在原有的位置修改</li>
+<li>当对字符串进行拼接或替换操作时，需要开辟空间保存修改后的字符串，不能在原有的位置修改</li>
+</ul>
+<pre><code class="language-java">@Test
+public void testImmutable1() {
+    String s1 = &quot;hello&quot;;
+    String s2 = &quot;hello&quot;;
+    s2 = &quot;a&quot;;
+
+    System.out.println(s1); // hello
+}
+
+@Test
+public void testImmutable2() {
+    String s1 = &quot;hello&quot;;
+    String s2 = &quot;hello&quot;;
+    s2 += &quot;world&quot;;
+
+    System.out.println(s1); // hello
+}
+
+@Test
+public void testImmutable3() {
+    String s1 = &quot;hello&quot;;
+    String s2 = &quot;hello&quot;;
+    String s3 = s1.replace(&quot;l&quot;, &quot;w&quot;);
+
+
+    System.out.println(s1); // hello
+    System.out.println(s2); // hello
+    System.out.println(s3); // hewwo
+}
+</code></pre>
+<p><a id="string-instance"></a></p>
+<h3 id="string实例化的方式"><a class="header" href="#string实例化的方式">String实例化的方式</a></h3>
+<pre><code class="language-java">String s1 = &quot;hello&quot;;
+String s2 = new String(&quot;hello&quot;);
+</code></pre>
+<ul>
+<li>如果使用字面量声明，只会在创建一个对象</li>
+<li>如果使用new声明，则会创建两个对象，一个是存在堆空间，一个在字符串常量池内</li>
+</ul>
+<pre><code class="language-java">String s1 = &quot;hello&quot;;
+String s2 = &quot;hello&quot;;
+String s3 = new String(&quot;hello&quot;);
+String s4 = new String(&quot;hello&quot;);
+
+System.out.println(s1 == s2); // true
+System.out.println(s1 == s3); // false
+System.out.println(s1 == s4); // false
+System.out.println(s3 == s4); // false
+
+System.out.println(s1.equals(s3)); // true
+</code></pre>
+<p><a id="string-concat"></a></p>
+<h3 id="string的连接方式"><a class="header" href="#string的连接方式">String的连接方式</a></h3>
+<ul>
+<li>String通过<code>+</code>与其他字符串进行连接
+<ul>
+<li>常量 + 常量：结果还是在字符串常量池中</li>
+<li>常量 + 变量或变量 + 变量：会通过new方式新建一个字符串</li>
+</ul>
+</li>
+<li>调用字符串的<code>intern()</code>方法可以获取当前字符串在字符串常量池内的地址</li>
+<li>调用字符串的<code>concat()</code>方法拼接字符串，会直接创建一个新对象</li>
+</ul>
+<pre><code class="language-language">String s1 = &quot;hello&quot;;
+String s2 = &quot;world&quot;;
+
+String s3 = &quot;helloworld&quot;;
+String s4 = &quot;hello&quot; + &quot;world&quot;;
+String s5 = s1 + &quot;world&quot;;
+String s6 = &quot;hello&quot; + s2;
+String s7 = s1 + s2;
+
+System.out.println(s3 == s4); // true
+System.out.println(s3 == s5); // false
+System.out.println(s3 == s6); // false
+System.out.println(s3 == s7); // false
+System.out.println(s5 == s6); // false
+System.out.println(s5 == s7); // false
+
+String s8 = s5.intern(); // intern方法返回字符串常量池内的字面量值
+System.out.println(s3 == s8); // true
+
+String s9 = s1.concat(s2);
+System.out.println(s3 == s9); // false
+</code></pre>
+<p><a id="string-constructor-methods"></a></p>
+<h3 id="string的构造器和常用方法"><a class="header" href="#string的构造器和常用方法">String的构造器和常用方法</a></h3>
+<p><a id="string-constructor"></a></p>
+<h4 id="构造器"><a class="header" href="#构造器">构造器</a></h4>
+<ul>
+<li>在utf-8字符集中，一个汉字占用3个字节，一个字母占用1个字节</li>
+<li>在gbk字符集中，一个汉字占用2个字节，一个字母占用1个字节</li>
+<li>将String转换成byte或char数组的过程叫编码</li>
+<li>将byte或char数组转换成String的过程叫解码</li>
+<li>解码时的字符集必须可编码时的字符集一致，否则会乱码</li>
+</ul>
+<pre><code class="language-java">System.out.println(&quot;字符串转charArray，再还原成字符串&quot;);
+// 获取字符串内的char数组
+String s1 = &quot;hello&quot;;
+char[] charArray = s1.toCharArray();
+for (int i = 0; i &lt; charArray.length; i++) {
+    System.out.println(charArray[i]);
+}
+String s2 = new String(charArray);
+System.out.println(s2);
+
+System.out.println(&quot;字符串转byteArray，再还原成字符串&quot;);
+// 获取字符串内的byte数组
+String s3 = &quot;abc测试&quot;;
+
+System.out.println(&quot;使用默认utf-8编码&quot;);
+byte[] bytes = s3.getBytes();
+for (int i = 0; i &lt; bytes.length; i++) {
+    System.out.println(bytes[i]);
+}
+
+System.out.println(&quot;使用gbk编码&quot;);
+// 获取字符串内的byte数组
+byte[] gbkBytes = s3.getBytes(Charset.forName(&quot;gbk&quot;));
+for (int i = 0; i &lt; gbkBytes.length; i++) {
+    System.out.println(gbkBytes[i]);
+}
+
+System.out.println(&quot;使用gbk解码&quot;);
+// 解码
+System.out.println(new String(gbkBytes, Charset.forName(&quot;gbk&quot;)));
+</code></pre>
+<p><a id="string-methods"></a></p>
+<h4 id="方法"><a class="header" href="#方法">方法</a></h4>
+<pre><code class="language-java">// 是否为空字符串
+String s1 = new String();
+System.out.println(s1.isEmpty()); // true
+
+// 获取字符串长度
+String s2 = &quot;hello&quot;;
+System.out.println(s2.length()); // 5
+
+// 拼接字符串
+System.out.println(s2.concat(&quot; world&quot;)); // hello world
+
+String s3 = &quot;Hello&quot;;
+
+// 判断两个字符串是否相同，忽略大小写进行比较
+System.out.println(s2.equals(s3)); // false
+System.out.println(s2.equalsIgnoreCase(s3)); // true
+
+// 比较字符串大小，忽略大小写进行比较
+String s4 = &quot;abc&quot;;
+String s5 = &quot;def&quot;;
+String s6 = &quot;aBc&quot;;
+/*
+abc和def
+先比较第一位
+a 的ASCII码是97
+d 的ASCII码是100
+97 - 100 = -3
+ */
+System.out.println(s4.compareTo(s5)); // -3
+/*
+abc和aBc
+先比较第一位，两个一样
+比较第二个
+b 98
+B 66
+98 - 66 = 32
+ */
+System.out.println(s4.compareTo(s6)); // 32
+System.out.println(s4.compareToIgnoreCase(s6)); // 0
+
+// 大小写转换
+String s7 = &quot;ABC&quot;;
+String s8 = s7.toLowerCase();
+System.out.println(s8); // abc
+String s9 = s8.toUpperCase();
+System.out.println(s9); // ABC
+
+// 去除前后空格
+String s10 = &quot;  abc &quot;;
+System.out.println(s10.length()); // 6
+System.out.println(s10.trim().length()); // 3
+
+// 获取常量池内的共享值
+String s11 = &quot;aaa&quot;;
+String s12 = new String(&quot;aaa&quot;);
+System.out.println(s11 == s12); // false
+System.out.println(s11 == s12.intern()); // true
+
+// 当前字符串是否包含某个字符串
+String s13 = &quot;abcdef&quot;;
+System.out.println(s13.contains(&quot;de&quot;)); // true
+
+// 在当前字符串中查找某个字符串，如果有则返回第一个匹配的下标
+System.out.println(s13.indexOf(&quot;b&quot;)); // 1
+System.out.println(s13.indexOf(&quot;b&quot;, 2)); // -1
+
+// 和上面一样，只不过查找的方向相反
+System.out.println(s13.lastIndexOf(&quot;e&quot;)); // 4
+System.out.println(s13.lastIndexOf(&quot;e&quot;, 3)); // -1
+
+// 截取字符串，包含起始下标，不包含结束下标
+String s14 = &quot;hello world!&quot;;
+System.out.println(s14.substring(6)); // world!
+System.out.println(s14.substring(4, 7)); // o w
+
+// 获取指定下标的字符
+String s15 = &quot;helloworld&quot;;
+System.out.println(s15.charAt(3)); // l
+
+// 将charArray转换为字符串，valueOf和copyValueOf底层实现是一样的
+char[] chars1 = {'h', 'e', 'l', 'l', 'o'};
+String s16 = String.valueOf(chars1, 0, 3);
+System.out.println(s16); // hel
+String s17 = String.copyValueOf(chars1);
+System.out.println(s17); // hello
+
+// 判断字符串是否以某个字符串开头或结尾
+String s18 = &quot;abc&quot;;
+System.out.println(s18.startsWith(&quot;a&quot;)); // true
+System.out.println(s18.endsWith(&quot;a&quot;)); // false
+
+// 替换字符串
+String s19 = &quot;hello world&quot;;
+System.out.println(s19.replace('o', 'e')); // helle world
+System.out.println(s19.replace(&quot;ll&quot;, &quot;&quot;)); // heo world
+System.out.println(s19.replaceAll(&quot;o&quot;, &quot;1&quot;)); // hell1 w1rld
+</code></pre>
+<p><a id="string-builder-buffer"></a></p>
+<h3 id="stringbuilder和stringbuffer"><a class="header" href="#stringbuilder和stringbuffer">StringBuilder和StringBuffer</a></h3>
+<ul>
+<li>StringBuffer：可变字符序列，线程安全（jdk1）</li>
+<li>StringBuilder：可变字符序列（jdk5）</li>
+<li>jdk9及之后这两个类的value属性也从charArray改为了byteArray</li>
+<li>这两个类的父类是AbstractStringBuilder，父类里定义具体操作的数据</li>
+<li>默认初始化大小是16，如果初始化时指定字符串，则初始化大小为指定的字符串长度+16</li>
+<li>在添加时如果数据满了，则需要进行扩容操作，扩容为原来数组长度的2倍+2</li>
+<li>执行效率：StringBuilder &gt; StringBuffer &gt; String</li>
+<li>StringBuffer和StringBuilder在<code>append(null)</code>时，会添加null字符串</li>
+</ul>
+<pre><code class="language-java">StringBuilder sb = new StringBuilder(&quot;aaa&quot;);
+// 添加
+sb.append(&quot;bbb&quot;).append(&quot;ccc&quot;).append(&quot;ddd&quot;);
+System.out.println(sb); // aaabbbcccddd
+
+// 删除
+sb.delete(3, 5);
+System.out.println(sb); // aaabcccddd
+sb.deleteCharAt(3); // aaacccddd
+System.out.println(sb);
+
+// 修改
+sb.replace(3, 5, &quot;bb&quot;);
+System.out.println(sb); // aaabbcddd
+sb.setCharAt(5, 'b');
+System.out.println(sb); // aaabbbddd
+
+// 查询
+System.out.println(sb.charAt(4)); // b
+
+// 插入
+sb.insert(6, &quot;ccc&quot;);
+System.out.println(sb); // aaabbbcccddd
+
+// 长度
+System.out.println(sb.length()); // 12
+
+// 翻转
+sb.reverse();
+System.out.println(sb); // dddcccbbbaaa
+
+// 修改长度，后面的所有数据用0填充
+sb.setLength(3);
+System.out.println(sb); // ddd
+</code></pre>
+<hr />
+<p><a id="date-time"></a></p>
+<h2 id="日期时间"><a class="header" href="#日期时间">日期时间</a></h2>
+<ul>
+<li>计算机时间的主要时间标准有
+<ul>
+<li>UTC(Coordinated Universal Time)</li>
+<li>GMT(Greenwich Mean Time)</li>
+<li>CST(Central Standard Time)</li>
+</ul>
+</li>
+<li>UTC和GMT相差不大，可以认为是一样的</li>
+<li>CST在不同的位置有不同的含义
+<ul>
+<li>中国标准时间（China Standard Time）：即北京时间，UTC+8</li>
+<li>中央标准时间（Central Standard Time）：主要用于美国和加拿大的中部地区，UTC-6</li>
+</ul>
+</li>
+</ul>
+<p><a id="date-time-before-jdk8"></a></p>
+<h3 id="jdk8之前的日期时间相关类"><a class="header" href="#jdk8之前的日期时间相关类">JDK8之前的日期时间相关类</a></h3>
+<p><a id="date-time-before-jdk8-system"></a></p>
+<h4 id="systemcurrenttimemillis"><a class="header" href="#systemcurrenttimemillis">System.currentTimeMillis()</a></h4>
+<pre><code class="language-java">/*
+获取当前时间对应的毫秒数，时间戳
+当前时间与1970年1月1日0时0分0秒之间的毫秒数
+ */
+long currentTimeMillis = System.currentTimeMillis();
+System.out.println(currentTimeMillis);
+</code></pre>
+<p><a id="date-time-before-jdk8-util-sql-date"></a></p>
+<h4 id="javautildatejavasqldate"><a class="header" href="#javautildatejavasqldate">java.util.Date/java.sql.Date</a></h4>
+<ul>
+<li>java.util.Date</li>
+</ul>
+<pre><code class="language-java">// 创建对象
+Date date1 = new Date();
+System.out.println(date1);
+
+// 获取时间戳
+long time = date1.getTime();
+System.out.println(time);
+
+// 基于时间戳创建对象
+Date date2 = new Date(1727334456255L);
+System.out.println(date2);
+</code></pre>
+<ul>
+<li>java.sql.Date
+<ul>
+<li>java.sql.Date是java.util.Date的子类</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-java">// 创建对象
+java.sql.Date date = new java.sql.Date(1727334456255L);
+
+// 打印时默认只显示年月日，方便数据库存储
+System.out.println(date);
+</code></pre>
+<ul>
+<li>两者相互转换</li>
+</ul>
+<pre><code class="language-java">// java.util.Date转java.sql.Date
+Date utilDate = new Date();
+java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+
+// java.sql.Date转java.util.Date
+Date date = new Date(sqlDate.getTime());
+</code></pre>
+<p><a id="date-time-before-jdk8-simple-date-format"></a></p>
+<h4 id="simpledateformat"><a class="header" href="#simpledateformat">SimpleDateFormat</a></h4>
+<ul>
+<li>用于日期格式化和解析
+<ul>
+<li>格式化：日期 &gt; 字符串</li>
+<li>解析：字符串 &gt; 日期</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-java">// 格式化日期
+SimpleDateFormat sdf1 = new SimpleDateFormat();
+Date date1 = new Date();
+String dateStr1 = sdf1.format(date1);
+System.out.println(dateStr1);
+
+// 解析
+Date date2 = sdf1.parse(dateStr1);
+System.out.println(date2);
+
+
+// 指定日期格式进行格式化
+SimpleDateFormat sdf2 = new SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss&quot;);
+Date date3 = new Date();
+String dateStr2 = sdf2.format(date3);
+System.out.println(dateStr2);
+
+// 根据指定的日期格式进行解析
+Date date4 = sdf2.parse(dateStr2);
+System.out.println(date4);
+</code></pre>
+<p><a id="date-time-before-jdk8-calendar"></a></p>
+<h4 id="calendar"><a class="header" href="#calendar">Calendar</a></h4>
+<ul>
+<li>日历，对日期进行修改</li>
+</ul>
+<pre><code class="language-java">// 创建对象
+Calendar calendar = Calendar.getInstance();
+System.out.println(calendar);
+
+// 获取今天是这个月的第几天
+int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
+System.out.println(dayOfMonth);
+
+// 获取今天是这个星期的第几天
+int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
+System.out.println(dayOfWeek);
+
+// 修改今天是这个月的第几天
+calendar.set(Calendar.DAY_OF_MONTH, 11);
+System.out.println(calendar.get(Calendar.DAY_OF_MONTH));
+
+// 增加或修改今天是这个月的第几天
+calendar.add(Calendar.DAY_OF_MONTH, 1);
+System.out.println(calendar.get(Calendar.DAY_OF_MONTH));
+calendar.add(Calendar.DAY_OF_MONTH, -1);
+System.out.println(calendar.get(Calendar.DAY_OF_MONTH));
+
+// 和java.util.Date相互转换
+Date date1 = calendar.getTime();
+System.out.println(date1);
+
+Date date2 = new Date();
+calendar.setTime(date2);
+</code></pre>
+<p><a id="date-time-jdk8"></a></p>
+<h3 id="jdk8的日期时间相关类"><a class="header" href="#jdk8的日期时间相关类">JDK8的日期时间相关类</a></h3>
+<ul>
+<li>之前日期设计的问题
+<ul>
+<li>可变性：像日期和时间这样的类应该是不可变的</li>
+<li>偏移性：Date中的年份是从1900开始的，而月份都从0开始</li>
+<li>格式化：格式化只对Date有用，Calendar则不行</li>
+<li>它们也不是线程安全的，不能处理闰秒</li>
+</ul>
+</li>
+<li>java8新日期api相关包
+<ul>
+<li><code>java.time</code>：包含值对象的基础包</li>
+<li><code>java.time.chrono</code>：提供对不同的日历系统的访问</li>
+<li><code>java.time.format</code>：格式化和解析日期和时间</li>
+<li><code>java.time.temporal</code>：包括底层框架和扩展性</li>
+<li><code>java.time.zone</code>：包含时区支持的类</li>
+</ul>
+</li>
+</ul>
+<p><a id="date-time-jdk8-local-date-time"></a></p>
+<h4 id="localdatelocaltimelocaldatetime"><a class="header" href="#localdatelocaltimelocaldatetime">LocalDate/LocalTime/LocalDateTime</a></h4>
+<ul>
+<li>LocalDate：日期</li>
+<li>LocalTime：时间</li>
+<li>LocalDateTime：日期和时间</li>
+</ul>
+<pre><code class="language-java">// 创建对象
+LocalDate localDate = LocalDate.now();
+LocalTime localTime = LocalTime.now();
+LocalDateTime localDateTime = LocalDateTime.now();
+
+System.out.println(localDate);
+System.out.println(localTime);
+System.out.println(localDateTime);
+
+// 指定日期时间并创建对象
+LocalDate localDate1 = LocalDate.of(2022, 10, 11);
+LocalDateTime localDateTime1 = LocalDateTime.of(2022, 10, 11, 12, 13, 14);
+
+System.out.println(localDate1);
+System.out.println(localDateTime1);
+
+// 获取时间
+LocalDateTime localDateTime2 = LocalDateTime.now();
+
+// 获取这个月的第几天
+int dayOfMonth = localDateTime2.getDayOfMonth();
+System.out.println(dayOfMonth);
+
+// 修改这个月的第几天
+LocalDateTime localDateTime3 = localDateTime2.withDayOfMonth(1);
+System.out.println(localDateTime2);
+System.out.println(localDateTime3);
+
+// 增加或减少天数
+LocalDateTime localDateTime4 = localDateTime2.plusDays(3);
+LocalDateTime localDateTime5 = localDateTime4.minusDays(4);
+System.out.println(localDateTime4);
+System.out.println(localDateTime5);
+</code></pre>
+<p><a id="date-time-jdk8-instant"></a></p>
+<h4 id="instant"><a class="header" href="#instant">Instant</a></h4>
+<ul>
+<li>瞬时，时间戳</li>
+<li>指格林维治时间1970年01月01日00时00分00秒起至现在的总秒数</li>
+<li>和北京时间相差8小时</li>
+</ul>
+<pre><code class="language-java">// 实例化
+Instant instant1 = Instant.now();
+System.out.println(instant1);
+
+// 指定当前时区并实例化
+Instant instant2 = Instant.now(Clock.systemDefaultZone());
+System.out.println(instant2);
+
+// 获取毫秒数
+long epochMilli = instant2.toEpochMilli();
+System.out.println(epochMilli);
+</code></pre>
+<p><a id="date-time-jdk8-duration-period"></a></p>
+<h4 id="durationperiod"><a class="header" href="#durationperiod">Duration/Period</a></h4>
+<ul>
+<li>Duration：时间段</li>
+<li>Period：日期段</li>
+</ul>
+<pre><code class="language-java">// 获取两个时间段相差的秒数
+Duration duration = Duration.between(LocalTime.now(), LocalTime.now().plusHours(5));
+System.out.println(duration.getSeconds());
+
+Period period = Period.between(LocalDate.now(), LocalDate.now().minusDays(3));
+// 获取两个日期段相差的天数
+System.out.println(period.getDays());
+</code></pre>
+<p><a id="date-time-jdk8-date-time-formatter"></a></p>
+<h4 id="datetimeformatter"><a class="header" href="#datetimeformatter">DateTimeFormatter</a></h4>
+<ul>
+<li>日期时间格式化</li>
+</ul>
+<pre><code class="language-java">// 格式化
+DateTimeFormatter dtf = DateTimeFormatter.ofPattern(&quot;yyyy-MM-dd HH:mm:ss&quot;);
+String dateStr = dtf.format(LocalDateTime.now());
+System.out.println(dateStr);
+
+// 解析
+TemporalAccessor ta = dtf.parse(dateStr);
+LocalDateTime localDateTime = LocalDateTime.from(ta);
+System.out.println(localDateTime);
+</code></pre>
+<p><a id="date-time-jdk8-old-new-api"></a></p>
+<h4 id="和旧日期时间api之间的相互转换"><a class="header" href="#和旧日期时间api之间的相互转换">和旧日期时间api之间的相互转换</a></h4>
+<pre><code class="language-java">// java.time.Instant与java.util.Date
+Instant instant1 = Instant.now();
+Date date1 = Date.from(instant1);
+Instant instant2 = date1.toInstant();
+
+// java.time.Instant与java.sql.Timestamp
+Instant instant3 = Instant.now();
+Timestamp timestamp = Timestamp.from(instant3);
+Instant instant4 = timestamp.toInstant();
+
+// java.time.ZonedDateTime与java.util.GregorianCalendar
+ZonedDateTime zonedDateTime1 = ZonedDateTime.now();
+GregorianCalendar gregorianCalendar1 = GregorianCalendar.from(zonedDateTime1);
+ZonedDateTime zonedDateTime2 = gregorianCalendar1.toZonedDateTime();
+
+// java.time.LocalDate与java.sql.Date
+LocalDate localDate1 = LocalDate.now();
+java.sql.Date sqlDate1 = java.sql.Date.valueOf(localDate1);
+LocalDate localDate2 = sqlDate1.toLocalDate();
+
+// java.time.LocalTime与java.sql.Time
+LocalTime localTime1 = LocalTime.now();
+Time sqlTime1 = Time.valueOf(localTime1);
+LocalTime localTime2 = sqlTime1.toLocalTime();
+
+// java.time.LocalDateTime与java.sql.Timestamp
+LocalDateTime localDateTime1 = LocalDateTime.now();
+Timestamp timestamp1 = Timestamp.valueOf(localDateTime1);
+LocalDateTime localDateTime2 = timestamp1.toLocalDateTime();
+
+// java.time.ZoneId与java.util.TimeZone
+ZoneId zoneId1 = ZoneId.systemDefault();
+TimeZone timeZone1 = TimeZone.getTimeZone(zoneId1);
+ZoneId zoneId2 = timeZone1.toZoneId();
+
+// java.time.format.DateTimeFormatter与java.text.DateFormat，没有转回DateTimeFormatter的操作
+DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(&quot;yyyy-MM-dd HH:mm:ss&quot;);
+Format format = dateTimeFormatter.toFormat();
+</code></pre>
+<hr />
+<p><a id="compare"></a></p>
+<h2 id="比较器"><a class="header" href="#比较器">比较器</a></h2>
+<p><a id="compare-comparable"></a></p>
+<h3 id="comparable接口"><a class="header" href="#comparable接口">Comparable接口</a></h3>
+<ul>
+<li>实现<code>Comparable</code>接口，并实现里面的<code>compareTo(Object o)</code>方法</li>
+<li><code>compareTo(Object o)</code>方法返回一个int，比较规则如下：
+<ul>
+<li>如果返回值是正数，当前对象大</li>
+<li>如果返回值是负数，当前对象小</li>
+<li>如果返回值是0，一样大</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><a href="https://github.com/follow1123/java-basics/blob/main/src/main/java/cn/y/java/api/comparable/ComparableTest.java">详细代码</a></p>
+</blockquote>
+<ul>
+<li>定义对象并实现<code>Comparable</code>接口</li>
+</ul>
+<pre><code class="language-java">public class Product implements Comparable {
+
+    private String name;
+    private double price;
+
+    public Product(String name, double price) {
+        this.name = name;
+        this.price = price;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return &quot;Product{&quot; +
+                &quot;name='&quot; + name + '\'' +
+                &quot;, price=&quot; + price +
+                '}';
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        if (this == o) return 0;
+        if (o instanceof Product){
+            Product p = (Product) o;
+            int v = Double.compare(this.price, p.price);
+            if (v != 0) return v;
+            // 如果price相同，则比较name的大小
+            return this.name.compareTo(p.name);
+        }
+        throw new RuntimeException(&quot;类型不匹配&quot;);
+    }
+}
+</code></pre>
+<ul>
+<li>测试</li>
+</ul>
+<pre><code class="language-java">public class ComparableTest {
+
+    @Test
+    public void testCompareString() {
+        String[] strings = {&quot;f&quot;, &quot;g&quot;, &quot;d&quot;, &quot;e&quot;, &quot;p&quot;};
+
+        Arrays.sort(strings);
+
+        System.out.println(Arrays.toString(strings));
+    }
+
+    @Test
+    public void testCompareObj() {
+        Product[] products = new Product[3];
+
+        products[0] = new Product(&quot;vde&quot;, 1000);
+        products[1] = new Product(&quot;ads&quot;, 2000);
+        products[2] = new Product(&quot;zdd&quot;, 1000);
+
+        Arrays.sort(products);
+
+        for (Product product : products) {
+            System.out.println(product);
+        }
+    }
+}
+</code></pre>
+<p><a id="compare-comparator"></a></p>
+<h3 id="comparator"><a class="header" href="#comparator">Comparator</a></h3>
+<ul>
+<li>使用场景
+<ul>
+<li>当元素的类型没有实现<code>Comparable</code>接口，而又不方便修改代码时</li>
+<li>如果有一个类，实现了<code>Comparable</code>接口，指定了比较大小的规则，但我不想安装它预定义的方法比较大小，
+又不能随意修改类时</li>
+</ul>
+</li>
+<li>创建一个实现了<code>Comparator</code>接口的类，实现<code>compare(Object o1, Object o2)</code>方法</li>
+<li>将实现了排序方法逻辑的类传入<code>Arrays.sort(value, comparator)</code>方法内实现自定义排序</li>
+</ul>
+<blockquote>
+<p><a href="https://github.com/follow1123/java-basics/blob/main/src/main/java/cn/y/java/api/comparable/ComparatorTest.java">详细代码</a></p>
+</blockquote>
+<pre><code class="language-java">Product[] products = new Product[4];
+
+products[0] = new Product(&quot;vde&quot;, 1000);
+products[1] = new Product(&quot;ads&quot;, 2000);
+products[2] = new Product(&quot;zdd&quot;, 1000);
+products[3] = new Product(&quot;zdd&quot;, 5000);
+
+Arrays.sort(products, new Comparator() {
+    @Override
+    public int compare(Object o1, Object o2) {
+        if(o1 == o2) return 0;
+
+        if(o1 instanceof Product &amp;&amp; o2 instanceof Product){
+            Product p1 = (Product) o1;
+            Product p2 = (Product) o2;
+            // 先按name从小到大的排序
+            int v = p1.getName().compareTo(p2.getName());
+            if (v != 0) return v;
+
+            // name相同再按price从大到小排序
+            return -Double.compare(p1.getPrice(), p2.getPrice());
+
+        }
+        throw new RuntimeException(&quot;类型不匹配&quot;);
+    }
+});
+
+for (Product product : products) {
+    System.out.println(product);
+}
+</code></pre>
+<p><a id="others"></a></p>
+<h2 id="其他常用类"><a class="header" href="#其他常用类">其他常用类</a></h2>
+<p><a id="others-system"></a></p>
+<h3 id="system"><a class="header" href="#system">System</a></h3>
+<pre><code class="language-java">// 获取当前毫秒数
+System.out.println(System.currentTimeMillis());
+
+// 请求系统进行垃圾回收，看系统执行情况是否执行
+System.gc();
+
+// 获取系统属性
+System.out.println(System.getProperty(&quot;java.version&quot;)); // java版本
+System.out.println(System.getProperty(&quot;java.home&quot;)); // jdk路径
+System.out.println(System.getProperty(&quot;os.name&quot;)); // 系统名称
+System.out.println(System.getProperty(&quot;os.version&quot;)); // 系统版本
+System.out.println(System.getProperty(&quot;user.name&quot;)); // 用户名
+System.out.println(System.getProperty(&quot;user.home&quot;)); // 用户家目录
+System.out.println(System.getProperty(&quot;user.dir&quot;)); // 当前项目路径
+</code></pre>
+<p><a id="others-runtime"></a></p>
+<h3 id="runtime"><a class="header" href="#runtime">Runtime</a></h3>
+<ul>
+<li>获取JVM运行时相关数据</li>
+</ul>
+<pre><code class="language-java">Runtime runtime = Runtime.getRuntime();
+
+// 获取JVM运行时相关数据
+System.out.println(runtime.totalMemory()); // 总内存，单位byte
+System.out.println(runtime.maxMemory()); // 最大内存，单位byte
+System.out.println(runtime.freeMemory()); // 可用内存，单位byte
+</code></pre>
+<p><a id="others-math"></a></p>
+<h3 id="math"><a class="header" href="#math">Math</a></h3>
+<ul>
+<li>数学运算操作</li>
+</ul>
+<pre><code class="language-java">// 数学运算操作
+// 绝对值
+System.out.println(Math.abs(-1));  // 1
+// 向上取整
+System.out.println(Math.ceil(1.3)); // 2
+// 向下取整
+System.out.println(Math.floor(1.9)); // 1
+// 四舍五入
+System.out.println(Math.round(1.4)); // 1
+</code></pre>
+<p><a id="others-math-package"></a></p>
+<h3 id="javamath包"><a class="header" href="#javamath包">java.math包</a></h3>
+<p><a id="others-math-package-biginteger"></a></p>
+<h4 id="biginteger"><a class="header" href="#biginteger">BigInteger</a></h4>
+<ul>
+<li>不可变的任意精度整数</li>
+</ul>
+<pre><code class="language-java">// 不可变的任意精度整数
+BigInteger bi = BigInteger.valueOf(15);
+// 绝对值
+System.out.println(bi.abs()); // 15
+// 加
+System.out.println(bi.add(BigInteger.valueOf(10))); // 25
+// 减
+System.out.println(bi.subtract(BigInteger.valueOf(10))); // 5
+// 乘
+System.out.println(bi.multiply(BigInteger.valueOf(10))); // 150
+// 除
+System.out.println(bi.divide(BigInteger.valueOf(5))); // 3
+// 取余
+System.out.println(bi.remainder(BigInteger.valueOf(4))); // 3
+</code></pre>
+<p><a id="others-math-package-bigdecimal"></a></p>
+<h4 id="bigdecimal"><a class="header" href="#bigdecimal">BigDecimal</a></h4>
+<ul>
+<li>任意精度的浮点数</li>
+</ul>
+<pre><code class="language-java">// 任意精度的浮点数
+BigInteger bi = new BigInteger(&quot;12433241123&quot;);
+BigDecimal bd1 = new BigDecimal(&quot;12435.351&quot;);
+BigDecimal bd2 = new BigDecimal(&quot;11&quot;);
+
+System.out.println(bi);
+
+// HALF_UP表示除不尽就四舍五入
+System.out.println(bd1.divide(bd2, RoundingMode.HALF_UP));
+// 保留小数点后10位
+System.out.println(bd1.divide(bd2, 10, RoundingMode.HALF_UP));
+</code></pre>
+<p><a id="others-ramdom"></a></p>
+<h3 id="random"><a class="header" href="#random">Random</a></h3>
+<ul>
+<li>随机数</li>
+</ul>
+<pre><code class="language-java">// 随机数
+
+Random random = new Random();
+// 随机boolean
+System.out.println(random.nextBoolean());
+
+// 随机byte数组
+byte[] bytes = new byte[10];
+random.nextBytes(bytes);
+System.out.println(Arrays.toString(bytes));
+
+// 随机double
+System.out.println(random.nextDouble());
+
+// 随机float
+System.out.println(random.nextFloat());
+
+// 随机高斯（正态）分布，中间数据较多
+System.out.println(random.nextGaussian());
+
+// 随机int
+System.out.println(random.nextInt());
+
+// 随机int，0-10（不包含10）
+System.out.println(random.nextInt(10));
+
+// 随机long
+System.out.println(random.nextLong());
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../java/multithreading.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../java/collection.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../java/multithreading.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../java/collection.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../mermaid.min.js"></script>
+        <script src="../mermaid-init.js"></script>
+
+
+    </div>
+    </body>
+</html>

@@ -1,242 +1,30 @@
-<!DOCTYPE HTML>
-<html lang="zh" class="light" dir="ltr">
-    <head>
-        <!-- Book generated using mdBook -->
-        <meta charset="UTF-8">
-        <title>Vim/Neovim - 文档</title>
-
-
-        <!-- Custom HTML head -->
-        
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff">
-
-        <link rel="icon" href="../../favicon.svg">
-        <link rel="shortcut icon" href="../../favicon.png">
-        <link rel="stylesheet" href="../../css/variables.css">
-        <link rel="stylesheet" href="../../css/general.css">
-        <link rel="stylesheet" href="../../css/chrome.css">
-        <link rel="stylesheet" href="../../css/print.css" media="print">
-
-        <!-- Fonts -->
-        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="../../fonts/fonts.css">
-
-        <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="../../highlight.css">
-        <link rel="stylesheet" href="../../tomorrow-night.css">
-        <link rel="stylesheet" href="../../ayu-highlight.css">
-
-        <!-- Custom theme stylesheets -->
-        <link rel="stylesheet" href="../../custom.css">
-
-    </head>
-    <body class="sidebar-visible no-js">
-    <div id="body-container">
-        <!-- Provide site root to javascript -->
-        <script>
-            var path_to_root = "../../";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
-        </script>
-
-        <!-- Work around some values being stored in localStorage wrapped in quotes -->
-        <script>
-            try {
-                var theme = localStorage.getItem('mdbook-theme');
-                var sidebar = localStorage.getItem('mdbook-sidebar');
-
-                if (theme.startsWith('"') && theme.endsWith('"')) {
-                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
-                }
-
-                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
-                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
-                }
-            } catch (e) { }
-        </script>
-
-        <!-- Set the theme before any content is loaded, prevents flash -->
-        <script>
-            var theme;
-            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
-            if (theme === null || theme === undefined) { theme = default_theme; }
-            var html = document.querySelector('html');
-            html.classList.remove('light')
-            html.classList.add(theme);
-            var body = document.querySelector('body');
-            body.classList.remove('no-js')
-            body.classList.add('js');
-        </script>
-
-        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
-
-        <!-- Hide / unhide sidebar before it is displayed -->
-        <script>
-            var body = document.querySelector('body');
-            var sidebar = null;
-            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
-            if (document.body.clientWidth >= 1080) {
-                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
-                sidebar = sidebar || 'visible';
-            } else {
-                sidebar = 'hidden';
-            }
-            sidebar_toggle.checked = sidebar === 'visible';
-            body.classList.remove('sidebar-visible');
-            body.classList.add("sidebar-" + sidebar);
-        </script>
-
-        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../../linux/index.html"><strong aria-hidden="true">1.</strong> Linux</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../linux/basics.html"><strong aria-hidden="true">1.1.</strong> 基础</a></li><li class="chapter-item expanded "><a href="../../linux/commands.html"><strong aria-hidden="true">1.2.</strong> 常用命令</a></li><li class="chapter-item expanded "><a href="../../linux/desktop-environment.html"><strong aria-hidden="true">1.3.</strong> 桌面环境</a></li><li class="chapter-item expanded "><a href="../../linux/systemd.html"><strong aria-hidden="true">1.4.</strong> Systemd</a></li><li class="chapter-item expanded "><a href="../../linux/troubleshooting.html"><strong aria-hidden="true">1.5.</strong> 常见问题</a></li></ol></li><li class="chapter-item expanded "><a href="../../windows/index.html"><strong aria-hidden="true">2.</strong> Windows</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../windows/command-prompt.html"><strong aria-hidden="true">2.1.</strong> Command Prompt</a></li><li class="chapter-item expanded "><a href="../../windows/wsl2.html"><strong aria-hidden="true">2.2.</strong> wsl2</a></li></ol></li><li class="chapter-item expanded "><a href="../../software-services-tools/index.html"><strong aria-hidden="true">3.</strong> 软件/服务/工具</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../software-services-tools/git/index.html"><strong aria-hidden="true">3.1.</strong> Git</a></li><li class="chapter-item expanded "><a href="../../software-services-tools/vim-neovim/index.html" class="active"><strong aria-hidden="true">3.2.</strong> Vim/Neovim</a></li><li class="chapter-item expanded "><a href="../../software-services-tools/nginx/index.html"><strong aria-hidden="true">3.3.</strong> Nginx</a></li><li class="chapter-item expanded "><a href="../../software-services-tools/vsftp/index.html"><strong aria-hidden="true">3.4.</strong> Vsftp</a></li><li class="chapter-item expanded "><a href="../../software-services-tools/docker/index.html"><strong aria-hidden="true">3.5.</strong> Docker</a></li><li class="chapter-item expanded "><a href="../../software-services-tools/mysql/index.html"><strong aria-hidden="true">3.6.</strong> Mysql</a></li><li class="chapter-item expanded "><a href="../../software-services-tools/redis/index.html"><strong aria-hidden="true">3.7.</strong> Redis</a></li></ol></li><li class="chapter-item expanded "><a href="../../java/index.html"><strong aria-hidden="true">4.</strong> Java</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../java/basics.html"><strong aria-hidden="true">4.1.</strong> 基础</a></li><li class="chapter-item expanded "><a href="../../java/multithreading.html"><strong aria-hidden="true">4.2.</strong> 多线程</a></li><li class="chapter-item expanded "><a href="../../java/apis.html"><strong aria-hidden="true">4.3.</strong> 常用类</a></li><li class="chapter-item expanded "><a href="../../java/collection.html"><strong aria-hidden="true">4.4.</strong> 集合框架</a></li><li class="chapter-item expanded "><a href="../../java/version-features.html"><strong aria-hidden="true">4.5.</strong> 各版本特性</a></li><li class="chapter-item expanded "><a href="../../java/JVM.html"><strong aria-hidden="true">4.6.</strong> JVM</a></li><li class="chapter-item expanded "><a href="../../java/build-tools/index.html"><strong aria-hidden="true">4.7.</strong> 构建工具</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../java/build-tools/maven/index.html"><strong aria-hidden="true">4.7.1.</strong> Maven</a></li><li class="chapter-item expanded "><a href="../../java/build-tools/gradle/index.html"><strong aria-hidden="true">4.7.2.</strong> Gradle</a></li></ol></li><li class="chapter-item expanded "><a href="../../java/framework/index.html"><strong aria-hidden="true">4.8.</strong> 框架</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../java/framework/spring/index.html"><strong aria-hidden="true">4.8.1.</strong> Spring</a></li><li class="chapter-item expanded "><a href="../../java/framework/spring-mvc/index.html"><strong aria-hidden="true">4.8.2.</strong> Spring MVC</a></li><li class="chapter-item expanded "><a href="../../java/framework/mybatis/index.html"><strong aria-hidden="true">4.8.3.</strong> Mybatis</a></li><li class="chapter-item expanded "><a href="../../java/framework/spring-security/index.html"><strong aria-hidden="true">4.8.4.</strong> Spring Security</a></li><li class="chapter-item expanded "><a href="../../java/framework/spring-cloud/index.html"><strong aria-hidden="true">4.8.5.</strong> Spring Cloud</a></li><li class="chapter-item expanded "><a href="../../java/framework/shiro/index.html"><strong aria-hidden="true">4.8.6.</strong> Shiro</a></li><li class="chapter-item expanded "><a href="../../java/framework/rabbitmq/index.html"><strong aria-hidden="true">4.8.7.</strong> RabbitMQ</a></li><li class="chapter-item expanded "><a href="../../java/framework/netty/index.html"><strong aria-hidden="true">4.8.8.</strong> Netty</a></li></ol></li><li class="chapter-item expanded "><a href="../../java/troubleshooting.html"><strong aria-hidden="true">4.9.</strong> 常见问题</a></li></ol></li><li class="chapter-item expanded "><a href="../../frontend/index.html"><strong aria-hidden="true">5.</strong> 前端</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../frontend/html.html"><strong aria-hidden="true">5.1.</strong> HTML</a></li><li class="chapter-item expanded "><a href="../../frontend/css.html"><strong aria-hidden="true">5.2.</strong> CSS</a></li><li class="chapter-item expanded "><a href="../../frontend/javascript.html"><strong aria-hidden="true">5.3.</strong> JavaScript</a></li><li class="chapter-item expanded "><a href="../../frontend/vue/index.html"><strong aria-hidden="true">5.4.</strong> Vue</a></li></ol></li><li class="chapter-item expanded "><a href="../../design-pattern/index.html"><strong aria-hidden="true">6.</strong> 设计模式</a></li></ol>
-            </div>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
-        </nav>
-
-        <!-- Track and set sidebar scroll position -->
-        <script>
-            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
-            sidebarScrollbox.addEventListener('click', function(e) {
-                if (e.target.tagName === 'A') {
-                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
-                }
-            }, { passive: true });
-            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
-            sessionStorage.removeItem('sidebar-scroll');
-            if (sidebarScrollTop) {
-                // preserve sidebar scroll position when navigating via links within sidebar
-                sidebarScrollbox.scrollTop = sidebarScrollTop;
-            } else {
-                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
-                var activeSection = document.querySelector('#sidebar .active');
-                if (activeSection) {
-                    activeSection.scrollIntoView({ block: 'center' });
-                }
-            }
-        </script>
-
-        <div id="page-wrapper" class="page-wrapper">
-
-            <div class="page">
-                                <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky">
-                    <div class="left-buttons">
-                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
-                            <i class="fa fa-bars"></i>
-                        </label>
-                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
-                            <i class="fa fa-paint-brush"></i>
-                        </button>
-                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
-                        </ul>
-                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
-                            <i class="fa fa-search"></i>
-                        </button>
-                    </div>
-
-                    <h1 class="menu-title">文档</h1>
-
-                    <div class="right-buttons">
-                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
-                            <i id="print-button" class="fa fa-print"></i>
-                        </a>
-
-                    </div>
-                </div>
-
-                <div id="search-wrapper" class="hidden">
-                    <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
-                    </form>
-                    <div id="searchresults-outer" class="searchresults-outer hidden">
-                        <div id="searchresults-header" class="searchresults-header"></div>
-                        <ul id="searchresults">
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
-                <script>
-                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
-                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
-                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
-                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
-                    });
-                </script>
-
-                <div id="content" class="content">
-                    <main>
-                        <h1 id="vimneovim"><a class="header" href="#vimneovim">Vim/Neovim</a></h1>
-<h2 id="目录"><a class="header" href="#目录">目录</a></h2>
+<!doctype html>
+<html lang="zh-Hans" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-software-services-tools/vim-neovim/index" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.5.2">
+<title data-rh="true">Vim/Neovim | My Site</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://follow1123.github.io/doc/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://follow1123.github.io/doc/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://follow1123.github.io/doc/software-services-tools/vim-neovim/"><meta data-rh="true" property="og:locale" content="zh_Hans"><meta data-rh="true" name="docusaurus_locale" content="zh-Hans"><meta data-rh="true" name="docsearch:language" content="zh-Hans"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Vim/Neovim | My Site"><meta data-rh="true" name="description" content="以下文档不是全部，只是个人常用的一部分"><meta data-rh="true" property="og:description" content="以下文档不是全部，只是个人常用的一部分"><link data-rh="true" rel="icon" href="/doc/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://follow1123.github.io/doc/software-services-tools/vim-neovim/"><link data-rh="true" rel="alternate" href="https://follow1123.github.io/doc/software-services-tools/vim-neovim/" hreflang="zh-Hans"><link data-rh="true" rel="alternate" href="https://follow1123.github.io/doc/software-services-tools/vim-neovim/" hreflang="x-default"><link rel="stylesheet" href="/doc/assets/css/styles.8e336f20.css">
+<script src="/doc/assets/js/runtime~main.fb69b3c9.js" defer="defer"></script>
+<script src="/doc/assets/js/main.25654acc.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();t(null!==e?e:"light")}(),function(){try{const n=new URLSearchParams(window.location.search).entries();for(var[t,e]of n)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="跳到主要内容"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">跳到主要内容</a></div><nav aria-label="主导航" class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="切换导航栏" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/doc/"><div class="navbar__logo"><img src="/doc/img/logo.svg" alt="Doc Site Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/doc/img/logo.svg" alt="Doc Site Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">Doc Site</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/doc/">Docs</a></div><div class="navbar__items navbar__items--right"><a href="https://github.com/follow1123" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="切换浅色/暗黑模式（当前为浅色模式）" aria-label="切换浅色/暗黑模式（当前为浅色模式）" aria-live="polite"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><input placeholder="搜索" aria-label="Search" class="navbar__search-input"><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="回到顶部" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="文档侧边栏" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/doc/">说明</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/doc/linux/">Linux</a><button aria-label="展开侧边栏分类 &#x27;Linux&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/doc/windows/">Windows</a><button aria-label="展开侧边栏分类 &#x27;Windows&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--active" href="/doc/software-services-tools/">软件/服务/工具</a><button aria-label="折叠侧边栏分类 &#x27;软件/服务/工具&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/doc/software-services-tools/docker/">Docker</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/doc/software-services-tools/git/">Git</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/doc/software-services-tools/mysql/">MySQL</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/doc/software-services-tools/nginx/">Nginx</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/doc/software-services-tools/redis/">Redis</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/doc/software-services-tools/vim-neovim/">Vim/Neovim</a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/doc/java/">Java</a><button aria-label="展开侧边栏分类 &#x27;Java&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/doc/design-pattern/">设计模式</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/doc/frontend/">前端</a><button aria-label="展开侧边栏分类 &#x27;前端&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="页面路径"><ul class="breadcrumbs" itemscope="" itemtype="https://schema.org/BreadcrumbList"><li class="breadcrumbs__item"><a aria-label="主页面" class="breadcrumbs__link" href="/doc/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item"><a class="breadcrumbs__link" itemprop="item" href="/doc/software-services-tools/"><span itemprop="name">软件/服务/工具</span></a><meta itemprop="position" content="1"></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link" itemprop="name">Vim/Neovim</span><meta itemprop="position" content="2"></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">本页总览</button></div><div class="theme-doc-markdown markdown"><header><h1>Vim/Neovim</h1></header>
 <blockquote>
-<p>以下文档不是全部，只是个人常用的一部分</br>
+<p>以下文档不是全部，只是个人常用的一部分<br>
 使用<code>:help</code>查询详细的帮助文档</p>
 </blockquote>
-<ol>
-<li><a href="#motions">移动</a></li>
-<li><a href="#modes">模式</a></li>
-<li><a href="#textobject">文本对象</a></li>
-<li><a href="#search">搜索</a></li>
-<li><a href="#substitute">替换</a></li>
-<li><a href="#buffer">缓冲区</a></li>
-<li><a href="#window">窗口</a></li>
-<li><a href="#change-list-jump-list">变更列表和跳转列表</a></li>
-<li><a href="#quickfix-list">快速修复列表</a></li>
-<li><a href="#marks">标记</a></li>
-<li><a href="#indent">缩进</a></li>
-<li><a href="#folding">折叠</a></li>
-<li><a href="#vimgrep">全局搜索</a></li>
-<li><a href="#registers">寄存器</a></li>
-<li><a href="#macros">宏</a></li>
-<li><a href="#builtin-plugin">内置插件</a></li>
-<li><a href="#others">其他</a></li>
-<li><a href="#neovim-dev">Neovim开发</a></li>
-</ol>
-<p><a id="motions"></a></p>
-<h2 id="移动motions"><a class="header" href="#移动motions">移动（motions）</a></h2>
-<h3 id="键位"><a class="header" href="#键位">键位</a></h3>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="移动motions">移动（motions）<a href="#移动motions" class="hash-link" aria-label="移动（motions）的直接链接" title="移动（motions）的直接链接">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="键位">键位<a href="#键位" class="hash-link" aria-label="键位的直接链接" title="键位的直接链接">​</a></h3>
 <ul>
 <li>方向键：<kbd>h</kbd> <kbd>j</kbd> <kbd>k</kbd> <kbd>l</kbd></li>
 </ul>
-<div class="table-wrapper"><table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody>
-<tr><td><code>Normal</code></td><td><kbd>w</kbd>/<kbd>W</kbd></td><td>光标右移动一个词/包含词周围的符号</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>b</kbd>/<kbd>B</kbd></td><td>光标左移动一个词/包含词周围的符号</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>0</kbd></td><td>光标移动到行首，包含空白字符</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>^</kbd></td><td>光标移动到行首, 不包含空白字符</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>$</kbd></td><td>光标移动到行尾</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>f</kbd>/<kbd>F</kbd>+<kbd>{char}</kbd></td><td>向左或向右搜索字符，光标移动该字符上</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>t</kbd>/<kbd>T</kbd>+<kbd>{char}</kbd></td><td>向左或向右搜索字符，光标移动该字符周围</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>;</kbd></td><td>重复<kbd>f</kbd>/<kbd>F</kbd>/<kbd>t</kbd>/<kbd>T</kbd>按键搜索字符</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>,</kbd></td><td>反方向重复<kbd>f</kbd>/<kbd>F</kbd>/<kbd>t</kbd>/<kbd>T</kbd>按键搜索字符</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>Ctrl</kbd>+<kbd>u</kbd></td><td>向上移动半页</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>Ctrl</kbd>+<kbd>d</kbd></td><td>向下移动半页</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>Ctrl</kbd>+<kbd>f</kbd></td><td>向上移动一页</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>Ctrl</kbd>+<kbd>b</kbd></td><td>向下移动一页</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>H</kbd></td><td>光标移动到当页的头部</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>M</kbd></td><td>光标移动到当页的中间</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>L</kbd></td><td>光标移动到当页的尾部</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>z</kbd>+<kbd>z</kbd></td><td>光标不动，光标下的内容移动到窗口的中间</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>{</kbd></td><td>向上移动一段</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>}</kbd></td><td>向下移动一段</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>%</kbd></td><td>光标移动到另一半大、中、小括号上</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>g</kbd>+<kbd>g</kbd></td><td>光标移动到文件的第一行</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>G</kbd></td><td>光标移动到文件的最后一行</td></tr>
-</tbody></table>
-</div>
-<hr />
-<p><a id="modes"></a></p>
-<h2 id="模式modes"><a class="header" href="#模式modes">模式（modes）</a></h2>
+<table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody><tr><td><code>Normal</code></td><td><kbd>w</kbd>/<kbd>W</kbd></td><td>光标右移动一个词/包含词周围的符号</td></tr><tr><td><code>Normal</code></td><td><kbd>b</kbd>/<kbd>B</kbd></td><td>光标左移动一个词/包含词周围的符号</td></tr><tr><td><code>Normal</code></td><td><kbd>0</kbd></td><td>光标移动到行首，包含空白字符</td></tr><tr><td><code>Normal</code></td><td><kbd>^</kbd></td><td>光标移动到行首, 不包含空白字符</td></tr><tr><td><code>Normal</code></td><td><kbd>$</kbd></td><td>光标移动到行尾</td></tr><tr><td><code>Normal</code></td><td><kbd>f</kbd>/<kbd>F</kbd>+<kbd>{char}</kbd></td><td>向左或向右搜索字符，光标移动该字符上</td></tr><tr><td><code>Normal</code></td><td><kbd>t</kbd>/<kbd>T</kbd>+<kbd>{char}</kbd></td><td>向左或向右搜索字符，光标移动该字符周围</td></tr><tr><td><code>Normal</code></td><td><kbd>;</kbd></td><td>重复<kbd>f</kbd>/<kbd>F</kbd>/<kbd>t</kbd>/<kbd>T</kbd>按键搜索字符</td></tr><tr><td><code>Normal</code></td><td><kbd>,</kbd></td><td>反方向重复<kbd>f</kbd>/<kbd>F</kbd>/<kbd>t</kbd>/<kbd>T</kbd>按键搜索字符</td></tr><tr><td><code>Normal</code></td><td><kbd>Ctrl</kbd>+<kbd>u</kbd></td><td>向上移动半页</td></tr><tr><td><code>Normal</code></td><td><kbd>Ctrl</kbd>+<kbd>d</kbd></td><td>向下移动半页</td></tr><tr><td><code>Normal</code></td><td><kbd>Ctrl</kbd>+<kbd>f</kbd></td><td>向上移动一页</td></tr><tr><td><code>Normal</code></td><td><kbd>Ctrl</kbd>+<kbd>b</kbd></td><td>向下移动一页</td></tr><tr><td><code>Normal</code></td><td><kbd>H</kbd></td><td>光标移动到当页的头部</td></tr><tr><td><code>Normal</code></td><td><kbd>M</kbd></td><td>光标移动到当页的中间</td></tr><tr><td><code>Normal</code></td><td><kbd>L</kbd></td><td>光标移动到当页的尾部</td></tr><tr><td><code>Normal</code></td><td><kbd>z</kbd>+<kbd>z</kbd></td><td>光标不动，光标下的内容移动到窗口的中间</td></tr><tr><td><code>Normal</code></td><td><kbd>{</kbd></td><td>向上移动一段</td></tr><tr><td><code>Normal</code></td><td><kbd>}</kbd></td><td>向下移动一段</td></tr><tr><td><code>Normal</code></td><td><kbd>%</kbd></td><td>光标移动到另一半大、中、小括号上</td></tr><tr><td><code>Normal</code></td><td><kbd>g</kbd>+<kbd>g</kbd></td><td>光标移动到文件的第一行</td></tr><tr><td><code>Normal</code></td><td><kbd>G</kbd></td><td>光标移动到文件的最后一行</td></tr></tbody></table>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="模式modes">模式（modes）<a href="#模式modes" class="hash-link" aria-label="模式（modes）的直接链接" title="模式（modes）的直接链接">​</a></h2>
 <ul>
-<li>常用模式有4种：<a href="#mode-normal"><code>Normal</code></a> <a href="#mode-insert"><code>Insert</code></a> <a href="#mode-visual"><code>Visual</code></a> <a href="#mode-command"><code>Command</code></a></li>
+<li>常用模式有4种：<a href="#normal">Normal</a> <a href="#insert">Insert</a> <a href="#visual">Visual</a> <a href="#command">Command</a></li>
 </ul>
-<p><a id="mode-normal"></a></p>
-<h3 id="normal"><a class="header" href="#normal">Normal</a></h3>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="normal">Normal<a href="#normal" class="hash-link" aria-label="Normal的直接链接" title="Normal的  直接链接">​</a></h3>
 <ul>
 <li>
 <p>进入vim后默认在<code>Normal</code>模式下</p>
@@ -245,31 +33,13 @@
 <p><code>Normal</code>模式下光标默认是块状样式</p>
 </li>
 </ul>
-<div class="table-wrapper"><table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody>
-<tr><td><code>Normal</code></td><td><kbd>i</kbd></td><td>进入<code>Insert</code>模式，光标在字符的左边</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>a</kbd></td><td>进入<code>Insert</code>模式，光标在字符的右边</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>o</kbd></td><td>进入<code>Insert</code>模式，向下新开一行</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>O</kbd></td><td>进入<code>Insert</code>模式，向上新开一行</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>I</kbd></td><td>进入<code>Insert</code>模式，光标在行首，不包含空白字符</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>g</kbd>+<kbd>I</kbd></td><td>进入<code>Insert</code>模式，光标在行首，包含空白字符</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>A</kbd></td><td>进入<code>Insert</code>模式，光标在行尾</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>c</kbd>+<kbd>{operate}</kbd></td><td>完成文本对象操作并进入<code>Insert</code>模式</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>C</kbd></td><td>从当前光标删除到行尾并进入<code>Insert</code>模式</td></tr>
-</tbody></table>
-</div>
-<p><a id="mode-insert"></a></p>
-<h3 id="insert"><a class="header" href="#insert">Insert</a></h3>
+<table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody><tr><td><code>Normal</code></td><td><kbd>i</kbd></td><td>进入<code>Insert</code>模式，光标在字符的左边</td></tr><tr><td><code>Normal</code></td><td><kbd>a</kbd></td><td>进入<code>Insert</code>模式，光标在字符的右边</td></tr><tr><td><code>Normal</code></td><td><kbd>o</kbd></td><td>进入<code>Insert</code>模式，向下新开一行</td></tr><tr><td><code>Normal</code></td><td><kbd>O</kbd></td><td>进入<code>Insert</code>模式，向上新开一行</td></tr><tr><td><code>Normal</code></td><td><kbd>I</kbd></td><td>进入<code>Insert</code>模式，光标在行首，不包含空白字符</td></tr><tr><td><code>Normal</code></td><td><kbd>g</kbd>+<kbd>I</kbd></td><td>进入<code>Insert</code>模式，光标在行首，包含空白字符</td></tr><tr><td><code>Normal</code></td><td><kbd>A</kbd></td><td>进入<code>Insert</code>模式，光标在行尾</td></tr><tr><td><code>Normal</code></td><td><kbd>c</kbd>+<kbd>{operate}</kbd></td><td>完成文本对象操作并进入<code>Insert</code>模式</td></tr><tr><td><code>Normal</code></td><td><kbd>C</kbd></td><td>从当前光标删除到行尾并进入<code>Insert</code>模式</td></tr></tbody></table>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="insert">Insert<a href="#insert" class="hash-link" aria-label="Insert的直接链接" title="Insert的直接链接">​</a></h3>
 <ul>
 <li><code>Insert</code>模式下光标默认是<code>|</code>样式</li>
 </ul>
-<div class="table-wrapper"><table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody>
-<tr><td><code>Insert</code></td><td><kbd>Esc</kbd></td><td>进入<code>Normal</code>模式</td></tr>
-<tr><td><code>Insert</code></td><td><kbd>Ctrl</kbd>+<kbd>[</kbd></td><td>进入<code>Normal</code>模式，和<kbd>Esc</kbd>键发送一样的键码</td></tr>
-<tr><td><code>Insert</code></td><td><kbd>Ctrl</kbd>+<kbd>c</kbd></td><td>进入<code>Normal</code>模式，中断操作，不会触发<code>Insert</code>相关事件</td></tr>
-</tbody></table>
-</div>
-<p><a id="mode-visual"></a></p>
-<h3 id="visual"><a class="header" href="#visual">Visual</a></h3>
+<table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody><tr><td><code>Insert</code></td><td><kbd>Esc</kbd></td><td>进入<code>Normal</code>模式</td></tr><tr><td><code>Insert</code></td><td><kbd>Ctrl</kbd>+<kbd>[</kbd></td><td>进入<code>Normal</code>模式，和<kbd>Esc</kbd>键发送一样的键码</td></tr><tr><td><code>Insert</code></td><td><kbd>Ctrl</kbd>+<kbd>c</kbd></td><td>进入<code>Normal</code>模式，中断操作，不会触发<code>Insert</code>相关事件</td></tr></tbody></table>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="visual">Visual<a href="#visual" class="hash-link" aria-label="Visual的直接链接" title="Visual的直接链接">​</a></h3>
 <ul>
 <li>
 <p><code>Visual</code>分为三种<code>Visual-char</code>、<code>Visual-line</code>、<code>Visual-block</code></p>
@@ -284,123 +54,76 @@
 <p><code>Visual-block</code>按块选择</p>
 </li>
 <li>
-<p><code>Visual</code>模式下也可以使用<a href="#mode-normal"><code>Normal</code></a>模式下的部分键位对文本进行操作</p>
+<p><code>Visual</code>模式下也可以使用<a href="#normal">Normal</a>模式下的部分键位对文本进行操作</p>
 </li>
 </ul>
-<div class="table-wrapper"><table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody>
-<tr><td><code>Normal</code></td><td><kbd>v</kbd></td><td>进入<code>Visual-char</code>模式</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>V</kbd></td><td>进入<code>Visual-line</code>模式</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>Ctrl</kbd>+<kbd>v</kbd></td><td>进入<code>Visual-block</code>模式</td></tr>
-<tr><td><code>Visual</code></td><td><kbd>o</kbd></td><td>在<code>Visual</code>模式下，光标移动到另一个方向</td></tr>
-<tr><td><code>Visual-block</code></td><td><kbd>O</kbd></td><td>在<code>Visual-block</code>模式下，光标移动行内的另一头</td></tr>
-</tbody></table>
-</div>
-<p><a id="mode-command"></a></p>
-<h3 id="command"><a class="header" href="#command">Command</a></h3>
+<table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody><tr><td><code>Normal</code></td><td><kbd>v</kbd></td><td>进入<code>Visual-char</code>模式</td></tr><tr><td><code>Normal</code></td><td><kbd>V</kbd></td><td>进入<code>Visual-line</code>模式</td></tr><tr><td><code>Normal</code></td><td><kbd>Ctrl</kbd>+<kbd>v</kbd></td><td>进入<code>Visual-block</code>模式</td></tr><tr><td><code>Visual</code></td><td><kbd>o</kbd></td><td>在<code>Visual</code>模式下，光标移动到另一个方向</td></tr><tr><td><code>Visual-block</code></td><td><kbd>O</kbd></td><td>在<code>Visual-block</code>模式下，光标移动行内的另一头</td></tr></tbody></table>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="command">Command<a href="#command" class="hash-link" aria-label="Command的直接链接" title="Command的直接链接">​</a></h3>
 <ul>
 <li><code>Command</code>模式下一般输入命令执行特殊操作</li>
 </ul>
-<div class="table-wrapper"><table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody>
-<tr><td><code>Normal</code></td><td><kbd>:</kbd></td><td>进入<code>Command</code>模式</td></tr>
-<tr><td><code>Command</code></td><td><kbd>Tab</kbd></td><td>补全命令</td></tr>
-</tbody></table>
-</div>
-<p><a id="mode-replace"></a></p>
-<h3 id="replace"><a class="header" href="#replace">Replace</a></h3>
+<table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody><tr><td><code>Normal</code></td><td><kbd>:</kbd></td><td>进入<code>Command</code>模式</td></tr><tr><td><code>Command</code></td><td><kbd>Tab</kbd></td><td>补全命令</td></tr></tbody></table>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="replace">Replace<a href="#replace" class="hash-link" aria-label="Replace的直接链接" title="Replace的直接链接">​</a></h3>
 <ul>
-<li>在 <a href="#mode-normal">Normal</a> 模式下使用 <kbd>R</kbd> 进入Replace模式，输入的字符会替换后面的字符</li>
+<li>在<a href="#normal">Normal</a>模式下按<kbd>R</kbd>进入Replace模式，输入的字符会替换后面的字符</li>
 </ul>
-<hr />
-<p><a id="textobject"></a></p>
-<h2 id="文本对象textobject"><a class="header" href="#文本对象textobject">文本对象（textobject）</a></h2>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="文本对象textobject">文本对象（textobject）<a href="#文本对象textobject" class="hash-link" aria-label="文本对象（textobject）的直接链接" title="文本对象（textobject）的直接链接">​</a></h2>
 <ul>
 <li>操作：<kbd>c</kbd> <kbd>d</kbd> <kbd>y</kbd> <kbd>v</kbd></li>
 <li>范围：<kbd>i</kbd> <kbd>a</kbd></li>
 <li>对象：<kbd>w</kbd> <kbd>s</kbd> <kbd>p</kbd> <kbd>(</kbd> <kbd>)</kbd> <kbd>[</kbd> <kbd>]</kbd> <kbd>{</kbd> <kbd>}</kbd>
-<kbd>&lt;</kbd> <kbd>&gt;</kbd> <kbd>'</kbd> <kbd>&quot;</kbd> <kbd>`</kbd> <kbd>t</kbd></li>
+<kbd>&lt;</kbd> <kbd>&gt;</kbd> <kbd>&#x27;</kbd> <kbd>&quot;</kbd> <kbd>`</kbd> <kbd>t</kbd></li>
 </ul>
-<div class="table-wrapper"><table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody>
-<tr><td><code>Normal</code></td><td><kbd>c</kbd> <kbd>i</kbd> <kbd>w</kbd></td><td>删除当前光标下的单词并进入<code>Insert</code>模式</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>d</kbd> <kbd>a</kbd> <kbd>p</kbd></td><td>删除当前光标所在段落</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>y</kbd> <kbd>i</kbd> <kbd>(</kbd></td><td>复制当前光标所在行右边<kbd>()</kbd>内的内容</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>v</kbd> <kbd>a</kbd> <kbd>t</kbd></td><td>选中当前光标所在的整个标签，<code>html</code>、<code>xml</code>等标签语法的标签</td></tr>
-</tbody></table>
-</div>
-<p><a id="search"></a></p>
-<h2 id="搜索search"><a class="header" href="#搜索search">搜索（search）</a></h2>
-<div class="table-wrapper"><table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody>
-<tr><td><code>Normal</code></td><td><kbd>/</kbd> <kbd>{pattern}</kbd></td><td>向后搜索输入的pattern</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>?</kbd> <kbd>{pattern}</kbd></td><td>向前搜索输入的pattern</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>n</kbd>/<kbd>N</kbd></td><td>根据搜索的方式向前或向后搜索输入的pattern</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>*</kbd></td><td>快速向后搜索当前光标下的单词</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>#</kbd></td><td>快速向前搜索当前光标下的单词</td></tr>
-</tbody></table>
-</div>
-<hr />
-<p><a id="substitute"></a></p>
-<h2 id="替换substitute"><a class="header" href="#替换substitute">替换（substitute）</a></h2>
+<table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody><tr><td><code>Normal</code></td><td><kbd>c</kbd> <kbd>i</kbd> <kbd>w</kbd></td><td>删除当前光标下的单词并进入<code>Insert</code>模式</td></tr><tr><td><code>Normal</code></td><td><kbd>d</kbd> <kbd>a</kbd> <kbd>p</kbd></td><td>删除当前光标所在段落</td></tr><tr><td><code>Normal</code></td><td><kbd>y</kbd> <kbd>i</kbd> <kbd>(</kbd></td><td>复制当前光标所在行右边<kbd>()</kbd>内的内容</td></tr><tr><td><code>Normal</code></td><td><kbd>v</kbd> <kbd>a</kbd> <kbd>t</kbd></td><td>选中当前光标所在的整个标签，<code>html</code>、<code>xml</code>等标签语法的标签</td></tr></tbody></table>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="搜索search">搜索（search）<a href="#搜索search" class="hash-link" aria-label="搜索（search）的直接链接" title="搜索（search）的直接链接">​</a></h2>
+<table><thead><tr><th>模式</th><th> 按键</th><th>描述</th></tr></thead><tbody><tr><td><code>Normal</code></td><td><kbd>/</kbd> <kbd>{pattern}</kbd></td><td>向后搜索输入的pattern</td></tr><tr><td><code>Normal</code></td><td><kbd>?</kbd> <kbd>{pattern}</kbd></td><td>向前搜索输入的pattern</td></tr><tr><td><code>Normal</code></td><td><kbd>n</kbd>/<kbd>N</kbd></td><td>根据搜索的方式向前或向后搜索输入的pattern</td></tr><tr><td><code>Normal</code></td><td><kbd>*</kbd></td><td>快速向后搜索当前光标下的单词</td></tr><tr><td><code>Normal</code></td><td><kbd>#</kbd></td><td>快速向前搜索当前光标下的单词</td></tr></tbody></table>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="替换substitute">替换（substitute）<a href="#替换substitute" class="hash-link" aria-label="替换（substitute）的直接链接" title="替换（substitute）的直接链接">​</a></h2>
 <blockquote>
 <p>以下选项只是部分，详情参考：<code>:h substitute</code></p>
 </blockquote>
+<code>:<strong>[range]</strong>s[ubstitute]/<strong>{pattern}</strong>/<strong>{string}</strong>/<strong>[flags]</strong> <strong>[count]</strong></code>
 <ul>
-<li><code>:<a href="#substitute-range">[range]</a>s[ubstitute]/<a href="#substitute-pattern">{pattern}</a>/<a href="#substitute-string">{string}</a>/<a href="#substitute-flags">[flags]</a> <a href="#substitute-count">[count]</a></code></li>
-</ul>
-<p><a id="substitute-range"></a></p>
-<ul>
-<li>range
+<li>
+<p>range</p>
 <ul>
 <li><code>number</code> 指定行号</li>
 <li><code>%</code> 当前文件</li>
 </ul>
 </li>
-</ul>
-<p><a id="substitute-pattern"></a></p>
-<ul>
-<li>pattern
+<li>
+<p>pattern</p>
 <ul>
 <li>支持正则表达式</li>
 </ul>
 </li>
 </ul>
-<pre><code class="language-txt">&lt;a id=&quot;mark-a&quot;&gt;&lt;/a&gt;
-&lt;a id=&quot;mark-b&quot;&gt;&lt;/a&gt;
-&lt;a id=&quot;mark-c&quot;&gt;&lt;/a&gt;
-
-选中并执行'&lt;,'&gt;s/id=&quot;\(\w\+-\(\w\)\)&quot;&gt;/href=&quot;#\1&quot;&gt;\2/g替换成mark的引用处
-
-&lt;a href=&quot;#mark-a&quot;&gt;a&lt;/a&gt;
-&lt;a href=&quot;#mark-b&quot;&gt;b&lt;/a&gt;
-&lt;a href=&quot;#mark-c&quot;&gt;c&lt;/a&gt;
-</code></pre>
-<p><a id="substitute-string"></a></p>
+<div class="language-txt codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-txt codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">&lt;a id=&quot;mark-a&quot;&gt;&lt;/a&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">&lt;a id=&quot;mark-b&quot;&gt;&lt;/a&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">&lt;a id=&quot;mark-c&quot;&gt;&lt;/a&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">选中并执行&#x27;&lt;,&#x27;&gt;s/id=&quot;\(\w\+-\(\w\)\)&quot;&gt;/href=&quot;#\1&quot;&gt;\2/g替换成mark的引用处</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">&lt;a href=&quot;#mark-a&quot;&gt;a&lt;/a&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">&lt;a href=&quot;#mark-b&quot;&gt;b&lt;/a&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">&lt;a href=&quot;#mark-c&quot;&gt;c&lt;/a&gt;</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
 <ul>
-<li>string
+<li>
+<p>string</p>
 <ul>
 <li>参考：<code>h sub-replace-special</code></li>
 <li>特殊操作和正则表达式的捕获组、大小写转换类似</li>
 </ul>
 </li>
-</ul>
-<p><a id="substitute-flags"></a></p>
-<ul>
-<li>flags
+<li>
+<p>flags</p>
 <ul>
 <li><code>c</code> 替换时确认</li>
 <li><code>e</code> 忽略替换时的错误</li>
 <li><code>g</code> 替换所有的匹配项</li>
 <li><code>i</code> 忽略大小写</li>
 <li><code>I</code> 不忽略大小写</li>
-<li><code>n</code> 不替换，只显示匹配项的个数
+<li><code>n</code> 不替换，只显示匹配项的个数<!-- -->
 <ul>
-<li>由于<a href="#search">搜索</a>最多只能显示99个搜索结果，使用这个方式统计搜索内容的个数</li>
+<li>由于搜索最多只能显示99个搜索结果，使用这个方式统计搜索内容的个数</li>
 <li><code>%s/text//gn</code></li>
 </ul>
 </li>
 </ul>
 </li>
-</ul>
-<p><a id="substitute-count"></a></p>
-<ul>
 <li>
 <p>count</p>
 <ul>
@@ -415,375 +138,165 @@
 </ul>
 </li>
 </ul>
-<div class="table-wrapper"><table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody>
-<tr><td><code>Normal</code></td><td><kbd>&amp;</kbd></td><td>执行上一次的单行替换操作</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>g</kbd> <kbd>&amp;</kbd></td><td>执行上一次的整个buffer替换操作</td></tr>
-</tbody></table>
-</div>
-<hr />
-<p><a id="buffer"></a></p>
-<h2 id="缓冲区buffer"><a class="header" href="#缓冲区buffer">缓冲区（buffer）</a></h2>
-<div class="table-wrapper"><table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody>
-<tr><td><code>Normal</code></td><td><kbd>Ctrl</kbd>+<kbd>6</kbd></td><td>切换到上次打开的buffer</td></tr>
-<tr><td><code>Command</code></td><td><code>:ls</code></td><td>显示当前所有打开的buffer</td></tr>
-<tr><td><code>Command</code></td><td><code>:b#</code></td><td>和 <kbd>Ctrl</kbd>+<kbd>6</kbd> 相同</td></tr>
-</tbody></table>
-</div>
-<hr />
-<p><a id="window"></a></p>
-<h2 id="窗口window"><a class="header" href="#窗口window">窗口（window）</a></h2>
-<div class="table-wrapper"><table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody>
-<tr><td><code>Normal</code></td><td><kbd>Ctrl</kbd>+<kbd>w</kbd> <kbd>s</kbd></td><td>水平分屏</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>Ctrl</kbd>+<kbd>w</kbd> <kbd>v</kbd></td><td>垂直分屏</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>Ctrl</kbd>+<kbd>w</kbd> <kbd>+</kbd></td><td>增加分屏高度</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>Ctrl</kbd>+<kbd>w</kbd> <kbd>-</kbd></td><td>减少分屏高度</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>Ctrl</kbd>+<kbd>w</kbd> <kbd>&gt;</kbd></td><td>减少分屏宽度</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>ctrl</kbd>+<kbd>w</kbd> <kbd>&lt;</kbd></td><td>增加分屏宽度</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>ctrl</kbd>+<kbd>w</kbd> <kbd>=</kbd></td><td>将所有分屏设置为相同的宽度和高度</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>ctrl</kbd>+<kbd>w</kbd> <kbd>c</kbd></td><td>关闭当前分屏</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>ctrl</kbd>+<kbd>w</kbd> <kbd>r</kbd></td><td>旋转所有分屏</td></tr>
-<tr><td><code>Command</code></td><td><code>:sp</code></td><td>和 <kbd>Ctrl</kbd>+<kbd>w</kbd> <kbd>s</kbd> 相同</td></tr>
-<tr><td><code>Command</code></td><td><code>:vs</code></td><td>和 <kbd>Ctrl</kbd>+<kbd>w</kbd> <kbd>v</kbd> 相同</td></tr>
-</tbody></table>
-</div>
-<hr />
-<p><a id="change-list-jump-list"></a></p>
-<h2 id="变更列表和跳转列表change-list-and-jump-list"><a class="header" href="#变更列表和跳转列表change-list-and-jump-list">变更列表和跳转列表（change list and jump list）</a></h2>
-<div class="table-wrapper"><table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody>
-<tr><td><code>Command</code></td><td><code>:changes</code></td><td>打开变更列表</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>g</kbd>+<kbd>;</kbd></td><td>跳转到较旧修改的位置</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>g</kbd>+<kbd>,</kbd></td><td>跳转到较新修改的位置</td></tr>
-<tr><td><code>Command</code></td><td><code>:jumps</code></td><td>打开跳转列表</td></tr>
-<tr><td><code>Command</code></td><td><code>:clearjumps</code></td><td>清空跳转列表</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>Ctrl</kbd>+<kbd>i</kbd></td><td>跳转到较旧的位置</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>Ctrl</kbd>+<kbd>o</kbd></td><td>跳转到较新的位置</td></tr>
-</tbody></table>
-</div>
-<hr />
-<p><a id="quickfix-list"></a></p>
-<h2 id="快速修复列表quickfix-list"><a class="header" href="#快速修复列表quickfix-list">快速修复列表（Quickfix list）</a></h2>
+<table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody><tr><td><code>Normal</code></td><td><kbd>&amp;</kbd></td><td>执行上一次的单行替换操作</td></tr><tr><td><code>Normal</code></td><td><kbd>g</kbd> <kbd>&amp;</kbd></td><td>执行上一次的整个buffer替换操作</td></tr></tbody></table>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="缓冲区buffer">缓冲区（buffer）<a href="#缓冲区buffer" class="hash-link" aria-label="缓冲区（buffer）的直接链接" title="缓冲区（buffer）的直接链接">​</a></h2>
+<table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody><tr><td><code>Normal</code></td><td><kbd>Ctrl</kbd>+<kbd>6</kbd></td><td>切换到上次打开的buffer</td></tr><tr><td><code>Command</code></td><td><code>:ls</code></td><td>显示当前所有打开的buffer</td></tr><tr><td><code>Command</code></td><td><code>:b#</code></td><td>和 <kbd>Ctrl</kbd>+<kbd>6</kbd> 相同</td></tr></tbody></table>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="窗口window">窗口（window）<a href="#窗口window" class="hash-link" aria-label="窗口（window）的直接链接" title="窗口（window）的直接链接">​</a></h2>
+<table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody><tr><td><code>Normal</code></td><td><kbd>Ctrl</kbd>+<kbd>w</kbd> <kbd>s</kbd></td><td>水平分屏</td></tr><tr><td><code>Normal</code></td><td><kbd>Ctrl</kbd>+<kbd>w</kbd> <kbd>v</kbd></td><td>垂直分屏</td></tr><tr><td><code>Normal</code></td><td><kbd>Ctrl</kbd>+<kbd>w</kbd> <kbd>+</kbd></td><td>增加分屏高度</td></tr><tr><td><code>Normal</code></td><td><kbd>Ctrl</kbd>+<kbd>w</kbd> <kbd>-</kbd></td><td>减少分屏高度</td></tr><tr><td><code>Normal</code></td><td><kbd>Ctrl</kbd>+<kbd>w</kbd> <kbd>&gt;</kbd></td><td>减少分屏宽度</td></tr><tr><td><code>Normal</code></td><td><kbd>ctrl</kbd>+<kbd>w</kbd> <kbd>&lt;</kbd></td><td>增加分屏宽度</td></tr><tr><td><code>Normal</code></td><td><kbd>ctrl</kbd>+<kbd>w</kbd> <kbd>=</kbd></td><td>将所有分屏设置为相同的宽度和高度</td></tr><tr><td><code>Normal</code></td><td><kbd>ctrl</kbd>+<kbd>w</kbd> <kbd>c</kbd></td><td>关闭当前分屏</td></tr><tr><td><code>Normal</code></td><td><kbd>ctrl</kbd>+<kbd>w</kbd> <kbd>r</kbd></td><td>旋转所有分屏</td></tr><tr><td><code>Command</code></td><td><code>:sp</code></td><td>和 <kbd>Ctrl</kbd>+<kbd>w</kbd> <kbd>s</kbd> 相同</td></tr><tr><td><code>Command</code></td><td><code>:vs</code></td><td>和 <kbd>Ctrl</kbd>+<kbd>w</kbd> <kbd>v</kbd> 相同</td></tr></tbody></table>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="变更列表和跳转列表change-list-and-jump-list">变更列表和跳转列表（change list and jump list）<a href="#变更列表和跳转列表change-list-and-jump-list" class="hash-link" aria-label="变更列表和跳转列表（change list and jump list）的直接链接" title="变更列表和跳转列表（change list and jump list）的直接链接">​</a></h2>
+<table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody><tr><td><code>Command</code></td><td><code>:changes</code></td><td>打开变更列表</td></tr><tr><td><code>Normal</code></td><td><kbd>g</kbd>+<kbd>;</kbd></td><td>跳转到较旧修改的位置</td></tr><tr><td><code>Normal</code></td><td><kbd>g</kbd>+<kbd>,</kbd></td><td>跳转到较新修改的位置</td></tr><tr><td><code>Command</code></td><td><code>:jumps</code></td><td>打开跳转列表</td></tr><tr><td><code>Command</code></td><td><code>:clearjumps</code></td><td>清空跳转列表</td></tr><tr><td><code>Normal</code></td><td><kbd>Ctrl</kbd>+<kbd>i</kbd></td><td>跳转到较旧的位置</td></tr><tr><td><code>Normal</code></td><td><kbd>Ctrl</kbd>+<kbd>o</kbd></td><td>跳转到较新的位置</td></tr></tbody></table>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="快速修复列表quickfix-list">快速修复列表（Quickfix list）<a href="#快速修复列表quickfix-list" class="hash-link" aria-label="快速修复列表（Quickfix list）的直接链接" title="快速修复列表（Quickfix list）的直接链接">​</a></h2>
 <ul>
-<li>使用 <a href="#vimgrep">Vimgrep</a> 搜索的信息会保存在quickfix-list内</li>
+<li>使用<a href="#%E5%85%A8%E5%B1%80%E6%90%9C%E7%B4%A2vimgrep">Vimgrep</a>搜索的信息会保存在quickfix-list内</li>
 </ul>
-<div class="table-wrapper"><table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody>
-<tr><td><code>Command</code></td><td><code>:copen</code></td><td>打开Quickfix列表</td></tr>
-<tr><td><code>Command</code></td><td><code>:cclose</code></td><td>关闭Quickfix列表</td></tr>
-<tr><td><code>Command</code></td><td><code>:cnext</code></td><td>Quickfix列表下一条</td></tr>
-<tr><td><code>Command</code></td><td><code>:cprevious</code></td><td>Quickfix列表上一条</td></tr>
-<tr><td><code>Command</code></td><td><code>:cfirst</code></td><td>Quickfix列表第一条</td></tr>
-<tr><td><code>Command</code></td><td><code>:clast</code></td><td>Quickfix列表最后一条</td></tr>
-<tr><td><code>Command</code></td><td><code>:chistory</code></td><td>显示Quickfix列表历史记录</td></tr>
-<tr><td><code>Command</code></td><td><code>:colder</code></td><td>使用上一次Quickfix列表操作记录</td></tr>
-<tr><td><code>Command</code></td><td><code>:cnewer</code></td><td>使用下一次Quickfix列表操作记录</td></tr>
-<tr><td><code>Command</code></td><td><code>:cdo</code></td><td>对quickfix list内的内容执行操作，例如<kbd>cdo</kbd>后接<a href="#substitute">substitute</a>相关操作，实现工作区内替换功能</td></tr>
-</tbody></table>
-</div>
-<hr />
-<p><a id="marks"></a></p>
-<h2 id="标记marks"><a class="header" href="#标记marks">标记（Marks）</a></h2>
-<div class="table-wrapper"><table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody>
-<tr><td><code>Command</code></td><td><code>:marks</code></td><td>打开mark列表</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>m</kbd>+<kbd>{mark}</kbd></td><td>插眼</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>'</kbd>+<kbd>{mark}</kbd>/<kbd>`</kbd>+<kbd>{mark}</kbd></td><td>传送</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>'</kbd>+<kbd>'</kbd>/<kbd>`</kbd>+<kbd>`</kbd></td><td>跳转到上一次的标记</td></tr>
-<tr><td><code>Command</code></td><td><code>:delmarks mark</code></td><td>排眼</td></tr>
-<tr><td><code>Command</code></td><td><code>:delmarks!</code></td><td>删除所有的标记</td></tr>
-</tbody></table>
-</div>
-<h3 id="mark-说明"><a class="header" href="#mark-说明">mark 说明</a></h3>
+<table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody><tr><td><code>Command</code></td><td><code>:copen</code></td><td>打开Quickfix列表</td></tr><tr><td><code>Command</code></td><td><code>:cclose</code></td><td>关闭Quickfix列表</td></tr><tr><td><code>Command</code></td><td><code>:cnext</code></td><td>Quickfix列表下一条</td></tr><tr><td><code>Command</code></td><td><code>:cprevious</code></td><td>Quickfix列表上一条</td></tr><tr><td><code>Command</code></td><td><code>:cfirst</code></td><td>Quickfix列表第一条</td></tr><tr><td><code>Command</code></td><td><code>:clast</code></td><td>Quickfix列表最后一条</td></tr><tr><td><code>Command</code></td><td><code>:chistory</code></td><td>显示Quickfix列表历史记录</td></tr><tr><td><code>Command</code></td><td><code>:colder</code></td><td>使用上一次Quickfix列表操作记录</td></tr><tr><td><code>Command</code></td><td><code>:cnewer</code></td><td>使用下一次Quickfix列表操作记录</td></tr><tr><td><code>Command</code></td><td><code>:cdo</code></td><td>对quickfix list内的内容执行操作，例如<kbd>cdo</kbd>后接<a href="#%E6%9B%BF%E6%8D%A2substitute">substitute</a>相关操作，实现工作区内替换功能</td></tr></tbody></table>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="标记marks">标记（Marks）<a href="#标记marks" class="hash-link" aria-label="标记（Marks）的直接链接" title="标记（Marks）的直接链接">​</a></h2>
+<table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody><tr><td><code>Command</code></td><td><code>:marks</code></td><td>打开mark列表</td></tr><tr><td><code>Normal</code></td><td><kbd>m</kbd>+<kbd>{mark}</kbd></td><td>插眼</td></tr><tr><td><code>Normal</code></td><td><kbd>&#x27;</kbd>+<kbd>{mark}</kbd>/<kbd>`</kbd>+<kbd>{mark}</kbd></td><td>传送</td></tr><tr><td><code>Normal</code></td><td><kbd>&#x27;</kbd>+<kbd>&#x27;</kbd>/<kbd>`</kbd>+<kbd>`</kbd></td><td>跳转到上一次的标记</td></tr><tr><td><code>Command</code></td><td><code>:delmarks<!-- --> mark</code></td><td>排眼</td></tr><tr><td><code>Command</code></td><td><code>:delmarks!</code></td><td>删除所有的标记</td></tr></tbody></table>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="mark-说明">mark 说明<a href="#mark-说明" class="hash-link" aria-label="mark 说明的直接链接" title="mark 说明的直接链接">​</a></h3>
 <ul>
 <li><code>a-z</code> 当前buffer的标记</li>
 <li><code>A-Z</code> 跨文件的标记</li>
 <li><code>0-9</code> 跨项目的标记</li>
-<li><code>&lt;</code> <code>&gt;</code> <a href="#mode-visual">Visual</a> 模式下选中文本的区域的标记</li>
+<li><code>&lt;</code> <code>&gt;</code> <code>Visual</code>模式下选中文本的区域的标记</li>
 </ul>
-<hr />
-<p><a id="indent"></a></p>
-<h2 id="缩进indent"><a class="header" href="#缩进indent">缩进（Indent）</a></h2>
-<div class="table-wrapper"><table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody>
-<tr><td><code>Normal</code></td><td><kbd>&gt;</kbd>+<kbd>&gt;</kbd></td><td>向右缩进</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>&lt;</kbd>+<kbd>&lt;</kbd></td><td>向左缩进</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>=</kbd></td><td>自动对齐缩进</td></tr>
-<tr><td><code>Visual</code></td><td><kbd>&gt;</kbd></td><td>选中的行向右缩进</td></tr>
-<tr><td><code>Visual</code></td><td><kbd>&lt;</kbd></td><td>选中的行向左缩进</td></tr>
-<tr><td><code>Insert</code></td><td><kbd>Tab</kbd></td><td>缩进字符</td></tr>
-</tbody></table>
-</div>
-<h3 id="缩进相关配置"><a class="header" href="#缩进相关配置">缩进相关配置</a></h3>
-<div class="table-wrapper"><table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody>
-<tr><td><code>Command</code></td><td><code>:set list</code>/<code>:set nolist</code></td><td>开启/关闭空白字符显示</td></tr>
-<tr><td><code>Command</code></td><td><code>:set shiftwitdh={num}</code></td><td>使用<kbd>&lt;</kbd>/<kbd>&gt;</kbd>相关按键缩进的宽度</td></tr>
-<tr><td><code>Command</code></td><td><code>:set tabstop={num}</code></td><td>使用<kbd>Tab</kbd>按键缩进的宽度</td></tr>
-</tbody></table>
-</div>
-<hr />
-<p><a id="folding"></a></p>
-<h2 id="折叠folding"><a class="header" href="#折叠folding">折叠（Folding）</a></h2>
-<div class="table-wrapper"><table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody>
-<tr><td><code>Normal</code></td><td><kbd>z</kbd>+<kbd>f</kbd></td><td>创建一个折叠块，配合<code>foldmethod</code>配置才能使用</td></tr>
-<tr><td><code>Visual</code></td><td><kbd>z</kbd>+<kbd>f</kbd></td><td>创建一个折叠块，配合<code>foldmethod</code>配置才能使用</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>z</kbd>+<kbd>o</kbd></td><td>开启折叠块</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>z</kbd>+<kbd>c</kbd></td><td>关闭折叠块</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>z</kbd>+<kbd>a</kbd></td><td>关闭或关闭折叠块</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>z</kbd>+<kbd>A</kbd></td><td>关闭或关闭折叠块，递归</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>z</kbd>+<kbd>d</kbd></td><td>删除折叠块</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>z</kbd>+<kbd>j</kbd></td><td>下一个折叠块</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>z</kbd>+<kbd>k</kbd></td><td>上一个折叠块</td></tr>
-</tbody></table>
-</div>
-<h3 id="折叠块相关配置"><a class="header" href="#折叠块相关配置">折叠块相关配置</a></h3>
-<div class="table-wrapper"><table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody>
-<tr><td><code>Command</code></td><td><code>:set foldenable</code>/ <code>set nofoldenable</code></td><td>开启或关闭打开文件自动折叠相关代码</td></tr>
-<tr><td><code>Command</code></td><td><code>:set foldlevel={num}</code></td><td>最大折叠块深度</td></tr>
-<tr><td><code>Command</code></td><td><code>:set foldmethod={string}</code></td><td>折叠代码方式，<code>:h foldmethod</code>查看详细信息</td></tr>
-</tbody></table>
-</div>
-<hr />
-<p><a id="vimgrep"></a></p>
-<h2 id="全局搜索vimgrep"><a class="header" href="#全局搜索vimgrep">全局搜索（Vimgrep）</a></h2>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="缩进indent">缩进（Indent）<a href="#缩进indent" class="hash-link" aria-label="缩进（Indent）的直接链接" title="缩进（Indent）的直接链接">​</a></h2>
+<table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody><tr><td><code>Normal</code></td><td><kbd>&gt;</kbd>+<kbd>&gt;</kbd></td><td>向右缩进</td></tr><tr><td><code>Normal</code></td><td><kbd>&lt;</kbd>+<kbd>&lt;</kbd></td><td>向左缩进</td></tr><tr><td><code>Normal</code></td><td><kbd>=</kbd></td><td>自动对齐缩进</td></tr><tr><td><code>Visual</code></td><td><kbd>&gt;</kbd></td><td>选中的行向右缩进</td></tr><tr><td><code>Visual</code></td><td><kbd>&lt;</kbd></td><td>选中的行向左缩进</td></tr><tr><td><code>Insert</code></td><td><kbd>Tab</kbd></td><td>缩进字符</td></tr></tbody></table>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="缩进相关配置">缩进相关配置<a href="#缩进相关配置" class="hash-link" aria-label="缩进相关配置的直接链接" title="缩进相关配置的直接链接">​</a></h3>
+<table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody><tr><td><code>Command</code></td><td><code>:set list</code>/<code>:set nolist</code></td><td>开启/关闭空白字符显示</td></tr><tr><td><code>Command</code></td><td><code>:set shiftwitdh={num}</code></td><td>使用<kbd>&lt;</kbd>/<kbd>&gt;</kbd>相关按键缩进的宽度</td></tr><tr><td><code>Command</code></td><td><code>:set tabstop={num}</code></td><td>使用<kbd>Tab</kbd>按键缩进的宽度</td></tr></tbody></table>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="折叠folding">折叠（Folding）<a href="#折叠folding" class="hash-link" aria-label="折叠（Folding）的直接链接" title="折叠（Folding）的直接链接">​</a></h2>
+<table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody><tr><td><code>Normal</code></td><td><kbd>z</kbd>+<kbd>f</kbd></td><td>创建一个折叠块，配合<code>foldmethod</code>配置才能使用</td></tr><tr><td><code>Visual</code></td><td><kbd>z</kbd>+<kbd>f</kbd></td><td>创建一个折叠块，配合<code>foldmethod</code>配置才能使用</td></tr><tr><td><code>Normal</code></td><td><kbd>z</kbd>+<kbd>o</kbd></td><td>开启折叠块</td></tr><tr><td><code>Normal</code></td><td><kbd>z</kbd>+<kbd>c</kbd></td><td>关闭折叠块</td></tr><tr><td><code>Normal</code></td><td><kbd>z</kbd>+<kbd>a</kbd></td><td>关闭或关闭折叠块</td></tr><tr><td><code>Normal</code></td><td><kbd>z</kbd>+<kbd>A</kbd></td><td>关闭或关闭折叠块，递归</td></tr><tr><td><code>Normal</code></td><td><kbd>z</kbd>+<kbd>d</kbd></td><td>删除折叠块</td></tr><tr><td><code>Normal</code></td><td><kbd>z</kbd>+<kbd>j</kbd></td><td>下一个折叠块</td></tr><tr><td><code>Normal</code></td><td><kbd>z</kbd>+<kbd>k</kbd></td><td>上一个折叠块</td></tr></tbody></table>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="折叠块相关配置">折叠块相关配置<a href="#折叠块相关配置" class="hash-link" aria-label="折叠块相关配置的直接链接" title="折叠块相关配置的直接链接">​</a></h3>
+<table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody><tr><td><code>Command</code></td><td><code>:set foldenable</code>/ <code>set nofoldenable</code></td><td>开启或关闭打开文件自动折叠相关代码</td></tr><tr><td><code>Command</code></td><td><code>:set foldlevel={num}</code></td><td>最大折叠块深度</td></tr><tr><td><code>Command</code></td><td><code>:set foldmethod={string}</code></td><td>折叠代码方式，<code>:h foldmethod</code>查看详细信息</td></tr></tbody></table>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="全局搜索vimgrep">全局搜索（Vimgrep）<a href="#全局搜索vimgrep" class="hash-link" aria-label="全局搜索（Vimgrep）的直接链接" title="全局搜索（Vimgrep）的直接链接">​</a></h2>
 <ul>
-<li><code>vimgrep /<a href="#vimgrep-pattern">pattern</a>/<a href="#vimgrep-flags">flags</a> <a herf="#vimgrep-file">file...</a></code></li>
-</ul>
-<p><a id="vimgrep-pattern"></a></p>
-<ul>
-<li><code>pattern</code> 正则表达式或字符串</li>
-</ul>
-<p><a id="vimgrep-flags"></a></p>
-<ul>
-<li><code>flags</code>
+<li>
+<code>vimgrep /<strong>pattern</strong>/<strong>flags</strong> <strong>file...</strong></code>
+</li>
+<li>
+<p><code>pattern</code> 正则表达式或字符串</p>
+</li>
+<li>
+<p><code>flags</code></p>
 <ul>
 <li><code>g</code> 单行匹配多次</li>
 <li><code>j</code> 不跳转到匹配的buffer内</li>
-<li><code>f</code> 模糊匹配，<a href="#vimgrep-pattern">pattern</a>输入字符串</li>
+<li><code>f</code> 模糊匹配，<strong>pattern</strong>输入字符串</li>
 </ul>
 </li>
-</ul>
-<p><a id="vimgrep-file"></a></p>
-<ul>
-<li><code>file</code> 多个文件
+<li>
+<p><code>file</code> 多个文件</p>
 <ul>
 <li><code>a/*</code> a文件夹下的所有文件</li>
 <li><code>**/*.c</code> 所有文件夹下的c文件</li>
 </ul>
 </li>
 </ul>
-<hr />
-<p><a id="registers"></a></p>
-<h2 id="寄存器registers"><a class="header" href="#寄存器registers">寄存器（Registers）</a></h2>
-<div class="table-wrapper"><table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody>
-<tr><td><code>Normal</code></td><td><kbd>&quot;</kbd> <kbd>{register}</kbd> <kbd>y</kbd></td><td>将文本复制到对应的寄存器内</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>&quot;</kbd> <kbd>{register}</kbd> <kbd>p</kbd></td><td>粘贴对应的寄存器的内容</td></tr>
-<tr><td><code>Insert</code></td><td><kbd>Ctrl</kbd>+<kbd>r</kbd> <kbd>{register}</kbd></td><td>输入对应的寄存器的内容</td></tr>
-<tr><td><code>Command</code></td><td><kbd>Ctrl</kbd>+<kbd>r</kbd> <kbd>{register}</kbd></td><td>输入对应的寄存器的内容</td></tr>
-<tr><td><code>Command</code></td><td><code>:registers {register}</code></td><td>显示对应寄存器的内容，无参数则显示全部寄存器</td></tr>
-</tbody></table>
-</div>
-<h3 id="未命名寄存器"><a class="header" href="#未命名寄存器">未命名寄存器</a></h3>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="寄存器registers">寄存器（Registers）<a href="#寄存器registers" class="hash-link" aria-label="寄存器（Registers）的直接链接" title="寄存器（Registers）的直接链接">​</a></h2>
+<table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody><tr><td><code>Normal</code></td><td><kbd>&quot;</kbd> <kbd>{register}</kbd> <kbd>y</kbd></td><td>将文本复制到对应的寄存器内</td></tr><tr><td><code>Normal</code></td><td><kbd>&quot;</kbd> <kbd>{register}</kbd> <kbd>p</kbd></td><td>粘贴对应的寄存器的内容</td></tr><tr><td><code>Insert</code></td><td><kbd>Ctrl</kbd>+<kbd>r</kbd> <kbd>{register}</kbd></td><td>输入对应的寄存器的内容</td></tr><tr><td><code>Command</code></td><td><kbd>Ctrl</kbd>+<kbd>r</kbd> <kbd>{register}</kbd></td><td>输入对应的寄存器的内容</td></tr><tr><td><code>Command</code></td><td><code>:registers {register}</code></td><td>显示对应寄存器的内容，无参数则显示全部寄存器</td></tr></tbody></table>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="未命名寄存器">未命名寄存器<a href="#未命名寄存器" class="hash-link" aria-label="未命名寄存器的直接链接" title="未命名寄存器的直接链接">​</a></h3>
 <ul>
 <li><code>&quot;</code> 修改、删除、复制等操作后的文本都会存入这个寄存器内</li>
 </ul>
-<h3 id="数字寄存器"><a class="header" href="#数字寄存器">数字寄存器</a></h3>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="数字寄存器">数字寄存器<a href="#数字寄存器" class="hash-link" aria-label="数字寄存器的直接链接" title="数字寄存器的直接链接">​</a></h3>
 <ul>
 <li><code>0</code> 复制的文本都会存入这个寄存器内</li>
 <li><code>1-9</code> 修改或删除后的文本会依次存入这些寄存器内</li>
 </ul>
-<h3 id="删除寄存器"><a class="header" href="#删除寄存器">删除寄存器</a></h3>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="删除寄存器">删除寄存器<a href="#删除寄存器" class="hash-link" aria-label="删除寄存器的直接链接" title="删除寄存器的直接链接">​</a></h3>
 <ul>
-<li><code>-</code> 删除的内容少于一行时存入这个寄存器</li>
+<li><code>-</code> 删除的内 容少于一行时存入这个寄存器</li>
 </ul>
-<h3 id="字母寄存器"><a class="header" href="#字母寄存器">字母寄存器</a></h3>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="字母寄存器">字母寄存器<a href="#字母寄存器" class="hash-link" aria-label="字母寄存器的直接链接" title="字母寄存器的直接链接">​</a></h3>
 <ul>
 <li><code>a-z</code>/<code>A-Z</code> 用户自定义操作的寄存器</li>
 </ul>
-<h3 id="只读寄存器"><a class="header" href="#只读寄存器">只读寄存器</a></h3>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="只读寄存器">只读寄存器<a href="#只读寄存器" class="hash-link" aria-label="只读寄存器的直接链接" title="只读寄存器的直接链接">​</a></h3>
 <ul>
 <li><code>.</code> 上次新增的内容</li>
 <li><code>%</code> 当前buffer文件路径</li>
 <li><code>:</code> 上次执行的命令</li>
 </ul>
-<h3 id="备用buffer寄存器"><a class="header" href="#备用buffer寄存器">备用buffer寄存器</a></h3>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="备用buffer寄存器">备用buffer寄存器<a href="#备用buffer寄存器" class="hash-link" aria-label="备用buffer寄存器的直接链接" title="备用buffer寄存器的直接链接">​</a></h3>
 <ul>
 <li><code>#</code> 上次打开的buffer的文件路径</li>
 </ul>
-<h3 id="表达式寄存器"><a class="header" href="#表达式寄存器">表达式寄存器</a></h3>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="表达式寄存器">表达式寄存器<a href="#表达式寄存器" class="hash-link" aria-label="表达式寄存器的直接链接" title="表达式寄存器的直接链接">​</a></h3>
 <ul>
-<li><code>=</code> <a href="#mode-insert">Insert</a>模式下<kbd>Ctrl</kbd>+<kbd>r</kbd> <kbd>=</kbd>输入在<a href="#mode-command">Command</a>模式下执行命令的结果</li>
+<li><code>=</code> <code>Insert</code>模式下<kbd>Ctrl</kbd>+<kbd>r</kbd> <kbd>=</kbd>输入在<code>Command</code>模式下执行命令的结果</li>
 </ul>
-<h3 id="选择寄存器"><a class="header" href="#选择寄存器">选择寄存器</a></h3>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="选择寄存器">选择寄存器<a href="#选择寄存器" class="hash-link" aria-label="选择寄存器的直接链接" title="选择寄存器的直接链接">​</a></h3>
 <ul>
 <li><code>*</code>/<code>+</code> 系统剪切板</li>
 </ul>
-<h3 id="黑洞寄存器"><a class="header" href="#黑洞寄存器">黑洞寄存器</a></h3>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="黑洞寄存器">黑洞寄存器<a href="#黑洞寄存器" class="hash-link" aria-label="黑洞寄存器的直接链接" title="黑洞寄存器的直接链接">​</a></h3>
 <ul>
 <li><code>_</code> 和Linux下<code>/dev/null</code>类似</li>
 </ul>
-<h3 id="上次修改寄存器"><a class="header" href="#上次修改寄存器">上次修改寄存器</a></h3>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="上次修改寄存器">上次修改寄存器<a href="#上次修改寄存器" class="hash-link" aria-label="上次修改寄存器的直接链接" title="上次修改寄存器的直接链接">​</a></h3>
 <ul>
-<li><code>/</code> 4. <a href="#search">搜索</a>后的内容会保存在这个寄存器内</li>
+<li><code>/</code> 4. <a href="#%E6%90%9C%E7%B4%A2search">搜索</a>后的内容会保存在这个寄存器内</li>
 </ul>
-<hr />
-<p><a id="macros"></a></p>
-<h2 id="宏macros"><a class="header" href="#宏macros">宏（Macros）</a></h2>
-<div class="table-wrapper"><table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody>
-<tr><td><code>Normal</code></td><td><kbd>q</kbd> <kbd>{register}</kbd></td><td>录制宏</td></tr>
-<tr><td><code>normal</code></td><td><kbd>@</kbd> <kbd>{register}</kbd></td><td>播放宏</td></tr>
-<tr><td><code>normal</code></td><td><kbd>@</kbd> <kbd>:</kbd></td><td>执行上一次的命令</td></tr>
-<tr><td><code>normal</code></td><td><kbd>@</kbd> <kbd>@</kbd></td><td>执行上一次的宏</td></tr>
-</tbody></table>
-</div>
-<hr />
-<p><a id="builtin-plugin"></a></p>
-<h2 id="内置插件builtin-plugin"><a class="header" href="#内置插件builtin-plugin">内置插件（builtin-plugin）</a></h2>
-<h3 id="netrw"><a class="header" href="#netrw">Netrw</a></h3>
-<div class="table-wrapper"><table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody>
-<tr><td><code>Command</code></td><td><code>:E</code></td><td>打开文件管理器buffer</td></tr>
-<tr><td><code>Command</code></td><td><code>:Rexplore</code></td><td>返回上次打开的文件管理器</td></tr>
-<tr><td><code>Command</code></td><td><code>:Lexplore</code></td><td>开启或关闭左测的文件管理器</td></tr>
-</tbody></table>
-</div>
-<hr />
-<p><a id="others"></a></p>
-<h2 id="其他others"><a class="header" href="#其他others">其他（others）</a></h2>
-<div class="table-wrapper"><table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody>
-<tr><td><code>Normal</code></td><td><kbd>x</kbd></td><td>删除当前光标下的字符</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>r</kbd></td><td>将当前光标下的字符替换为输入的字符</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>y</kbd>+<kbd>{operate}</kbd></td><td>复制</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>p</kbd>/<kbd>P</kbd></td><td>粘贴，根据粘贴的内容是否为一行<br />粘贴的位置在当前行的下面或上面<br />当前字符的右边或左边</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>Ctrl</kbd>+<kbd>a</kbd></td><td>增加数字</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>Ctrl</kbd>+<kbd>x</kbd></td><td>减少数字</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>g</kbd> <kbd>Ctrl</kbd>+<kbd>a</kbd></td><td>依次增加选中列的数字</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>g</kbd> <kbd>Ctrl</kbd>+<kbd>x</kbd></td><td>依次减少选中列的数字</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>u</kbd></td><td>撤销</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>Ctrl</kbd>+<kbd>r</kbd></td><td>重做</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>~</kbd></td><td>大小写转换</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>Ctrl</kbd>+<kbd>g</kbd></td><td>底部显示当前buffer的信息</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>1</kbd> <kbd>Ctrl</kbd>+<kbd>g</kbd></td><td>底部显示当前buffer的信息，绝对路径</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>2</kbd> <kbd>Ctrl</kbd>+<kbd>g</kbd></td><td>底部显示当前buffer的信息，buffer number</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>g</kbd> <kbd>Ctrl</kbd>+<kbd>g</kbd></td><td>显示当前文件的line、word、char、byte信息</td></tr>
-<tr><td><code>Visual</code></td><td><kbd>g</kbd> <kbd>Ctrl</kbd>+<kbd>g</kbd></td><td>显示当前选中区域的line、word、char、byte信息</td></tr>
-<tr><td><code>Command</code></td><td><code>:set laststatus=0</code></td><td>隐藏底部输入命令的行高度</td></tr>
-<tr><td><code>Command</code></td><td><code>:set laststatus=2</code></td><td>设置底部输入命令的行高度</td></tr>
-<tr><td><code>Command</code></td><td><code>:set guifont=*</code></td><td>gui模式下设置字体</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>q</kbd> <kbd>:</kbd></td><td>分屏显示历史命令窗口</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>q</kbd> <kbd>/</kbd></td><td>分屏显示历史搜索记录窗口</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>q</kbd> <kbd>?</kbd></td><td>分屏显示历史搜索记录窗口</td></tr>
-<tr><td><code>Normal</code></td><td><kbd>:</kbd> <kbd>{number}</kbd></td><td>跳转到对应的行号</td></tr>
-</tbody></table>
-</div>
-<hr />
-<p><a id="neovim-dev"></a></p>
-<h2 id="neovim开发neovim-dev"><a class="header" href="#neovim开发neovim-dev">neovim开发（neovim-dev）</a></h2>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="宏macros">宏（Macros）<a href="#宏macros" class="hash-link" aria-label="宏（Macros）的直接链接" title="宏（Macros）的直接链接">​</a></h2>
+<table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody><tr><td><code>Normal</code></td><td><kbd>q</kbd> <kbd>{register}</kbd></td><td>录制宏</td></tr><tr><td><code>Normal</code></td><td><kbd>@</kbd> <kbd>{register}</kbd></td><td>播放宏</td></tr><tr><td><code>Normal</code></td><td><kbd>@</kbd> <kbd>:</kbd></td><td>执行上一次的命令</td></tr><tr><td><code>Normal</code></td><td><kbd>@</kbd> <kbd>@</kbd></td><td>执行上一次的宏</td></tr></tbody></table>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="内置插件builtin-plugin">内置插件（builtin-plugin）<a href="#内置插件builtin-plugin" class="hash-link" aria-label="内置插件（builtin-plugin）的直接链接" title="内置插件（builtin-plugin）的直接链接">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="netrw">Netrw<a href="#netrw" class="hash-link" aria-label="Netrw的直接链接" title="Netrw的直接链接">​</a></h3>
+<table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody><tr><td><code>Command</code></td><td><code>:E</code></td><td>打开文件管理器buffer</td></tr><tr><td><code>Command</code></td><td><code>:Rexplore</code></td><td>返回上次打开的文件管理器</td></tr><tr><td><code>Command</code></td><td><code>:Lexplore</code></td><td>开启或关闭左测的文件管理器</td></tr></tbody></table>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="其他others">其他（others）<a href="#其他others" class="hash-link" aria-label="其他（others）的直接链接" title="其他（others）的直接链接">​</a></h2>
+<table><thead><tr><th>模式</th><th>按键</th><th>描述</th></tr></thead><tbody><tr><td><code>Normal</code></td><td><kbd>x</kbd></td><td>删除当前光标下的字符</td></tr><tr><td><code>Normal</code></td><td><kbd>r</kbd></td><td>将当前光标下的字符替换为输入的字符</td></tr><tr><td><code>Normal</code></td><td><kbd>y</kbd>+<kbd>{operate}</kbd></td><td>复制</td></tr><tr><td><code>Normal</code></td><td><kbd>p</kbd>/<kbd>P</kbd></td><td>粘贴，根据粘贴的内容是否为一行<br>粘贴的位置在当前行的下面或上面<br>当前字符的右边或左边</td></tr><tr><td><code>Normal</code></td><td><kbd>Ctrl</kbd>+<kbd>a</kbd></td><td>增加数字</td></tr><tr><td><code>Normal</code></td><td><kbd>Ctrl</kbd>+<kbd>x</kbd></td><td>减少数字</td></tr><tr><td><code>Normal</code></td><td><kbd>g</kbd> <kbd>Ctrl</kbd>+<kbd>a</kbd></td><td>依次增加选中列的数字</td></tr><tr><td><code>Normal</code></td><td><kbd>g</kbd> <kbd>Ctrl</kbd>+<kbd>x</kbd></td><td>依次减少选中列的数字</td></tr><tr><td><code>Normal</code></td><td><kbd>u</kbd></td><td>撤销</td></tr><tr><td><code>Normal</code></td><td><kbd>Ctrl</kbd>+<kbd>r</kbd></td><td>重做</td></tr><tr><td><code>Normal</code></td><td><kbd>~</kbd></td><td>大小写转换</td></tr><tr><td><code>Normal</code></td><td><kbd>Ctrl</kbd>+<kbd>g</kbd></td><td>底部显示当前buffer的信息</td></tr><tr><td><code>Normal</code></td><td><kbd>1</kbd> <kbd>Ctrl</kbd>+<kbd>g</kbd></td><td>底部显示当前buffer的信息，绝对路径</td></tr><tr><td><code>Normal</code></td><td><kbd>2</kbd> <kbd>Ctrl</kbd>+<kbd>g</kbd></td><td>底部显示当前buffer的信息，buffer number</td></tr><tr><td><code>Normal</code></td><td><kbd>g</kbd> <kbd>Ctrl</kbd>+<kbd>g</kbd></td><td>显示当前文件的line、word、char、byte信息</td></tr><tr><td><code>Visual</code></td><td><kbd>g</kbd> <kbd>Ctrl</kbd>+<kbd>g</kbd></td><td>显示当前选中区域的line、word、char、byte信息</td></tr><tr><td><code>Command</code></td><td><code>:set laststatus=0</code></td><td>隐藏底部输入命令的行高度</td></tr><tr><td><code>Command</code></td><td><code>:set laststatus=2</code></td><td>设置底部输入命令的行高度</td></tr><tr><td><code>Command</code></td><td><code>:set guifont=*</code></td><td>gui模式下设置字体</td></tr><tr><td><code>Normal</code></td><td><kbd>q</kbd> <kbd>:</kbd></td><td>分屏显示历史命令窗口</td></tr><tr><td><code>Normal</code></td><td><kbd>q</kbd> <kbd>/</kbd></td><td>分屏显示历史搜索记录窗口</td></tr><tr><td><code>Normal</code></td><td><kbd>q</kbd> <kbd>?</kbd></td><td>分屏显示历史搜索记录窗口</td></tr><tr><td><code>Normal</code></td><td><kbd>:</kbd> <kbd>{number}</kbd></td><td>跳转到对应的行号</td></tr></tbody></table>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="neovim开发neovim-dev">neovim开发（neovim-dev）<a href="#neovim开发neovim-dev" class="hash-link" aria-label="neovim开发（neovim-dev）的直接链接" title="neovim开发（neovim-dev）的直接链接">​</a></h2>
 <blockquote>
 <p>以下和lua相关的代码仅支持neovim</p>
 </blockquote>
-<h3 id="lua语言简介"><a class="header" href="#lua语言简介">lua语言简介</a></h3>
-<h3 id="neovim-api"><a class="header" href="#neovim-api">neovim api</a></h3>
-<h4 id="vimovimoptvimopt_local"><a class="header" href="#vimovimoptvimopt_local"><code>vim.o</code>/<code>vim.opt</code>/<code>vim.opt_local</code></a></h4>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="lua语言简介">lua语言简介<a href="#lua语言简介" class="hash-link" aria-label="lua语言简介的直接链接" title="lua语言简介的直接链接">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="neovim-api">neovim api<a href="#neovim-api" class="hash-link" aria-label="neovim api的直接链接" title="neovim api的直接链接">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="vimovimoptvimopt_local"><code>vim.o</code>/<code>vim.opt</code>/<code>vim.opt_local</code><a href="#vimovimoptvimopt_local" class="hash-link" aria-label="vimovimoptvimopt_local的直接链接" title="vimovimoptvimopt_local的直接链接">​</a></h4>
 <ul>
 <li>类似vimscript的set操作，o对应原始数据，opt对应使用lua封装的数据，opt_local对应setlocal</li>
 </ul>
-<div class="table-wrapper"><table><thead><tr><th>lua</th><th>vimscript</th></tr></thead><tbody>
-<tr><td><code>vim.o.number</code></td><td><code>set number</code></td></tr>
-<tr><td><code>vim.o.relativenumber</code></td><td><code>set relativenumber</code></td></tr>
-<tr><td><code>vim.o.clipboard</code></td><td><code>set clipboard</code></td></tr>
-</tbody></table>
-</div>
-<h4 id="vimkeymap"><a class="header" href="#vimkeymap"><code>vim.keymap</code></a></h4>
+<table><thead><tr><th>lua</th><th>vimscript</th></tr></thead><tbody><tr><td><code>vim.o.number</code></td><td><code>set number</code></td></tr><tr><td><code>vim.o.relativenumber</code></td><td><code>set relativenumber</code></td></tr><tr><td><code>vim.o.clipboard</code></td><td><code>set clipboard</code></td></tr></tbody></table>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="vimkeymap"><code>vim.keymap</code><a href="#vimkeymap" class="hash-link" aria-label="vimkeymap的直接链接" title="vimkeymap的直接链接">​</a></h4>
 <ul>
 <li>配置按键映射的方法，对应vimscript的<code>nmap</code>，<code>vmap</code>等</li>
 </ul>
-<pre><code class="language-lua">-- 实现nnoremap &lt;M-w&gt; viw
-vim.keymap.set(&quot;n&quot;, &quot;&lt;M-w&gt;&quot;, &quot;viw&quot;, {
- noremap = true
-})
-</code></pre>
-<h4 id="vimapi"><a class="header" href="#vimapi"><code>vim.api</code></a></h4>
+<div class="language-lua codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-lua codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic">-- 实现nnoremap &lt;M-w&gt; viw</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">vim</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">keymap</span><span class="token punctuation" style="color:#393A34">.</span><span class="token function" style="color:#d73a49">set</span><span class="token punctuation" style="color:#393A34">(</span><span class="token string" style="color:#e3116c">&quot;n&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;&lt;M-w&gt;&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;viw&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"> noremap </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token keyword" style="color:#00009f">true</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">)</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="vimapi"><code>vim.api</code><a href="#vimapi" class="hash-link" aria-label="vimapi的直接链接" title="vimapi的直接链接">​</a></h4>
 <ul>
-<li>对应使用lua实现的vimapi，参考：<code>h vim.api</code> </li>
+<li>对应使用lua实现的vimapi，参考：<code>h vim.api</code></li>
 </ul>
-<h4 id="vimfn"><a class="header" href="#vimfn"><code>vim.fn</code></a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="vimfn"><code>vim.fn</code><a href="#vimfn" class="hash-link" aria-label="vimfn的直接链接" title="vimfn的直接链接">​</a></h4>
 <ul>
 <li>调用vimscript的函数，参考：<code>h builtin-function-list</code></li>
 </ul>
-<div class="table-wrapper"><table><thead><tr><th>lua</th><th>vimscript</th></tr></thead><tbody>
-<tr><td><code>vim.fn.getcwd()</code></td><td><code>getcwd()</code></td></tr>
-<tr><td><code>vim.fn.line()</code></td><td><code>line()</code></td></tr>
-<tr><td><code>vim.fn.buflisted()</code></td><td><code>buflisted()</code></td></tr>
-</tbody></table>
-</div>
-<h4 id="vimcmd"><a class="header" href="#vimcmd"><code>vim.cmd</code></a></h4>
+<table><thead><tr><th>lua</th><th>vimscript</th></tr></thead><tbody><tr><td><code>vim.fn.getcwd()</code></td><td><code>getcwd()</code></td></tr><tr><td><code>vim.fn.line()</code></td><td><code>line()</code></td></tr><tr><td><code>vim.fn.buflisted()</code></td><td><code>buflisted()</code></td></tr></tbody></table>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="vimcmd"><code>vim.cmd</code><a href="#vimcmd" class="hash-link" aria-label="vimcmd的直接链接" title="vimcmd的直接链接">​</a></h4>
 <ul>
 <li>调用vimscript的命令</li>
 </ul>
-<div class="table-wrapper"><table><thead><tr><th>lua</th><th>vimscript</th></tr></thead><tbody>
-<tr><td><code>vim.cmd.e()</code></td><td><code>:e</code></td></tr>
-<tr><td><code>vim.cmd.wincmd()</code></td><td><code>:wincmd</code></td></tr>
-<tr><td><code>vim.cmd.pwd()</code></td><td><code>:pwd</code></td></tr>
-</tbody></table>
-</div>
-<h4 id="vimlsp"><a class="header" href="#vimlsp"><code>vim.lsp</code></a></h4>
+<table><thead><tr><th>lua</th><th>vimscript</th></tr></thead><tbody><tr><td><code>vim.cmd.e()</code></td><td><code>:e</code></td></tr><tr><td><code>vim.cmd.wincmd()</code></td><td><code>:wincmd</code></td></tr><tr><td><code>vim.cmd.pwd()</code></td><td><code>:pwd</code></td></tr></tbody></table>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="vimlsp"><code>vim.lsp</code><a href="#vimlsp" class="hash-link" aria-label="vimlsp的直接链接" title="vimlsp的直接链接">​</a></h4>
 <ul>
-<li>vim内置<a href="https://microsoft.github.io/language-server-protocol/">lsp</a>相关函数，参考：<code>h vim.lsp</code></li>
+<li>vim内置<a href="https://microsoft.github.io/language-server-protocol/" target="_blank" rel="noopener noreferrer">lsp</a>相关函数，参考：<code>h vim.lsp</code></li>
 </ul>
-<h4 id="vimuvvimloop"><a class="header" href="#vimuvvimloop"><code>vim.uv</code>/<code>vim.loop</code></a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="vimuvvimloop"><code>vim.uv</code>/<code>vim.loop</code><a href="#vimuvvimloop" class="hash-link" aria-label="vimuvvimloop的直接链接" title="vimuvvimloop的直接链接">​</a></h4>
 <ul>
-<li>vim内置<a href="https://github.com/luvit/luv">luv</a>网络编程库，参考：<code>h luv</code></li>
+<li>vim内置<a href="https://github.com/luvit/luv" target="_blank" rel="noopener noreferrer">luv</a>网络编程库，参考：<code>h luv</code></li>
 </ul>
-<h4 id="vimschedulevimschedule_wrap"><a class="header" href="#vimschedulevimschedule_wrap"><code>vim.schedule</code>/<code>vim.schedule_wrap</code></a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="vimschedulevimschedule_wrap"><code>vim.schedule</code>/<code>vim.schedule_wrap</code><a href="#vimschedulevimschedule_wrap" class="hash-link" aria-label="vimschedulevimschedule_wrap的直接链接" title="vimschedulevimschedule_wrap的直接链接">​</a></h4>
 <ul>
 <li>等待event-loop内的事件执行完成后再执行里面的操作</li>
-</ul>
-
-                    </main>
-
-                    <nav class="nav-wrapper" aria-label="Page navigation">
-                        <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../../software-services-tools/git/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                                <i class="fa fa-angle-left"></i>
-                            </a>
-
-                            <a rel="next prefetch" href="../../software-services-tools/nginx/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
-
-                        <div style="clear: both"></div>
-                    </nav>
-                </div>
-            </div>
-
-            <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../../software-services-tools/git/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                        <i class="fa fa-angle-left"></i>
-                    </a>
-
-                    <a rel="next prefetch" href="../../software-services-tools/nginx/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
-            </nav>
-
-        </div>
-
-
-
-
-        <script>
-            window.playground_copyable = true;
-        </script>
-
-
-        <script src="../../elasticlunr.min.js"></script>
-        <script src="../../mark.min.js"></script>
-        <script src="../../searcher.js"></script>
-
-        <script src="../../clipboard.min.js"></script>
-        <script src="../../highlight.js"></script>
-        <script src="../../book.js"></script>
-
-        <!-- Custom JS scripts -->
-        <script src="../../mermaid.min.js"></script>
-        <script src="../../mermaid-init.js"></script>
-
-
-    </div>
-    </body>
+</ul></div></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="文件选项卡"><a class="pagination-nav__link pagination-nav__link--prev" href="/doc/software-services-tools/redis/"><div class="pagination-nav__sublabel">上一页</div><div class="pagination-nav__label">Redis</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/doc/java/"><div class="pagination-nav__sublabel">下一页</div><div class="pagination-nav__label">Java</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#移动motions" class="table-of-contents__link toc-highlight">移动（motions）</a><ul><li><a href="#键位" class="table-of-contents__link toc-highlight">键位</a></li></ul></li><li><a href="#模式modes" class="table-of-contents__link toc-highlight">模式（modes）</a><ul><li><a href="#normal" class="table-of-contents__link toc-highlight">Normal</a></li><li><a href="#insert" class="table-of-contents__link toc-highlight">Insert</a></li><li><a href="#visual" class="table-of-contents__link toc-highlight">Visual</a></li><li><a href="#command" class="table-of-contents__link toc-highlight">Command</a></li><li><a href="#replace" class="table-of-contents__link toc-highlight">Replace</a></li></ul></li><li><a href="#文本对象textobject" class="table-of-contents__link toc-highlight">文本对象（textobject）</a></li><li><a href="#搜索search" class="table-of-contents__link toc-highlight">搜索（search）</a></li><li><a href="#替换substitute" class="table-of-contents__link toc-highlight">替换（substitute）</a></li><li><a href="#缓冲区buffer" class="table-of-contents__link toc-highlight">缓冲区（buffer）</a></li><li><a href="#窗口window" class="table-of-contents__link toc-highlight">窗口（window）</a></li><li><a href="#变更列表和跳转列表change-list-and-jump-list" class="table-of-contents__link toc-highlight">变更列表和跳转列表（change list and jump list）</a></li><li><a href="#快速修复列表quickfix-list" class="table-of-contents__link toc-highlight">快速修复  列表（Quickfix list）</a></li><li><a href="#标记marks" class="table-of-contents__link toc-highlight">标记（Marks）</a><ul><li><a href="#mark-说明" class="table-of-contents__link toc-highlight">mark 说明</a></li></ul></li><li><a href="#缩进indent" class="table-of-contents__link toc-highlight">缩进（Indent）</a><ul><li><a href="#缩进相关配置" class="table-of-contents__link toc-highlight">缩进相关配置</a></li></ul></li><li><a href="#折叠folding" class="table-of-contents__link toc-highlight">折叠（Folding）</a><ul><li><a href="#折叠块相关配置" class="table-of-contents__link toc-highlight">折叠块相关配置</a></li></ul></li><li><a href="#全局搜索vimgrep" class="table-of-contents__link toc-highlight">全局搜索（Vimgrep）</a></li><li><a href="#寄存器registers" class="table-of-contents__link toc-highlight">寄存器（Registers）</a><ul><li><a href="#未命名寄存器" class="table-of-contents__link toc-highlight">未命名寄存器</a></li><li><a href="#数字寄存器" class="table-of-contents__link toc-highlight">数字寄存器</a></li><li><a href="#删除寄存器" class="table-of-contents__link toc-highlight">删除寄存器</a></li><li><a href="#字母寄存器" class="table-of-contents__link toc-highlight">字母寄存器</a></li><li><a href="#只读寄存器" class="table-of-contents__link toc-highlight">只读寄存器</a></li><li><a href="#备用buffer寄存器" class="table-of-contents__link toc-highlight">备用buffer寄存器</a></li><li><a href="#表达式寄存器" class="table-of-contents__link toc-highlight">表达式寄存器</a></li><li><a href="#选择寄存器" class="table-of-contents__link toc-highlight">选择寄存器</a></li><li><a href="#黑洞寄存器" class="table-of-contents__link toc-highlight">黑洞寄存器</a></li><li><a href="#上次修改寄存器" class="table-of-contents__link toc-highlight">上次修改寄存器</a></li></ul></li><li><a href="#宏macros" class="table-of-contents__link toc-highlight">宏（Macros）</a></li><li><a href="#内置插件builtin-plugin" class="table-of-contents__link toc-highlight">内置插件（builtin-plugin）</a><ul><li><a href="#netrw" class="table-of-contents__link toc-highlight">Netrw</a></li></ul></li><li><a href="#其他others" class="table-of-contents__link toc-highlight">其他（others）</a></li><li><a href="#neovim开发neovim-dev" class="table-of-contents__link toc-highlight">neovim开发（neovim-dev）</a><ul><li><a href="#lua语言简介" class="table-of-contents__link toc-highlight">lua语言简介</a></li><li><a href="#neovim-api" class="table-of-contents__link toc-highlight">neovim api</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="col footer__col"><div class="footer__title">Docs</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/doc/">Docs</a></li></ul></div><div class="col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/follow1123" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://github.com/follow1123/doc" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub Repository<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2024 My Project, Inc. Built with Docusaurus.</div></div></div></footer></div>
+</body>
 </html>

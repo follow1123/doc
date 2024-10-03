@@ -1,424 +1,150 @@
-<!DOCTYPE HTML>
-<html lang="zh" class="light" dir="ltr">
-    <head>
-        <!-- Book generated using mdBook -->
-        <meta charset="UTF-8">
-        <title>Command Prompt - 文档</title>
-
-
-        <!-- Custom HTML head -->
-        
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff">
-
-        <link rel="icon" href="../../favicon.svg">
-        <link rel="shortcut icon" href="../../favicon.png">
-        <link rel="stylesheet" href="../../css/variables.css">
-        <link rel="stylesheet" href="../../css/general.css">
-        <link rel="stylesheet" href="../../css/chrome.css">
-        <link rel="stylesheet" href="../../css/print.css" media="print">
-
-        <!-- Fonts -->
-        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="../../fonts/fonts.css">
-
-        <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="../../highlight.css">
-        <link rel="stylesheet" href="../../tomorrow-night.css">
-        <link rel="stylesheet" href="../../ayu-highlight.css">
-
-        <!-- Custom theme stylesheets -->
-        <link rel="stylesheet" href="../../custom.css">
-
-    </head>
-    <body class="sidebar-visible no-js">
-    <div id="body-container">
-        <!-- Provide site root to javascript -->
-        <script>
-            var path_to_root = "../../";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
-        </script>
-
-        <!-- Work around some values being stored in localStorage wrapped in quotes -->
-        <script>
-            try {
-                var theme = localStorage.getItem('mdbook-theme');
-                var sidebar = localStorage.getItem('mdbook-sidebar');
-
-                if (theme.startsWith('"') && theme.endsWith('"')) {
-                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
-                }
-
-                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
-                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
-                }
-            } catch (e) { }
-        </script>
-
-        <!-- Set the theme before any content is loaded, prevents flash -->
-        <script>
-            var theme;
-            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
-            if (theme === null || theme === undefined) { theme = default_theme; }
-            var html = document.querySelector('html');
-            html.classList.remove('light')
-            html.classList.add(theme);
-            var body = document.querySelector('body');
-            body.classList.remove('no-js')
-            body.classList.add('js');
-        </script>
-
-        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
-
-        <!-- Hide / unhide sidebar before it is displayed -->
-        <script>
-            var body = document.querySelector('body');
-            var sidebar = null;
-            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
-            if (document.body.clientWidth >= 1080) {
-                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
-                sidebar = sidebar || 'visible';
-            } else {
-                sidebar = 'hidden';
-            }
-            sidebar_toggle.checked = sidebar === 'visible';
-            body.classList.remove('sidebar-visible');
-            body.classList.add("sidebar-" + sidebar);
-        </script>
-
-        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../../linux/index.html"><strong aria-hidden="true">1.</strong> Linux</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../linux/linux-basics/index.html"><strong aria-hidden="true">1.1.</strong> Linux基础</a></li><li class="chapter-item expanded "><a href="../../linux/desktop-env/index.html"><strong aria-hidden="true">1.2.</strong> Linux桌面环境</a></li><li class="chapter-item expanded "><a href="../../linux/vsftp/index.html"><strong aria-hidden="true">1.3.</strong> vsftp</a></li><li class="chapter-item expanded "><a href="../../linux/systemd/index.html"><strong aria-hidden="true">1.4.</strong> systemd</a></li></ol></li><li class="chapter-item expanded "><a href="../../windows/index.html"><strong aria-hidden="true">2.</strong> Windows</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../windows/command-prompt/index.html" class="active"><strong aria-hidden="true">2.1.</strong> Command Prompt</a></li><li class="chapter-item expanded "><a href="../../windows/wsl2/index.html"><strong aria-hidden="true">2.2.</strong> wsl2</a></li></ol></li><li class="chapter-item expanded "><a href="../../docker/index.html"><strong aria-hidden="true">3.</strong> Docker</a></li><li class="chapter-item expanded "><a href="../../git/index.html"><strong aria-hidden="true">4.</strong> Git</a></li><li class="chapter-item expanded "><a href="../../java/index.html"><strong aria-hidden="true">5.</strong> Java</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../java/java-basics/index.html"><strong aria-hidden="true">5.1.</strong> Java基础</a></li><li class="chapter-item expanded "><a href="../../java/multithreading/index.html"><strong aria-hidden="true">5.2.</strong> 多线程</a></li><li class="chapter-item expanded "><a href="../../java/maven/index.html"><strong aria-hidden="true">5.3.</strong> Maven</a></li><li class="chapter-item expanded "><a href="../../java/gradle/index.html"><strong aria-hidden="true">5.4.</strong> Gradle</a></li><li class="chapter-item expanded "><a href="../../java/design-pattern/index.html"><strong aria-hidden="true">5.5.</strong> 设计模式</a></li><li class="chapter-item expanded "><a href="../../java/java-web/index.html"><strong aria-hidden="true">5.6.</strong> Java Web</a></li><li class="chapter-item expanded "><a href="../../java/SSM/index.html"><strong aria-hidden="true">5.7.</strong> SSM</a></li><li class="chapter-item expanded "><a href="../../java/project/index.html"><strong aria-hidden="true">5.8.</strong> 项目</a></li><li class="chapter-item expanded "><a href="../../java/shiro/index.html"><strong aria-hidden="true">5.9.</strong> Shiro</a></li><li class="chapter-item expanded "><a href="../../java/netty/index.html"><strong aria-hidden="true">5.10.</strong> Netty</a></li><li class="chapter-item expanded "><a href="../../java/spring/index.html"><strong aria-hidden="true">5.11.</strong> Spring</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../java/spring/spring-security/index.html"><strong aria-hidden="true">5.11.1.</strong> Spring Security</a></li><li class="chapter-item expanded "><a href="../../java/spring/spring-cloud/index.html"><strong aria-hidden="true">5.11.2.</strong> Spring Cloud</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../mysql/index.html"><strong aria-hidden="true">6.</strong> Mysql</a></li><li class="chapter-item expanded "><a href="../../nginx/index.html"><strong aria-hidden="true">7.</strong> Nginx</a></li><li class="chapter-item expanded "><a href="../../redis/index.html"><strong aria-hidden="true">8.</strong> Redis</a></li><li class="chapter-item expanded "><a href="../../vim/index.html"><strong aria-hidden="true">9.</strong> Vim/Neovim</a></li><li class="chapter-item expanded "><a href="../../vue/index.html"><strong aria-hidden="true">10.</strong> Vue</a></li><li class="chapter-item expanded "><a href="../../web/index.html"><strong aria-hidden="true">11.</strong> Web</a></li></ol>
-            </div>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
-                <div class="sidebar-resize-indicator"></div>
-            </div>
-        </nav>
-
-        <!-- Track and set sidebar scroll position -->
-        <script>
-            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
-            sidebarScrollbox.addEventListener('click', function(e) {
-                if (e.target.tagName === 'A') {
-                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
-                }
-            }, { passive: true });
-            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
-            sessionStorage.removeItem('sidebar-scroll');
-            if (sidebarScrollTop) {
-                // preserve sidebar scroll position when navigating via links within sidebar
-                sidebarScrollbox.scrollTop = sidebarScrollTop;
-            } else {
-                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
-                var activeSection = document.querySelector('#sidebar .active');
-                if (activeSection) {
-                    activeSection.scrollIntoView({ block: 'center' });
-                }
-            }
-        </script>
-
-        <div id="page-wrapper" class="page-wrapper">
-
-            <div class="page">
-                                <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky">
-                    <div class="left-buttons">
-                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
-                            <i class="fa fa-bars"></i>
-                        </label>
-                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
-                            <i class="fa fa-paint-brush"></i>
-                        </button>
-                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
-                        </ul>
-                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
-                            <i class="fa fa-search"></i>
-                        </button>
-                    </div>
-
-                    <h1 class="menu-title">文档</h1>
-
-                    <div class="right-buttons">
-                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
-                            <i id="print-button" class="fa fa-print"></i>
-                        </a>
-
-                    </div>
-                </div>
-
-                <div id="search-wrapper" class="hidden">
-                    <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
-                    </form>
-                    <div id="searchresults-outer" class="searchresults-outer hidden">
-                        <div id="searchresults-header" class="searchresults-header"></div>
-                        <ul id="searchresults">
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
-                <script>
-                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
-                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
-                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
-                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
-                    });
-                </script>
-
-                <div id="content" class="content">
-                    <main>
-                        <h1 id="command-prompt"><a class="header" href="#command-prompt">Command Prompt</a></h1>
+<!doctype html>
+<html lang="zh-Hans" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-windows/command-prompt" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.5.2">
+<title data-rh="true">Command Prompt | My Site</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://follow1123.github.io/doc/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://follow1123.github.io/doc/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://follow1123.github.io/doc/windows/command-prompt"><meta data-rh="true" property="og:locale" content="zh_Hans"><meta data-rh="true" name="docusaurus_locale" content="zh-Hans"><meta data-rh="true" name="docsearch:language" content="zh-Hans"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Command Prompt | My Site"><meta data-rh="true" name="description" content="windows默认shell(cmd.exe)"><meta data-rh="true" property="og:description" content="windows默认shell(cmd.exe)"><link data-rh="true" rel="icon" href="/doc/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://follow1123.github.io/doc/windows/command-prompt"><link data-rh="true" rel="alternate" href="https://follow1123.github.io/doc/windows/command-prompt" hreflang="zh-Hans"><link data-rh="true" rel="alternate" href="https://follow1123.github.io/doc/windows/command-prompt" hreflang="x-default"><link rel="stylesheet" href="/doc/assets/css/styles.8e336f20.css">
+<script src="/doc/assets/js/runtime~main.fb69b3c9.js" defer="defer"></script>
+<script src="/doc/assets/js/main.25654acc.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();t(null!==e?e:"light")}(),function(){try{const n=new URLSearchParams(window.location.search).entries();for(var[t,e]of n)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="跳到主要内容"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">跳到主要内容</a></div><nav aria-label="主导航" class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="切换导航栏" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/doc/"><div class="navbar__logo"><img src="/doc/img/logo.svg" alt="Doc Site Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/doc/img/logo.svg" alt="Doc Site Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">Doc Site</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/doc/">Docs</a></div><div class="navbar__items navbar__items--right"><a href="https://github.com/follow1123" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="切换浅色/暗黑模式（当前为浅色模式）" aria-label="切换浅色/暗黑模式（当前为浅色模式）" aria-live="polite"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><input placeholder="搜索" aria-label="Search" class="navbar__search-input"><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="回到顶部" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="文档侧边栏" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/doc/">说明</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/doc/linux/">Linux</a><button aria-label="展开侧边栏分类 &#x27;Linux&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--active" href="/doc/windows/">Windows</a><button aria-label="折叠侧边栏分类 &#x27;Windows&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/doc/windows/command-prompt">Command Prompt</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/doc/windows/powershell">PowerShell</a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/doc/software-services-tools/">软件/服务/工具</a><button aria-label="展开侧边栏分类 &#x27;软件/服务/工具&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/doc/java/">Java</a><button aria-label="展开侧边栏分类 &#x27;Java&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/doc/design-pattern/">设计模式</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/doc/frontend/">前端</a><button aria-label="展开侧边栏分类 &#x27;前端&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="页面路径"><ul class="breadcrumbs" itemscope="" itemtype="https://schema.org/BreadcrumbList"><li class="breadcrumbs__item"><a aria-label="主页面" class="breadcrumbs__link" href="/doc/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item"><a class="breadcrumbs__link" itemprop="item" href="/doc/windows/"><span itemprop="name">Windows</span></a><meta itemprop="position" content="1"></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link" itemprop="name">Command Prompt</span><meta itemprop="position" content="2"></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">本页总览</button></div><div class="theme-doc-markdown markdown"><header><h1>Command Prompt</h1></header>
 <blockquote>
-<p>windows默认shell(cmd.exe)</p>
+<p>windows默认shell(cmd.exe)<br>
+<a href="https://learn.microsoft.com/zh-cn/windows-server/administration/windows-commands/windows-commands" target="_blank" rel="noopener noreferrer">官方文档</a></p>
 </blockquote>
-<h2 id="常用命令"><a class="header" href="#常用命令">常用命令</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="常用命令">常用命令<a href="#常用命令" class="hash-link" aria-label="常用命令的直接链接" title="常用命令的直接链接">​</a></h2>
 <blockquote>
 <p>cmd内置命令默认后面接<code>/?</code> 查看命令的帮助</p>
 </blockquote>
-<div class="table-wrapper"><table><thead><tr><th>命令</th><th>描述</th></tr></thead><tbody>
-<tr><td><strong><a href="#dir">dir</a></strong></td><td>列出当前目录下的子目录</td></tr>
-<tr><td><strong>cls</strong></td><td>清屏</td></tr>
-<tr><td><strong>echo</strong></td><td>回显消息</td></tr>
-<tr><td><strong>cd</strong></td><td>切换目录</td></tr>
-<tr><td><strong><a href="#copy">copy</a></strong></td><td>复制文件</td></tr>
-<tr><td><strong><a href="#del">del</a></strong></td><td>删除文件</td></tr>
-<tr><td><strong>md/mkdir</strong></td><td>创建文件夹</td></tr>
-<tr><td><strong><a href="#rd">rd</a></strong></td><td>删除目录</td></tr>
-<tr><td><strong><a href="#date">date</a></strong></td><td>查看当前日期</td></tr>
-<tr><td><strong><a href="#mklink">mklink</a></strong></td><td>创建软链接(类似linux的<code>ln</code>命令 )</td></tr>
-<tr><td><strong><a href="#timeout">timeout</a></strong></td><td>睡眠</td></tr>
-<tr><td><strong><a href="#start">start</a></strong></td><td>启动一个程序</td></tr>
-<tr><td><strong>exit</strong></td><td>退出终端</td></tr>
-</tbody></table>
-</div>
-<h3 id="命令说明"><a class="header" href="#命令说明">命令说明</a></h3>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="文件管理">文件管理<a href="#文件管理" class="hash-link" aria-label="文件管理的直接链接" title="文件管理的直接链接">​</a></h3>
+<table><thead><tr><th>命令</th><th>描述</th></tr></thead><tbody><tr><td><a href="#dir">dir</a></td><td>显示当前目录下的子目录</td></tr><tr><td><a href="#cd">cd/chdir</a></td><td>显示当前目录名或切换目录</td></tr><tr><td><a href="#del">del</a></td><td>删除文件</td></tr><tr><td><a href="#rd">rd/rmdir</a></td><td>删除目录</td></tr><tr><td><a href="#md">md/mkdir</a></td><td>创建目录</td></tr><tr><td><a href="#ren">ren/rename</a></td><td>重命名文件</td></tr><tr><td><a href="#move">move</a></td><td>移动或重命名文件或目录</td></tr><tr><td><a href="#copy">copy</a></td><td>复制文件</td></tr><tr><td><a href="#attrib">attrib</a></td><td>显示或修改文件属性</td></tr><tr><td><a href="#mklink">mklink</a></td><td>创建符号链接</td></tr><tr><td><a href="#find">find</a></td><td>过滤文件内容</td></tr><tr><td><a href="#findstr">findstr</a></td><td>搜索文件内容</td></tr><tr><td><a href="#tree">tree</a></td><td>以树型结构显示目录</td></tr><tr><td><a href="#type">type</a></td><td>显示文件内容</td></tr><tr><td><a href="#more">more</a></td><td>逐屏显示输出</td></tr></tbody></table>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="服务进程管理">服务/进程管理<a href="#服务进程管理" class="hash-link" aria-label="服务/进程管理的直接链接" title="服务/进程管理的直接链接">​</a></h3>
+<table><thead><tr><th>命令</th><th>描述</th></tr></thead><tbody><tr><td><a href="#net">net</a></td><td>多功能命令，包括用户管理，服务管理，网络管理等</td></tr><tr><td><a href="#sc">sc</a></td><td>服务管理</td></tr><tr><td><a href="#tasklist">tasklist</a></td><td>显示进程列表</td></tr><tr><td><a href="#taskkill">taskkill</a></td><td>关闭进程</td></tr></tbody></table>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="系统管理">系统管理<a href="#系统管理" class="hash-link" aria-label="系统管理的直接链接" title="系统管理的直接链接">​</a></h3>
+<table><thead><tr><th>命令</th><th>描述</th></tr></thead><tbody><tr><td><a href="#whoami">whoami</a></td><td>显示当前登录用户</td></tr><tr><td><a href="#hostname">hostname</a></td><td>显示主机名</td></tr><tr><td><a href="#path">path</a></td><td>显示path环境变量</td></tr><tr><td><a href="#where">where</a></td><td>显示指定程序所在路径</td></tr><tr><td><a href="#date">date</a></td><td>显示或设置日期</td></tr><tr><td><a href="#time">time</a></td><td>显示或设置时间</td></tr><tr><td><a href="#ver">ver</a></td><td>显示系统版本</td></tr><tr><td><a href="#systeminfo">systeminfo</a></td><td>显示系统详细信息</td></tr><tr><td><a href="#net">net</a></td><td>多功能命令，包括用户管理，服务管理，网络管理等</td></tr><tr><td><a href="#shutdown">shutdown</a></td><td>关机</td></tr><tr><td><a href="#schtasks">schtasks</a></td><td>定时任务</td></tr><tr><td><a href="#reg">reg</a></td><td>注册表操作</td></tr><tr><td><a href="#setx">setx</a></td><td>设置系统环境变量</td></tr></tbody></table>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="网络管理">网络管理<a href="#网络管理" class="hash-link" aria-label="网络管理的直接链接" title="网络管理的直接链接">​</a></h3>
+<table><thead><tr><th>命令</th><th>描述</th></tr></thead><tbody><tr><td><a href="#ping">ping</a></td><td>ping</td></tr><tr><td><a href="#ipconfig">ipconfig</a></td><td>ip配置信息</td></tr><tr><td><a href="#tracert">tracert</a></td><td>网络诊断，追踪路由</td></tr><tr><td><a href="#netstat">netstat</a></td><td>显示当前网络连接信息</td></tr><tr><td><a href="#nslookup">nslookup</a></td><td>DNS诊断</td></tr><tr><td><a href="#route">route</a></td><td>操作路由表</td></tr><tr><td><a href="#netsh">netsh</a></td><td>网络操作脚本工具</td></tr><tr><td><a href="#telnet">telnet</a></td><td>计算机之间进行通信</td></tr><tr><td><a href="#arp">arp</a></td><td>显示和修改地址解析协议 (ARP) 缓存中的条目</td></tr><tr><td><a href="#getmac">getmac</a></td><td>显示MAC地址</td></tr></tbody></table>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="设备管理">设备管理<a href="#设备管理" class="hash-link" aria-label="设备管理的直接链接" title="设备管理的直接链接">​</a></h3>
+<table><thead><tr><th>命令</th><th>描述</th></tr></thead><tbody><tr><td><a href="#diskpart">diskpart</a></td><td>diskpart 命令解释器可帮助你管理计算机的驱动器（磁盘、分区、卷或虚拟硬盘）</td></tr><tr><td><a href="#chkdsk">chkdsk</a></td><td>检查磁盘</td></tr><tr><td><a href="#convert">convert</a></td><td>FAT转NTFS文件系统</td></tr><tr><td><a href="#vol">vol</a></td><td>显示磁盘卷标和序列号</td></tr></tbody></table>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="批处理脚本">批处理脚本<a href="#批处理脚本" class="hash-link" aria-label="批处理脚本的直接链接" title="批处理脚本的直接链接">​</a></h3>
+<table><thead><tr><th>命令</th><th>描述</th></tr></thead><tbody><tr><td><a href="#call">call</a></td><td>调用另一个批处理程序</td></tr><tr><td><a href="#color">color</a></td><td>修改终端颜色</td></tr><tr><td><a href="#cls">cls</a></td><td>清除屏幕</td></tr><tr><td><a href="#doskey">doskey</a></td><td>创建别名</td></tr><tr><td><a href="#for">for</a></td><td>for循环</td></tr><tr><td><a href="#if">if</a></td><td>if条件</td></tr><tr><td><a href="#goto">goto</a></td><td>跳转</td></tr><tr><td><a href="#rem">rem</a></td><td>注释</td></tr><tr><td><a href="#pause">pause</a></td><td>暂停</td></tr><tr><td><a href="#prompt">prompt</a></td><td>修改终端的命令提示符</td></tr><tr><td><a href="#set">set</a></td><td>设置当前环境变量</td></tr><tr><td><a href="#setlocal">setlocal/endlocal</a></td><td>使用这对命令包裹的代码块所设置的环境变量都只能被当前批处理文件使用</td></tr><tr><td><a href="#echo">echo</a></td><td>回显消息</td></tr><tr><td><a href="#start">start</a></td><td>启动单独的窗口允许指定的程序或命令</td></tr><tr><td><a href="#timeout">timeout</a></td><td>睡眠</td></tr><tr><td><a href="#title">title</a></td><td>修改终端窗口标题</td></tr><tr><td><a href="#exit">exit</a></td><td>退出终端或当前脚本</td></tr></tbody></table>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="命令说明">命令说明<a href="#命令说明" class="hash-link" aria-label="命令说明的直接链接" title="命令说明的直接链接">​</a></h3>
 <blockquote>
 <p>参数忽略大小写</p>
 </blockquote>
-<h4 id="dir"><a class="header" href="#dir">dir</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="dir">dir<a href="#dir" class="hash-link" aria-label="dir的直接链接" title="dir的直接链接">​</a></h4>
 <ul>
-<li><code>/A</code> 指定具体属性的文件显示
-<pre><code class="language-cmd">REM 显示隐藏文件
-dir /A:H
-REM 显示隐藏的文件夹
-dir /A:HD
-</code></pre>
-</li>
-<li><code>/O</code> 排序
-<pre><code class="language-cmd">REM 按名称排序
-dir /O:N
-REM 按大小排序
-dir /O:S
-REM 按日期排序
-dir /O:D
-</code></pre>
-</li>
+<li><code>/a</code> 指定具体属性的文件显示</li>
+<li><code>/o</code> 排序</li>
 </ul>
-<h4 id="copy"><a class="header" href="#copy">copy</a></h4>
+<div class="language-batch codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-batch codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic">rem 显示隐藏文件</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token command keyword" style="color:#00009f">dir</span><span class="token command"> </span><span class="token command parameter attr-name" style="color:#00a4db">/a</span><span class="token command parameter attr-name punctuation" style="color:#393A34">:</span><span class="token command">h</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic">rem 显示隐藏的文件夹</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token command keyword" style="color:#00009f">dir</span><span class="token command"> </span><span class="token command parameter attr-name" style="color:#00a4db">/a</span><span class="token command parameter attr-name punctuation" style="color:#393A34">:</span><span class="token command">hd</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic">rem 按名称排序</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token command keyword" style="color:#00009f">dir</span><span class="token command"> </span><span class="token command parameter attr-name" style="color:#00a4db">/o</span><span class="token command parameter attr-name punctuation" style="color:#393A34">:</span><span class="token command">n</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic">rem 按大小排序</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token command keyword" style="color:#00009f">dir</span><span class="token command"> </span><span class="token command parameter attr-name" style="color:#00a4db">/o</span><span class="token command parameter attr-name punctuation" style="color:#393A34">:</span><span class="token command">s</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic">rem 按日期排序</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token command keyword" style="color:#00009f">dir</span><span class="token command"> </span><span class="token command parameter attr-name" style="color:#00a4db">/o</span><span class="token command parameter attr-name punctuation" style="color:#393A34">:</span><span class="token command">d</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic">rem 根据创建时间排序</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token command keyword" style="color:#00009f">dir</span><span class="token command"> </span><span class="token command parameter attr-name" style="color:#00a4db">/t</span><span class="token command parameter attr-name punctuation" style="color:#393A34">:</span><span class="token command">c</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic">rem 根据上次访问时间排序</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token command keyword" style="color:#00009f">dir</span><span class="token command"> </span><span class="token command parameter attr-name" style="color:#00a4db">/t</span><span class="token command parameter attr-name punctuation" style="color:#393A34">:</span><span class="token command">a</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic">rem 根据最后写入时间排序</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token command keyword" style="color:#00009f">dir</span><span class="token command"> </span><span class="token command parameter attr-name" style="color:#00a4db">/t</span><span class="token command parameter attr-name punctuation" style="color:#393A34">:</span><span class="token command">w</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic">rem 列出当前目录下的所有txt文件</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token command keyword" style="color:#00009f">dir</span><span class="token command"> *.txt</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="cd">cd<a href="#cd" class="hash-link" aria-label="cd的直接链接" title="cd的直接链接">​</a></h4>
+<div class="language-batch codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-batch codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic">rem 切换到指定目录</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token command keyword" style="color:#00009f">cd</span><span class="token command"> C:\a\b\c</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic">rem 切换到上一级目录</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token command keyword" style="color:#00009f">cd</span><span class="token command"> ..</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic">rem 切换到E盘</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token command keyword" style="color:#00009f">cd</span><span class="token command"> \d E:\</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制 代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="del">del<a href="#del" class="hash-link" aria-label="del的直接链接" title="del的直接链接">​</a></h4>
 <ul>
-<li>"/Y" 如果文件存在则覆盖</li>
-<li>TODO</li>
+<li><code>/p</code> 删除前确认</li>
+<li><code>/f</code> 强制删除</li>
+<li><code>/s</code> 递归删除</li>
+<li><code>/q</code> 静默删除</li>
+<li><code>/a</code> 按文件属性删除</li>
 </ul>
-<h4 id="del"><a class="header" href="#del">del</a></h4>
+<div class="language-batch codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-batch codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic">rem 强制静默删除C:\a目录及其子目录下的所有文件，不会删除文件夹</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token command keyword" style="color:#00009f">del</span><span class="token command"> /s/f</span><span class="token command parameter attr-name" style="color:#00a4db">/q</span><span class="token command"> C:\a</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="rd">rd<a href="#rd" class="hash-link" aria-label="rd的直接链接" title="rd的直接链接">​</a></h4>
 <ul>
-<li>TODO 详细说明</li>
-<li><code>/P</code> 删除前确认</li>
-<li><code>/F</code> 强制删除</li>
-<li><code>/S</code> 递归删除</li>
-<li><code>/Q</code> 静默删除</li>
-<li><code>/A</code> 按文件属性删除</li>
+<li><code>/s</code> 递归删除</li>
+<li><code>/q</code> 静默删除</li>
 </ul>
-<h3 id="rd"><a class="header" href="#rd">rd</a></h3>
+<div class="language-batch codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-batch codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic">rem 递归删除C:\a目录下的所有文件和目录</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token command keyword" style="color:#00009f">rd</span><span class="token command"> /s</span><span class="token command parameter attr-name" style="color:#00a4db">/q</span><span class="token command"> C:\a</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="md">md<a href="#md" class="hash-link" aria-label="md的直接链接" title="md的直接链接">​</a></h4>
+<div class="language-batch codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-batch codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic">rem 在C盘下创建a目录，下面依次创建d、c目录</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token command keyword" style="color:#00009f">md</span><span class="token command"> C:\a\b\c</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="ren">ren<a href="#ren" class="hash-link" aria-label="ren的直接链接" title="ren的直接链接">​</a></h4>
+<div class="language-batch codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-batch codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic">rem 将C:\a\x.txt文件重命名为y.json，这个命令不会移动位置</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token command keyword" style="color:#00009f">ren</span><span class="token command"> C:\a\x.txt y.json</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="move">move<a href="#move" class="hash-link" aria-label="move的直接链接" title="move的直接链接">​</a></h4>
+<div class="language-batch codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-batch codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic">rem 将C:\a\x.txt文件重命名为C:\a\y.json，这个命令重命名时必须和之前文件路径相同，否则就是移动</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token command keyword" style="color:#00009f">move</span><span class="token command"> C:\a\x.txt C:\a\y.json</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic">rem 将C:\a\y.txt文件移动到C:\b目录下</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token command keyword" style="color:#00009f">move</span><span class="token command"> C:\a\y.txt C:\b</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="copy">copy<a href="#copy" class="hash-link" aria-label="copy的直接链接" title="copy的直接链接">​</a></h4>
+<div class="language-batch codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-batch codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic">rem 将C:\a\a.txt文件复制到C:\b目录下</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token command keyword" style="color:#00009f">copy</span><span class="token command"> C:\a\a.txt C:\b</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic">rem 将C:\a\a.txt文件复制到C:\b目录下，不提示覆盖重复的文件</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token command keyword" style="color:#00009f">copy</span><span class="token command"> </span><span class="token command parameter attr-name" style="color:#00a4db">/y</span><span class="token command"> C:\a\a.txt C:\b</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic">rem 将C:\a\a.txt文件和C:\a\b.txt合并成一个文件，并放入C:\c目录下，文件名称取第一个合并的文件</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token command keyword" style="color:#00009f">copy</span><span class="token command"> C:\a\a.txt+C:\a\b.txt C:\c</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="attrib">attrib<a href="#attrib" class="hash-link" aria-label="attrib的直接链接" title="attrib的直接链接">​</a></h4>
+<div class="language-batch codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-batch codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic">rem 查看C:\a\a.txt文件的属性，具体属性说明参考attrib /?</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token command keyword" style="color:#00009f">attrib</span><span class="token command"> C:\a\a.txt</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic">rem 将C:\a\a.txt文件修改为只读文件</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token command keyword" style="color:#00009f">attrib</span><span class="token command"> +r C:\a\a.txt</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="mklink">mklink<a href="#mklink" class="hash-link" aria-label="mklink的直接链接" title="mklink的直接链接">​</a></h4>
+<blockquote>
+<p>需要管理员权限运行</p>
+</blockquote>
 <ul>
-<li><code>/S</code> 递归删除</li>
-<li><code>/Q</code> 静默删除</li>
+<li><code>/d</code> 创建目录链接</li>
+<li><code>/h</code> 创建硬链接</li>
+<li><code>/j</code> 创建目录联接，和<code>/d</code>参数类似，不能跨磁盘使用</li>
 </ul>
-<h4 id="date"><a class="header" href="#date">date</a></h4>
+<div class="language-batch codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-batch codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic">rem 为C:\a\a.txt创建一个软链接C:\b\a.txt，第一个参数是链接，第二个参数是原文件</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token command keyword" style="color:#00009f">mklink</span><span class="token command"> C:\b\a.txt C:\a\a.txt</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic">rem 为C:\a目录创建一个软链接C:\b\c</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token command keyword" style="color:#00009f">mklink</span><span class="token command"> C:\b\c C:\a</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="find">find<a href="#find" class="hash-link" aria-label="find的直接链接" title="find的直接链接">​</a></h4>
+<ul>
+<li><code>/v</code> 显示不包含搜索内容的所有行</li>
+<li><code>/c</code> 统计搜索内容匹配到的次数</li>
+<li><code>/n</code> 显示行号</li>
+<li><code>/i</code> 搜索时不区分大小写</li>
+</ul>
+<div class="language-batch codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-batch codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic">rem 从C:\a\a.txt文件内搜索abc字符串</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token command keyword" style="color:#00009f">find</span><span class="token command"> </span><span class="token command string" style="color:#e3116c">&quot;abc&quot;</span><span class="token command"> C:\a\a.txt</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic">rem 从C:\a\a.txt文件内搜索abc字符串，并显示行号</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token command keyword" style="color:#00009f">find</span><span class="token command"> </span><span class="token command parameter attr-name" style="color:#00a4db">/n</span><span class="token command"> </span><span class="token command string" style="color:#e3116c">&quot;abc&quot;</span><span class="token command"> C:\a\a.txt</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic">rem 显示C:\a\a.txt文件内除了包含abc的行以外的所有行</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token command keyword" style="color:#00009f">find</span><span class="token command"> </span><span class="token command parameter attr-name" style="color:#00a4db">/v</span><span class="token command"> </span><span class="token command string" style="color:#e3116c">&quot;abc&quot;</span><span class="token command"> C:\a\a.txt</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic">rem 统计abc在C:\a\a.txt出现的次数</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token command keyword" style="color:#00009f">find</span><span class="token command"> </span><span class="token command parameter attr-name" style="color:#00a4db">/c</span><span class="token command"> </span><span class="token command string" style="color:#e3116c">&quot;abc&quot;</span><span class="token command"> C:\a\a.txt</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="date">date<a href="#date" class="hash-link" aria-label="date的直接链接" title="date的直接链接">​</a></h4>
 <ul>
 <li><code>/T</code> 显示当前日期不提示输入新的日期 (默认<code>date</code>不带参数会提示输入新的日期)</li>
 </ul>
-<h4 id="mklink"><a class="header" href="#mklink">mklink</a></h4>
-<blockquote>
-<p>参数默认都使用绝对路径</p>
-</blockquote>
-<ul>
-<li>不带参数默认创建文件链接
-<pre><code class="language-cmd">REM 第一个参数是创建的链接，第二个参数是目标文件
-mklink /a/b/d /a/b/c
-</code></pre>
-</li>
-<li>TODO 详细说明</li>
-<li><code>/D</code> 创建目录链接</li>
-<li><code>/H</code> 创建硬链接</li>
-<li><code>/J</code> 创建目录联接</li>
-</ul>
-<h3 id="timeout"><a class="header" href="#timeout">timeout</a></h3>
-<h3 id="start"><a class="header" href="#start">start</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="timeout">timeout<a href="#timeout" class="hash-link" aria-label="timeout的直接链接" title="timeout的直接链接">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="start">start<a href="#start" class="hash-link" aria-label="start的直接链接" title="start的直接链接">​</a></h4>
 <ul>
 <li>TODO</li>
 </ul>
-<h2 id="其他命令"><a class="header" href="#其他命令">其他命令</a></h2>
-<ul>
-<li>TODO</li>
-</ul>
-<h2 id="批处理脚本"><a class="header" href="#批处理脚本">批处理脚本</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="批处理脚本-1">批处理脚本<a href="#批处理脚本-1" class="hash-link" aria-label="批处理脚本的直接链接" title="批处理脚本的直接链接">​</a></h2>
 <blockquote>
 <p>.bat/.cmd文件</p>
 </blockquote>
-<h3 id="变量"><a class="header" href="#变量">变量</a></h3>
-<pre><code class="language-cmd">REM 定义变量
-set a=1
-REM 使用变量
-echo %a%
-</code></pre>
-<h3 id="条件"><a class="header" href="#条件">条件</a></h3>
-<h4 id="数字"><a class="header" href="#数字">数字</a></h4>
-<pre><code class="language-bash">REM == 相等
-if 1 == 1 (echo 1)
-REM neq 不相等
-if 1 neq 2 (echo 1)
-REM lss 小于
-if 1 lss 2 (echo 1)
-REM leq 小于等于
-if 1 lss 1 (echo 1)
-REM gtr 大于
-if 2 gtr 1 (echo 1)
-REM geq 大于等于
-if 1 geq 1 (echo 1)
-</code></pre>
-<h4 id="字符串"><a class="header" href="#字符串">字符串</a></h4>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="变量">变量<a href="#变量" class="hash-link" aria-label="变量的直接链接" title="变量的直接链接">​</a></h3>
+<div class="language-batch codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-batch codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic">REM 定义变量</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token command keyword" style="color:#00009f">set</span><span class="token command"> </span><span class="token command variable" style="color:#36acaa">a</span><span class="token command operator" style="color:#393A34">=</span><span class="token command number" style="color:#36acaa">1</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic">REM 使用变量</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token command keyword" style="color:#00009f">echo</span><span class="token command"> </span><span class="token command variable" style="color:#36acaa">%a%</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="条件">条件<a href="#条件" class="hash-link" aria-label="条件的直接链接" title="条件的直接链接">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="数字">数字<a href="#数字" class="hash-link" aria-label="数字的直接链接" title="数字的直接链接">​</a></h4>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">REM </span><span class="token operator" style="color:#393A34">==</span><span class="token plain"> 相等</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">if</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">1</span><span class="token plain"> </span><span class="token operator" style="color:#393A34">==</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">1</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">echo </span><span class="token number" style="color:#36acaa">1</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">REM neq 不相等</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">if</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">1</span><span class="token plain"> neq </span><span class="token number" style="color:#36acaa">2</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">echo </span><span class="token number" style="color:#36acaa">1</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">REM lss 小于</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">if</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">1</span><span class="token plain"> lss </span><span class="token number" style="color:#36acaa">2</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">echo </span><span class="token number" style="color:#36acaa">1</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">REM leq 小于等于</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">if</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">1</span><span class="token plain"> lss </span><span class="token number" style="color:#36acaa">1</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">echo </span><span class="token number" style="color:#36acaa">1</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">REM gtr 大于</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">if</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">2</span><span class="token plain"> gtr </span><span class="token number" style="color:#36acaa">1</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">echo </span><span class="token number" style="color:#36acaa">1</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">REM geq 大于等于</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">if</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">1</span><span class="token plain"> geq </span><span class="token number" style="color:#36acaa">1</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">echo </span><span class="token number" style="color:#36acaa">1</span><span class="token punctuation" style="color:#393A34">)</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="字符串">字符串<a href="#字符串" class="hash-link" aria-label="字符串的直接链接" title="字符串的直接链接">​</a></h4>
 <blockquote>
 <p>匹配方式和数字的一样</p>
 </blockquote>
-<pre><code class="language-cmd">REM 忽略大小写匹配
-if /i "a" == "A" (echo 1)
-</code></pre>
-<h4 id="文件"><a class="header" href="#文件">文件</a></h4>
-<pre><code class="language-cmd">REM 判断文件是否存在
-if exist filename (echo 1)
-REM 判断文件不存在
-if not exist filename (echo 1)
-</code></pre>
-<h4 id="逻辑运算符"><a class="header" href="#逻辑运算符">逻辑运算符</a></h4>
+<div class="language-batch codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-batch codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic">REM 忽略大小写匹配</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token command keyword" style="color:#00009f">if</span><span class="token command"> </span><span class="token command parameter attr-name" style="color:#00a4db">/i</span><span class="token command"> </span><span class="token command string" style="color:#e3116c">&quot;a&quot;</span><span class="token command"> == </span><span class="token command string" style="color:#e3116c">&quot;A&quot;</span><span class="token command"> (echo </span><span class="token command number" style="color:#36acaa">1</span><span class="token punctuation" style="color:#393A34">)</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="文件">文件<a href="#文件" class="hash-link" aria-label="文件的直接链接" title="文件的直接链接">​</a></h4>
+<div class="language-batch codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-batch codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic">REM 判断文件是否存在</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token command keyword" style="color:#00009f">if</span><span class="token command"> </span><span class="token command keyword" style="color:#00009f">exist</span><span class="token command"> filename</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">(</span><span class="token command keyword" style="color:#00009f">echo</span><span class="token command"> </span><span class="token command number" style="color:#36acaa">1</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic">REM 判断文件不存在</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token command keyword" style="color:#00009f">if</span><span class="token command"> </span><span class="token command keyword" style="color:#00009f">not</span><span class="token command"> </span><span class="token command keyword" style="color:#00009f">exist</span><span class="token command"> filename</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">(</span><span class="token command keyword" style="color:#00009f">echo</span><span class="token command"> </span><span class="token command number" style="color:#36acaa">1</span><span class="token punctuation" style="color:#393A34">)</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="逻辑运算符">逻辑运算符<a href="#逻辑运算符" class="hash-link" aria-label="逻辑运算符的直接链接" title="逻辑运算符的直接链接">​</a></h4>
 <ul>
 <li>TODO</li>
 </ul>
-<h3 id="结构控制"><a class="header" href="#结构控制">结构控制</a></h3>
-<h4 id="if"><a class="header" href="#if">if</a></h4>
-<pre><code class="language-cmd">if 1==1 (
-    echo 1 
-) else (
-    echo 2
-)
-</code></pre>
-<h4 id="goto"><a class="header" href="#goto">goto</a></h4>
-<h5 id="实现函数定义"><a class="header" href="#实现函数定义">实现函数定义</a></h5>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="结构控制">结构控制<a href="#结构控制" class="hash-link" aria-label="结构控制的直接链接" title="结构控制的直接链接">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="if">if<a href="#if" class="hash-link" aria-label="if的直接链接" title="if的直接链接">​</a></h4>
+<div class="language-batch codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-batch codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token command keyword" style="color:#00009f">if</span><span class="token command"> </span><span class="token command number" style="color:#36acaa">1</span><span class="token command operator" style="color:#393A34">==</span><span class="token command number" style="color:#36acaa">1</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token command keyword" style="color:#00009f">echo</span><span class="token command"> </span><span class="token command number" style="color:#36acaa">1</span><span class="token command"> </span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token command keyword" style="color:#00009f">else</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token command keyword" style="color:#00009f">echo</span><span class="token command"> </span><span class="token command number" style="color:#36acaa">2</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">)</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="goto">goto<a href="#goto" class="hash-link" aria-label="goto的直接链接" title="goto的直接链接">​</a></h4>
+<h5 class="anchor anchorWithStickyNavbar_LWe7" id="实现函数定义"> 实现函数定义<a href="#实现函数定义" class="hash-link" aria-label="实现函数定义的直接链接" title="实现函数定义的直接链接">​</a></h5>
 <blockquote>
-<p>函数必须定义在脚本的最后，由于是用goto实现，函数就是一部分脚本，定义在前面会先执行一遍<br />
-:EOF 表示跳转到文件末尾</p>
+<p>函数必须定义在脚本的最后，由于是用goto实现，函数就是一部分脚本，定义在前面会先执行一遍<br>
+<!-- -->:EOF<!-- --> 表示跳转到文件末尾</p>
 </blockquote>
-<pre><code class="language-cmd">REM 实现根据不同参数输出不同字符功能
-set param=1
-if %param%==1 (goto :print_a)
-if %param%==2 (goto :print_b)
-goto :EOF
-
-:print_a
-echo a
-goto :EOF
-
-:print_b
-echo b
-goto :EOF
-</code></pre>
-<h3 id="循环"><a class="header" href="#循环">循环</a></h3>
+<div class="language-batch codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-batch codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic">REM 实现根据不同参数输出不同字符功能</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token command keyword" style="color:#00009f">set</span><span class="token command"> </span><span class="token command variable" style="color:#36acaa">param</span><span class="token command operator" style="color:#393A34">=</span><span class="token command number" style="color:#36acaa">1</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token command keyword" style="color:#00009f">if</span><span class="token command"> </span><span class="token command variable" style="color:#36acaa">%param%</span><span class="token command operator" style="color:#393A34">==</span><span class="token command number" style="color:#36acaa">1</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">(</span><span class="token command keyword" style="color:#00009f">goto</span><span class="token command"> </span><span class="token command label property" style="color:#36acaa">:print_a</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token command keyword" style="color:#00009f">if</span><span class="token command"> </span><span class="token command variable" style="color:#36acaa">%param%</span><span class="token command operator" style="color:#393A34">==</span><span class="token command number" style="color:#36acaa">2</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">(</span><span class="token command keyword" style="color:#00009f">goto</span><span class="token command"> </span><span class="token command label property" style="color:#36acaa">:print_b</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token command keyword" style="color:#00009f">goto</span><span class="token command"> </span><span class="token command label property" style="color:#36acaa">:EOF</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token label property" style="color:#36acaa">:print_a</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token command keyword" style="color:#00009f">echo</span><span class="token command"> a</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token command keyword" style="color:#00009f">goto</span><span class="token command"> </span><span class="token command label property" style="color:#36acaa">:EOF</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token label property" style="color:#36acaa">:print_b</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token command keyword" style="color:#00009f">echo</span><span class="token command"> b</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token command keyword" style="color:#00009f">goto</span><span class="token command"> </span><span class="token command label property" style="color:#36acaa">:EOF</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="循环">循环<a href="#循环" class="hash-link" aria-label="循环的直接链接" title="循环的直接链接">​</a></h3>
 <ul>
 <li>TODO</li>
 </ul>
-<h4 id="for"><a class="header" href="#for">for</a></h4>
-<h5 id="实现获取路径中的文件名"><a class="header" href="#实现获取路径中的文件名">实现获取路径中的文件名</a></h5>
-<pre><code class="language-cmd">set path="C:\a\b\a\d.txt"
-
-REM ~n 表示文件名
-for %%i in (%path%) do echo %%~ni
-REM 输出 d
-
-REM ~x 表示文件扩展名
-for %%i in (%path%) do echo %%~xi
-REM 输出 .txt
-
-REM ~nx 表示文件名和文件扩展名
-for %%i in (%path%) do echo %%~nxi
-REM 输出 d.txt
-
-</code></pre>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="for">for<a href="#for" class="hash-link" aria-label="for的直接链接" title="for的直接链接">​</a></h4>
+<h5 class="anchor anchorWithStickyNavbar_LWe7" id="实现获取路径中的文件名">实现获取路径中的文件名<a href="#实现获取路径中的文件名" class="hash-link" aria-label="实现获取路径中的文件名的直接链接" title="实现获取路径  中的文件名的直接链接">​</a></h5>
+<div class="language-batch codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-batch codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token command keyword" style="color:#00009f">set</span><span class="token command"> </span><span class="token command variable" style="color:#36acaa">path</span><span class="token command operator" style="color:#393A34">=</span><span class="token command string" style="color:#e3116c">&quot;C:\a\b\a\d.txt&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic">REM ~n 表示文件名</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token command keyword" style="color:#00009f">for</span><span class="token command"> </span><span class="token command variable" style="color:#36acaa">%%i</span><span class="token command"> </span><span class="token command keyword" style="color:#00009f">in</span><span class="token command"> </span><span class="token command punctuation" style="color:#393A34">(</span><span class="token command variable" style="color:#36acaa">%path%</span><span class="token command punctuation" style="color:#393A34">)</span><span class="token command"> </span><span class="token command keyword" style="color:#00009f">do</span><span class="token plain"> </span><span class="token command keyword" style="color:#00009f">echo</span><span class="token command"> </span><span class="token command variable" style="color:#36acaa">%%~ni</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic">REM 输出 d</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic">REM ~x 表示文件扩展名</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token command keyword" style="color:#00009f">for</span><span class="token command"> </span><span class="token command variable" style="color:#36acaa">%%i</span><span class="token command"> </span><span class="token command keyword" style="color:#00009f">in</span><span class="token command"> </span><span class="token command punctuation" style="color:#393A34">(</span><span class="token command variable" style="color:#36acaa">%path%</span><span class="token command punctuation" style="color:#393A34">)</span><span class="token command"> </span><span class="token command keyword" style="color:#00009f">do</span><span class="token plain"> </span><span class="token command keyword" style="color:#00009f">echo</span><span class="token command"> </span><span class="token command variable" style="color:#36acaa">%%~xi</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic">REM 输出 .txt</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic">REM ~nx 表示文件名和文件扩展名</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token command keyword" style="color:#00009f">for</span><span class="token command"> </span><span class="token command variable" style="color:#36acaa">%%i</span><span class="token command"> </span><span class="token command keyword" style="color:#00009f">in</span><span class="token command"> </span><span class="token command punctuation" style="color:#393A34">(</span><span class="token command variable" style="color:#36acaa">%path%</span><span class="token command punctuation" style="color:#393A34">)</span><span class="token command"> </span><span class="token command keyword" style="color:#00009f">do</span><span class="token plain"> </span><span class="token command keyword" style="color:#00009f">echo</span><span class="token command"> </span><span class="token command variable" style="color:#36acaa">%%~nxi</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic">REM 输出 d.txt</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
 <ul>
 <li>TODO</li>
 </ul>
-<h4 id="while-使用goto实现"><a class="header" href="#while-使用goto实现">while (使用goto实现)</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="while-使用goto实现">while (使用goto实现)<a href="#while-使用goto实现" class="hash-link" aria-label="while (使用goto实现)的直接链接" title="while (使用goto实现)的直接链接">​</a></h4>
 <ul>
 <li>TODO</li>
 </ul>
-<h2 id="参考网站"><a class="header" href="#参考网站">参考网站</a></h2>
+<div class="language-batch codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-batch codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token command keyword" style="color:#00009f">echo</span><span class="token command"> </span><span class="token command number" style="color:#36acaa">123</span><span class="token command operator" style="color:#393A34">^</span><span class="token command"></span><br></span><span class="token-line" style="color:#393A34"><span class="token command"></span><span class="token command number" style="color:#36acaa">456</span><span class="token command operator" style="color:#393A34">^</span><span class="token command"></span><br></span><span class="token-line" style="color:#393A34"><span class="token command"></span><span class="token command number" style="color:#36acaa">789</span><span class="token command operator" style="color:#393A34">^</span><span class="token command"></span><br></span><span class="token-line" style="color:#393A34"><span class="token command"># 输出</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token command keyword" style="color:#00009f">123456789</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="参考">参考<a href="#参考" class="hash-link" aria-label="参考的直接链接" title="参考的直接链接">​</a></h2>
 <ul>
-<li>ss64 <a href="https://ss64.com/nt/">https://ss64.com/nt/</a></li>
-</ul>
-
-                    </main>
-
-                    <nav class="nav-wrapper" aria-label="Page navigation">
-                        <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../../windows/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                                <i class="fa fa-angle-left"></i>
-                            </a>
-
-                            <a rel="next prefetch" href="../../windows/wsl2/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
-
-                        <div style="clear: both"></div>
-                    </nav>
-                </div>
-            </div>
-
-            <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../../windows/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                        <i class="fa fa-angle-left"></i>
-                    </a>
-
-                    <a rel="next prefetch" href="../../windows/wsl2/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
-            </nav>
-
-        </div>
-
-
-
-
-        <script>
-            window.playground_copyable = true;
-        </script>
-
-
-        <script src="../../elasticlunr.min.js"></script>
-        <script src="../../mark.min.js"></script>
-        <script src="../../searcher.js"></script>
-
-        <script src="../../clipboard.min.js"></script>
-        <script src="../../highlight.js"></script>
-        <script src="../../book.js"></script>
-
-        <!-- Custom JS scripts -->
-
-
-    </div>
-    </body>
+<li><a href="https://www.cnblogs.com/xpwi/p/9626959.html" target="_blank" rel="noopener noreferrer">Windows批处理(cmd/bat)常用命令教程</a></li>
+<li><a href="https://ss64.com/nt/" target="_blank" rel="noopener noreferrer">cmd命令</a></li>
+<li><a href="https://blog.csdn.net/tjcwt2011/article/details/120508290" target="_blank" rel="noopener noreferrer">判断字符串是否包含某字符串</a></li>
+<li><a href="https://blog.csdn.net/peng_cao/article/details/74170979" target="_blank" rel="noopener noreferrer">批处理之字符串操作</a></li>
+<li><a href="https://blog.csdn.net/weixin_43165135/article/details/127702841" target="_blank" rel="noopener noreferrer">for命令用法</a></li>
+</ul></div></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="文件选项卡"><a class="pagination-nav__link pagination-nav__link--prev" href="/doc/windows/"><div class="pagination-nav__sublabel">上一页</div><div class="pagination-nav__label">Windows</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/doc/windows/powershell"><div class="pagination-nav__sublabel">下一页</div><div class="pagination-nav__label">PowerShell</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#常用命令" class="table-of-contents__link toc-highlight">常用命令</a><ul><li><a href="#文件管理" class="table-of-contents__link toc-highlight">文件管理</a></li><li><a href="#服务进程管理" class="table-of-contents__link toc-highlight">服务/进程管理</a></li><li><a href="#系统管理" class="table-of-contents__link toc-highlight">系统管理</a></li><li><a href="#网络管理" class="table-of-contents__link toc-highlight">网络管理</a></li><li><a href="#设备管理" class="table-of-contents__link toc-highlight">设备管理</a></li><li><a href="#批处理脚本" class="table-of-contents__link toc-highlight">批处理脚本</a></li><li><a href="#命令说明" class="table-of-contents__link toc-highlight">命令说明</a></li></ul></li><li><a href="#批处理脚本-1" class="table-of-contents__link toc-highlight">批处理脚本</a><ul><li><a href="#变量" class="table-of-contents__link toc-highlight">变量</a></li><li><a href="#条件" class="table-of-contents__link toc-highlight">条件</a></li><li><a href="#结构控制" class="table-of-contents__link toc-highlight">结构控制</a></li><li><a href="#循环" class="table-of-contents__link toc-highlight">循环</a></li></ul></li><li><a href="#参考" class="table-of-contents__link toc-highlight">参考</a></li></ul></div></div></div></div></main></div></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="col footer__col"><div class="footer__title">Docs</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/doc/">Docs</a></li></ul></div><div class="col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/follow1123" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://github.com/follow1123/doc" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub Repository<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2024 My Project, Inc. Built with Docusaurus.</div></div></div></footer></div>
+</body>
 </html>

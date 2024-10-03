@@ -1,229 +1,632 @@
-<!DOCTYPE HTML>
-<html lang="zh" class="light" dir="ltr">
-    <head>
-        <!-- Book generated using mdBook -->
-        <meta charset="UTF-8">
-        <title>Linux - 文档</title>
-
-
-        <!-- Custom HTML head -->
-        
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff">
-
-        <link rel="icon" href="../favicon.svg">
-        <link rel="shortcut icon" href="../favicon.png">
-        <link rel="stylesheet" href="../css/variables.css">
-        <link rel="stylesheet" href="../css/general.css">
-        <link rel="stylesheet" href="../css/chrome.css">
-        <link rel="stylesheet" href="../css/print.css" media="print">
-
-        <!-- Fonts -->
-        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="../fonts/fonts.css">
-
-        <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="../highlight.css">
-        <link rel="stylesheet" href="../tomorrow-night.css">
-        <link rel="stylesheet" href="../ayu-highlight.css">
-
-        <!-- Custom theme stylesheets -->
-        <link rel="stylesheet" href="../custom.css">
-
-    </head>
-    <body class="sidebar-visible no-js">
-    <div id="body-container">
-        <!-- Provide site root to javascript -->
-        <script>
-            var path_to_root = "../";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
-        </script>
-
-        <!-- Work around some values being stored in localStorage wrapped in quotes -->
-        <script>
-            try {
-                var theme = localStorage.getItem('mdbook-theme');
-                var sidebar = localStorage.getItem('mdbook-sidebar');
-
-                if (theme.startsWith('"') && theme.endsWith('"')) {
-                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
-                }
-
-                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
-                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
-                }
-            } catch (e) { }
-        </script>
-
-        <!-- Set the theme before any content is loaded, prevents flash -->
-        <script>
-            var theme;
-            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
-            if (theme === null || theme === undefined) { theme = default_theme; }
-            var html = document.querySelector('html');
-            html.classList.remove('light')
-            html.classList.add(theme);
-            var body = document.querySelector('body');
-            body.classList.remove('no-js')
-            body.classList.add('js');
-        </script>
-
-        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
-
-        <!-- Hide / unhide sidebar before it is displayed -->
-        <script>
-            var body = document.querySelector('body');
-            var sidebar = null;
-            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
-            if (document.body.clientWidth >= 1080) {
-                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
-                sidebar = sidebar || 'visible';
-            } else {
-                sidebar = 'hidden';
-            }
-            sidebar_toggle.checked = sidebar === 'visible';
-            body.classList.remove('sidebar-visible');
-            body.classList.add("sidebar-" + sidebar);
-        </script>
-
-        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../linux/index.html" class="active"><strong aria-hidden="true">1.</strong> Linux</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../linux/basics.html"><strong aria-hidden="true">1.1.</strong> 基础</a></li><li class="chapter-item expanded "><a href="../linux/commands.html"><strong aria-hidden="true">1.2.</strong> 常用命令</a></li><li class="chapter-item expanded "><a href="../linux/desktop-environment.html"><strong aria-hidden="true">1.3.</strong> 桌面环境</a></li><li class="chapter-item expanded "><a href="../linux/systemd.html"><strong aria-hidden="true">1.4.</strong> Systemd</a></li><li class="chapter-item expanded "><a href="../linux/troubleshooting.html"><strong aria-hidden="true">1.5.</strong> 常见问题</a></li></ol></li><li class="chapter-item expanded "><a href="../windows/index.html"><strong aria-hidden="true">2.</strong> Windows</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../windows/command-prompt.html"><strong aria-hidden="true">2.1.</strong> Command Prompt</a></li><li class="chapter-item expanded "><a href="../windows/wsl2.html"><strong aria-hidden="true">2.2.</strong> wsl2</a></li></ol></li><li class="chapter-item expanded "><a href="../software-services-tools/index.html"><strong aria-hidden="true">3.</strong> 软件/服务/工具</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../software-services-tools/git/index.html"><strong aria-hidden="true">3.1.</strong> Git</a></li><li class="chapter-item expanded "><a href="../software-services-tools/vim-neovim/index.html"><strong aria-hidden="true">3.2.</strong> Vim/Neovim</a></li><li class="chapter-item expanded "><a href="../software-services-tools/nginx/index.html"><strong aria-hidden="true">3.3.</strong> Nginx</a></li><li class="chapter-item expanded "><a href="../software-services-tools/vsftp/index.html"><strong aria-hidden="true">3.4.</strong> Vsftp</a></li><li class="chapter-item expanded "><a href="../software-services-tools/docker/index.html"><strong aria-hidden="true">3.5.</strong> Docker</a></li><li class="chapter-item expanded "><a href="../software-services-tools/mysql/index.html"><strong aria-hidden="true">3.6.</strong> Mysql</a></li><li class="chapter-item expanded "><a href="../software-services-tools/redis/index.html"><strong aria-hidden="true">3.7.</strong> Redis</a></li></ol></li><li class="chapter-item expanded "><a href="../java/index.html"><strong aria-hidden="true">4.</strong> Java</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../java/basics.html"><strong aria-hidden="true">4.1.</strong> 基础</a></li><li class="chapter-item expanded "><a href="../java/multithreading.html"><strong aria-hidden="true">4.2.</strong> 多线程</a></li><li class="chapter-item expanded "><a href="../java/apis.html"><strong aria-hidden="true">4.3.</strong> 常用类</a></li><li class="chapter-item expanded "><a href="../java/collection.html"><strong aria-hidden="true">4.4.</strong> 集合框架</a></li><li class="chapter-item expanded "><a href="../java/version-features.html"><strong aria-hidden="true">4.5.</strong> 各版本特性</a></li><li class="chapter-item expanded "><a href="../java/JVM.html"><strong aria-hidden="true">4.6.</strong> JVM</a></li><li class="chapter-item expanded "><a href="../java/build-tools/index.html"><strong aria-hidden="true">4.7.</strong> 构建工具</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../java/build-tools/maven/index.html"><strong aria-hidden="true">4.7.1.</strong> Maven</a></li><li class="chapter-item expanded "><a href="../java/build-tools/gradle/index.html"><strong aria-hidden="true">4.7.2.</strong> Gradle</a></li></ol></li><li class="chapter-item expanded "><a href="../java/framework/index.html"><strong aria-hidden="true">4.8.</strong> 框架</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../java/framework/spring/index.html"><strong aria-hidden="true">4.8.1.</strong> Spring</a></li><li class="chapter-item expanded "><a href="../java/framework/spring-mvc/index.html"><strong aria-hidden="true">4.8.2.</strong> Spring MVC</a></li><li class="chapter-item expanded "><a href="../java/framework/mybatis/index.html"><strong aria-hidden="true">4.8.3.</strong> Mybatis</a></li><li class="chapter-item expanded "><a href="../java/framework/spring-security/index.html"><strong aria-hidden="true">4.8.4.</strong> Spring Security</a></li><li class="chapter-item expanded "><a href="../java/framework/spring-cloud/index.html"><strong aria-hidden="true">4.8.5.</strong> Spring Cloud</a></li><li class="chapter-item expanded "><a href="../java/framework/shiro/index.html"><strong aria-hidden="true">4.8.6.</strong> Shiro</a></li><li class="chapter-item expanded "><a href="../java/framework/rabbitmq/index.html"><strong aria-hidden="true">4.8.7.</strong> RabbitMQ</a></li><li class="chapter-item expanded "><a href="../java/framework/netty/index.html"><strong aria-hidden="true">4.8.8.</strong> Netty</a></li></ol></li><li class="chapter-item expanded "><a href="../java/troubleshooting.html"><strong aria-hidden="true">4.9.</strong> 常见问题</a></li></ol></li><li class="chapter-item expanded "><a href="../frontend/index.html"><strong aria-hidden="true">5.</strong> 前端</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../frontend/html.html"><strong aria-hidden="true">5.1.</strong> HTML</a></li><li class="chapter-item expanded "><a href="../frontend/css.html"><strong aria-hidden="true">5.2.</strong> CSS</a></li><li class="chapter-item expanded "><a href="../frontend/javascript.html"><strong aria-hidden="true">5.3.</strong> JavaScript</a></li><li class="chapter-item expanded "><a href="../frontend/vue/index.html"><strong aria-hidden="true">5.4.</strong> Vue</a></li></ol></li><li class="chapter-item expanded "><a href="../design-pattern/index.html"><strong aria-hidden="true">6.</strong> 设计模式</a></li></ol>
-            </div>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
-        </nav>
-
-        <!-- Track and set sidebar scroll position -->
-        <script>
-            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
-            sidebarScrollbox.addEventListener('click', function(e) {
-                if (e.target.tagName === 'A') {
-                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
-                }
-            }, { passive: true });
-            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
-            sessionStorage.removeItem('sidebar-scroll');
-            if (sidebarScrollTop) {
-                // preserve sidebar scroll position when navigating via links within sidebar
-                sidebarScrollbox.scrollTop = sidebarScrollTop;
-            } else {
-                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
-                var activeSection = document.querySelector('#sidebar .active');
-                if (activeSection) {
-                    activeSection.scrollIntoView({ block: 'center' });
-                }
-            }
-        </script>
-
-        <div id="page-wrapper" class="page-wrapper">
-
-            <div class="page">
-                                <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky">
-                    <div class="left-buttons">
-                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
-                            <i class="fa fa-bars"></i>
-                        </label>
-                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
-                            <i class="fa fa-paint-brush"></i>
-                        </button>
-                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
-                        </ul>
-                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
-                            <i class="fa fa-search"></i>
-                        </button>
-                    </div>
-
-                    <h1 class="menu-title">文档</h1>
-
-                    <div class="right-buttons">
-                        <a href="../print.html" title="Print this book" aria-label="Print this book">
-                            <i id="print-button" class="fa fa-print"></i>
-                        </a>
-
-                    </div>
-                </div>
-
-                <div id="search-wrapper" class="hidden">
-                    <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
-                    </form>
-                    <div id="searchresults-outer" class="searchresults-outer hidden">
-                        <div id="searchresults-header" class="searchresults-header"></div>
-                        <ul id="searchresults">
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
-                <script>
-                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
-                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
-                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
-                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
-                    });
-                </script>
-
-                <div id="content" class="content">
-                    <main>
-                        <h1 id="linux"><a class="header" href="#linux">Linux</a></h1>
+<!doctype html>
+<html lang="zh-Hans" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-linux/index" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.5.2">
+<title data-rh="true">Linux | My Site</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://follow1123.github.io/doc/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://follow1123.github.io/doc/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://follow1123.github.io/doc/linux/"><meta data-rh="true" property="og:locale" content="zh_Hans"><meta data-rh="true" name="docusaurus_locale" content="zh-Hans"><meta data-rh="true" name="docsearch:language" content="zh-Hans"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Linux | My Site"><meta data-rh="true" name="description" content="组管理和权限管理"><meta data-rh="true" property="og:description" content="组管理和权限管理"><link data-rh="true" rel="icon" href="/doc/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://follow1123.github.io/doc/linux/"><link data-rh="true" rel="alternate" href="https://follow1123.github.io/doc/linux/" hreflang="zh-Hans"><link data-rh="true" rel="alternate" href="https://follow1123.github.io/doc/linux/" hreflang="x-default"><link rel="stylesheet" href="/doc/assets/css/styles.8e336f20.css">
+<script src="/doc/assets/js/runtime~main.fb69b3c9.js" defer="defer"></script>
+<script src="/doc/assets/js/main.25654acc.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();t(null!==e?e:"light")}(),function(){try{const n=new URLSearchParams(window.location.search).entries();for(var[t,e]of n)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="跳到主要内容"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">跳到主要内容</a></div><nav aria-label="主导航" class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="切换导航栏" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/doc/"><div class="navbar__logo"><img src="/doc/img/logo.svg" alt="Doc Site Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/doc/img/logo.svg" alt="Doc Site Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">Doc Site</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/doc/">Docs</a></div><div class="navbar__items navbar__items--right"><a href="https://github.com/follow1123" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="切换浅色/暗黑模式（当前为浅色模式）" aria-label="切换浅色/暗黑模式（当前为浅色模式）" aria-live="polite"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><input placeholder="搜索" aria-label="Search" class="navbar__search-input"><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="回到顶部" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="文档侧边栏" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/doc/">说明</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible menu__list-item-collapsible--active"><a class="menu__link menu__link--sublist menu__link--active" aria-current="page" href="/doc/linux/">Linux</a><button aria-label="折叠侧边栏分类 &#x27;Linux&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/doc/linux/commands">常用命令</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/doc/linux/desktop-environment">Linux桌面环境</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/doc/linux/systemd">Systemd</a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/doc/windows/">Windows</a><button aria-label="展开侧边栏分类 &#x27;Windows&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/doc/software-services-tools/">软件/服务/工具</a><button aria-label="展开侧边栏分类 &#x27;软件/服务/工具&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/doc/java/">Java</a><button aria-label="展开侧边栏分类 &#x27;Java&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/doc/design-pattern/">设计模式</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/doc/frontend/">前端</a><button aria-label="展开侧边栏分类 &#x27;前端&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="页面路径"><ul class="breadcrumbs" itemscope="" itemtype="https://schema.org/BreadcrumbList"><li class="breadcrumbs__item"><a aria-label="主页面" class="breadcrumbs__link" href="/doc/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link" itemprop="name">Linux</span><meta itemprop="position" content="1"></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">本页总览</button></div><div class="theme-doc-markdown markdown"><header><h1>Linux</h1></header>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="组管理和权限管理">组管理和权限管理<a href="#组管理和权限管理" class="hash-link" aria-label="组管理和权限管理的直接链接" title="组管理和权限管理的直接链接">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="用户和组相关文件">用户和组相关文件<a href="#用户和组相关文件" class="hash-link" aria-label="用户和组相关文件的直接链接" title="用户和组相关文件的直接链接">​</a></h3>
 <ul>
-<li>linux相关文档</li>
+<li>/etc/passwd文件<!-- -->
+<ul>
+<li>用户( user)的配置文件，记录用户的各种信息</li>
+<li>每行的含义∶用户名:口令:用户标识号:组标识号:注释性描述:主目录:登录Shell</li>
 </ul>
-<blockquote>
-<p>以下所有文档基于Debian</p>
-</blockquote>
-
-                    </main>
-
-                    <nav class="nav-wrapper" aria-label="Page navigation">
-                        <!-- Mobile navigation buttons -->
-
-                            <a rel="next prefetch" href="../linux/basics.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
-
-                        <div style="clear: both"></div>
-                    </nav>
-                </div>
-            </div>
-
-            <nav class="nav-wide-wrapper" aria-label="Page navigation">
-
-                    <a rel="next prefetch" href="../linux/basics.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
-            </nav>
-
-        </div>
-
-
-
-
-        <script>
-            window.playground_copyable = true;
-        </script>
-
-
-        <script src="../elasticlunr.min.js"></script>
-        <script src="../mark.min.js"></script>
-        <script src="../searcher.js"></script>
-
-        <script src="../clipboard.min.js"></script>
-        <script src="../highlight.js"></script>
-        <script src="../book.js"></script>
-
-        <!-- Custom JS scripts -->
-        <script src="../mermaid.min.js"></script>
-        <script src="../mermaid-init.js"></script>
-
-
-    </div>
-    </body>
+</li>
+<li>/etc/shadow文件<!-- -->
+<ul>
+<li>口令的配置文件</li>
+<li>每行的含义:登录名:加密口令:最后一次修改时间:最小时间间隔:最大时间间隔:警告时间:不活动时间:失效时间:标志</li>
+</ul>
+</li>
+<li>/etc/group文件<!-- -->
+<ul>
+<li>组(group)的配置文件，记录Linux包含的组的信息每行含义∶组名:口令:组标识号:组内用户列表</li>
+</ul>
+</li>
+<li>在linux中的每个用户必须属于一个组，不能独立于组外。在linux中每个文件有所有者、所在组、其它组的概念。<!-- -->
+<ol>
+<li>所有者</li>
+<li>所在组</li>
+<li>其他组</li>
+<li>改变用户所在组</li>
+</ol>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="文件目录所有者">文件目录所有者<a href="#文件目录所有者" class="hash-link" aria-label="文件目录所有者的直接链接" title="文件目录所有者的直接链接">​</a></h3>
+<ul>
+<li>一般为文件的创建者，创建了该文件</li>
+<li>查看文件所有者<!-- -->
+<ul>
+<li><code>ls -ahl</code>或<code>ll -ah</code></li>
+</ul>
+</li>
+<li>修改文件所有者<!-- -->
+<ul>
+<li><code>chown 用户名 文件名</code></li>
+<li><code>chown 用户名:组名 文件名</code>这条命令可以连组名一起修改</li>
+</ul>
+</li>
+<li>修改所在组<!-- -->
+<ul>
+<li><code>chgrp 组名 文件名</code></li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="权限">权限<a href="#权限" class="hash-link" aria-label="权限的直接链接" title="权限的直接链接">​</a></h3>
+<ul>
+<li>使用<code>ls -l</code>显示当前目录下的文件时，可用看到前面几位由<code>r</code>、<code>w</code>、<code>x</code>、<code>-</code>等符号组成的部分就是这个文件的权限</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="09位说明">0~9位说明<a href="#09位说明" class="hash-link" aria-label="0~9位说明的直接链接" title="0~9位说明的直接链接">​</a></h4>
+<ul>
+<li>第0位确定文件类型（d, -,l,c,b）<!-- -->
+<ul>
+<li>I是链接,相当于windows的快捷方式</li>
+<li>d是目录，相当于windows的文件夹</li>
+<li>c是字符设备文件，鼠标，键盘</li>
+<li>b是块设备，比如硬盘</li>
+</ul>
+</li>
+<li>第1-3位确定所有者（该文件的所有者）拥有该文件的权限。---User</li>
+<li>第4-6位确定所属组（同用户组的）拥有该文件的权限，---Group</li>
+<li>第7-9位确定其他用户拥有该文件的权限---Other</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="rwx权限">rwx权限<a href="#rwx权限" class="hash-link" aria-label="rwx权限的直接链接" title="rwx权限的直接链接">​</a></h4>
+<ul>
+<li>rwx作用到文件<!-- -->
+<ul>
+<li><code>r</code>：可读（read），可以读取，查看</li>
+<li><code>w</code>：可写（write），可以修改，但是不代表可以删除该文件，删除一个文件的前提条件是对该文件所在的目录有写权限，才能删除该文件</li>
+<li><code>x</code>：可执行（execute），可以被执行</li>
+</ul>
+</li>
+<li>rwx作用到目录<!-- -->
+<ul>
+<li><code>r</code>：可读（read），可以读取，ls查看目录内容</li>
+<li><code>w</code>：可写（write），可以修改，对目录内创建+删除+重命名目录</li>
+<li><code>x</code>：可执行（execute），可以进入该目录</li>
+</ul>
+</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="改变文件rwx权限">改变文件rwx权限<a href="#改变文件rwx权限" class="hash-link" aria-label="改变文件rwx权限的直接链接" title="改变文件rwx权限的直接链接">​</a></h4>
+<ul>
+<li><code>chmod</code>
+<ul>
+<li>u、g、o，分别代表所有者，组，和其他</li>
+<li>a代表所有</li>
+<li>使用+、-对该文件的权限进行添加或删除</li>
+<li>具体使用方 式<!-- -->
+<ul>
+<li><code>chmod u+x,g+w,o-r 文件名</code></li>
+<li><code>chmod a-r 文件名</code>表示该文件，所有者、组内成员和其他人都没有了读的权限</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>也可以使用数字方式对文件的权限进行修改<!-- -->
+<ul>
+<li>r=4，w=2，x=1，使用这三数组进行相加</li>
+<li>具体使用方式<!-- -->
+<ul>
+<li><code>chmod 664 文件名</code></li>
+<li>这里6或4都是上面三个数字相加得到的</li>
+<li>第一位该表所有者，第二位代表组，第三位代表其他</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="定时任务">定时任务<a href="#定时任务" class="hash-link" aria-label="定时任务的直接链接" title="定时任务的直接链接">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="crond任务调度">crond任务调度<a href="#crond任务调度" class="hash-link" aria-label="crond任务调度的直接链接" title="crond任务调度的直接链接">​</a></h3>
+<ul>
+<li>任务调度:是指系统在某个时间执行的特定的命令或程序。</li>
+<li>任务调度分类:1.系统工作:有些重要的工作必须周而复始地执行。如病毒扫描等个别用户工作:个别用户可能希望执行某些程序，比如对mysql数据库的备份。</li>
+<li><code>crontab</code>
+<ul>
+<li><code>crontab -e</code> 编辑定时任务</li>
+<li><code>crontab -l</code> 查看已有的任务</li>
+<li><code>crontab -r</code> 删除已有的任务</li>
+</ul>
+</li>
+<li>格式：</li>
+</ul>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">cron表达式 命令</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="cron表达式">cron表达式<a href="#cron表达式" class="hash-link" aria-label="cron表达式的直接链接" title="cron表达式的直接链接">​</a></h4>
+<ul>
+<li>cron表达式由5个特殊符号组成</li>
+</ul>
+<h5 class="anchor anchorWithStickyNavbar_LWe7" id="位置说明">位置说明<a href="#位置说明" class="hash-link" aria-label="位置说明的直接链接" title="位置说明的直接链接">​</a></h5>
+<table><thead><tr><th>位置</th><th>含义</th><th>范围</th></tr></thead><tbody><tr><td>第一位</td><td>一小时当中的第几分钟</td><td>0~59</td></tr><tr><td>第二位</td><td>一天当中的第几小时</td><td>0~23</td></tr><tr><td>第三位</td><td>一个月当中的第几天</td><td>1~31</td></tr><tr><td>第四位</td><td>一年当中的第几月</td><td>1~12</td></tr><tr><td>第五位</td><td>一周当中的星期几</td><td>0~7（0和7都代表星期日）</td></tr></tbody></table>
+<h5 class="anchor anchorWithStickyNavbar_LWe7" id="占位符说明">占位符说明<a href="#占位符说明" class="hash-link" aria-label="占位符说明的直接链接" title="占位符说明的直接链接">​</a></h5>
+<table><thead><tr><th>符号</th><th>含义</th></tr></thead><tbody><tr><td><code>*</code></td><td>任何时间。比如第一个<code>*</code>就代表一小时中的每分钟都执行一次</td></tr><tr><td><code>,</code></td><td>不连续的时间。比如<code>0 8,12,16 * * * command</code>，就代表在每天的8点，12点，16点都执行一次</td></tr><tr><td><code>-</code></td><td>连续的时间范围。比如<code>0 5 * * 1-6 command</code>，代表周一到周六的5点0分执行</td></tr><tr><td><code>*/n</code></td><td>每隔多久执行一次。比如<code>*/10 * * * * command</code>，代表每隔10分钟就执行一次</td></tr></tbody></table>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="常见定时任务">常见定时任务<a href="#常见定时任务" class="hash-link" aria-label="常见定时任务的直接链接" title="常见定时任务的直接链接">​</a></h4>
+<table><thead><tr><th>时间</th><th>含义</th></tr></thead><tbody><tr><td><code>45 22 * * * command</code></td><td>在22点45分执行</td></tr><tr><td><code>0 17 * * 1 command</code></td><td>每周一的17点0分执行</td></tr><tr><td><code>0 5 1,15 * * command</code></td><td>每月1号到15号的5点0分执行</td></tr><tr><td><code>40 4 * * 1-5 command</code></td><td>每周一到周五的4点40分执行</td></tr><tr><td><code>*/10 4 * * * command</code></td><td>每天4点，每隔10分钟执行一次</td></tr><tr><td><code>0 0 1,15 * 1 command</code></td><td>每月1号到15号，每周1的0点0分执行</td></tr></tbody></table>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="at定时任务">at定时任务<a href="#at定时任务" class="hash-link" aria-label="at定时任务的直接链接" title="at定时任务的直接链接">​</a></h3>
+<ul>
+<li>at命令是一次性定时计划任务，at的守护进程atd会以后台模式运行，检查作业队列来运行。</li>
+<li>默认情况下，atd守护进程每60秒检查作业队列，有作业时，会检查作业运行时间，如果时间与当肓时间匹配，则运行此作业。</li>
+<li>at命令是一次性定时计划任务，执行完一个任务后不再执行此任务了</li>
+<li>在使用at命令的时候，一定要保证atd进程的启动，可以使用相关命令来查看<!-- -->
+<ul>
+<li>使用<code>ps -ef | grep atd</code>查看atd是否运行</li>
+</ul>
+</li>
+<li>使用<!-- -->
+<ul>
+<li><code>at now+1minutes</code>回车</li>
+<li>输入要执行的命令或脚本文件路径</li>
+<li>按两次<code>ctrl+d</code>保存</li>
+<li>表示一分钟后执行某个操作</li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="磁盘分区挂载">磁盘分区、挂载<a href="#磁盘分区挂载" class="hash-link" aria-label="磁盘分区、挂载的直接链接" title="磁盘分区、挂载的直接链接">​</a></h2>
+<ul>
+<li><strong>Linux分区</strong>
+<ul>
+<li>Linux来说无论有几个分区，分给哪一目录使用，它归根结底就只有一个根目录，一个独立且唯一的文件结构，Linux中每个分区都是用来组成整个文件系统的一部分。</li>
+<li>Linux采用了一种叫“载入”的处理方法，它的整个文件系统中包含了一整套的文件和目录，且将个分区和一个目录联系起来。这时要载入的一个分区将使它的存储空间在一个目录下获得、</li>
+</ul>
+</li>
+<li>硬盘说明<!-- -->
+<ul>
+<li>Linux硬盘分IDE硬盘和SCSI硬盘，目前基本上是SCSI硬盘</li>
+<li>对于IDE硬盘，驱动器标识符为“hdx~”，其中“hd”表明分区所在设备的类型，这里是指IDE硬盘了。“x”为盘号(a为基本盘，b为基本从属盘，c为辅助主盘，d为辅助从属盘)，”~”代表分区，前四个分区用数字1到4表示，它们是主分区或扩展分区，从5开始就是逻辑分区。例，hda3表示为第一个IDE硬盘上的第三个主分区或扩展分区,hdb2表示为第二个IDE硬盘上的第二个主分区或扩展分区。</li>
+<li>对于SCSI硬盘则标识为“sdx~&quot;，SCSI硬盘是用“sd”来表示分区所在设备的类型的，其余则和IDE硬盘的表示方法一样。</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="挂载一块新硬盘">挂载一块新硬盘<a href="#挂载一块新硬盘" class="hash-link" aria-label="挂载一块新硬盘的直接链接" title="挂载一块新硬盘的直接链接">​</a></h3>
+<ol>
+<li>插入一块新硬盘</li>
+<li>查看分区详细信息：<code>lsblk -f</code>，输出信息内会显示新硬盘对应的文件，以<code>/dev/sdb</code>为例</li>
+<li>使用<code>fdisk /dev/sdb</code>对新硬盘进行分区，<code>fdisk</code>是一个交互式命令，内置分区相关的命令<!-- -->
+<ul>
+<li><code>m</code>：显示所有命令列表</li>
+<li><code>p</code>：显示磁盘分区</li>
+<li><code>n</code>：新增分区</li>
+<li><code>d</code>：删除分区</li>
+<li><code>w</code>：写入并退出</li>
+</ul>
+</li>
+<li>进入交互式命令后输入<code>n</code>新建分区，再输入<code>p</code>选择新建主分区，输入<code>1</code>分成一个区，最后输入<code>w</code>保存退出</li>
+<li>此时新建的分区名称为<code>dev/sdb1</code>，使用<code>mkfs -t ext4 /dev/sdb2</code>格式化文件系统为<code>ext4</code></li>
+<li>挂载磁盘：<!-- -->
+<ul>
+<li>将<code>dev/sdb1</code>挂载到指定的目录下：<code>mount /dev/sdb1 目录</code></li>
+<li>卸载：<code>unmount /dev/sdb1</code></li>
+</ul>
+</li>
+<li>永久挂载磁盘，上面使用命令挂载的方式只是临时挂载，重启后就失效了<!-- -->
+<ul>
+<li>使用<code>blkid</code>命令查看<code>/dev/sdb1</code>磁盘对应的UUID</li>
+<li>编辑<code>/etc/fstab</code>文件</li>
+</ul>
+</li>
+</ol>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic"># 最后一行添加</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token assign-left variable" style="color:#36acaa">UUID</span><span class="token operator" style="color:#393A34">=</span><span class="token plain">blkid里面的UUID    挂载的目录  ext4    defaults    </span><span class="token number" style="color:#36acaa">0</span><span class="token plain">   </span><span class="token number" style="color:#36acaa">0</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<ol start="8">
+<li>重启系统</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="常用命令">常用命令<a href="#常用命令" class="hash-link" aria-label="常用命令的直接链接" title="常用命令的直接链接">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="df">df<a href="#df" class="hash-link" aria-label="df的直接链接" title="df的直接链接">​</a></h4>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic"># 查看磁盘详细信息</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token function" style="color:#d73a49">df</span><span class="token plain"> </span><span class="token parameter variable" style="color:#36acaa">-h</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="du">du<a href="#du" class="hash-link" aria-label="du的直接链接" title="du的直接链接">​</a></h4>
+<ul>
+<li>查看指定目录磁盘占用情况</li>
+<li>部分选项：<!-- -->
+<ul>
+<li><code>-h</code>：带计量单位</li>
+<li><code>-a</code>：包含文件</li>
+<li><code>--max-depth</code>：子目录深度</li>
+<li><code>-c</code>：汇总值</li>
+</ul>
+</li>
+</ul>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic"># 查看/home目录占用情况</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token function" style="color:#d73a49">du</span><span class="token plain"> </span><span class="token parameter variable" style="color:#36acaa">-hac</span><span class="token plain"> --max-depth</span><span class="token operator" style="color:#393A34">=</span><span class="token number" style="color:#36acaa">1</span><span class="token plain"> /home</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="网络配置">网络配置<a href="#网络配置" class="hash-link" aria-label="网络配置的直接链接" title="网络配置的直接链接">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="linux网络环境配置">linux网络环境配置<a href="#linux网络环境配置" class="hash-link" aria-label="linux网络环境配置的直接链接" title="linux网络环境配置的直接链接">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="自动获取">自动获取<a href="#自动获取" class="hash-link" aria-label="自动获取的直接链接" title="自动获取的直接链接">​</a></h4>
+<ul>
+<li>登陆后，通过界面的来设置自动获取ip</li>
+<li>linux启动后会自动获取IP缺点是每次自动获取的ip地址可能不一样</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="指定ip">指定ip<a href="#指定ip" class="hash-link" aria-label="指定ip的直接链接" title="指定ip的直接链接">​</a></h4>
+<ul>
+<li>直接修改配置文件来指定IP，并可以连接到外网</li>
+<li>编辑<code>vim /etc/sysconfig/network-scripts/ifcfg-ens33</code></li>
+</ul>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token assign-left variable" style="color:#36acaa">PROXY_METHOD</span><span class="token operator" style="color:#393A34">=</span><span class="token string" style="color:#e3116c">&quot;none&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token assign-left variable" style="color:#36acaa">BROWSER_ONLY</span><span class="token operator" style="color:#393A34">=</span><span class="token string" style="color:#e3116c">&quot;no&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># 自动分配</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># BOOTPROTO=&quot;dhcp&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># 静态分配</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token assign-left variable" style="color:#36acaa">BOOTPROTO</span><span class="token operator" style="color:#393A34">=</span><span class="token string" style="color:#e3116c">&quot;static&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token assign-left variable" style="color:#36acaa">DEFROUTE</span><span class="token operator" style="color:#393A34">=</span><span class="token string" style="color:#e3116c">&quot;yes&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token assign-left variable" style="color:#36acaa">IPV4_FAILURE_FATAL</span><span class="token operator" style="color:#393A34">=</span><span class="token string" style="color:#e3116c">&quot;no&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token assign-left variable" style="color:#36acaa">IPV6INIT</span><span class="token operator" style="color:#393A34">=</span><span class="token string" style="color:#e3116c">&quot;yes&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token assign-left variable" style="color:#36acaa">IPV6_AUTOCONF</span><span class="token operator" style="color:#393A34">=</span><span class="token string" style="color:#e3116c">&quot;yes&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token assign-left variable" style="color:#36acaa">IPV6_DEROUTE</span><span class="token operator" style="color:#393A34">=</span><span class="token string" style="color:#e3116c">&quot;yes&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token assign-left variable" style="color:#36acaa">IPV6_FAILURE_FATAL</span><span class="token operator" style="color:#393A34">=</span><span class="token string" style="color:#e3116c">&quot;no&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token assign-left variable" style="color:#36acaa">IPV6_ADDR_GEN_MODE</span><span class="token operator" style="color:#393A34">=</span><span class="token string" style="color:#e3116c">&quot;stable-privacy&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">NAME</span><span class="token string" style="color:#e3116c">&quot;ens33&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token assign-left variable" style="color:#36acaa">UUID</span><span class="token operator" style="color:#393A34">=</span><span class="token string" style="color:#e3116c">&quot;30734a5b-0ac8-4eba-903f-13c464dede24&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token assign-left variable" style="color:#36acaa">DEVICE</span><span class="token operator" style="color:#393A34">=</span><span class="token string" style="color:#e3116c">&quot;ens33&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token assign-left variable" style="color:#36acaa">ONBOOT</span><span class="token operator" style="color:#393A34">=</span><span class="token string" style="color:#e3116c">&quot;yes&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># 自定义ip地址</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token assign-left variable" style="color:#36acaa">IPADDR</span><span class="token operator" style="color:#393A34">=</span><span class="token number" style="color:#36acaa">192.168</span><span class="token plain">.111.123</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># 网关</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token assign-left variable" style="color:#36acaa">GATEWAY</span><span class="token operator" style="color:#393A34">=</span><span class="token number" style="color:#36acaa">192.168</span><span class="token plain">.111.2</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># 域名解析器</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token assign-left variable" style="color:#36acaa">DNS1</span><span class="token operator" style="color:#393A34">=</span><span class="token number" style="color:#36acaa">192.168</span><span class="token plain">.111.2</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token assign-left variable" style="color:#36acaa">DNS2</span><span class="token operator" style="color:#393A34">=</span><span class="token number" style="color:#36acaa">114.114</span><span class="token plain">.114.114</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<ul>
+<li>保存退出后重启网络服务<code>service network restart</code>或重启<code>reboot</code>即可</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="设置主机名和host映射">设置主机名和host映射<a href="#设置主机名和host映射" class="hash-link" aria-label="设置主机名和host映射的直接链接" title="设置主机名和host映射的直接链接">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="设置主机名">设置主机名<a href="#设置主机名" class="hash-link" aria-label="设置主机名的直接链接" title="设置主机名的直接链接">​</a></h4>
+<ul>
+<li><code>hostname</code> 查看主机名</li>
+<li>在<code>/etc/hostname</code>文件内修改主机名</li>
+<li>修改后重启才生效</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="hosts映射">hosts映射<a href="#hosts映射" class="hash-link" aria-label="hosts映射的直接链接" title="hosts映射的直接链接">​</a></h4>
+<ul>
+<li>编辑<code>/etc/hosts</code>文件</li>
+</ul>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token function" style="color:#d73a49">ip</span><span class="token plain"> 名称</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<ul>
+<li>window下在C:\Windows\System32\drivers\etc目录下编辑hosts文件</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="主机名解析过程分析hostsdns">主机名解析过程分析(Hosts、DNS)<a href="#主机名解析过程分析hostsdns" class="hash-link" aria-label="主机名解析过程分析(Hosts、DNS)的直接链接" title="主机名解析过程分析(Hosts、DNS)的直接链接">​</a></h3>
+<ul>
+<li>Hosts是什么：一个文本文件,用来记录IP和Hostname(主机名)的映射关系</li>
+<li>DNS：<!-- -->
+<ul>
+<li>DNS，就是Domain Name System的缩写，翻译过来就是域名系统</li>
+<li>是互联网上作为域名和IP地址相互映射的一个分布式数据库</li>
+</ul>
+</li>
+<li>主机名解析机制分析(Hosts、DNS)：用户在浏览器输入了www.baidu.com<!-- -->
+<ol>
+<li>浏览器先检查浏览器缓存中有没有该域名解析IP地址，有就先调用这个IP完成解析;如果没有检查操作系统DNS解析器缓存，如果有直接返回IP完成解析。这两个缓存，可以理解为本地解析器缓存</li>
+<li>一般来说，当电脑第一次成功访问某一网站后，在一定时间内，浏览器或操作系统会缓存他的IP地址（DNS解析记录)<!-- -->
+<ul>
+<li>如在cmd窗口中输入<!-- -->
+<ul>
+<li><code>ipconfig /displaydns</code>  DNS域名解析缓存</li>
+<li><code>ipconfig /flushdns</code>  手动清理dns缓存</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>如果本地解析器缓存没有找到对应映射，检查系统中hosts文件中有没有配置对应的域名IP映射，如果有，则完成解析并返回.</li>
+<li>如果本地DNS解析器缓存和hosts文件中均没有找到对应的IP，则到域名服务DNS进行解析域</li>
+</ol>
+</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="进程管理">进程管理<a href="#进程管理" class="hash-link" aria-label="进程管理的直接链接" title="进程管理的直接链接">​</a></h2>
+<ul>
+<li>在LINUX中，每个执行的程序都称为一个进程。每一个进程都分配一个ID号(pid,进程号)。</li>
+<li>每个进程都可能以两种方式存在的。前台与后台，所谓前台  进程就是用户目前的屏幕上可以进行操的。后台进程则是实际在操作，但由于屏幕上无法看到的进程，通常使用后台方式执行。</li>
+<li>一般系统的服务都是以后台进程的方式存在，而且都会常驻在系统中。直到关机才才结束。</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="常用命令-1">常用命令<a href="#常用命令-1" class="hash-link" aria-label="常用命令的直接链接" title="常用命令的直接链接">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="ps">ps<a href="#ps" class="hash-link" aria-label="ps的直接链接" title="ps的直接链接">​</a></h4>
+<ul>
+<li>两种风格</li>
+</ul>
+<h5 class="anchor anchorWithStickyNavbar_LWe7" id="标准风格">标准风格<a href="#标准风格" class="hash-link" aria-label="标准风格的直接链接" title="标准风格的直接链接">​</a></h5>
+<ul>
+<li><code>ps -ef</code></li>
+<li>列说明<!-- -->
+<ul>
+<li><code>UID</code>：用户id</li>
+<li><code>PID</code>：进程id</li>
+<li><code>PPID</code>：父进程id</li>
+<li><code>C：</code>cpu用于计算执行优先级因子。值越大，表明进程是cpu密集型运算，执行优先级会降低，值越小，表明进程是I/O密集型运算，必须优先级会提高</li>
+<li><code>STIME</code>：进程启动的时间</li>
+<li><code>TTY</code>：终端名称</li>
+<li><code>TIME</code>：cpu时间</li>
+<li><code>CMD</code>：启动进程的命令和参数</li>
+</ul>
+</li>
+</ul>
+<h5 class="anchor anchorWithStickyNavbar_LWe7" id="bsd风格">BSD风格<a href="#bsd风格" class="hash-link" aria-label="BSD风格的直接链接" title="BSD风格的直接链接">​</a></h5>
+<ul>
+<li><code>ps -aux</code></li>
+<li>列说明<!-- -->
+<ul>
+<li><code>USER</code>：用户名称</li>
+<li><code>PID</code>：进程号</li>
+<li><code>%CPU</code>：进程占用CPU的百分比</li>
+<li><code>%MEM</code>：进程占用物理内存的百分比</li>
+<li><code>VSZ</code>：进程占用的虚拟内存大小(单位<!-- -->:KB<!-- -->)</li>
+<li><code>RSS</code>：进程占用的物理内存大小(单位<!-- -->:KB<!-- --> )</li>
+<li><code>TTY</code>：终端名称,缩写．</li>
+<li><code>STAT</code>：进程状态，其中S-睡眠，s-表示该进程是会话的先导进程，N-表示进程拥有比普通优先级更低的优先级，R-正在运行，D-短期等待，Z-僵死进程，T-被跟踪或者被停止等等</li>
+<li><code>STARTED</code>：进程的启动时间</li>
+<li><code>TIME</code>：CPU时间，即进程使用CPU的总时间</li>
+<li><code>COMMAND</code>：启动进程所用的命令和参数，如果过长会被截断显示</li>
+<li>以全格式显示当前进程</li>
+</ul>
+</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="kill">kill<a href="#kill" class="hash-link" aria-label="kill的直接链接" title="kill的直接链接">​</a></h4>
+<ul>
+<li>终止进程</li>
+</ul>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic"># 杀死对应id的进程 </span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token function" style="color:#d73a49">kill</span><span class="token plain"> 进程id</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># 强制杀死一个进程</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token function" style="color:#d73a49">kill</span><span class="token plain"> </span><span class="token parameter variable" style="color:#36acaa">-9</span><span class="token plain"> 进程id</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># 杀死对应进程名的进程</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token function" style="color:#d73a49">killall</span><span class="token plain"> 进程名</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="pstree">pstree<a href="#pstree" class="hash-link" aria-label="pstree的直接链接" title="pstree的直接链接">​</a></h4>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic"># 以树状形式显示进程信息并显示进程id</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">pstree </span><span class="token parameter variable" style="color:#36acaa">-p</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># 以树状形式显示进程信息并显示进程登录的用户</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">pstree </span><span class="token parameter variable" style="color:#36acaa">-u</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="服务管理">服务管理<a href="#服务管理" class="hash-link" aria-label="服务管理的直接链接" title="服务管理的直接链接">​</a></h3>
+<ul>
+<li>服务（service）本质就是进程，但是运行在后台，通常会监听某个端口，等待其他程序的请求，比如（mysqld，sshd，防火墙等），因此我们又称为守护进程</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="service管理命令">Service管理命令<a href="#service管理命令" class="hash-link" aria-label="Service管理命令的直接链接" title="Service管理 命令的直接链接">​</a></h4>
+<ul>
+<li>格式：<code>service 服务名 [start | stop | restart | reload | statue]</code></li>
+<li><code>service</code>命令管理的服务再<code>/etc/init.d</code>下查看</li>
+<li><code>service</code>大部分Linux发行版都不再使用，使用<code>systemd</code>替换</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="其他命令">其他命令<a href="#其他命令" class="hash-link" aria-label="其他命令的直接链接" title="其他命令的直接链接">​</a></h4>
+<ul>
+<li>
+<p>使用<code>setup</code>命令查看全部服务，管理开机自启的服务</p>
+</li>
+<li>
+<p><code>chkconfig</code>命令</p>
+<ul>
+<li><code>chkconfig 服务名 --list</code> 查看服务</li>
+<li><code>chkconfig --level 系统级别 服务名 on/off </code>设置某个服务在那个系统级别自启动</li>
+</ul>
+</li>
+<li>
+<p><code>systemctl</code>命令</p>
+<ul>
+<li><code>systemctl [start|stop|restart|status] 服务名</code></li>
+<li><code>systemctl list-unit-files</code> 查看开机启动的状态</li>
+<li><code>systemctl ebable 服务名</code> 设置服务开机启动</li>
+<li><code>systemctl disable 服务名</code> 关闭服务开机启动</li>
+<li><code>systemctl is-enabled</code> 查看某个服务是否开机自启</li>
+</ul>
+</li>
+<li>
+<p><code>firewall</code>命令</p>
+<ul>
+<li><code>firewall-cmd --permanent --add-port=端口号/协议</code> 打开端口</li>
+<li><code>firewall-cmd --permanent --remove-port=端口号/协议</code> 关闭端口</li>
+<li><code>firewall-cmd --reload</code> 重载端口，打开和关闭端口后必须重载才能生效</li>
+<li><code>firewall-cmd --query-port=端口号/协议</code> 查询端口号是否打开</li>
+</ul>
+</li>
+<li>
+<p><code>top</code>命令</p>
+<ul>
+<li><code>top -d 秒数</code> 每隔多少秒更新一次</li>
+<li><code>top -i</code> 不显示闲置和僵死进程</li>
+<li><code>top -p 进程id</code> 通过id监控某个指定的进程</li>
+</ul>
+</li>
+<li>
+<p><strong>动态监控进程</strong></p>
+</li>
+<li>
+<p>输入<code>top</code>命令后可以输入以下命令进行交互</p>
+<ul>
+<li><code>P</code> 以CPU使用率排序（默认）</li>
+<li><code>M</code> 以内存使用率排序</li>
+<li><code>N</code> 以进程id排序</li>
+<li><code>q</code> 退出</li>
+</ul>
+</li>
+<li>
+<p>查看网络情况</p>
+<ul>
+<li><code>netstat -an</code> 按顺序排序输出</li>
+<li><code>netstat -p</code> 显示那个进程在调用</li>
+<li>常用使用直接输入<code>netstat -anp</code></li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="包管理器">包管理器<a href="#包管理器" class="hash-link" aria-label="包管理器的直接链接" title="包管理器的直接链接">​</a></h2>
+<ul>
+<li>centos下使用<code>rpm</code>和<code>yum</code></li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="rpm包管理">rpm包管理<a href="#rpm包管理" class="hash-link" aria-label="rpm包管理的直接链接" title="rpm包管理的直接链接">​</a></h3>
+<ul>
+<li>rpm用于互联网下载包的打包及安装工具，它包含在某些Linux分发版中。它生成具有.RPM扩展名的文件。RPM是RedHat Package Manager（RedHat软件包管理工具）的缩写，类似windows的setup.exe，这一文件格式名称虽然打上了RedHat的标志，但理念是通用的。</li>
+<li>Linux的分发版本都有采用（suse,redhat, centos等等），可以算是公认的行业标准了。</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="常用命令-2">常用命令<a href="#常用命令-2" class="hash-link" aria-label="常用命令的直接链接" title="常用命令的直接链接">​</a></h4>
+<ul>
+<li><code>rpm -qa</code> 查询安装的所有软件包</li>
+<li><code>rpm - q 软件名</code> 查询该软件是否安装</li>
+<li><code>rpm -qi 软件名</code> 查询该软件的详细信息</li>
+<li><code>rpm -ql 软件名</code> 查询该软件包包含哪些文件</li>
+<li><code>rpm -qf 文件全路径</code> 查询该文件输入那个软件</li>
+<li><code>rpm -e 软  件包名</code> 卸载相命令</li>
+<li><code>rpm -ivh 软件包全明</code> 安装软件包<!-- -->
+<ul>
+<li><code>-i</code> 安装</li>
+<li><code>-v</code> 提示</li>
+<li><code>-h</code> 进度条</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="yum包管理">yum包管理<a href="#yum包管理" class="hash-link" aria-label="yum包管理的直接链接" title="yum包管理的直接链接">​</a></h3>
+<ul>
+<li>Yum是一Shell前端软件包管理器。基于RPM包管理，能够从指定的服务器自动下载RPM包并且安装，可以自动处理依赖性关系，并且一次安装所有依赖的软件包。</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="配置源">配置源<a href="#配置源" class="hash-link" aria-label="配置源的直接链接" title="配置源的直接链接">​</a></h4>
+<ol>
+<li><code>cd /etc/yum.repos.d/</code> 切到/etc/yum.	.d目录</li>
+<li><code>mv CentOS-Base.repo CentOS-Base.repo.backup</code> 备份CentOS-Base.repo文件</li>
+<li><code>wget http://mirrors.aliyun.com/repo/Centos-7.repo</code> 使用<code>wget</code>下载阿里的源文件<!-- -->
+<ol>
+<li>使用<code>wget</code>如果报无法解析主机名则需要手动配置DNS</li>
+<li><code>vim /etc/resolv.conf</code> 编辑/etc/resolv.conf文件<!-- -->
+<ol>
+<li><code>service resatrt network</code>重启网络服务后<code>wget</code>就可以使用了</li>
+<li>如果重启网络后/etc/resolv.conf内的数据恢复原样，就看文件头是否有Generated by NetworkManager注释字样</li>
+<li>有则需要关闭NetworkManager服务，因为DNS被NetworkManager服务自动生成了</li>
+<li><code>systemctl stop NetworkManager</code> 关闭NetworkManager服务</li>
+<li><code>systemctl disable NetworkManager</code> 关闭NetworkManager服务的开机自启</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><code>mv Centos-7.repo CentOS-Base.repo</code>将下载好的Centos-7.repo文件重命名为CentOS-Base.repo</li>
+<li><code>yum clean all</code> 清理缓存</li>
+<li><code>yum makecache</code> 生成缓存</li>
+</ol>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="常用命令-3">常用命令<a href="#常用命令-3" class="hash-link" aria-label="常用命令的直接链接" title="常用命令的直接链接">​</a></h4>
+<ul>
+<li><code>yum listlgrep 软件列表</code> 查询yum服务器是否有需要安装的软件</li>
+<li><code>yum install 软件包名</code> 安装指定软件</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="运行级别">运行级别<a href="#运行级别" class="hash-link" aria-label="运行级别的直接链接" title="运行级别的直接链接">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="基本介绍">基本介绍<a href="#基本介绍" class="hash-link" aria-label="基本介绍的直接链接" title="基本介绍的直接链接">​</a></h3>
+<ul>
+<li>0：关机</li>
+<li>1：单用户【找回丢失密码】</li>
+<li>2：多用户状态没有网络服务</li>
+<li>3：多用户状态有网络服务</li>
+<li>4：系统未使用保留给用户5:图形界面</li>
+<li>6：系统重启</li>
+<li>常用运行级别是3和5,也可以指定默认运行级别</li>
+<li>命令:<code>init[0123456]</code>应用案例:通过<code>init</code>来切换不同的运行级别，比如动5-3，然后关机。</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="指定运行级别">指定运行级别<a href="#指定运行级别" class="hash-link" aria-label="指定运行级别的直接链接" title="指定运行级别的直接链接">​</a></h3>
+<ul>
+<li>CentOS7后运行级别说明</li>
+<li>在centos7以前,/etc/inittab文件中</li>
+<li>进行了简化，如下:<!-- -->
+<ul>
+<li>multi-user.target: analogous to runlevel 3</li>
+<li>graphical.target: analogous to runlevel 5</li>
+<li><code>systemctl get-default</code> 查看当前气筒处于那个运行级别</li>
+<li><code>systemctl set-default xxx.target</code> 设置系统为那个运行级别</li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="安装jdk">安装jdk<a href="#安装jdk" class="hash-link" aria-label="安装jdk的直接链接" title="安装jdk的直接链接">​</a></h2>
+<ol>
+<li>在/opt目录下创建jdk目录存放jdk压缩文件<code>mkdir /opt/jdk</code></li>
+<li>在/usr/local目录下创建java目录存放解压后的文件<code>mkdir /usr/local/java</code></li>
+<li>将/opt/jdk目录下的压缩文件解压到/usr/local/java目录下<code>tar -zxvf 压缩包名 -C /usr/local/java</code></li>
+<li>配置环境变量<code>vim /etc/profile</code></li>
+<li>添加如下代码</li>
+</ol>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token builtin class-name">export</span><span class="token plain"> </span><span class="token assign-left variable" style="color:#36acaa">JAVA_HOME</span><span class="token operator" style="color:#393A34">=</span><span class="token plain">/usr/local/java/jdk1.8.0_281</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token builtin class-name">export</span><span class="token plain"> </span><span class="token assign-left variable environment constant" style="color:#36acaa">PATH</span><span class="token operator" style="color:#393A34">=</span><span class="token variable" style="color:#36acaa">$JAVA_HOME</span><span class="token plain">/bin:</span><span class="token environment constant" style="color:#36acaa">$PATH</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="shell编程">Shell编程<a href="#shell编程" class="hash-link" aria-label="Shell编程的直接链接" title="Shell编程的直接链接">​</a></h2>
+<ul>
+<li>Shell是一个命令行解释器，它为用户提供了一个向Linux内核发送请求以便运行程序的界面系统级程序，用户可以用Shell来启动、挂起、停止甚至是编写一些程序。</li>
+<li>创建一个以.sh结尾的文件，编写相应的bash脚本并保存</li>
+<li>修改所有者拥有执行权限使用<code>./文件名</code>执行文件</li>
+<li>或者不用修改权限直接使用<code>sh 文件名</code> 执行文件</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="变量">变量<a href="#变量" class="hash-link" aria-label="变量的直接链接" title="变量的直接链接">​</a></h3>
+<p><code>$HOME</code>、<code>$PATH</code>、<code>$PWD</code>等为系统变量</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="位置参数变量">位置参数变量<a href="#位置参数变量" class="hash-link" aria-label="位置参数变量的直接链接" title="位置参数变量的直接链接">​</a></h4>
+<ul>
+<li>获取执行shell脚本时后面带的参数</li>
+<li>例如<code>var.sh 100</code>后面的100就是参数<!-- -->
+<ul>
+<li>文件内使用<code>$1~$9</code>获取文件后的1~9位参数而<code>$0</code>为文件名本身</li>
+<li>第十个参数往后使用大括号包裹数组<code>${11}</code>来获取</li>
+<li>使用<code>$*</code>是将参数看作一个整体获取，相当于获取到一个所有参数组成的字符串</li>
+<li>使用<code>$@</code>获取到所有参数组成的集合</li>
+<li>使用<code>$#</code>获取所有参数的个数</li>
+</ul>
+</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="预定义变量">预定义变量<a href="#预定义变量" class="hash-link" aria-label="预定义变量的直接链接" title="预定义变量的直接链接">​</a></h4>
+<ul>
+<li>就是shell设计者事先已经定义好的变量，可以直接在shell脚本中使用<!-- -->
+<ul>
+<li><code>$$</code> 当前进程的进程号(PID )</li>
+<li><code>$!</code> 后台运行的最后一个进程的进程号（PID )</li>
+<li><code>$?</code>（最后一次执行的命令的返回状态。如果这个变量的值为0，证明上一个命令正确执行;如果这个变量的值为非0(具体是哪个数，由命令自己来决定），则证明上一个命令执行不正确了</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="运算符">运算符<a href="#运算符" class="hash-link" aria-label="运算符的直接链接" title="运算符的直接链接">​</a></h3>
+<ul>
+<li>使用<code>$((运算式))</code>或者<code>$[运算式]</code></li>
+<li>或者<code>expr 运算式</code>这里的运算式必须有空格</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="流程控制">流程控制<a href="#流程控制" class="hash-link" aria-label="流程控制的直接链接" title="流程控制的直接链接">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="if">if<a href="#if" class="hash-link" aria-label="if的直接链接" title="if的直接链接">​</a></h4>
+<ul>
+<li>语法：</li>
+</ul>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">if</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token plain"> 条件 </span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">then</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    分支一</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">elif</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token plain"> 条件 </span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">then</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    分支二</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">else</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    分支三</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">fi</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<ul>
+<li>数值比较<!-- -->
+<ul>
+<li><code>-lt</code> 小于、<code>-le</code> 小于等于、<code>-eq</code> 等于、<code>-gt</code> 大于、<code>-ge</code> 大于等于、<code>-ne</code> 不等于</li>
+</ul>
+</li>
+<li>文件权限判断<!-- -->
+<ul>
+<li><code>-r</code> 是否有读的权限</li>
+<li><code>-w</code> 是否有写的权限</li>
+<li><code>-x</code> 是否有执行的权限</li>
+</ul>
+</li>
+<li>文件类型判断<!-- -->
+<ul>
+<li><code>-f</code> 文件是否存在并且是一个常规的文件</li>
+<li><code>-e</code> 文件是否存在</li>
+<li><code>-d</code> 文件是否存在并且是一个目录</li>
+</ul>
+</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="case">case<a href="#case" class="hash-link" aria-label="case的直接链接" title="case的直接链接">​</a></h4>
+<ul>
+<li>语法</li>
+</ul>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">case</span><span class="token plain"> 值 </span><span class="token keyword" style="color:#00009f">in</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token string" style="color:#e3116c">&quot;匹配值1&quot;</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token builtin class-name">echo</span><span class="token plain"> one</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">;</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token string" style="color:#e3116c">&quot;匹配值2&quot;</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token builtin class-name">echo</span><span class="token plain"> two</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">;</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">*</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token builtin class-name">echo</span><span class="token plain"> other</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">;</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">esac</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="for循环">for循环<a href="#for循环" class="hash-link" aria-label="for循环的直接链接" title="for循环的直接链接">​</a></h4>
+<ul>
+<li>语法</li>
+</ul>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">for</span><span class="token plain"> 变量 </span><span class="token keyword" style="color:#00009f">in</span><span class="token plain"> 值</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">do</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    循环体</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">done</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># 遍历1到100</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">for</span><span class="token variable punctuation" style="color:#393A34">((</span><span class="token variable" style="color:#36acaa"> i</span><span class="token variable operator" style="color:#393A34">=</span><span class="token variable number" style="color:#36acaa">1</span><span class="token variable punctuation" style="color:#393A34">;</span><span class="token variable" style="color:#36acaa"> i</span><span class="token variable operator" style="color:#393A34">&lt;=</span><span class="token variable number" style="color:#36acaa">100</span><span class="token variable punctuation" style="color:#393A34">;</span><span class="token variable" style="color:#36acaa"> i</span><span class="token variable operator" style="color:#393A34">++</span><span class="token variable" style="color:#36acaa"> </span><span class="token variable punctuation" style="color:#393A34">))</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">do</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      循环体</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">done</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="while循环">while循环<a href="#while循环" class="hash-link" aria-label="while循环的直接链接" title="while循环的直接链接">​</a></h4>
+<ul>
+<li>语法</li>
+</ul>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">while</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token plain"> 条件 </span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">do</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    循环体</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">done</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="read">read<a href="#read" class="hash-link" aria-label="read的直接链接" title="read的直接链接">​</a></h4>
+<ul>
+<li>读取控制台输入</li>
+<li>选项：<!-- -->
+<ul>
+<li><code>-p</code> 指定读 取值时的提示符;</li>
+<li><code>-t</code> 指定读取值时等待的时间(秒），如果没有在指定的时间内输入，就不再等待了。.参数</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="函数">函数<a href="#函数" class="hash-link" aria-label="函数的直接链接" title="函数的直接链接">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="系统函数">系统函数<a href="#系统函数" class="hash-link" aria-label="系统函数的直接链接" title="系统函数的直接链接">​</a></h4>
+<ul>
+<li><code>basename 路径</code> 获取路径里的文件名</li>
+<li><code>basename 路径 后缀</code> 获取路径里的文件名并去掉文件名的后缀</li>
+<li><code>basedir 路径</code> 获取过文件的路径</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="自定义函数">自定义函数<a href="#自定义函数" class="hash-link" aria-label="自定义函数的直接链接" title="自定义函数的直接链接">​</a></h4>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic"># 定义函数</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">function</span><span class="token plain"> 函数名</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    函数 体</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># 调用函数</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">函数名 参数……</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="日志管理">日志管理<a href="#日志管理" class="hash-link" aria-label="日志管理的直接链接" title="日志管理的直接链接">​</a></h2>
+<ul>
+<li>日志文件是重要的系统信息文件，其中记录了许多重要的系统事件，包括用户的登录信息、系统的启动信息、系统的安全信息、邮件相关信息、各种服务相关信息等。</li>
+<li>日志对于安全来说也很重要，它记录了系统每天发生的各种事情，通过日志来检查错误发生的原因或者受到攻击时攻击者留下的痕迹。</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="系统常用的日志说明">系统常用的日志说明<a href="#系统常用的日志说明" class="hash-link" aria-label="系统常用的日志说明的直接链接" title="系统常用的日志说明的直接链接">​</a></h3>
+<ul>
+<li><code>/var/log/boot.log</code>：系统启动日志</li>
+<li><code>/var/log/cron</code>：记录云系统定时任务相关的日志</li>
+<li><code>/var/log/cups/</code>：打印信息日志</li>
+<li><code>/var/log/dmesg</code>：系统开机时内核自检的信息，使用<code>dmesg</code>命令查看</li>
+<li><code>/var/log/btmp</code>：记录错误登录的日志，这个日志时二进制文件，需要使用<code>lastb</code>命令查看</li>
+<li><code>/var/log/lastlog</code>：系统中所有用户最后一次的登录时间日志，这个文件也是二进制文件，使用<code>lastlog</code>命令查看</li>
+<li><code>/var/log/mailog</code>：邮件信息日志</li>
+<li><code>/var/log/messages</code>：系统重要消息日志，如果系统出现问题，可以先检查这个文件</li>
+<li><code>/var/log/secure</code>：认证授权信息，系统登录、ssh登录、su切换用户、sudo授权、添加用户、修改密码等操作都会记录在这个日志内</li>
+<li><code>/var/log/wtmp</code>：永久记录所有用户的登录、注销信息，同时记录系统的启动、重启、关机事件，使用<code>last</code>命令查看</li>
+<li><code>/var/tun/ulmp</code>：当前已经登录的用户信息，这个文件会随着用户的登录和注销而不断变化，只是记录当前登录用户的信息，十四爷<code>w</code>、<code>who</code>、<code>users</code>等命令查看</li>
+<li><code>rsyslogd</code>服务管理这常用的系统日志</li>
+<li><code>/etc/rsyslog.conf</code>文件为<code>rsyslog</code>日志进程的配置文件</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="常用命令-4">常用命令<a href="#常用命令-4" class="hash-link" aria-label="常用命令的直接链接" title="常用命令的直接链接">​</a></h3>
+<ul>
+<li><code>journalctl</code> 可以查看内存日志,这里我们看看常用的命令journalctl##查看全部</li>
+<li><code>journalctl -n3</code> ##查看最新3条</li>
+<li><code>journalctl --since 19:00 --until 19:10:10</code> #查看起始时间到结束时间的日志可加日期journalctl -p err ##报错日志</li>
+<li><code>journalctl -o verbose</code> ##日志详细内容</li>
+<li><code>journalctl_PiD=1245_COMM=sshd</code> ##查看包含这些参数的日志（在详细日志查看)</li>
+</ul></div></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="文件选项卡"><a class="pagination-nav__link pagination-nav__link--prev" href="/doc/"><div class="pagination-nav__sublabel">上一页</div><div class="pagination-nav__label">说明</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/doc/linux/commands"><div class="pagination-nav__sublabel">下一页</div><div class="pagination-nav__label">常用命令</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#组管理和权限管理" class="table-of-contents__link toc-highlight">组管理和权限管理</a><ul><li><a href="#用户和组相关文件" class="table-of-contents__link toc-highlight">用户和组相关文件</a></li><li><a href="#文件目录所有者" class="table-of-contents__link toc-highlight">文件目录所有者</a></li><li><a href="#权限" class="table-of-contents__link toc-highlight">权限</a></li></ul></li><li><a href="#定时任务" class="table-of-contents__link toc-highlight">定时任务</a><ul><li><a href="#crond任务调度" class="table-of-contents__link toc-highlight">crond任务调度</a></li><li><a href="#at定时任务" class="table-of-contents__link toc-highlight">at定时任务</a></li></ul></li><li><a href="#磁盘分区挂载" class="table-of-contents__link toc-highlight">磁盘分区、挂载</a><ul><li><a href="#挂载一块新硬盘" class="table-of-contents__link toc-highlight">挂载一块新硬盘</a></li><li><a href="#常 用命令" class="table-of-contents__link toc-highlight">常用命令</a></li></ul></li><li><a href="#网络配置" class="table-of-contents__link toc-highlight">网络配置</a><ul><li><a href="#linux网络环境配置" class="table-of-contents__link toc-highlight">linux网络环境配置</a></li><li><a href="#设置主机名和host映射" class="table-of-contents__link toc-highlight">设置主机名和host映射</a></li><li><a href="#主机名解析过程分析hostsdns" class="table-of-contents__link toc-highlight">主机名解析过程分析(Hosts、DNS)</a></li></ul></li><li><a href="#进程管理" class="table-of-contents__link toc-highlight">进程管理</a><ul><li><a href="#常用命令-1" class="table-of-contents__link toc-highlight">常用命令</a></li><li><a href="#服务管理" class="table-of-contents__link toc-highlight">服务管理</a></li></ul></li><li><a href="#包管理器" class="table-of-contents__link toc-highlight">包管理器</a><ul><li><a href="#rpm包管理" class="table-of-contents__link toc-highlight">rpm包管理</a></li><li><a href="#yum包管理" class="table-of-contents__link toc-highlight">yum包管理</a></li></ul></li><li><a href="#运行级别" class="table-of-contents__link toc-highlight">运行级别</a><ul><li><a href="#基本介绍" class="table-of-contents__link toc-highlight">基本介绍</a></li><li><a href="#指定运行级别" class="table-of-contents__link toc-highlight">指定运行级别</a></li></ul></li><li><a href="#安装jdk" class="table-of-contents__link toc-highlight">安装jdk</a></li><li><a href="#shell编程" class="table-of-contents__link toc-highlight">Shell编程</a><ul><li><a href="#变量" class="table-of-contents__link toc-highlight">变量</a></li><li><a href="#运算符" class="table-of-contents__link toc-highlight">运算符</a></li><li><a href="#流程控制" class="table-of-contents__link toc-highlight">流程控制</a></li><li><a href="#函数" class="table-of-contents__link toc-highlight">函数</a></li></ul></li><li><a href="#日志管理" class="table-of-contents__link toc-highlight">日志管理</a><ul><li><a href="#系统常用的日志说明" class="table-of-contents__link toc-highlight">系统常用的日志说明</a></li><li><a href="#常用命令-4" class="table-of-contents__link toc-highlight">常用命令</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="col footer__col"><div class="footer__title">Docs</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/doc/">Docs</a></li></ul></div><div class="col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/follow1123" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://github.com/follow1123/doc" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub Repository<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2024 My Project, Inc. Built with Docusaurus.</div></div></div></footer></div>
+</body>
 </html>
